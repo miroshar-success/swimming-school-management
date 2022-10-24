@@ -1,0 +1,30 @@
+export default (app) => {
+  app.post(
+    `/tenant/:tenantId/vendor-category`,
+    require('./vendorCategoryCreate').default,
+  );
+  app.put(
+    `/tenant/:tenantId/vendor-category/:id`,
+    require('./vendorCategoryUpdate').default,
+  );
+  app.post(
+    `/tenant/:tenantId/vendor-category/import`,
+    require('./vendorCategoryImport').default,
+  );
+  app.delete(
+    `/tenant/:tenantId/vendor-category`,
+    require('./vendorCategoryDestroy').default,
+  );
+  app.get(
+    `/tenant/:tenantId/vendor-category/autocomplete`,
+    require('./vendorCategoryAutocomplete').default,
+  );
+  app.get(
+    `/tenant/:tenantId/vendor-category`,
+    require('./vendorCategoryList').default,
+  );
+  app.get(
+    `/tenant/:tenantId/vendor-category/:id`,
+    require('./vendorCategoryFind').default,
+  );
+};

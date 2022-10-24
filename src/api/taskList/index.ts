@@ -1,0 +1,30 @@
+export default (app) => {
+  app.post(
+    `/tenant/:tenantId/task-list`,
+    require('./taskListCreate').default,
+  );
+  app.put(
+    `/tenant/:tenantId/task-list/:id`,
+    require('./taskListUpdate').default,
+  );
+  app.post(
+    `/tenant/:tenantId/task-list/import`,
+    require('./taskListImport').default,
+  );
+  app.delete(
+    `/tenant/:tenantId/task-list`,
+    require('./taskListDestroy').default,
+  );
+  app.get(
+    `/tenant/:tenantId/task-list/autocomplete`,
+    require('./taskListAutocomplete').default,
+  );
+  app.get(
+    `/tenant/:tenantId/task-list`,
+    require('./taskListList').default,
+  );
+  app.get(
+    `/tenant/:tenantId/task-list/:id`,
+    require('./taskListFind').default,
+  );
+};

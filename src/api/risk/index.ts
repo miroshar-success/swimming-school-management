@@ -1,0 +1,34 @@
+export default (app) => {
+  app.post(
+    `/tenant/:tenantId/risk`,
+    require('./riskCreate').default,
+  );
+  app.put(
+    `/tenant/:tenantId/risk/:id`,
+    require('./riskUpdate').default,
+  );
+  app.put(
+    `/tenant/:tenantId/risk/:id/tags`,
+    require('./riskTags').default,
+  );
+  app.post(
+    `/tenant/:tenantId/risk/import`,
+    require('./riskImport').default,
+  );
+  app.delete(
+    `/tenant/:tenantId/risk`,
+    require('./riskDestroy').default,
+  );
+  app.get(
+    `/tenant/:tenantId/risk/autocomplete`,
+    require('./riskAutocomplete').default,
+  );
+  app.get(
+    `/tenant/:tenantId/risk`,
+    require('./riskList').default,
+  );
+  app.get(
+    `/tenant/:tenantId/risk/:id`,
+    require('./riskFind').default,
+  );
+};

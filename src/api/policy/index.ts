@@ -1,0 +1,34 @@
+export default (app) => {
+  app.post(
+    `/tenant/:tenantId/policy`,
+    require('./policyCreate').default,
+  );
+  app.put(
+    `/tenant/:tenantId/policy/:id`,
+    require('./policyUpdate').default,
+  );
+  app.put(
+    `/tenant/:tenantId/policy/:id/tags`,
+    require('./policyTags').default,
+  );
+  app.post(
+    `/tenant/:tenantId/policy/import`,
+    require('./policyImport').default,
+  );
+  app.delete(
+    `/tenant/:tenantId/policy`,
+    require('./policyDestroy').default,
+  );
+  app.get(
+    `/tenant/:tenantId/policy/autocomplete`,
+    require('./policyAutocomplete').default,
+  );
+  app.get(
+    `/tenant/:tenantId/policy`,
+    require('./policyList').default,
+  );
+  app.get(
+    `/tenant/:tenantId/policy/:id`,
+    require('./policyFind').default,
+  );
+};

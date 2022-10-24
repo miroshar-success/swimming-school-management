@@ -1,0 +1,61 @@
+{
+  "name": "vor-grc-informed-awareness-backend",
+  "description": "VOR | GRC - Informed Awareness - Backend",
+  "version": "0.1.0",
+  "engines": {
+    "node": "16.x",
+    "npm": "8.x",
+    "yarn": "1.x"
+  },
+  "scripts": {
+    "start": "nodemon --watch \"src/**/*.ts\" -e ts,json --exec \"ts-node --transpile-only ./src/server.ts\"",
+    "test": "nodemon --exec \"cross-env NODE_ENV=test mocha -r ts-node/register ./src/**/*.test.ts --exit || exit 1\"",
+    "build:documentation": "copyfiles --flat ./src/documentation/openapi.json ./dist/documentation/",
+    "build": "tsc && npm run build:documentation",
+    "db:create": "npm run build && node ./dist/database/migrations/create",
+    "stripe:login": "stripe login",
+    "stripe:start": "stripe listen --forward-to localhost:8080/api/plan/stripe/webhook",
+    "heroku-postbuild": "npm run db:create && cd frontend && yarn && npm run build:production"
+  },
+  "dependencies": {
+    "@google-cloud/storage": "6.0.1",
+    "@sendgrid/mail": "7.7.0",
+    "@types/mime-types": "^2.1.1",
+    "@types/node": "^18.0.0",
+    "@types/slug": "^5.0.3",
+    "app-root-path": "^3.1.0",
+    "aws-sdk": "^2.1147.0",
+    "axios": "^0.27.2",
+    "bcrypt": "5.0.1",
+    "capitalize": "^2.0.4",
+    "cli-highlight": "^2.1.11",
+    "copyfiles": "^2.4.1",
+    "cors": "2.8.5",
+    "dotenv": "16.0.1",
+    "express": "4.18.1",
+    "express-rate-limit": "6.4.0",
+    "formidable-serverless": "1.1.1",
+    "helmet": "5.1.0",
+    "jsonwebtoken": "8.5.1",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.3",
+    "mongoose": "^6.3.5",
+    "mv": "2.1.1",
+    "nodemon": "^2.0.16",
+    "passport": "0.6.0",
+    "passport-facebook": "3.0.0",
+    "passport-google-oauth": "2.0.0",
+    "rrule": "^2.7.1",
+    "slug": "^8.0.0",
+    "stripe": "9.6.0",
+    "swagger-ui-dist": "^4.11.1",
+    "ts-node": "^10.8.1"
+  },
+  "private": true,
+  "devDependencies": {
+    "cross-env": "7.0.3",
+    "mocha": "10.0.0",
+    "node-mocks-http": "1.11.0",
+    "typescript": "4.7.2"
+  }
+}

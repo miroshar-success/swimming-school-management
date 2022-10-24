@@ -1,0 +1,30 @@
+export default (app) => {
+  app.post(
+    `/tenant/:tenantId/risk-category`,
+    require('./riskCategoryCreate').default,
+  );
+  app.put(
+    `/tenant/:tenantId/risk-category/:id`,
+    require('./riskCategoryUpdate').default,
+  );
+  app.post(
+    `/tenant/:tenantId/risk-category/import`,
+    require('./riskCategoryImport').default,
+  );
+  app.delete(
+    `/tenant/:tenantId/risk-category`,
+    require('./riskCategoryDestroy').default,
+  );
+  app.get(
+    `/tenant/:tenantId/risk-category/autocomplete`,
+    require('./riskCategoryAutocomplete').default,
+  );
+  app.get(
+    `/tenant/:tenantId/risk-category`,
+    require('./riskCategoryList').default,
+  );
+  app.get(
+    `/tenant/:tenantId/risk-category/:id`,
+    require('./riskCategoryFind').default,
+  );
+};

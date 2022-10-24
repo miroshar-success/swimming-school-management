@@ -1,0 +1,193 @@
+import { IServiceOptions } from './IServiceOptions';
+import Error400 from '../errors/Error400';
+import MongooseRepository from '../database/repositories/mongooseRepository';
+import PolicyFavoriteRepository from '../database/repositories/policyFavoriteRepository';
+import PolicyRepository from '../database/repositories/policyRepository';
+import UserRepository from '../database/repositories/userRepository';
+
+export default class PolicyFavoriteService {
+  options: IServiceOptions;
+
+  constructor(options) {
+    this.options = options;
+  }
+
+  async create(data) {
+    const session = await MongooseRepository.createSession(
+      this.options.database,
+    );
+
+    try {
+      data.user = await UserRepository.filterIdInTenant(
+        data.user,
+        { ...this.options, session },
+      );
+      data.policy = await PolicyRepository.filterIdInTenant(
+        data.policy,
+        { ...this.options, session },
+      );
+
+      const record = await PolicyFavoriteRepository.create(
+        data,
+        {
+          ...this.options,
+          session,
+        },
+      );
+
+      await MongooseRepository.commitTransaction(session);
+
+      return record;
+    } catch (error) {
+      await MongooseRepository.abortTransaction(session);
+
+      MongooseRepository.handleUniqueFieldError(
+        error,
+        this.options.language,
+        'policyFavorite',
+      );
+
+      throw error;
+    }
+  }
+
+  async update(id, data) {
+    const session = await MongooseRepository.createSession(
+      this.options.database,
+    );
+
+    try {
+      data.user = await UserRepository.filterIdInTenant(
+        data.user,
+        { ...this.options, session },
+      );
+      data.policy = await PolicyRepository.filterIdInTenant(
+        data.policy,
+        { ...this.options, session },
+      );
+
+      const record = await PolicyFavoriteRepository.update(
+        id,
+        data,
+        {
+          ...this.options,
+          session,
+        },
+      );
+
+      await MongooseRepository.commitTransaction(session);
+
+      return record;
+    } catch (error) {
+      await MongooseRepository.abortTransaction(session);
+
+      MongooseRepository.handleUniqueFieldError(
+        error,
+        this.options.language,
+        'policyFavorite',
+      );
+
+      throw error;
+    }
+  }
+
+  async destroyAll(ids) {
+    const session = await MongooseRepository.createSession(
+      this.options.database,
+    );
+
+    try {
+      for (const id of ids) {
+        await PolicyFavoriteRepository.destroy(id, {
+          ...this.options,
+          session,
+        });
+      }
+
+      await MongooseRepository.commitTransaction(session);
+    } catch (error) {
+      await MongooseRepository.abortTransaction(session);
+      throw error;
+    }
+  }
+
+  async toggle(policyId) {
+    const favoriteId =
+      await PolicyFavoriteRepository.filterIdByPolicy(
+        policyId,
+        this.options,
+      );
+
+    if (favoriteId) {
+      await this.destroyAll([favoriteId]);
+      return true;
+    }
+
+    const currentUser = MongooseRepository.getCurrentUser(
+      this.options,
+    );
+
+    const data = {
+      user: currentUser.id,
+      policy: policyId,
+    };
+
+    return await this.create(data);
+  }
+
+  async findById(id) {
+    return PolicyFavoriteRepository.findById(
+      id,
+      this.options,
+    );
+  }
+
+  async findAllAutocomplete(search, limit) {
+    return PolicyFavoriteRepository.findAllAutocomplete(
+      search,
+      limit,
+      this.options,
+    );
+  }
+
+  async findAndCountAll(args) {
+    return PolicyFavoriteRepository.findAndCountAll(
+      args,
+      this.options,
+    );
+  }
+
+  async import(data, importHash) {
+    if (!importHash) {
+      throw new Error400(
+        this.options.language,
+        'importer.errors.importHashRequired',
+      );
+    }
+
+    if (await this._isImportHashExistent(importHash)) {
+      throw new Error400(
+        this.options.language,
+        'importer.errors.importHashExistent',
+      );
+    }
+
+    const dataToCreate = {
+      ...data,
+      importHash,
+    };
+
+    return this.create(dataToCreate);
+  }
+
+  async _isImportHashExistent(importHash) {
+    const count = await PolicyFavoriteRepository.count(
+      {
+        importHash,
+      },
+      this.options,
+    );
+
+    return count > 0;
+  }
+}

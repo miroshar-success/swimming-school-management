@@ -1,0 +1,34 @@
+export default (app) => {
+  app.post(
+    `/tenant/:tenantId/policy-template-favorite`,
+    require('./policyTemplateFavoriteCreate').default,
+  );
+  app.put(
+    `/tenant/:tenantId/policy-template-favorite/:id`,
+    require('./policyTemplateFavoriteUpdate').default,
+  );
+  app.post(
+    `/tenant/:tenantId/policy-template-favorite/import`,
+    require('./policyTemplateFavoriteImport').default,
+  );
+  app.delete(
+    `/tenant/:tenantId/policy-template-favorite`,
+    require('./policyTemplateFavoriteDestroy').default,
+  );
+  app.get(
+    `/tenant/:tenantId/policy-template-favorite/autocomplete`,
+    require('./policyTemplateFavoriteAutocomplete').default,
+  );
+  app.get(
+    `/tenant/:tenantId/policy-template-favorite`,
+    require('./policyTemplateFavoriteList').default,
+  );
+  app.get(
+    `/tenant/:tenantId/policy-template-favorite/:id`,
+    require('./policyTemplateFavoriteFind').default,
+  );
+  app.get(
+    `/tenant/:tenantId/policy-template-favorite/toggle/:policyTemplateId`,
+    require('./policyTemplateFavoriteToggle').default,
+  );
+};

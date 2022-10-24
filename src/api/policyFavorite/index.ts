@@ -1,0 +1,34 @@
+export default (app) => {
+  app.post(
+    `/tenant/:tenantId/policy-favorite`,
+    require('./policyFavoriteCreate').default,
+  );
+  app.put(
+    `/tenant/:tenantId/policy-favorite/:id`,
+    require('./policyFavoriteUpdate').default,
+  );
+  app.post(
+    `/tenant/:tenantId/policy-favorite/import`,
+    require('./policyFavoriteImport').default,
+  );
+  app.delete(
+    `/tenant/:tenantId/policy-favorite`,
+    require('./policyFavoriteDestroy').default,
+  );
+  app.get(
+    `/tenant/:tenantId/policy-favorite/autocomplete`,
+    require('./policyFavoriteAutocomplete').default,
+  );
+  app.get(
+    `/tenant/:tenantId/policy-favorite`,
+    require('./policyFavoriteList').default,
+  );
+  app.get(
+    `/tenant/:tenantId/policy-favorite/:id`,
+    require('./policyFavoriteFind').default,
+  );
+  app.get(
+    `/tenant/:tenantId/policy-favorite/toggle/:policyId`,
+    require('./policyFavoriteToggle').default,
+  );
+};

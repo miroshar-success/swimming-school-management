@@ -1,0 +1,34 @@
+export default (app) => {
+  app.post(
+    `/tenant/:tenantId/news-favorite`,
+    require('./newsFavoriteCreate').default,
+  );
+  app.put(
+    `/tenant/:tenantId/news-favorite/:id`,
+    require('./newsFavoriteUpdate').default,
+  );
+  app.post(
+    `/tenant/:tenantId/news-favorite/import`,
+    require('./newsFavoriteImport').default,
+  );
+  app.delete(
+    `/tenant/:tenantId/news-favorite`,
+    require('./newsFavoriteDestroy').default,
+  );
+  app.get(
+    `/tenant/:tenantId/news-favorite/autocomplete`,
+    require('./newsFavoriteAutocomplete').default,
+  );
+  app.get(
+    `/tenant/:tenantId/news-favorite`,
+    require('./newsFavoriteList').default,
+  );
+  app.get(
+    `/tenant/:tenantId/news-favorite/:id`,
+    require('./newsFavoriteFind').default,
+  );
+  app.get(
+    `/tenant/:tenantId/news-favorite/toggle/:newsArticleId`,
+    require('./newsFavoriteToggle').default,
+  );
+};

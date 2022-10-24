@@ -1,0 +1,34 @@
+export default (app) => {
+  app.post(
+    `/tenant/:tenantId/news-article`,
+    require('./newsArticleCreate').default,
+  );
+  app.put(
+    `/tenant/:tenantId/news-article/:id`,
+    require('./newsArticleUpdate').default,
+  );
+  app.put(
+    `/tenant/:tenantId/news-article/:id/tags`,
+    require('./newsArticleTags').default,
+  );
+  app.post(
+    `/tenant/:tenantId/news-article/import`,
+    require('./newsArticleImport').default,
+  );
+  app.delete(
+    `/tenant/:tenantId/news-article`,
+    require('./newsArticleDestroy').default,
+  );
+  app.get(
+    `/tenant/:tenantId/news-article/autocomplete`,
+    require('./newsArticleAutocomplete').default,
+  );
+  app.get(
+    `/tenant/:tenantId/news-article`,
+    require('./newsArticleList').default,
+  );
+  app.get(
+    `/tenant/:tenantId/news-article/:id`,
+    require('./newsArticleFind').default,
+  );
+};
