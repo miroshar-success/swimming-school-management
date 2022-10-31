@@ -15,15 +15,12 @@ export async function databaseInit() {
    * Connects to MongoDB
    */
   return mongoose
-    .connect(
-      getConfig().MONGODB_URI ||
-        getConfig().DATABASE_CONNECTION,
-      {
-        // useNewUrlParser: true,
-        // useUnifiedTopology: true,
-        // useCreateIndex: true,
-      },
-    )
+    .connect(getConfig().MONGODB_URI, {
+      // useNewUrlParser: true,
+      // useUnifiedTopology: true,
+      // useCreateIndex: true,
+      dbName: getConfig().MONGODB_DATABASE,
+    })
     .then(() => {
       init(mongoose);
     })
