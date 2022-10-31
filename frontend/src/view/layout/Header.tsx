@@ -225,7 +225,7 @@ function Header({
                   {miniSidenav ? 'menu_open' : 'menu'}
                 </Icon>
               </IconButton> */}
-              {/* <I18nSelect /> */}
+              <I18nSelect />
               <UserMenu />
               <IconButton
                 size="small"

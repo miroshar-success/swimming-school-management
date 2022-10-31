@@ -7,7 +7,6 @@ import authSelectors from 'src/modules/auth/authSelectors';
 import MDBox from 'src/mui/components/MDBox';
 import muiActions from 'src/modules/mui/muiActions';
 import PermissionChecker from 'src/modules/auth/permissionChecker';
-import QuizForm from 'src/view/widgets/TypeForm/QuizForm';
 
 function DashboardLayout({
   children,
@@ -23,11 +22,6 @@ function DashboardLayout({
   );
   const currentUser = useSelector(
     authSelectors.selectCurrentUser,
-  );
-
-  const permissionChecker = new PermissionChecker(
-    currentTenant,
-    currentUser,
   );
 
   useEffect(() => {
@@ -59,27 +53,6 @@ function DashboardLayout({
       })}
     >
       {children}
-      {permissionChecker.needsAnswers && (
-        <MDBox
-          display="flex"
-          alignItems="center"
-          position="fixed"
-          left="0"
-          top="0"
-          right="0"
-          bottom="0"
-          zIndex={10000}
-          sx={{
-            background: 'rgba(225,225,225,0.2)',
-          }}
-        >
-          <Grid justifyContent="center" container>
-            <Grid xl={7} lg={8} md={9} sm={11} xs={12} item>
-              <QuizForm />
-            </Grid>
-          </Grid>
-        </MDBox>
-      )}
     </MDBox>
   );
 }

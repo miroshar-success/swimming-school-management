@@ -196,18 +196,7 @@ function AppWithSnackbar(props) {
     <ConnectedRouter history={getHistory()}>
       {layout === 'dashboard' && (
         <>
-          <Menu
-            url={match.url}
-            brand={
-              (transparentSidenav && !darkMode) ||
-              whiteSidenav
-                ? brandDark
-                : brandWhite
-            }
-            brandName={i18n('app.title')}
-            onMouseEnter={handleOnMouseEnter}
-            onMouseLeave={handleOnMouseLeave}
-          />
+          <Menu />
           <Configurator />
           {configsButton}
         </>

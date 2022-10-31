@@ -3,7 +3,6 @@ import { i18n } from 'src/i18n';
 import config from 'src/config';
 import { Icon } from '@mui/material';
 import StorefrontIcon from '@mui/icons-material/Storefront';
-import InventoryIcon from '@mui/icons-material/Inventory';
 
 const permissions = Permissions.values;
 
@@ -19,6 +18,20 @@ const menus = [
   },
 
   {
+    path: '/student',
+    icon: <Icon>people</Icon>,
+    name: i18n('student.menu'),
+    permissionRequired: permissions.studentRead,
+  },
+
+  {
+    path: '/teacher',
+    icon: <Icon>account_box</Icon>,
+    name: i18n('teacher.menu'),
+    permissionRequired: permissions.teacherRead,
+  },
+
+  /*{
     path: '/organization-profile',
     name: i18n('entities.organizationProfile.menu'),
     permissionRequired: permissions.organizationProfileRead,
@@ -175,7 +188,7 @@ const menus = [
         icon: <Icon>task</Icon>,
       },
     ],
-  },
+  },*/
 
   {
     name: i18n('settings.menu'),

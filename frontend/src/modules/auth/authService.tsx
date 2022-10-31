@@ -74,34 +74,6 @@ export default class AuthService {
     return response.data;
   }
 
-  static async fetchAnswer(responseId) {
-    const tenantId = tenantSubdomain.isSubdomain
-      ? AuthCurrentTenant.get()
-      : undefined;
-    await authAxios.put(
-      `/tenant/${tenantId}/answer/${responseId}`,
-    );
-  }
-
-  static async fetchAnswerData(responseId) {
-    const tenantId = tenantSubdomain.isSubdomain
-      ? AuthCurrentTenant.get()
-      : undefined;
-    const response = await authAxios.get(
-      `/tenant/${tenantId}/answer/${responseId}`,
-    );
-    return response.data;
-  }
-
-  static async destroyAnswerData(responseId) {
-    const tenantId = tenantSubdomain.isSubdomain
-      ? AuthCurrentTenant.get()
-      : undefined;
-    await authAxios.delete(
-      `/tenant/${tenantId}/answer/${responseId}`,
-    );
-  }
-
   static signout() {
     AuthToken.set(null, true);
   }

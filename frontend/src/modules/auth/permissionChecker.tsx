@@ -112,24 +112,6 @@ export default class PermissionChecker {
     return this.currentTenant.plan;
   }
 
-  get needsAnswers() {
-    if (!this.isAuthenticated) {
-      return true;
-    }
-
-    if (!this.currentUser.typeForm) {
-      return false;
-    }
-
-    if (this.isEmptyTenant) {
-      return true;
-    }
-
-    return (
-      this.currentTenant && !this.currentTenant.typeFormId
-    );
-  }
-
   get isEmptyTenant() {
     if (!this.isAuthenticated) {
       return true;

@@ -1,5 +1,8 @@
 import mongoose from 'mongoose';
 import TenantUserSchema from './schemas/tenantUserSchema';
+import addressSchema from './schemas/addressSchema';
+import guardianSchema from './schemas/guardianSchema';
+import healthInsuranceSchema from './schemas/healthInsuranceSchema';
 const Schema = mongoose.Schema;
 
 export default (database) => {
@@ -15,8 +18,23 @@ export default (database) => {
       firstName: { type: String, maxlength: 80 },
       lastName: { type: String, maxlength: 175 },
       phoneNumber: { type: String, maxlength: 24 },
-      provider: { type: String, maxlength: 255 },
-      providerId: { type: String, maxlength: 255 },
+      address: addressSchema,
+      RFC: { type: String, maxlength: 50 },
+      CURP: { type: String, maxlength: 50 },
+      bloodType: {
+        type: String,
+        maxlength: 2,
+        enum: ['O', 'A', 'B', 'AB'],
+      },
+      sex: {
+        type: String,
+        maxlength: 6,
+        enum: ['male', 'female'],
+      },
+      birthday: { type: Date },
+      guardian: guardianSchema,
+      healthInsurance: healthInsuranceSchema,
+      comment: { type: String },
       email: {
         type: String,
         maxlength: 255,

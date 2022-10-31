@@ -4,10 +4,7 @@ import AuthCurrentTenant from 'src/modules/auth/authCurrentTenant';
 const initialData = {
   currentUser: null,
   currentTenant: null,
-  currentAnswerData: null,
   loadingInit: true,
-  loadingAnswer: false,
-  loadingAnswerData: false,
   loadingEmailConfirmation: false,
   loadingPasswordResetEmail: false,
   loadingPasswordChange: false,
@@ -44,51 +41,6 @@ export default (state = initialData, { type, payload }) => {
       currentUser: null,
       currentTenant:
         AuthCurrentTenant.selectAndSaveOnStorageFor(null),
-    };
-  }
-
-  if (type === actions.AUTH_ANSWER_DATA_START) {
-    return {
-      ...state,
-      loadingAnswerData: true,
-    };
-  }
-
-  if (type === actions.AUTH_ANSWER_DATA_SUCCESS) {
-    return {
-      ...state,
-      loadingAnswerData: false,
-      currentAnswerData: payload,
-    };
-  }
-
-  if (type === actions.AUTH_ANSWER_DATA_ERROR) {
-    return {
-      ...state,
-      loadingAnswerData: false,
-      currentAnswerData: null,
-    };
-  }
-
-  if (type === actions.AUTH_ANSWER_START) {
-    return {
-      ...state,
-      loadingAnswer: true,
-    };
-  }
-
-  if (type === actions.AUTH_ANSWER_SUCCESS) {
-    return {
-      ...state,
-      loadingAnswer: false,
-      currentTenant: payload,
-    };
-  }
-
-  if (type === actions.AUTH_ANSWER_ERROR) {
-    return {
-      ...state,
-      loadingAnswer: false,
     };
   }
 

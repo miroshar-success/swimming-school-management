@@ -38,7 +38,7 @@ const en = {
   },
 
   app: {
-    title: 'VOR | GRC - Informed Awareness',
+    title: 'Natacion Mexico',
   },
 
   api: {
@@ -1952,6 +1952,130 @@ const en = {
       cycling: 'Cycling',
       running: 'Running',
       customer: 'Customer',
+    },
+  },
+  student: {
+    fields: {
+      id: 'Id',
+      avatars: 'Avatar',
+      email: 'Email',
+      emails: 'Email(s)',
+      fullName: 'Name',
+      firstName: 'First Name',
+      lastName: 'Last Name',
+      status: 'Status',
+      phoneNumber: 'Phone Number',
+      createdAt: 'Created at',
+      updatedAt: 'Updated at',
+      createdAtRange: 'Created at',
+      password: 'Password',
+      oldPassword: 'Old Password',
+      newPassword: 'New Password',
+      newPasswordConfirmation: 'New Password Confirmation',
+      rememberMe: 'Remember me',
+    },
+    status: {
+      active: 'Active',
+      invited: 'Invited',
+      'empty-permissions': 'Waiting for Permissions',
+    },
+    invite: 'Invite',
+    validations: {
+      // eslint-disable-next-line
+      email: 'Email ${value} is invalid',
+    },
+    title: 'Students',
+    menu: 'Students',
+    doAddSuccess: 'Student(s) successfully saved',
+    doUpdateSuccess: 'Student successfully saved',
+    exporterFileName: 'students_export',
+    doDestroySuccess: 'Student successfully deleted',
+    doDestroyAllSelectedSuccess:
+      'Students successfully deleted',
+    edit: {
+      title: 'Edit Student',
+    },
+    new: {
+      title: 'Invite Student(s)',
+      titleModal: 'Invite Student',
+      emailsHint:
+        'Separate multiple email addresses using the comma character.',
+    },
+    view: {
+      title: 'View Student',
+      activity: 'Activity',
+    },
+    importer: {
+      title: 'Import Student',
+      fileName: 'students_import_template',
+    },
+    errors: {
+      userAlreadyExists:
+        'Student with this email already exists',
+      userNotFound: 'User not found',
+      revokingOwnPermission: `You can't revoke your own admin permission`,
+    },
+  },
+  teacher: {
+    fields: {
+      id: 'Id',
+      avatars: 'Avatar',
+      email: 'Email',
+      emails: 'Email(s)',
+      fullName: 'Name',
+      firstName: 'First Name',
+      lastName: 'Last Name',
+      status: 'Status',
+      phoneNumber: 'Phone Number',
+      createdAt: 'Created at',
+      updatedAt: 'Updated at',
+      createdAtRange: 'Created at',
+      password: 'Password',
+      oldPassword: 'Old Password',
+      newPassword: 'New Password',
+      newPasswordConfirmation: 'New Password Confirmation',
+      rememberMe: 'Remember me',
+    },
+    status: {
+      active: 'Active',
+      invited: 'Invited',
+      'empty-permissions': 'Waiting for Permissions',
+    },
+    invite: 'Invite',
+    validations: {
+      // eslint-disable-next-line
+      email: 'Email ${value} is invalid',
+    },
+    title: 'Teachers',
+    menu: 'Teachers',
+    doAddSuccess: 'Teacher(s) successfully saved',
+    doUpdateSuccess: 'Teacher successfully saved',
+    exporterFileName: 'teachers_export',
+    doDestroySuccess: 'Teacher successfully deleted',
+    doDestroyAllSelectedSuccess:
+      'Teachers successfully deleted',
+    edit: {
+      title: 'Edit Teacher',
+    },
+    new: {
+      title: 'Invite Teacher(s)',
+      titleModal: 'Invite Teacher',
+      emailsHint:
+        'Separate multiple email addresses using the comma character.',
+    },
+    view: {
+      title: 'View Teacher',
+      activity: 'Activity',
+    },
+    importer: {
+      title: 'Import Teacher',
+      fileName: 'teachers_import_template',
+    },
+    errors: {
+      userAlreadyExists:
+        'Teacher with this email already exists',
+      userNotFound: 'User not found',
+      revokingOwnPermission: `You can't revoke your own admin permission`,
     },
   },
   errors: {

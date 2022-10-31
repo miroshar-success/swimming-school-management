@@ -47,7 +47,7 @@ class Permissions {
       },
       userEdit: {
         id: 'userEdit',
-        allowedRoles: [roles.admin],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -56,7 +56,7 @@ class Permissions {
       },
       userDestroy: {
         id: 'userDestroy',
-        allowedRoles: [roles.admin],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -65,7 +65,7 @@ class Permissions {
       },
       userCreate: {
         id: 'userCreate',
-        allowedRoles: [roles.admin],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -74,7 +74,7 @@ class Permissions {
       },
       userImport: {
         id: 'userImport',
-        allowedRoles: [roles.admin],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -83,7 +83,7 @@ class Permissions {
       },
       userRead: {
         id: 'userRead',
-        allowedRoles: [roles.admin],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -92,7 +92,7 @@ class Permissions {
       },
       userAutocomplete: {
         id: 'userAutocomplete',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -110,7 +110,7 @@ class Permissions {
       },
       muiEdit: {
         id: 'muiEdit',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -183,7 +183,7 @@ class Permissions {
       },
       vendorRead: {
         id: 'vendorRead',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -192,7 +192,7 @@ class Permissions {
       },
       vendorAutocomplete: {
         id: 'vendorAutocomplete',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -241,7 +241,7 @@ class Permissions {
       },
       vendorCategoryRead: {
         id: 'vendorCategoryRead',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -250,7 +250,7 @@ class Permissions {
       },
       vendorCategoryAutocomplete: {
         id: 'vendorCategoryAutocomplete',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -299,7 +299,7 @@ class Permissions {
       },
       taskRead: {
         id: 'taskRead',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -308,7 +308,7 @@ class Permissions {
       },
       taskAutocomplete: {
         id: 'taskAutocomplete',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -357,7 +357,7 @@ class Permissions {
       },
       taskPriorityRead: {
         id: 'taskPriorityRead',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -366,7 +366,7 @@ class Permissions {
       },
       taskPriorityAutocomplete: {
         id: 'taskPriorityAutocomplete',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -415,7 +415,7 @@ class Permissions {
       },
       taskListRead: {
         id: 'taskListRead',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -424,7 +424,7 @@ class Permissions {
       },
       taskListAutocomplete: {
         id: 'taskListAutocomplete',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -473,7 +473,7 @@ class Permissions {
       },
       noteRead: {
         id: 'noteRead',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -482,7 +482,7 @@ class Permissions {
       },
       noteAutocomplete: {
         id: 'noteAutocomplete',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -531,7 +531,7 @@ class Permissions {
       },
       riskRead: {
         id: 'riskRead',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -540,7 +540,7 @@ class Permissions {
       },
       riskAutocomplete: {
         id: 'riskAutocomplete',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -589,7 +589,7 @@ class Permissions {
       },
       riskCategoryRead: {
         id: 'riskCategoryRead',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -598,7 +598,7 @@ class Permissions {
       },
       riskCategoryAutocomplete: {
         id: 'riskCategoryAutocomplete',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -647,7 +647,7 @@ class Permissions {
       },
       productRead: {
         id: 'productRead',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -656,7 +656,7 @@ class Permissions {
       },
       productAutocomplete: {
         id: 'productAutocomplete',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -705,7 +705,7 @@ class Permissions {
       },
       productCategoryRead: {
         id: 'productCategoryRead',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -714,7 +714,7 @@ class Permissions {
       },
       productCategoryAutocomplete: {
         id: 'productCategoryAutocomplete',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -763,7 +763,7 @@ class Permissions {
       },
       productFavoriteRead: {
         id: 'productFavoriteRead',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -772,7 +772,7 @@ class Permissions {
       },
       productFavoriteAutocomplete: {
         id: 'productFavoriteAutocomplete',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -821,7 +821,7 @@ class Permissions {
       },
       organizationProfileRead: {
         id: 'organizationProfileRead',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -830,7 +830,7 @@ class Permissions {
       },
       organizationProfileAutocomplete: {
         id: 'organizationProfileAutocomplete',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -879,7 +879,7 @@ class Permissions {
       },
       newsArticleRead: {
         id: 'newsArticleRead',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -888,7 +888,7 @@ class Permissions {
       },
       newsArticleAutocomplete: {
         id: 'newsArticleAutocomplete',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -937,7 +937,7 @@ class Permissions {
       },
       newsFavoriteRead: {
         id: 'newsFavoriteRead',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -946,7 +946,7 @@ class Permissions {
       },
       newsFavoriteAutocomplete: {
         id: 'newsFavoriteAutocomplete',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -995,7 +995,7 @@ class Permissions {
       },
       tagRead: {
         id: 'tagRead',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -1004,7 +1004,7 @@ class Permissions {
       },
       tagAutocomplete: {
         id: 'tagAutocomplete',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -1034,7 +1034,7 @@ class Permissions {
       },
       documentRead: {
         id: 'documentRead',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -1083,7 +1083,7 @@ class Permissions {
       },
       policyTemplateRead: {
         id: 'policyTemplateRead',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -1092,7 +1092,7 @@ class Permissions {
       },
       policyTemplateAutocomplete: {
         id: 'policyTemplateAutocomplete',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -1141,7 +1141,7 @@ class Permissions {
       },
       policyTemplateFavoriteRead: {
         id: 'policyTemplateFavoriteRead',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -1150,7 +1150,7 @@ class Permissions {
       },
       policyTemplateFavoriteAutocomplete: {
         id: 'policyTemplateFavoriteAutocomplete',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -1199,7 +1199,7 @@ class Permissions {
       },
       policyRead: {
         id: 'policyRead',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -1208,7 +1208,7 @@ class Permissions {
       },
       policyAutocomplete: {
         id: 'policyAutocomplete',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -1257,7 +1257,7 @@ class Permissions {
       },
       policyFavoriteRead: {
         id: 'policyFavoriteRead',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
@@ -1266,7 +1266,7 @@ class Permissions {
       },
       policyFavoriteAutocomplete: {
         id: 'policyFavoriteAutocomplete',
-        allowedRoles: [roles.admin, roles.custom],
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,

@@ -21,14 +21,6 @@ const authActions = {
   AUTH_SUCCESS: `${prefix}_SUCCESS`,
   AUTH_ERROR: `${prefix}_ERROR`,
 
-  AUTH_ANSWER_START: `${prefix}_ANSWER_START`,
-  AUTH_ANSWER_SUCCESS: `${prefix}_ANSWER_SUCCESS`,
-  AUTH_ANSWER_ERROR: `${prefix}_ANSWER_ERROR`,
-
-  AUTH_ANSWER_DATA_START: `${prefix}_ANSWER_DATA_START`,
-  AUTH_ANSWER_DATA_SUCCESS: `${prefix}_ANSWER_DATA_SUCCESS`,
-  AUTH_ANSWER_DATA_ERROR: `${prefix}_ANSWER_DATA_ERROR`,
-
   UPDATE_PROFILE_START: `${prefix}_UPDATE_PROFILE_START`,
   UPDATE_PROFILE_SUCCESS: `${prefix}_UPDATE_PROFILE_SUCCESS`,
   UPDATE_PROFILE_ERROR: `${prefix}_UPDATE_PROFILE_ERROR`,
@@ -378,91 +370,6 @@ const authActions = {
     await dispatch(authActions.doRefreshCurrentUser());
     getHistory().push('/');
   },
-
-  doFetchAnswer:
-    (responseId) => async (dispatch, getState) => {
-      try {
-        dispatch({ type: authActions.AUTH_ANSWER_START });
-
-        await service.fetchAnswer(responseId);
-
-        const currentTenant = selectors.selectCurrentTenant(
-          getState(),
-        );
-
-        dispatch({
-          type: authActions.AUTH_ANSWER_SUCCESS,
-          payload: {
-            ...currentTenant,
-            typeFormId: responseId,
-          },
-        });
-      } catch (error) {
-        Errors.handle(error);
-
-        dispatch({
-          type: authActions.AUTH_ANSWER_ERROR,
-        });
-      }
-    },
-
-  doFetchAnswerData:
-    (responseId) => async (dispatch, getState) => {
-      try {
-        dispatch({
-          type: authActions.AUTH_ANSWER_DATA_START,
-        });
-
-        const answerData = await service.fetchAnswerData(
-          responseId,
-        );
-
-        dispatch({
-          type: authActions.AUTH_ANSWER_DATA_SUCCESS,
-          payload: answerData,
-        });
-      } catch (error) {
-        Errors.handle(error);
-
-        dispatch({
-          type: authActions.AUTH_ANSWER_DATA_ERROR,
-        });
-      }
-    },
-
-  doDestroyAnswerData:
-    (responseId) => async (dispatch, getState) => {
-      try {
-        dispatch({
-          type: authActions.AUTH_ANSWER_DATA_START,
-        });
-
-        await service.destroyAnswerData(responseId);
-
-        dispatch({
-          type: authActions.AUTH_ANSWER_DATA_SUCCESS,
-          payload: null,
-        });
-
-        const currentTenant = selectors.selectCurrentTenant(
-          getState(),
-        );
-
-        dispatch({
-          type: authActions.AUTH_ANSWER_SUCCESS,
-          payload: {
-            ...currentTenant,
-            typeFormId: null,
-          },
-        });
-      } catch (error) {
-        Errors.handle(error);
-
-        dispatch({
-          type: authActions.AUTH_ANSWER_DATA_ERROR,
-        });
-      }
-    },
 };
 
 export default authActions;

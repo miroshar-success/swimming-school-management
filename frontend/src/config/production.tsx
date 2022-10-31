@@ -10,7 +10,7 @@ const apiDocumentationUrl = `/documentation`;
  * Frontend URL.
  */
 const frontendUrl = {
-  host: 'vorgrc.com',
+  host: 'natacionmexico.mx',
   protocol: 'https',
 };
 

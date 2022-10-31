@@ -22,11 +22,6 @@ const selectCurrentTenant = createSelector(
   },
 );
 
-const selectTypeForm = createSelector(
-  [selectCurrentUser],
-  (user) => user?.typeForm,
-);
-
 const selectCurrentUserEmail = createSelector(
   [selectCurrentUser],
   (currentUser) => (currentUser ? currentUser.email : null),
@@ -70,21 +65,6 @@ const selectRoles = createSelector(
 
 const selectLoading = createSelector([selectRaw], (auth) =>
   Boolean(auth.loading),
-);
-
-const selectLoadingAnswer = createSelector(
-  [selectRaw],
-  (auth) => Boolean(auth.loadingAnswer),
-);
-
-const selectCurrentAnswerData = createSelector(
-  [selectRaw],
-  (auth) => auth.currentAnswerData,
-);
-
-const selectLoadingAnswerData = createSelector(
-  [selectRaw],
-  (auth) => Boolean(auth.loadingAnswerData),
 );
 
 const selectLoadingInit = createSelector(
@@ -259,7 +239,6 @@ const selectLogoUrl = createSelector(
 const authSelectors = {
   selectAuthenticationUser,
   selectBackgroundImageUrl,
-  selectCurrentAnswerData,
   selectCurrentMui,
   selectCurrentSettings,
   selectCurrentTenant,
@@ -273,8 +252,6 @@ const authSelectors = {
   selectErrorMessageVerifyEmail,
   selectInvitedTenants,
   selectLoading,
-  selectLoadingAnswer,
-  selectLoadingAnswerData,
   selectLoadingEmailConfirmation,
   selectLoadingInit,
   selectLoadingPasswordChange,
@@ -286,7 +263,6 @@ const authSelectors = {
   selectRaw,
   selectRoles,
   selectSignedIn,
-  selectTypeForm,
 };
 
 export default authSelectors;

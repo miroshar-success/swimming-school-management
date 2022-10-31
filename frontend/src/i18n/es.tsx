@@ -28,7 +28,7 @@ const es = {
   },
 
   app: {
-    title: 'VOR | GRC - Conciencia informada',
+    title: 'Natacion Mexico',
   },
 
   api: {

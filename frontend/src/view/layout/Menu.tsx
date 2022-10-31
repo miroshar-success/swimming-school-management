@@ -45,16 +45,10 @@ import Scrollbar from 'react-smooth-scrollbar-z';
 
 // Declaring props types for Sidenav
 interface Props {
-  brand?: string;
-  brandName: string;
   [key: string]: any;
 }
 
-function Menu({
-  brand,
-  brandName,
-  ...rest
-}: Props): JSX.Element {
+function Menu({ ...rest }: Props): JSX.Element {
   const dispatch = useDispatch();
 
   const {

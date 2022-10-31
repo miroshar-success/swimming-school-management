@@ -189,6 +189,120 @@ const privateRoutes = [
   },
 
   {
+    path: '/student',
+    i18n: 'student.menu',
+    collapseName: 'student-page',
+    parent: '/',
+    loader: () =>
+      import('src/view/student/list/StudentPage'),
+    permissionRequired: permissions.studentRead,
+    exact: true,
+  },
+
+  {
+    path: '/student/new',
+    i18n: 'student.new.title',
+    collapseName: 'student-page',
+    parent: '/student',
+    loader: () =>
+      import('src/view/student/new/StudentNewPage'),
+    permissionRequired: permissions.studentCreate,
+    exact: true,
+  },
+
+  {
+    path: '/student/importer',
+    i18n: 'student.importer.title',
+    collapseName: 'student-page',
+    parent: '/student',
+    loader: () =>
+      import(
+        'src/view/student/importer/StudentImporterPage'
+      ),
+    permissionRequired: permissions.studentImport,
+    exact: true,
+  },
+
+  {
+    path: '/student/:id/edit',
+    i18n: 'student.edit.title',
+    collapseName: 'student-page',
+    parent: '/student',
+    loader: () =>
+      import('src/view/student/edit/StudentEditPage'),
+    permissionRequired: permissions.studentEdit,
+    exact: true,
+  },
+
+  {
+    path: '/student/:id',
+    i18n: 'student.view.title',
+    collapseName: 'student-page',
+    parent: '/student',
+    loader: () =>
+      import('src/view/student/view/StudentViewPage'),
+    permissionRequired: permissions.studentRead,
+    exact: true,
+  },
+
+  {
+    path: '/teacher',
+    i18n: 'teacher.menu',
+    collapseName: 'teacher-page',
+    parent: '/',
+    loader: () =>
+      import('src/view/teacher/list/TeacherPage'),
+    permissionRequired: permissions.teacherRead,
+    exact: true,
+  },
+
+  {
+    path: '/teacher/new',
+    i18n: 'teacher.new.title',
+    collapseName: 'teacher-page',
+    parent: '/teacher',
+    loader: () =>
+      import('src/view/teacher/new/TeacherNewPage'),
+    permissionRequired: permissions.teacherCreate,
+    exact: true,
+  },
+
+  {
+    path: '/teacher/importer',
+    i18n: 'teacher.importer.title',
+    collapseName: 'teacher-page',
+    parent: '/teacher',
+    loader: () =>
+      import(
+        'src/view/teacher/importer/TeacherImporterPage'
+      ),
+    permissionRequired: permissions.teacherImport,
+    exact: true,
+  },
+
+  {
+    path: '/teacher/:id/edit',
+    i18n: 'teacher.edit.title',
+    collapseName: 'teacher-page',
+    parent: '/teacher',
+    loader: () =>
+      import('src/view/teacher/edit/TeacherEditPage'),
+    permissionRequired: permissions.teacherEdit,
+    exact: true,
+  },
+
+  {
+    path: '/teacher/:id',
+    i18n: 'teacher.view.title',
+    collapseName: 'teacher-page',
+    parent: '/teacher',
+    loader: () =>
+      import('src/view/teacher/view/TeacherViewPage'),
+    permissionRequired: permissions.teacherRead,
+    exact: true,
+  },
+
+  {
     path: '/vendor-management',
     collapseName: 'vendor-management',
     i18n: 'collapses.vendors.menu',

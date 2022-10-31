@@ -27,7 +27,7 @@ const ptBR = {
   },
 
   app: {
-    title: 'VOR | GRC - Consciência Informada',
+    title: 'Natacion Mexico',
   },
 
   api: {

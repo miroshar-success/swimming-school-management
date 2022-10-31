@@ -33,7 +33,7 @@ export function BrandLogo(props) {
 
 const resources = {
   brand: {
-    white: '/images/vor-light.svg',
-    dark: '/images/vor-dark.svg',
+    white: '/images/logo-dark.png',
+    dark: '/images/logo-white.png',
   },
 };

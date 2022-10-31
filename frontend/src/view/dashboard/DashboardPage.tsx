@@ -5,7 +5,6 @@ import PermissionChecker from 'src/modules/auth/permissionChecker';
 import RisksSummary from 'src/view/widgets/RisksSummary';
 import TasksOnCalendar from 'src/view/widgets/TasksOnCalendar';
 import TasksSummary from 'src/view/widgets/TasksSummary';
-import TypeForm from 'src/view/widgets/TypeForm';
 import UpcomingTasks from 'src/view/widgets/UpcomingTasks';
 import VendorsSummary from 'src/view/widgets/VendorsSummary';
 
@@ -24,12 +23,7 @@ function DashboardPage(props) {
   return (
     <>
       <Grid container spacing={1.6}>
-        {!permissionChecker.needsAnswers && (
-          <Grid item xs={12}>
-            <TypeForm />
-          </Grid>
-        )}
-        <Grid item xs={12}>
+        {/*<Grid item xs={12}>
           <Grid container spacing={1.6}>
             <Grid item lg={4} md={6} sm={12} xs={12}>
               <TasksSummary />
@@ -48,7 +42,7 @@ function DashboardPage(props) {
               <UpcomingTasks />
             </Grid>
           </Grid>
-        </Grid>
+        </Grid>*/}
         <Grid item xs={12}>
           <TasksOnCalendar />
         </Grid>

@@ -2,7 +2,9 @@ class Roles {
   static get values() {
     return {
       admin: 'admin',
-      custom: 'custom',
+      manager: 'manager',
+      teacher: 'teacher',
+      student: 'student',
     };
   }
 }
