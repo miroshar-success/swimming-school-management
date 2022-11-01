@@ -10,7 +10,7 @@ const apiDocumentationUrl = `/documentation`;
  * Frontend URL.
  */
 const frontendUrl = {
-  host: 'domain.com',
+  host: 'swimmingschool.herokuapp.com',
   protocol: 'https',
 };
 
