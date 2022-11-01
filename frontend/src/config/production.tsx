@@ -20,7 +20,7 @@ const frontendUrl = {
  * multi-with-subdomain: Same as multi, but enable access to the tenant via subdomain.
  * single: One tenant, the first user to register will be the admin.
  */
-const tenantMode = 'multi-with-subdomain';
+const tenantMode = 'multi';
 
 /**
  * Plan payments configuration.
