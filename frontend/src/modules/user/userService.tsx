@@ -42,7 +42,22 @@ export default class UserService {
     const tenantId = AuthCurrentTenant.get();
 
     const response = await authAxios.post(
-      `/tenant/${tenantId}/user`,
+      `/tenant/${tenantId}/userCreate`,
+      body,
+    );
+
+    return response.data;
+  }
+
+  static async invite(data) {
+    const body = {
+      data,
+    };
+
+    const tenantId = AuthCurrentTenant.get();
+
+    const response = await authAxios.post(
+      `/tenant/${tenantId}/userInvite`,
       body,
     );
 
@@ -75,7 +90,13 @@ export default class UserService {
     return response.data;
   }
 
-  static async fetchUsers(filter, orderBy, limit, offset) {
+  static async fetchUsers(
+    role,
+    filter,
+    orderBy,
+    limit,
+    offset,
+  ) {
     const params = {
       filter,
       orderBy,
@@ -85,12 +106,13 @@ export default class UserService {
 
     const tenantId = AuthCurrentTenant.get();
 
-    const response = await authAxios.get(
-      `/tenant/${tenantId}/user`,
-      {
-        params,
-      },
-    );
+    const response = role
+      ? await authAxios.get(`/tenant/${tenantId}/${role}`, {
+          params,
+        })
+      : await authAxios.get(`/tenant/${tenantId}/admin`, {
+          params,
+        });
 
     return response.data;
   }

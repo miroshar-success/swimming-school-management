@@ -97,7 +97,7 @@ const authActions = {
   },
 
   doRegisterEmailAndPassword:
-    (email, password) => async (dispatch) => {
+    (email, password, roles) => async (dispatch) => {
       try {
         dispatch({ type: authActions.AUTH_START });
 
@@ -105,6 +105,7 @@ const authActions = {
           await service.registerWithEmailAndPassword(
             email,
             password,
+            roles,
           );
 
         AuthToken.set(token, true);
@@ -130,6 +131,36 @@ const authActions = {
         });
       }
     },
+
+  doRegisterData: (data) => async (dispatch) => {
+    try {
+      dispatch({ type: authActions.AUTH_START });
+
+      const token = await service.registerWithData(data);
+
+      AuthToken.set(token, true);
+
+      const currentUser = await service.fetchMe();
+
+      dispatch({
+        type: authActions.AUTH_SUCCESS,
+        payload: {
+          currentUser,
+        },
+      });
+    } catch (error) {
+      await service.signout();
+
+      if (Errors.errorCode(error) !== 400) {
+        Errors.handle(error);
+      }
+
+      dispatch({
+        type: authActions.AUTH_ERROR,
+        payload: Errors.selectMessage(error),
+      });
+    }
+  },
 
   doSigninWithEmailAndPassword:
     (email, password, rememberMe) => async (dispatch) => {

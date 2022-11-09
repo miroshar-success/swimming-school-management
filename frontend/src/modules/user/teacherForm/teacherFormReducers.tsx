@@ -1,16 +1,16 @@
-import actions from 'src/modules/user/form/userFormActions';
+import actions from 'src/modules/user/teacherForm/teacherFormActions';
 
 const initialData = {
   initLoading: false,
   saveLoading: false,
-  user: null,
+  teacher: null,
 };
 
 export default (state = initialData, { type, payload }) => {
   if (type === actions.INIT_STARTED) {
     return {
       ...state,
-      user: null,
+      teacher: null,
       initLoading: true,
     };
   }
@@ -18,7 +18,7 @@ export default (state = initialData, { type, payload }) => {
   if (type === actions.INIT_SUCCESS) {
     return {
       ...state,
-      user: payload,
+      teacher: payload,
       initLoading: false,
     };
   }
@@ -26,7 +26,7 @@ export default (state = initialData, { type, payload }) => {
   if (type === actions.INIT_ERROR) {
     return {
       ...state,
-      user: null,
+      teacher: null,
       initLoading: false,
     };
   }

@@ -36,7 +36,7 @@ export default class UserImporter {
       importHash,
     };
 
-    return new UserCreator(this.options).execute(
+    return new UserCreator(this.options).invite(
       dataToCreate,
       SEND_INVITATION_EMAIL,
     );

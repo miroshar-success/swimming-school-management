@@ -65,19 +65,4 @@ export default (app) => {
   );
 
   app.get(`/auth/me`, require('./authMe').default);
-
-  app.put(
-    '/tenant/:tenantId/answer/:responseId',
-    require('./authAnswer').default,
-  );
-
-  app.get(
-    '/tenant/:tenantId/answer/:responseId',
-    require('./authAnswerData').default,
-  );
-
-  app.delete(
-    '/tenant/:tenantId/answer/:responseId',
-    require('./authDestroyAnswerData').default,
-  );
 };

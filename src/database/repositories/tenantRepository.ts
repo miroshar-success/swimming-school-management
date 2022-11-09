@@ -70,14 +70,6 @@ class TenantRepository {
       },
     );
 
-    await TaskPriorityRepositoryEx.buildUpDefaultRecords({
-      ...options,
-      currentTenant: {
-        ...record,
-        id: MongooseQueryUtils.ObjectId(record.id),
-      },
-    });
-
     return this.findById(record.id, {
       ...options,
     });

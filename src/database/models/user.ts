@@ -1,8 +1,5 @@
 import mongoose from 'mongoose';
 import TenantUserSchema from './schemas/tenantUserSchema';
-import addressSchema from './schemas/addressSchema';
-import guardianSchema from './schemas/guardianSchema';
-import healthInsuranceSchema from './schemas/healthInsuranceSchema';
 const Schema = mongoose.Schema;
 
 export default (database) => {
@@ -18,7 +15,22 @@ export default (database) => {
       firstName: { type: String, maxlength: 80 },
       lastName: { type: String, maxlength: 175 },
       phoneNumber: { type: String, maxlength: 24 },
-      address: addressSchema,
+      street: {
+        type: String,
+        maxlength: 255,
+      },
+      postalCode: {
+        type: String,
+        maxlength: 24,
+      },
+      cologne: {
+        type: String,
+        maxlength: 255,
+      },
+      city: {
+        type: String,
+        maxlength: 255,
+      },
       RFC: { type: String, maxlength: 50 },
       CURP: { type: String, maxlength: 50 },
       bloodType: {
@@ -32,8 +44,16 @@ export default (database) => {
         enum: ['male', 'female'],
       },
       birthday: { type: Date },
-      guardian: guardianSchema,
-      healthInsurance: healthInsuranceSchema,
+      guardianFullName: { type: String, maxlength: 255 },
+      guardianPhoneNumber: { type: String, maxlength: 24 },
+      healthInsuranceCompany: {
+        type: String,
+        maxlength: 255,
+      },
+      healthInsuranceNumber: {
+        type: String,
+        maxlength: 24,
+      },
       comment: { type: String },
       email: {
         type: String,

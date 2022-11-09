@@ -1,4 +1,4 @@
-import actions from 'src/modules/user/list/userListActions';
+import actions from 'src/modules/user/adminList/adminListActions';
 
 const INITIAL_PAGE_SIZE = 10;
 

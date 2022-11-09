@@ -5,6 +5,7 @@ import MongooseRepository from '../../database/repositories/mongooseRepository';
 import TenantUserRepository from '../../database/repositories/tenantUserRepository';
 import { tenantSubdomain } from '../tenantSubdomain';
 import { IServiceOptions } from '../IServiceOptions';
+import Error400 from '../../errors/Error400';
 
 export default class UserCreator {
   options: IServiceOptions;
@@ -22,7 +23,7 @@ export default class UserCreator {
    * Creates new user(s) via the User page.
    * Sends Invitation Emails if flagged.
    */
-  async execute(data, sendInvitationEmails = true) {
+  async invite(data, sendInvitationEmails = true) {
     this.data = data;
     this.sendInvitationEmails = sendInvitationEmails;
 
@@ -47,6 +48,55 @@ export default class UserCreator {
 
     if (this._hasEmailsToInvite) {
       await this._sendAllInvitationEmails();
+    }
+  }
+
+  async execute(data) {
+    this.data = data;
+
+    await this._validate();
+
+    try {
+      this.session = await MongooseRepository.createSession(
+        this.options.database,
+      );
+
+      const isExisted = Boolean(
+        await UserRepository.count(
+          { email: data.email },
+          { ...this.options, session: this.session },
+        ),
+      );
+
+      if (isExisted)
+        throw new Error400(
+          this.options.language,
+          'auth.emailAlreadyInUse',
+        );
+
+      let user = await UserRepository.create(data, {
+        ...this.options,
+        session: this.session,
+      });
+
+      await TenantUserRepository.create(
+        this.options.currentTenant.id,
+        user.id,
+        this._roles,
+        {
+          ...this.options,
+          session: this.session,
+        },
+      );
+
+      await MongooseRepository.commitTransaction(
+        this.session,
+      );
+    } catch (error) {
+      await MongooseRepository.abortTransaction(
+        this.session,
+      );
+      throw error;
     }
   }
 

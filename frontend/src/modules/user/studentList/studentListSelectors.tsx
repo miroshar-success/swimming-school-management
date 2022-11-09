@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect';
 
-const selectRaw = (state) => state.user.list;
+const selectRaw = (state) => state.student.list;
 
 const selectLoading = createSelector(
   [selectRaw],
@@ -109,7 +109,7 @@ const selectIsAllSelected = createSelector(
   },
 );
 
-const userListSelectors = {
+const studentListSelectors = {
   selectLoading,
   selectRows,
   selectCount,
@@ -127,4 +127,4 @@ const userListSelectors = {
   selectSorter,
 };
 
-export default userListSelectors;
+export default studentListSelectors;

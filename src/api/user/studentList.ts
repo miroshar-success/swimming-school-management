@@ -11,6 +11,7 @@ export default async (req, res) => {
 
     const payload = await UserRepository.findAndCountAll(
       req.query,
+      'student',
       req,
     );
 

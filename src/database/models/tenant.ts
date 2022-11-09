@@ -37,9 +37,6 @@ export default (database) => {
       planUserId: {
         type: String,
       },
-      typeFormId: {
-        type: String,
-      },
       createdBy: {
         type: Schema.Types.ObjectId,
         ref: 'user',

@@ -15,28 +15,22 @@ import moment from 'moment';
 const BCRYPT_SALT_ROUNDS = 12;
 
 class AuthService {
-  static async signup(
-    email,
-    password,
-    invitationToken,
-    tenantId,
-    options: any = {},
-  ) {
+  static async signup(data, options: any = {}) {
     const session = await MongooseRepository.createSession(
       options.database,
     );
 
     try {
-      email = email.toLowerCase();
+      data.email = data.email.toLowerCase();
 
       const existingUser = await UserRepository.findByEmail(
-        email,
+        data.email,
         options,
       );
 
       // Generates a hashed password to hide the original one.
       const hashedPassword = await bcrypt.hash(
-        password,
+        data.password,
         BCRYPT_SALT_ROUNDS,
       );
 
@@ -77,8 +71,9 @@ class AuthService {
         // or default joining the current tenant
         await this.handleOnboard(
           existingUser,
-          invitationToken,
-          tenantId,
+          data.invitationToken,
+          data.tenantId,
+          data.roles,
           {
             ...options,
             session,
@@ -103,7 +98,7 @@ class AuthService {
           await this.sendEmailAddressVerificationEmail(
             options.language,
             existingUser.email,
-            tenantId,
+            data.tenantId,
             {
               ...options,
               session,
@@ -125,9 +120,11 @@ class AuthService {
 
       const newUser = await UserRepository.createFromAuth(
         {
-          firstName: email.split('@')[0],
+          ...data,
+          firstName: data.firstName
+            ? data.firstName
+            : data.email.split('@')[0],
           password: hashedPassword,
-          email: email,
         },
         {
           ...options,
@@ -140,8 +137,9 @@ class AuthService {
       // or default joining the current tenant
       await this.handleOnboard(
         newUser,
-        invitationToken,
-        tenantId,
+        data.invitationToken,
+        data.tenantId,
+        data.roles,
         {
           ...options,
           session,
@@ -166,7 +164,7 @@ class AuthService {
         await this.sendEmailAddressVerificationEmail(
           options.language,
           newUser.email,
-          tenantId,
+          data.tenantId,
           {
             ...options,
             session,
@@ -249,6 +247,7 @@ class AuthService {
         user,
         invitationToken,
         tenantId,
+        [],
         {
           ...options,
           currentUser: user,
@@ -276,6 +275,7 @@ class AuthService {
     currentUser,
     invitationToken,
     tenantId,
+    roles,
     options,
   ) {
     if (invitationToken) {
@@ -308,7 +308,7 @@ class AuthService {
         {
           tenantId,
           // leave empty to require admin's approval
-          roles: [],
+          roles: roles,
         },
         options,
       );
@@ -333,7 +333,7 @@ class AuthService {
       }).createOrJoinDefault(
         {
           // leave empty to require admin's approval
-          roles: [],
+          roles: roles,
         },
         options.session,
       );

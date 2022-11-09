@@ -6,9 +6,9 @@ import { i18n } from 'src/i18n';
 import authSelectors from 'src/modules/auth/authSelectors';
 import authActions from 'src/modules/auth/authActions';
 
-const prefix = 'USER_FORM';
+const prefix = 'ADMIN_FORM';
 
-const userFormActions = {
+const adminFormActions = {
   INIT_STARTED: `${prefix}_INIT_STARTED`,
   INIT_SUCCESS: `${prefix}_INIT_SUCCESS`,
   INIT_ERROR: `${prefix}_INIT_ERROR`,
@@ -24,7 +24,7 @@ const userFormActions = {
   doInit: (id?) => async (dispatch) => {
     try {
       dispatch({
-        type: userFormActions.INIT_STARTED,
+        type: adminFormActions.INIT_STARTED,
       });
 
       const isEdit = Boolean(id);
@@ -35,40 +35,40 @@ const userFormActions = {
       }
 
       dispatch({
-        type: userFormActions.INIT_SUCCESS,
+        type: adminFormActions.INIT_SUCCESS,
         payload: record,
       });
     } catch (error) {
       Errors.handle(error);
 
       dispatch({
-        type: userFormActions.INIT_ERROR,
+        type: adminFormActions.INIT_ERROR,
       });
 
-      getHistory().push('/user');
+      getHistory().push('/admin');
     }
   },
 
   doAdd: (values) => async (dispatch) => {
     try {
       dispatch({
-        type: userFormActions.ADD_STARTED,
+        type: adminFormActions.ADD_STARTED,
       });
 
-      await UserService.create(values);
+      await UserService.invite(values);
 
       dispatch({
-        type: userFormActions.ADD_SUCCESS,
+        type: adminFormActions.ADD_SUCCESS,
       });
 
-      Message.success(i18n('user.doAddSuccess'));
+      Message.success(i18n('user.admin.doAddSuccess'));
 
-      getHistory().push('/user');
+      getHistory().push('/admin');
     } catch (error) {
       Errors.handle(error);
 
       dispatch({
-        type: userFormActions.ADD_ERROR,
+        type: adminFormActions.ADD_ERROR,
       });
     }
   },
@@ -76,13 +76,13 @@ const userFormActions = {
   doUpdate: (values) => async (dispatch, getState) => {
     try {
       dispatch({
-        type: userFormActions.UPDATE_STARTED,
+        type: adminFormActions.UPDATE_STARTED,
       });
 
       await UserService.edit(values);
 
       dispatch({
-        type: userFormActions.UPDATE_SUCCESS,
+        type: adminFormActions.UPDATE_SUCCESS,
       });
 
       const currentUser = authSelectors.selectCurrentUser(
@@ -93,17 +93,17 @@ const userFormActions = {
         await dispatch(authActions.doRefreshCurrentUser());
       }
 
-      Message.success(i18n('user.doUpdateSuccess'));
+      Message.success(i18n('user.admin.doUpdateSuccess'));
 
-      getHistory().push('/user');
+      getHistory().push('/admin');
     } catch (error) {
       Errors.handle(error);
 
       dispatch({
-        type: userFormActions.UPDATE_ERROR,
+        type: adminFormActions.UPDATE_ERROR,
       });
     }
   },
 };
 
-export default userFormActions;
+export default adminFormActions;

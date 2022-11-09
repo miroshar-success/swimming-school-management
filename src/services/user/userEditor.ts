@@ -69,6 +69,11 @@ export default class UserEditor {
   }
 
   async _updateAtDatabase() {
+    await UserRepository.update(this.data.id, this.data, {
+      ...this.options,
+      session: this.session,
+    });
+
     await TenantUserRepository.updateRoles(
       this.options.currentTenant.id,
       this.data.id,

@@ -29,21 +29,19 @@ export default class UserRepository {
           phoneNumber: data.phoneNumber || null,
           importHash: data.importHash || null,
           avatars: data.avatars || [],
-          address: {
-            street: data.street || null,
-            postalCode: data.postalCode || null,
-            cologne: data.cologne || null,
-            city: data.city || null,
-          },
+          street: data.street || null,
+          postalCode: data.postalCode || null,
+          cologne: data.cologne || null,
+          city: data.city || null,
           RFC: data.RFC || null,
           CURP: data.CURP || null,
           bloodType: data.bloodType || null,
           sex: data.sex || null,
           birthday: data.birthday || null,
-          guardian: {
-            fullName: data.guardianName || null,
-            phoneNumber: data.guardianPhoneNumber || null,
-          },
+          guardianFullName: data.guardianFullName || null,
+          guardianPhoneNumber:
+            data.guardianPhoneNumber || null,
+          comment: data.comment || null,
           createdBy: currentUser.id,
           updatedBy: currentUser.id,
         },
@@ -77,9 +75,25 @@ export default class UserRepository {
       [
         {
           email: data.email,
-          password: data.password,
-          firstName: data.firstName,
-          fullName: data.fullName,
+          firstName: data.firstName || null,
+          lastName: data.lastName || null,
+          fullName: data.fullName || null,
+          phoneNumber: data.phoneNumber || null,
+          importHash: data.importHash || null,
+          avatars: data.avatars || [],
+          street: data.street || null,
+          postalCode: data.postalCode || null,
+          cologne: data.cologne || null,
+          city: data.city || null,
+          RFC: data.RFC || null,
+          CURP: data.CURP || null,
+          bloodType: data.bloodType || null,
+          sex: data.sex || null,
+          birthday: data.birthday || null,
+          guardianFullName: data.guardianFullName || null,
+          guardianPhoneNumber:
+            data.guardianPhoneNumber || null,
+          comment: data.comment || null,
         },
       ],
       options,
@@ -290,8 +304,21 @@ export default class UserRepository {
         lastName: data.lastName || null,
         fullName: data.fullName || null,
         phoneNumber: data.phoneNumber || null,
-        updatedBy: currentUser.id,
         avatars: data.avatars || [],
+        street: data.street || null,
+        postalCode: data.postalCode || null,
+        cologne: data.cologne || null,
+        city: data.city || null,
+        RFC: data.RFC || null,
+        CURP: data.CURP || null,
+        bloodType: data.bloodType || null,
+        sex: data.sex || null,
+        birthday: data.birthday || null,
+        guardianFullName: data.guardianFullName || null,
+        guardianPhoneNumber:
+          data.guardianPhoneNumber || null,
+        comment: data.comment || null,
+        updatedBy: currentUser.id,
       },
       options,
     );
@@ -347,6 +374,7 @@ export default class UserRepository {
 
   static async findAndCountAll(
     { filter, limit = 0, offset = 0, orderBy = '' },
+    role,
     options: IRepositoryOptions,
   ) {
     const currentTenant =
@@ -354,9 +382,40 @@ export default class UserRepository {
 
     let criteriaAnd: any = [];
 
-    criteriaAnd.push({
-      tenants: { $elemMatch: { tenant: currentTenant.id } },
-    });
+    if (role === 'admin') {
+      criteriaAnd.push({
+        tenants: {
+          $elemMatch: {
+            tenant: currentTenant.id,
+            roles: {
+              $elemMatch: { $in: ['admin', 'manager'] },
+            },
+          },
+        },
+      });
+    } else if (role === 'teacher') {
+      criteriaAnd.push({
+        tenants: {
+          $elemMatch: {
+            tenant: currentTenant.id,
+            roles: {
+              $elemMatch: { $in: ['teacher'] },
+            },
+          },
+        },
+      });
+    } else {
+      criteriaAnd.push({
+        tenants: {
+          $elemMatch: {
+            tenant: currentTenant.id,
+            roles: {
+              $elemMatch: { $in: ['student'] },
+            },
+          },
+        },
+      });
+    }
 
     if (filter) {
       if (filter.id) {

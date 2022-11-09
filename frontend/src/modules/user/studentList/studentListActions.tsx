@@ -1,14 +1,14 @@
 import UserService from 'src/modules/user/userService';
-import selectors from 'src/modules/user/list/userListSelectors';
+import selectors from 'src/modules/user/studentList/studentListSelectors';
 import Errors from 'src/modules/shared/error/errors';
 import Message from 'src/view/shared/message';
 import { i18n } from 'src/i18n';
-import exporterFields from 'src/modules/user/list/userListExporterFields';
+import exporterFields from 'src/modules/user/studentList/studentListExporterFields';
 import Exporter from 'src/modules/shared/exporter/exporter';
 
-const prefix = 'USER_LIST';
+const prefix = 'STUDENT_LIST';
 
-const userListActions = {
+const studentListActions = {
   FETCH_STARTED: `${prefix}_FETCH_STARTED`,
   FETCH_SUCCESS: `${prefix}_FETCH_SUCCESS`,
   FETCH_ERROR: `${prefix}_FETCH_ERROR`,
@@ -35,29 +35,29 @@ const userListActions = {
 
   doClearAllSelected() {
     return {
-      type: userListActions.CLEAR_ALL_SELECTED,
+      type: studentListActions.CLEAR_ALL_SELECTED,
     };
   },
 
   doToggleAllSelected() {
     return {
-      type: userListActions.TOGGLE_ALL_SELECTED,
+      type: studentListActions.TOGGLE_ALL_SELECTED,
     };
   },
 
   doToggleOneSelected(id) {
     return {
-      type: userListActions.TOGGLE_ONE_SELECTED,
+      type: studentListActions.TOGGLE_ONE_SELECTED,
       payload: id,
     };
   },
 
   doReset: () => async (dispatch) => {
     dispatch({
-      type: userListActions.RESETED,
+      type: studentListActions.RESETED,
     });
 
-    dispatch(userListActions.doFetch());
+    dispatch(studentListActions.doFetch());
   },
 
   doExport: () => async (dispatch, getState) => {
@@ -67,11 +67,12 @@ const userListActions = {
       }
 
       dispatch({
-        type: userListActions.EXPORT_STARTED,
+        type: studentListActions.EXPORT_STARTED,
       });
 
       const filter = selectors.selectFilter(getState());
       const response = await UserService.fetchUsers(
+        'student',
         { ...filter, export: 1 },
         selectors.selectOrderBy(getState()),
         null,
@@ -80,17 +81,17 @@ const userListActions = {
 
       new Exporter(
         exporterFields,
-        i18n('user.exporterFileName'),
+        i18n('user.student.exporterFileName'),
       ).transformAndExportAsExcelFile(response.rows);
 
       dispatch({
-        type: userListActions.EXPORT_SUCCESS,
+        type: studentListActions.EXPORT_SUCCESS,
       });
     } catch (error) {
       Errors.handle(error);
 
       dispatch({
-        type: userListActions.EXPORT_ERROR,
+        type: studentListActions.EXPORT_ERROR,
       });
     }
   },
@@ -98,20 +99,20 @@ const userListActions = {
   doChangePagination:
     (pagination) => async (dispatch, getState) => {
       dispatch({
-        type: userListActions.PAGINATION_CHANGED,
+        type: studentListActions.PAGINATION_CHANGED,
         payload: pagination,
       });
 
-      dispatch(userListActions.doFetchCurrentFilter());
+      dispatch(studentListActions.doFetchCurrentFilter());
     },
 
   doChangeSort: (sorter) => async (dispatch, getState) => {
     dispatch({
-      type: userListActions.SORTER_CHANGED,
+      type: studentListActions.SORTER_CHANGED,
       payload: sorter,
     });
 
-    dispatch(userListActions.doFetchCurrentFilter());
+    dispatch(studentListActions.doFetchCurrentFilter());
   },
 
   doFetchCurrentFilter:
@@ -121,7 +122,7 @@ const userListActions = {
         getState(),
       );
       dispatch(
-        userListActions.doFetch(filter, rawFilter, true),
+        studentListActions.doFetch(filter, rawFilter, true),
       );
     },
 
@@ -130,11 +131,12 @@ const userListActions = {
     async (dispatch, getState) => {
       try {
         dispatch({
-          type: userListActions.FETCH_STARTED,
+          type: studentListActions.FETCH_STARTED,
           payload: { filter, rawFilter, keepPagination },
         });
 
         const response = await UserService.fetchUsers(
+          'student',
           filter,
           selectors.selectOrderBy(getState()),
           selectors.selectLimit(getState()),
@@ -142,7 +144,7 @@ const userListActions = {
         );
 
         dispatch({
-          type: userListActions.FETCH_SUCCESS,
+          type: studentListActions.FETCH_SUCCESS,
           payload: {
             rows: response.rows,
             count: response.count,
@@ -152,7 +154,7 @@ const userListActions = {
         Errors.handle(error);
 
         dispatch({
-          type: userListActions.FETCH_ERROR,
+          type: studentListActions.FETCH_ERROR,
         });
       }
     },
@@ -160,26 +162,28 @@ const userListActions = {
   doDestroy: (id) => async (dispatch, getState) => {
     try {
       dispatch({
-        type: userListActions.DESTROY_STARTED,
+        type: studentListActions.DESTROY_STARTED,
       });
 
       await UserService.destroy([id]);
 
       dispatch({
-        type: userListActions.DESTROY_SUCCESS,
+        type: studentListActions.DESTROY_SUCCESS,
       });
 
-      Message.success(i18n('user.doDestroySuccess'));
+      Message.success(
+        i18n('user.student.doDestroySuccess'),
+      );
 
-      dispatch(userListActions.doFetchCurrentFilter());
+      dispatch(studentListActions.doFetchCurrentFilter());
     } catch (error) {
       Errors.handle(error);
 
       dispatch({
-        type: userListActions.DESTROY_ERROR,
+        type: studentListActions.DESTROY_ERROR,
       });
 
-      dispatch(userListActions.doFetchCurrentFilter());
+      dispatch(studentListActions.doFetchCurrentFilter());
     }
   },
 
@@ -191,7 +195,7 @@ const userListActions = {
         );
 
         dispatch({
-          type: userListActions.DESTROY_ALL_SELECTED_STARTED,
+          type: studentListActions.DESTROY_ALL_SELECTED_STARTED,
         });
 
         await UserService.destroy(
@@ -199,24 +203,24 @@ const userListActions = {
         );
 
         dispatch({
-          type: userListActions.DESTROY_ALL_SELECTED_SUCCESS,
+          type: studentListActions.DESTROY_ALL_SELECTED_SUCCESS,
         });
 
         Message.success(
-          i18n('user.doDestroyAllSelectedSuccess'),
+          i18n('user.student.doDestroyAllSelectedSuccess'),
         );
 
-        dispatch(userListActions.doFetchCurrentFilter());
+        dispatch(studentListActions.doFetchCurrentFilter());
       } catch (error) {
         Errors.handle(error);
 
         dispatch({
-          type: userListActions.DESTROY_ALL_SELECTED_ERROR,
+          type: studentListActions.DESTROY_ALL_SELECTED_ERROR,
         });
 
-        dispatch(userListActions.doFetchCurrentFilter());
+        dispatch(studentListActions.doFetchCurrentFilter());
       }
     },
 };
 
-export default userListActions;
+export default studentListActions;

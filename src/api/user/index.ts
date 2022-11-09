@@ -1,6 +1,10 @@
 export default (app) => {
   app.post(
-    `/tenant/:tenantId/user`,
+    `/tenant/:tenantId/userInvite`,
+    require('./userInvite').default,
+  );
+  app.post(
+    `/tenant/:tenantId/userCreate`,
     require('./userCreate').default,
   );
   app.put(
@@ -16,8 +20,16 @@ export default (app) => {
     require('./userDestroy').default,
   );
   app.get(
-    `/tenant/:tenantId/user`,
-    require('./userList').default,
+    `/tenant/:tenantId/admin`,
+    require('./adminList').default,
+  );
+  app.get(
+    `/tenant/:tenantId/teacher`,
+    require('./teacherList').default,
+  );
+  app.get(
+    `/tenant/:tenantId/student`,
+    require('./studentList').default,
   );
   app.get(
     `/tenant/:tenantId/user/autocomplete`,

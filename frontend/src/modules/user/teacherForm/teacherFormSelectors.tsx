@@ -1,10 +1,10 @@
 import { createSelector } from 'reselect';
 
-const selectRaw = (state) => state.user.form;
+const selectRaw = (state) => state.teacher.form;
 
-const selectUser = createSelector(
+const selectTeacher = createSelector(
   [selectRaw],
-  (raw) => raw.user,
+  (raw) => raw.teacher,
 );
 
 const selectInitLoading = createSelector(
@@ -17,11 +17,11 @@ const selectSaveLoading = createSelector(
   (raw) => Boolean(raw.saveLoading),
 );
 
-const userFormSelectors = {
+const teacherFormSelectors = {
   selectInitLoading,
   selectSaveLoading,
-  selectUser,
+  selectTeacher,
   selectRaw,
 };
 
-export default userFormSelectors;
+export default teacherFormSelectors;
