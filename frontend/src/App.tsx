@@ -106,9 +106,6 @@ function AppWithSnackbar(props) {
     );
   }, [enqueueSnackbar]);
 
-  const brandWhite = '/images/vor-light.svg';
-  const brandDark = '/images/vor-dark.svg';
-
   const {
     miniSidenav,
     transparentSidenav,

@@ -4,7 +4,7 @@
 
 const ptBR = {
   app: {
-    title: 'VOR | GRC - Consciência Informada',
+    title: 'Natacion - Consciência Informada',
   },
 
   auth: {

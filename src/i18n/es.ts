@@ -1,6 +1,6 @@
 const es = {
   app: {
-    title: 'VOR | GRC - Conciencia informada',
+    title: 'Natacion - Conciencia informada',
   },
   auth: {
     userNotFound:

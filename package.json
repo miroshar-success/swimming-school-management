@@ -1,6 +1,6 @@
 {
-  "name": "vor-grc-informed-awareness-backend",
-  "description": "VOR | GRC - Informed Awareness - Backend",
+  "name": "natacion-backend",
+  "description": "Natacion - Backend",
   "version": "0.1.0",
   "engines": {
     "node": "16.x",
