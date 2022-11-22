@@ -26,10 +26,6 @@ import typography from 'src/mui/assets/theme/base/typography';
 
 // Declaring props types for Footer
 interface Props {
-  company?: {
-    href: string;
-    name: string;
-  };
   links?: {
     href: string;
     name: string;
@@ -37,9 +33,10 @@ interface Props {
   [key: string]: any;
 }
 
-function Footer({ company, links }: Props): JSX.Element {
-  const { href, name } = company;
+function Footer(props: Props): JSX.Element {
   const { size } = typography;
+
+  const links = props.links ? props.links : [];
 
   const renderLinks = () =>
     links.map((link) => (
@@ -101,23 +98,5 @@ function Footer({ company, links }: Props): JSX.Element {
     </MDBox>
   );
 }
-
-// Declaring default props for Footer
-Footer.defaultProps = {
-  company: {
-    href: 'https://www.creative-tim.com/',
-    name: 'Creative Tim',
-  },
-  links: [
-    {
-      href: 'https://www.creative-tim.com/presentation',
-      name: 'About Us',
-    },
-    {
-      href: 'https://www.creative-tim.com/license',
-      name: 'License',
-    },
-  ],
-};
 
 export default Footer;
