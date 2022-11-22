@@ -18,13 +18,14 @@ import MDTypography from 'src/mui/components/MDTypography';
 import queryString from 'query-string';
 import selectors from 'src/modules/auth/authSelectors';
 import yupFormSchemas from 'src/modules/shared/yup/yupFormSchemas';
+import SelectFormItem from 'src/view/shared/form/items/SelectFormItem';
 
 const schema = yup.object().shape({
   email: yupFormSchemas.string(i18n('user.fields.email'), {
     required: true,
   }),
   password: yupFormSchemas.string(
-    i18n('user.fields.password'),
+    i18n('admin.fields.password'),
     {
       required: true,
     },

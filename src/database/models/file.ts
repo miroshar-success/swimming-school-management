@@ -16,17 +16,6 @@ export default (database) => {
       isAttached: {
         type: Boolean,
       },
-      type: {
-        type: String,
-        enum: ['task', 'taskInstance', 'risk', 'vendor'],
-      },
-      typeId: {
-        type: Schema.Types.ObjectId,
-      },
-      typeTitle: {
-        type: String,
-        maxlength: 255,
-      },
       title: {
         type: String,
         maxlength: 255,

@@ -4,24 +4,21 @@ import AuditLogRepository from './auditLogRepository';
 import User from '../models/user';
 import Tenant from '../models/tenant';
 import Settings from '../models/settings';
+import Grade from '../models/grade';
+import Skill from '../models/skill';
+import Pool from '../models/pool';
+import Class from '../models/class';
+import Lesson from '../models/lesson';
+import ClassCategory from '../models/classCategory';
+import PaymentCategory from '../models/paymentCategory';
+import PaymentMethod from '../models/paymentMethod';
 import Error404 from '../../errors/Error404';
-import Vendor from '../models/vendor';
-import VendorCategory from '../models/vendorCategory';
-import Task from '../models/task';
-import TaskInstance from '../models/taskInstance';
-import TaskPriority from '../models/taskPriority';
-import TaskList from '../models/taskList';
-import Note from '../models/note';
-import Risk from '../models/risk';
-import RiskCategory from '../models/riskCategory';
-import Product from '../models/product';
-import ProductCategory from '../models/productCategory';
 import Error400 from '../../errors/Error400';
 import { v4 as uuid } from 'uuid';
 import { isUserInTenant } from '../utils/userTenantUtils';
 import SettingsRepository from './settingsRepository';
 import { IRepositoryOptions } from './IRepositoryOptions';
-import TaskPriorityRepositoryEx from './extend/taskPriorityRepositoryEx';
+import { PollingWatchKind } from 'typescript';
 
 const forbiddenTenantUrls = ['www'];
 
@@ -235,62 +232,47 @@ class TenantRepository {
       options,
     );
 
-    await Vendor(options.database).deleteMany(
-      { tenant: id },
-      options,
-    );
-
-    await VendorCategory(options.database).deleteMany(
-      { tenant: id },
-      options,
-    );
-
-    await Task(options.database).deleteMany(
-      { tenant: id },
-      options,
-    );
-
-    await TaskInstance(options.database).deleteMany(
-      { Tenant: id },
-      options,
-    );
-
-    await TaskPriority(options.database).deleteMany(
-      { tenant: id },
-      options,
-    );
-
-    await TaskList(options.database).deleteMany(
-      { tenant: id },
-      options,
-    );
-
-    await Note(options.database).deleteMany(
-      { tenant: id },
-      options,
-    );
-
-    await Risk(options.database).deleteMany(
-      { tenant: id },
-      options,
-    );
-
-    await RiskCategory(options.database).deleteMany(
-      { tenant: id },
-      options,
-    );
-
-    await Product(options.database).deleteMany(
-      { tenant: id },
-      options,
-    );
-
-    await ProductCategory(options.database).deleteMany(
-      { tenant: id },
-      options,
-    );
-
     await Settings(options.database).deleteMany(
+      { tenant: id },
+      options,
+    );
+
+    await Grade(options.database).deleteMany(
+      { tenant: id },
+      options,
+    );
+
+    await Skill(options.database).deleteMany(
+      { tenant: id },
+      options,
+    );
+
+    await Pool(options.database).deleteMany(
+      { tenant: id },
+      options,
+    );
+
+    await Class(options.database).deleteMany(
+      { tenant: id },
+      options,
+    );
+
+    await Lesson(options.database).deleteMany(
+      { tenant: id },
+      options,
+    );
+
+    await ClassCategory(options.database).deleteMany(
+      { tenant: id },
+      options,
+    );
+
+    await PaymentCategory(options.database).deleteMany(
+      { tenant: id },
+      options,
+    );
+
+    await PaymentMethod(options.database).deleteMany(
       { tenant: id },
       options,
     );

@@ -130,59 +130,8 @@ class Permissions {
           storage.settingsLogos,
         ],
       },
-      vendorImport: {
-        id: 'vendorImport',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-      },
-      vendorCreate: {
-        id: 'vendorCreate',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [
-          storage.vendorLogo,
-          storage.vendorContract,
-          storage.vendorDocumentation,
-        ],
-      },
-      vendorEdit: {
-        id: 'vendorEdit',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [
-          storage.vendorLogo,
-          storage.vendorContract,
-          storage.vendorDocumentation,
-        ],
-      },
-      vendorDestroy: {
-        id: 'vendorDestroy',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [
-          storage.vendorLogo,
-          storage.vendorContract,
-          storage.vendorDocumentation,
-        ],
-      },
-      vendorRead: {
-        id: 'vendorRead',
+      gradeAutocomplete: {
+        id: 'gradeAutocomplete',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -190,8 +139,8 @@ class Permissions {
           plans.enterprise,
         ],
       },
-      vendorAutocomplete: {
-        id: 'vendorAutocomplete',
+      gradeCreate: {
+        id: 'gradeCreate',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -199,48 +148,8 @@ class Permissions {
           plans.enterprise,
         ],
       },
-
-      vendorCategoryImport: {
-        id: 'vendorCategoryImport',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-      },
-      vendorCategoryCreate: {
-        id: 'vendorCategoryCreate',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      vendorCategoryEdit: {
-        id: 'vendorCategoryEdit',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      vendorCategoryDestroy: {
-        id: 'vendorCategoryDestroy',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      vendorCategoryRead: {
-        id: 'vendorCategoryRead',
+      gradeRead: {
+        id: 'gradeRead',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -248,8 +157,8 @@ class Permissions {
           plans.enterprise,
         ],
       },
-      vendorCategoryAutocomplete: {
-        id: 'vendorCategoryAutocomplete',
+      gradeEdit: {
+        id: 'gradeEdit',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -257,48 +166,8 @@ class Permissions {
           plans.enterprise,
         ],
       },
-
-      taskImport: {
-        id: 'taskImport',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-      },
-      taskCreate: {
-        id: 'taskCreate',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [storage.taskAttachments],
-      },
-      taskEdit: {
-        id: 'taskEdit',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [storage.taskAttachments],
-      },
-      taskDestroy: {
-        id: 'taskDestroy',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [storage.taskAttachments],
-      },
-      taskRead: {
-        id: 'taskRead',
+      gradeImport: {
+        id: 'gradeImport',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -306,8 +175,8 @@ class Permissions {
           plans.enterprise,
         ],
       },
-      taskAutocomplete: {
-        id: 'taskAutocomplete',
+      gradeDestroy: {
+        id: 'gradeDestroy',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -315,48 +184,8 @@ class Permissions {
           plans.enterprise,
         ],
       },
-
-      taskPriorityImport: {
-        id: 'taskPriorityImport',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-      },
-      taskPriorityCreate: {
-        id: 'taskPriorityCreate',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      taskPriorityEdit: {
-        id: 'taskPriorityEdit',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      taskPriorityDestroy: {
-        id: 'taskPriorityDestroy',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      taskPriorityRead: {
-        id: 'taskPriorityRead',
+      poolAutocomplete: {
+        id: 'poolAutocomplete',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -364,8 +193,8 @@ class Permissions {
           plans.enterprise,
         ],
       },
-      taskPriorityAutocomplete: {
-        id: 'taskPriorityAutocomplete',
+      poolCreate: {
+        id: 'poolCreate',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -373,48 +202,8 @@ class Permissions {
           plans.enterprise,
         ],
       },
-
-      taskListImport: {
-        id: 'taskListImport',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-      },
-      taskListCreate: {
-        id: 'taskListCreate',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      taskListEdit: {
-        id: 'taskListEdit',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      taskListDestroy: {
-        id: 'taskListDestroy',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      taskListRead: {
-        id: 'taskListRead',
+      poolRead: {
+        id: 'poolRead',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -422,8 +211,8 @@ class Permissions {
           plans.enterprise,
         ],
       },
-      taskListAutocomplete: {
-        id: 'taskListAutocomplete',
+      poolEdit: {
+        id: 'poolEdit',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -431,48 +220,8 @@ class Permissions {
           plans.enterprise,
         ],
       },
-
-      noteImport: {
-        id: 'noteImport',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-      },
-      noteCreate: {
-        id: 'noteCreate',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      noteEdit: {
-        id: 'noteEdit',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      noteDestroy: {
-        id: 'noteDestroy',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      noteRead: {
-        id: 'noteRead',
+      poolImport: {
+        id: 'poolImport',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -480,8 +229,8 @@ class Permissions {
           plans.enterprise,
         ],
       },
-      noteAutocomplete: {
-        id: 'noteAutocomplete',
+      poolDestroy: {
+        id: 'poolDestroy',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -489,48 +238,8 @@ class Permissions {
           plans.enterprise,
         ],
       },
-
-      riskImport: {
-        id: 'riskImport',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-      },
-      riskCreate: {
-        id: 'riskCreate',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [storage.riskAttachments],
-      },
-      riskEdit: {
-        id: 'riskEdit',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [storage.riskAttachments],
-      },
-      riskDestroy: {
-        id: 'riskDestroy',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [storage.riskAttachments],
-      },
-      riskRead: {
-        id: 'riskRead',
+      classAutocomplete: {
+        id: 'classAutocomplete',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -538,8 +247,8 @@ class Permissions {
           plans.enterprise,
         ],
       },
-      riskAutocomplete: {
-        id: 'riskAutocomplete',
+      classCreate: {
+        id: 'classCreate',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -547,48 +256,8 @@ class Permissions {
           plans.enterprise,
         ],
       },
-
-      riskCategoryImport: {
-        id: 'riskCategoryImport',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-      },
-      riskCategoryCreate: {
-        id: 'riskCategoryCreate',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      riskCategoryEdit: {
-        id: 'riskCategoryEdit',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      riskCategoryDestroy: {
-        id: 'riskCategoryDestroy',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      riskCategoryRead: {
-        id: 'riskCategoryRead',
+      classRead: {
+        id: 'classRead',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -596,8 +265,8 @@ class Permissions {
           plans.enterprise,
         ],
       },
-      riskCategoryAutocomplete: {
-        id: 'riskCategoryAutocomplete',
+      classEdit: {
+        id: 'classEdit',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -605,48 +274,8 @@ class Permissions {
           plans.enterprise,
         ],
       },
-
-      productImport: {
-        id: 'productImport',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-      },
-      productCreate: {
-        id: 'productCreate',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [storage.productLogo],
-      },
-      productEdit: {
-        id: 'productEdit',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [storage.productLogo],
-      },
-      productDestroy: {
-        id: 'productDestroy',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [storage.productLogo],
-      },
-      productRead: {
-        id: 'productRead',
+      classImport: {
+        id: 'classImport',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -654,8 +283,8 @@ class Permissions {
           plans.enterprise,
         ],
       },
-      productAutocomplete: {
-        id: 'productAutocomplete',
+      classDestroy: {
+        id: 'classDestroy',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -663,48 +292,8 @@ class Permissions {
           plans.enterprise,
         ],
       },
-
-      productCategoryImport: {
-        id: 'productCategoryImport',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-      },
-      productCategoryCreate: {
-        id: 'productCategoryCreate',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      productCategoryEdit: {
-        id: 'productCategoryEdit',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      productCategoryDestroy: {
-        id: 'productCategoryDestroy',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      productCategoryRead: {
-        id: 'productCategoryRead',
+      classCategoryAutocomplete: {
+        id: 'classCategoryAutocomplete',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -712,8 +301,8 @@ class Permissions {
           plans.enterprise,
         ],
       },
-      productCategoryAutocomplete: {
-        id: 'productCategoryAutocomplete',
+      classCategoryCreate: {
+        id: 'classCategoryCreate',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -721,48 +310,8 @@ class Permissions {
           plans.enterprise,
         ],
       },
-
-      productFavoriteImport: {
-        id: 'productFavoriteImport',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-      },
-      productFavoriteCreate: {
-        id: 'productFavoriteCreate',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      productFavoriteEdit: {
-        id: 'productFavoriteEdit',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      productFavoriteDestroy: {
-        id: 'productFavoriteDestroy',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      productFavoriteRead: {
-        id: 'productFavoriteRead',
+      classCategoryRead: {
+        id: 'classCategoryRead',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -770,8 +319,8 @@ class Permissions {
           plans.enterprise,
         ],
       },
-      productFavoriteAutocomplete: {
-        id: 'productFavoriteAutocomplete',
+      classCategoryEdit: {
+        id: 'classCategoryEdit',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -779,48 +328,8 @@ class Permissions {
           plans.enterprise,
         ],
       },
-
-      organizationProfileImport: {
-        id: 'organizationProfileImport',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-      },
-      organizationProfileCreate: {
-        id: 'organizationProfileCreate',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      organizationProfileEdit: {
-        id: 'organizationProfileEdit',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      organizationProfileDestroy: {
-        id: 'organizationProfileDestroy',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      organizationProfileRead: {
-        id: 'organizationProfileRead',
+      classCategoryImport: {
+        id: 'classCategoryImport',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -828,8 +337,8 @@ class Permissions {
           plans.enterprise,
         ],
       },
-      organizationProfileAutocomplete: {
-        id: 'organizationProfileAutocomplete',
+      classCategoryDestroy: {
+        id: 'classCategoryDestroy',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -837,48 +346,8 @@ class Permissions {
           plans.enterprise,
         ],
       },
-
-      newsArticleImport: {
-        id: 'newsArticleImport',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-      },
-      newsArticleCreate: {
-        id: 'newsArticleCreate',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      newsArticleEdit: {
-        id: 'newsArticleEdit',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      newsArticleDestroy: {
-        id: 'newsArticleDestroy',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      newsArticleRead: {
-        id: 'newsArticleRead',
+      skillAutocomplete: {
+        id: 'skillAutocomplete',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -886,8 +355,18 @@ class Permissions {
           plans.enterprise,
         ],
       },
-      newsArticleAutocomplete: {
-        id: 'newsArticleAutocomplete',
+      skillCreate: {
+        id: 'skillCreate',
+        allowedRoles: [roles.admin, roles.manager],
+        allowedPlans: [
+          plans.free,
+          plans.growth,
+          plans.enterprise,
+        ],
+        allowedStorage: [storage.skillIcons],
+      },
+      skillRead: {
+        id: 'skillRead',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -895,48 +374,18 @@ class Permissions {
           plans.enterprise,
         ],
       },
-
-      newsFavoriteImport: {
-        id: 'newsFavoriteImport',
-        allowedRoles: [roles.admin],
+      skillEdit: {
+        id: 'skillEdit',
+        allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
           plans.growth,
           plans.enterprise,
         ],
+        allowedStorage: [storage.skillIcons],
       },
-      newsFavoriteCreate: {
-        id: 'newsFavoriteCreate',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      newsFavoriteEdit: {
-        id: 'newsFavoriteEdit',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      newsFavoriteDestroy: {
-        id: 'newsFavoriteDestroy',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      newsFavoriteRead: {
-        id: 'newsFavoriteRead',
+      skillImport: {
+        id: 'skillImport',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -944,8 +393,18 @@ class Permissions {
           plans.enterprise,
         ],
       },
-      newsFavoriteAutocomplete: {
-        id: 'newsFavoriteAutocomplete',
+      skillDestroy: {
+        id: 'skillDestroy',
+        allowedRoles: [roles.admin, roles.manager],
+        allowedPlans: [
+          plans.free,
+          plans.growth,
+          plans.enterprise,
+        ],
+        allowedStorage: [storage.skillIcons],
+      },
+      lessonAutocomplete: {
+        id: 'lessonAutocomplete',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -953,48 +412,8 @@ class Permissions {
           plans.enterprise,
         ],
       },
-
-      tagImport: {
-        id: 'tagImport',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-      },
-      tagCreate: {
-        id: 'tagCreate',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      tagEdit: {
-        id: 'tagEdit',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      tagDestroy: {
-        id: 'tagDestroy',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      tagRead: {
-        id: 'tagRead',
+      lessonCreate: {
+        id: 'lessonCreate',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -1002,8 +421,8 @@ class Permissions {
           plans.enterprise,
         ],
       },
-      tagAutocomplete: {
-        id: 'tagAutocomplete',
+      lessonRead: {
+        id: 'lessonRead',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -1011,29 +430,8 @@ class Permissions {
           plans.enterprise,
         ],
       },
-
-      documentEdit: {
-        id: 'documentEdit',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [storage.document],
-      },
-      documentDestroy: {
-        id: 'documentDestroy',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [storage.document],
-      },
-      documentRead: {
-        id: 'documentRead',
+      lessonEdit: {
+        id: 'lessonEdit',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -1041,48 +439,8 @@ class Permissions {
           plans.enterprise,
         ],
       },
-
-      policyTemplateImport: {
-        id: 'policyTemplateImport',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-      },
-      policyTemplateCreate: {
-        id: 'policyTemplateCreate',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [storage.policyTemplateAttachment],
-      },
-      policyTemplateEdit: {
-        id: 'policyTemplateEdit',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [storage.policyTemplateAttachment],
-      },
-      policyTemplateDestroy: {
-        id: 'policyTemplateDestroy',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [storage.policyTemplateAttachment],
-      },
-      policyTemplateRead: {
-        id: 'policyTemplateRead',
+      lessonImport: {
+        id: 'lessonImport',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -1090,8 +448,8 @@ class Permissions {
           plans.enterprise,
         ],
       },
-      policyTemplateAutocomplete: {
-        id: 'policyTemplateAutocomplete',
+      lessonDestroy: {
+        id: 'lessonDestroy',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -1099,48 +457,8 @@ class Permissions {
           plans.enterprise,
         ],
       },
-
-      policyTemplateFavoriteImport: {
-        id: 'policyTemplateFavoriteImport',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-      },
-      policyTemplateFavoriteCreate: {
-        id: 'policyTemplateFavoriteCreate',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      policyTemplateFavoriteEdit: {
-        id: 'policyTemplateFavoriteEdit',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      policyTemplateFavoriteDestroy: {
-        id: 'policyTemplateFavoriteDestroy',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      policyTemplateFavoriteRead: {
-        id: 'policyTemplateFavoriteRead',
+      attendanceCreate: {
+        id: 'attendanceCreate',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -1148,8 +466,8 @@ class Permissions {
           plans.enterprise,
         ],
       },
-      policyTemplateFavoriteAutocomplete: {
-        id: 'policyTemplateFavoriteAutocomplete',
+      attendanceDestroy: {
+        id: 'attendanceDestroy',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -1157,48 +475,8 @@ class Permissions {
           plans.enterprise,
         ],
       },
-
-      policyImport: {
-        id: 'policyImport',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-      },
-      policyCreate: {
-        id: 'policyCreate',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [storage.policyAttachment],
-      },
-      policyEdit: {
-        id: 'policyEdit',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [storage.policyAttachment],
-      },
-      policyDestroy: {
-        id: 'policyDestroy',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [storage.policyAttachment],
-      },
-      policyRead: {
-        id: 'policyRead',
+      paymentCreate: {
+        id: 'paymentCreate',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -1206,8 +484,8 @@ class Permissions {
           plans.enterprise,
         ],
       },
-      policyAutocomplete: {
-        id: 'policyAutocomplete',
+      paymentDestroy: {
+        id: 'paymentDestroy',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -1215,48 +493,8 @@ class Permissions {
           plans.enterprise,
         ],
       },
-
-      policyFavoriteImport: {
-        id: 'policyFavoriteImport',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-      },
-      policyFavoriteCreate: {
-        id: 'policyFavoriteCreate',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      policyFavoriteEdit: {
-        id: 'policyFavoriteEdit',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      policyFavoriteDestroy: {
-        id: 'policyFavoriteDestroy',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-        allowedStorage: [],
-      },
-      policyFavoriteRead: {
-        id: 'policyFavoriteRead',
+      paymentMethodAutocomplete: {
+        id: 'paymentMethodAutocomplete',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -1264,8 +502,98 @@ class Permissions {
           plans.enterprise,
         ],
       },
-      policyFavoriteAutocomplete: {
-        id: 'policyFavoriteAutocomplete',
+      paymentMethodCreate: {
+        id: 'paymentMethodCreate',
+        allowedRoles: [roles.admin, roles.manager],
+        allowedPlans: [
+          plans.free,
+          plans.growth,
+          plans.enterprise,
+        ],
+      },
+      paymentMethodRead: {
+        id: 'paymentMethodRead',
+        allowedRoles: [roles.admin, roles.manager],
+        allowedPlans: [
+          plans.free,
+          plans.growth,
+          plans.enterprise,
+        ],
+      },
+      paymentMethodEdit: {
+        id: 'paymentMethodEdit',
+        allowedRoles: [roles.admin, roles.manager],
+        allowedPlans: [
+          plans.free,
+          plans.growth,
+          plans.enterprise,
+        ],
+      },
+      paymentMethodImport: {
+        id: 'paymentMethodImport',
+        allowedRoles: [roles.admin, roles.manager],
+        allowedPlans: [
+          plans.free,
+          plans.growth,
+          plans.enterprise,
+        ],
+      },
+      paymentMethodDestroy: {
+        id: 'paymentMethodDestroy',
+        allowedRoles: [roles.admin, roles.manager],
+        allowedPlans: [
+          plans.free,
+          plans.growth,
+          plans.enterprise,
+        ],
+      },
+      paymentCategoryAutocomplete: {
+        id: 'paymentCategoryAutocomplete',
+        allowedRoles: [roles.admin, roles.manager],
+        allowedPlans: [
+          plans.free,
+          plans.growth,
+          plans.enterprise,
+        ],
+      },
+      paymentCategoryCreate: {
+        id: 'paymentCategoryCreate',
+        allowedRoles: [roles.admin, roles.manager],
+        allowedPlans: [
+          plans.free,
+          plans.growth,
+          plans.enterprise,
+        ],
+      },
+      paymentCategoryRead: {
+        id: 'paymentCategoryRead',
+        allowedRoles: [roles.admin, roles.manager],
+        allowedPlans: [
+          plans.free,
+          plans.growth,
+          plans.enterprise,
+        ],
+      },
+      paymentCategoryEdit: {
+        id: 'paymentCategoryEdit',
+        allowedRoles: [roles.admin, roles.manager],
+        allowedPlans: [
+          plans.free,
+          plans.growth,
+          plans.enterprise,
+        ],
+      },
+      paymentCategoryImport: {
+        id: 'paymentCategoryImport',
+        allowedRoles: [roles.admin, roles.manager],
+        allowedPlans: [
+          plans.free,
+          plans.growth,
+          plans.enterprise,
+        ],
+      },
+      paymentCategoryDestroy: {
+        id: 'paymentCategoryDestroy',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,

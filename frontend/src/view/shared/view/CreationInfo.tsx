@@ -2,7 +2,7 @@ import { Grid } from '@mui/material';
 import { i18n } from 'src/i18n';
 import moment from 'moment';
 import TextViewItem from 'src/view/shared/view/TextViewItem';
-import UserViewItem from 'src/view/user/view/UserViewItem';
+import UserViewItem from 'src/view/admin/view/AdminViewItem';
 import { DEFAULT_MOMENT_FORMAT } from 'src/config/common';
 
 function CreationInfo(props) {

@@ -1,0 +1,30 @@
+export default (app) => {
+  app.post(
+    `/tenant/:tenantId/skill`,
+    require('./skillCreate').default,
+  );
+  app.put(
+    `/tenant/:tenantId/skill/:id`,
+    require('./skillUpdate').default,
+  );
+  app.post(
+    `/tenant/:tenantId/skill/import`,
+    require('./skillImport').default,
+  );
+  app.delete(
+    `/tenant/:tenantId/skill`,
+    require('./skillDestroy').default,
+  );
+  app.get(
+    `/tenant/:tenantId/skill/autocomplete`,
+    require('./skillAutocomplete').default,
+  );
+  app.get(
+    `/tenant/:tenantId/skill`,
+    require('./skillList').default,
+  );
+  app.get(
+    `/tenant/:tenantId/skill/:id`,
+    require('./skillFind').default,
+  );
+};

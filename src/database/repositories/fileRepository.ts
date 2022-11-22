@@ -6,38 +6,17 @@ import FileStorage from '../../services/file/fileStorage';
 import lodash from 'lodash';
 import MongooseRepository from './mongooseRepository';
 import UserRepository from './userRepository';
-import TagRefRepository from './tagRefRepository';
 
 export default class FileRepository {
-  static TYPE_INTERNAL = 'internal';
-  static TYPE_TASK = 'task';
-  static TYPE_TASK_INSTANCE = 'taskInstance';
-  static TYPE_RISK = 'risk';
-  static TYPE_VENDOR = 'vendor';
-  static TYPE_POLICY = 'policy';
-
   static async assignRelatedData(
     ids,
-    { type, typeId, typeTitle },
     options: IRepositoryOptions,
   ) {
-    if (typeId) {
-      await this.releaseRelatedData(
-        {
-          type,
-          typeId,
-        },
-        options,
-      );
-    }
     await File(options.database).updateMany(
       { _id: { $in: ids } },
       {
         isTemp: false,
         isAttached: true,
-        type,
-        typeId,
-        typeTitle,
       },
       options,
     );
@@ -49,7 +28,6 @@ export default class FileRepository {
   ) {
     await File(options.database).updateMany(
       filter,
-      { type: null, typeId: null, typeTitle: null },
       options,
     );
   }
@@ -180,21 +158,6 @@ export default class FileRepository {
         ),
     );
 
-    await Promise.all(
-      files
-        .filter((file) => Boolean(file.id && file.tags))
-        .map(
-          async (file) =>
-            await TagRefRepository.save(
-              File,
-              null,
-              file.id,
-              file.tags,
-              options,
-            ),
-        ),
-    );
-
     return records.map((record) => record._id);
   }
 
@@ -273,13 +236,6 @@ export default class FileRepository {
         output.uploader,
         options,
       );
-
-    output.tags = await TagRefRepository.assignTags(
-      File,
-      null,
-      output.id,
-      options,
-    );
 
     return output;
   }

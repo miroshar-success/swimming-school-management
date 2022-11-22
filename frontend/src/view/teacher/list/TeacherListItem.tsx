@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import selectors from 'src/modules/user/userSelectors';
+import selectors from 'src/modules/teacher/teacherSelectors';
 import MaterialLink from '@mui/material/Link';
 import {
   getUserAvatar,

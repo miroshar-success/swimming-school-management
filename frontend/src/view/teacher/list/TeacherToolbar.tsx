@@ -6,9 +6,9 @@ import HistoryIcon from '@mui/icons-material/History';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { i18n } from 'src/i18n';
 import auditLogSelectors from 'src/modules/auditLog/auditLogSelectors';
-import actions from 'src/modules/user/list/userListActions';
-import selectors from 'src/modules/user/list/userListSelectors';
-import userSelectors from 'src/modules/user/userSelectors';
+import actions from 'src/modules/teacher/list/teacherListActions';
+import selectors from 'src/modules/teacher/list/teacherListSelectors';
+import teacherSelectors from 'src/modules/teacher/teacherSelectors';
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -32,13 +32,13 @@ function TeacherToolbar(props) {
     auditLogSelectors.selectPermissionToRead,
   );
   const hasPermissionToCreate = useSelector(
-    userSelectors.selectPermissionToCreate,
+    teacherSelectors.selectPermissionToCreate,
   );
   const hasPermissionToImport = useSelector(
-    userSelectors.selectPermissionToImport,
+    teacherSelectors.selectPermissionToImport,
   );
   const hasPermissionToDestroy = useSelector(
-    userSelectors.selectPermissionToDestroy,
+    teacherSelectors.selectPermissionToDestroy,
   );
 
   const hasRows = useSelector(selectors.selectHasRows);
@@ -171,7 +171,7 @@ function TeacherToolbar(props) {
           variant="outlined"
           color={sidenavColor}
           component={Link}
-          to="/audit-logs?entityNames=teacher"
+          to="/audit-log?entityNames=teacher"
           startIcon={<HistoryIcon />}
           size="small"
         >

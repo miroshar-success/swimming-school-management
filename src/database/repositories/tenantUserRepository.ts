@@ -4,6 +4,7 @@ import User from '../models/user';
 import Roles from '../../security/roles';
 import crypto from 'crypto';
 import { IRepositoryOptions } from './IRepositoryOptions';
+import MuiService from '../../services/muiService';
 
 export default class TenantUserRepository {
   static async findByInvitationToken(
@@ -58,6 +59,10 @@ export default class TenantUserRepository {
       },
       options,
     );
+
+    if (status === 'active') {
+      await MuiService.findOrCreateDefault(options);
+    }
 
     await AuditLogRepository.log(
       {

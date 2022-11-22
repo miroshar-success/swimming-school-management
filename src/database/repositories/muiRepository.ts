@@ -65,11 +65,29 @@ export default class MuiRepository {
         options,
       );
 
-    await MUI(options.database).updateOne(
-      { _id: record.id },
-      { ...data, user: currentUser.id },
-      options,
-    );
+    if (record) {
+      await MUI(options.database).updateOne(
+        { _id: record.id },
+        { ...data, user: currentUser.id },
+        options,
+      );
+    } else {
+      await MUI(options.database).create(
+        [
+          {
+            ...data,
+            user: currentUser.id,
+            createdBy: MongooseRepository.getCurrentUser(
+              options,
+            )
+              ? MongooseRepository.getCurrentUser(options)
+                  .id
+              : null,
+          },
+        ],
+        options,
+      );
+    }
 
     // await AuditLogRepository.log(
     //   {

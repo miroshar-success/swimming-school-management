@@ -3,8 +3,8 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouteMatch } from 'react-router-dom';
 import { i18n } from 'src/i18n';
-import actions from 'src/modules/user/view/userViewActions';
-import selectors from 'src/modules/user/view/userViewSelectors';
+import actions from 'src/modules/teacher/view/teacherViewActions';
+import selectors from 'src/modules/teacher/view/teacherViewSelectors';
 import MDBox from 'src/mui/components/MDBox';
 import MDTypography from 'src/mui/components/MDTypography';
 import TeacherView from 'src/view/teacher/view/TeacherView';
@@ -15,7 +15,7 @@ function TeacherViewPage(props) {
   const match = useRouteMatch();
 
   const loading = useSelector(selectors.selectLoading);
-  const user = useSelector(selectors.selectUser);
+  const teacher = useSelector(selectors.selectTeacher);
 
   useEffect(() => {
     dispatch(actions.doFind(match.params.id));
@@ -36,7 +36,10 @@ function TeacherViewPage(props) {
             </MDTypography>
             <TeacherViewToolbar match={match} />
           </MDBox>
-          <TeacherView loading={loading} user={user} />
+          <TeacherView
+            loading={loading}
+            teacher={teacher}
+          />
         </MDBox>
       </Card>
     </>

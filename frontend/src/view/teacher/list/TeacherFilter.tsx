@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import actions from 'src/modules/user/list/userListActions';
+import actions from 'src/modules/teacher/list/teacherListActions';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import FilterAccordion from 'src/view/shared/filter/FilterAccordion';
 import FilterPreview from 'src/view/shared/filter/FilterPreview';
@@ -24,9 +24,8 @@ import MDBox from 'src/mui/components/MDBox';
 import MDButton from 'src/mui/components/MDButton';
 import SearchIcon from '@mui/icons-material/Search';
 import SelectFormItem from 'src/view/shared/form/items/SelectFormItem';
-import selectors from 'src/modules/user/list/userListSelectors';
+import selectors from 'src/modules/teacher/list/teacherListSelectors';
 import UndoIcon from '@mui/icons-material/Undo';
-import userEnumerators from 'src/modules/user/userEnumerators';
 import yupFilterSchemas from 'src/modules/shared/yup/yupFilterSchemas';
 
 const schema = yup.object().shape({
@@ -161,34 +160,6 @@ function TeacherFilter(props) {
                   <InputFormItem
                     name={'fullName'}
                     label={i18n('teacher.fields.fullName')}
-                    variant="standard"
-                  />
-                </Grid>
-                <Grid item lg={6} xs={12}>
-                  <SelectFormItem
-                    name={'role'}
-                    label={i18n('teacher.fields.role')}
-                    options={userEnumerators.roles.map(
-                      (value) => ({
-                        value,
-                        label: i18n(`roles.${value}.label`),
-                      }),
-                    )}
-                    variant="standard"
-                  />
-                </Grid>
-                <Grid item lg={6} xs={12}>
-                  <SelectFormItem
-                    name={'status'}
-                    label={i18n('teacher.fields.status')}
-                    options={userEnumerators.status.map(
-                      (value) => ({
-                        value,
-                        label: i18n(
-                          `teacher.status.${value}`,
-                        ),
-                      }),
-                    )}
                     variant="standard"
                   />
                 </Grid>

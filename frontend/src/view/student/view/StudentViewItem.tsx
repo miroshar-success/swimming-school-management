@@ -1,6 +1,6 @@
 import { Avatar } from '@mui/material';
 import MaterialLink from '@mui/material/Link';
-import selectors from 'src/modules/user/userSelectors';
+import selectors from 'src/modules/student/studentSelectors';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -47,7 +47,7 @@ function StudentViewItem(props) {
     );
   };
 
-  const renderUser = (record, italic = false) => (
+  const renderStudent = (record, italic = false) => (
     <MDBox display="flex" alignItems="center" gap={0.8}>
       {avatar(record)}
       <MDTypography
@@ -65,7 +65,7 @@ function StudentViewItem(props) {
   const readOnly = (record, italic = false) => {
     return (
       <MDBox key={record.id}>
-        {renderUser(record, italic)}
+        {renderStudent(record, italic)}
       </MDBox>
     );
   };
@@ -78,7 +78,7 @@ function StudentViewItem(props) {
             component={Link}
             to={`/student/${record.id}`}
           >
-            {renderUser(record)}
+            {renderStudent(record)}
           </MaterialLink>
         </MDBox>
       );

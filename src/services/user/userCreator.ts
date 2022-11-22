@@ -6,6 +6,9 @@ import TenantUserRepository from '../../database/repositories/tenantUserReposito
 import { tenantSubdomain } from '../tenantSubdomain';
 import { IServiceOptions } from '../IServiceOptions';
 import Error400 from '../../errors/Error400';
+import bcrypt from 'bcrypt';
+
+const BCRYPT_SALT_ROUNDS = 12;
 
 export default class UserCreator {
   options: IServiceOptions;
@@ -74,14 +77,24 @@ export default class UserCreator {
           'auth.emailAlreadyInUse',
         );
 
-      let user = await UserRepository.create(data, {
-        ...this.options,
-        session: this.session,
-      });
+      const hashedPassword = data.password
+        ? await bcrypt.hash(
+            data.password,
+            BCRYPT_SALT_ROUNDS,
+          )
+        : null;
+
+      let user = await UserRepository.createFromAuth(
+        { ...data, password: hashedPassword },
+        {
+          ...this.options,
+          session: this.session,
+        },
+      );
 
       await TenantUserRepository.create(
-        this.options.currentTenant.id,
-        user.id,
+        this.options.currentTenant,
+        user,
         this._roles,
         {
           ...this.options,

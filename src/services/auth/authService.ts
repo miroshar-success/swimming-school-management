@@ -73,7 +73,6 @@ class AuthService {
           existingUser,
           data.invitationToken,
           data.tenantId,
-          data.roles,
           {
             ...options,
             session,
@@ -139,7 +138,6 @@ class AuthService {
         newUser,
         data.invitationToken,
         data.tenantId,
-        data.roles,
         {
           ...options,
           session,
@@ -247,7 +245,6 @@ class AuthService {
         user,
         invitationToken,
         tenantId,
-        [],
         {
           ...options,
           currentUser: user,
@@ -275,7 +272,6 @@ class AuthService {
     currentUser,
     invitationToken,
     tenantId,
-    roles,
     options,
   ) {
     if (invitationToken) {
@@ -308,7 +304,7 @@ class AuthService {
         {
           tenantId,
           // leave empty to require admin's approval
-          roles: roles,
+          roles: [],
         },
         options,
       );
@@ -333,7 +329,7 @@ class AuthService {
       }).createOrJoinDefault(
         {
           // leave empty to require admin's approval
-          roles: roles,
+          roles: [],
         },
         options.session,
       );

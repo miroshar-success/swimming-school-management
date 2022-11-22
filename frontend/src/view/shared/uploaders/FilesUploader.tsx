@@ -16,8 +16,6 @@ import MDBox from 'src/mui/components/MDBox';
 import moment from 'moment';
 import PropTypes from 'prop-types';
 import Spinner from 'src/view/shared/Spinner';
-import TagAutocompleteForm from 'src/view/tag/autocomplete/TagAutocompleteForm';
-import TagAutocompleteFormItem from 'src/view/tag/autocomplete/TagAutocompleteFormItem';
 import LazyLoad from 'react-lazy-load';
 import EllipsisToolTip from 'ellipsis-tooltip-react-chan';
 import MDTypography from 'src/mui/components/MDTypography';
@@ -230,21 +228,6 @@ function FilesUploader(props) {
               </MaterialLink>
             )}
           </MDBox>
-          {readonly ? (
-            <TagAutocompleteForm
-              id={file.id}
-              handleService={FileUploader.tags}
-              tags={file.tags}
-            />
-          ) : (
-            <TagAutocompleteFormItem
-              name={`~file~tags~${file.id}`}
-              onChange={(newValue) =>
-                onChangeFileTags(file.id, newValue)
-              }
-              value={file.tags}
-            />
-          )}
         </MDBox>
       </LazyLoad>
     );

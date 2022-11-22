@@ -6,26 +6,15 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import authSelectors from 'src/modules/auth/authSelectors';
 import AutocompleteInMemoryFormItem from 'src/view/shared/form/items/AutocompleteInMemoryFormItem';
 import MDBox from 'src/mui/components/MDBox';
-import selectors from 'src/modules/user/userSelectors';
-import UserService from 'src/modules/user/userService';
+import selectors from 'src/modules/student/studentSelectors';
+import StudentService from 'src/modules/student/studentService';
 import {
   getUserAvatar,
   getUserNameOrEmailPrefix,
 } from 'src/modules/utils';
 
 function StudentAutocompleteFormItem(props) {
-  const {
-    autoFocus,
-    label,
-    margin,
-    mode,
-    name,
-    required,
-    rerender: parentRerender,
-    shrink,
-    size,
-    variant,
-  } = props;
+  const { mode, name, rerender: parentRerender } = props;
 
   const { setValue, getValues } = useFormContext();
 
@@ -38,30 +27,34 @@ function StudentAutocompleteFormItem(props) {
     selectors.selectPermissionToCreate,
   );
 
-  const currentUser = useSelector(
+  const currentStudent = useSelector(
     authSelectors.selectCurrentUser,
   );
 
-  const onChangeUserAutocomplete = (value) => {
+  const onChangeStudentAutocomplete = (value) => {
     setAvatar(
       (value && (value.avatar || getUserAvatar(value))) ??
         null,
     );
   };
 
-  const doSelectCurrentUser = () => {
-    const user = {
-      id: currentUser.id,
-      label: getUserNameOrEmailPrefix(currentUser),
-      avatar: getUserAvatar(currentUser),
+  const doSelectCurrentStudent = () => {
+    const student = {
+      id: currentStudent.id,
+      label: getUserNameOrEmailPrefix(currentStudent),
+      avatar: getUserAvatar(currentStudent),
     };
     if (isMultiple) {
-      setValue(name, [...(getValues()[name] || []), user], {
-        shouldValidate: false,
-        shouldDirty: true,
-      });
+      setValue(
+        name,
+        [...(getValues()[name] || []), student],
+        {
+          shouldValidate: false,
+          shouldDirty: true,
+        },
+      );
     } else {
-      setValue(name, user, {
+      setValue(name, student, {
         shouldValidate: false,
         shouldDirty: true,
       });
@@ -70,7 +63,10 @@ function StudentAutocompleteFormItem(props) {
   };
 
   const fetchFn = (value, limit) => {
-    return UserService.fetchUserAutocomplete(value, limit);
+    return StudentService.fetchStudentAutocomplete(
+      value,
+      limit,
+    );
   };
 
   const mapper = {
@@ -135,10 +131,10 @@ function StudentAutocompleteFormItem(props) {
           )}
           fetchFn={fetchFn}
           mapper={mapper}
-          onOpenModal={() => doSelectCurrentUser()}
+          onOpenModal={() => doSelectCurrentStudent()}
           hasPermissionToCreate={hasPermissionToCreate}
           rerender={rerender}
-          onChange={onChangeUserAutocomplete}
+          onChange={onChangeStudentAutocomplete}
           createButtonIcon={<AccountCircleIcon />}
         />
       </MDBox>

@@ -1,6 +1,4 @@
 import { i18n } from 'src/i18n';
-import React from 'react';
-import ColoredChip from 'src/view/shared/ColoredChip';
 import MDBadge from 'src/mui/components/MDBadge';
 
 function TeacherStatusView(props) {

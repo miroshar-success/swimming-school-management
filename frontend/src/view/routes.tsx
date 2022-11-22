@@ -23,17 +23,6 @@ const privateRoutes = [
   },
 
   {
-    path: '/report/tasks-by-month',
-    collapseName: 'reports',
-    i18n: 'reports.tasksByMonth.menu',
-    parent: '/report',
-    loader: () =>
-      import('src/view/report/view/TasksByMonthPage'),
-    permissionRequired: permissions.taskRead,
-    exact: true,
-  },
-
-  {
     path: '/person-name-breadcrumb',
     collapseName: 'my-profile',
     // labelCode: '{USER_TEXT}',
@@ -109,53 +98,55 @@ const privateRoutes = [
   },
 
   {
-    path: '/user',
-    i18n: 'user.menu',
+    path: '/admin',
+    i18n: 'admin.menu',
     collapseName: 'my-profile',
     parent: '/person-name-breadcrumb',
-    loader: () => import('src/view/user/list/UserPage'),
-    permissionRequired: permissions.userRead,
+    loader: () => import('src/view/admin/list/AdminPage'),
+    permissionRequired: permissions.adminRead,
     exact: true,
   },
 
   {
-    path: '/user/new',
-    i18n: 'user.new.title',
+    path: '/admin/new',
+    i18n: 'admin.new.title',
     collapseName: 'my-profile',
-    parent: '/user',
-    loader: () => import('src/view/user/new/UserNewPage'),
-    permissionRequired: permissions.userCreate,
+    parent: '/admin',
+    loader: () => import('src/view/admin/new/AdminNewPage'),
+    permissionRequired: permissions.adminCreate,
     exact: true,
   },
 
   {
-    path: '/user/importer',
-    i18n: 'user.importer.title',
+    path: '/admin/importer',
+    i18n: 'admin.importer.title',
     collapseName: 'my-profile',
-    parent: '/user',
+    parent: '/admin',
     loader: () =>
-      import('src/view/user/importer/UserImporterPage'),
-    permissionRequired: permissions.userImport,
+      import('src/view/admin/importer/AdminImporterPage'),
+    permissionRequired: permissions.adminImport,
     exact: true,
   },
 
   {
-    path: '/user/:id/edit',
-    i18n: 'user.edit.title',
+    path: '/admin/:id/edit',
+    i18n: 'admin.edit.title',
     collapseName: 'my-profile',
-    parent: '/user',
-    loader: () => import('src/view/user/edit/UserEditPage'),
-    permissionRequired: permissions.userEdit,
+    parent: '/admin',
+    loader: () =>
+      import('src/view/admin/edit/AdminEditPage'),
+    permissionRequired: permissions.adminEdit,
     exact: true,
   },
 
   {
-    path: '/user/:id',
-    i18n: 'user.view.title',
+    path: '/admin/:id',
+    i18n: 'admin.view.title',
     collapseName: 'my-profile',
-    parent: '/user',
-    loader: () => import('src/view/user/view/UserViewPage'),
-    permissionRequired: permissions.userRead,
+    parent: '/admin',
+    loader: () =>
+      import('src/view/admin/view/AdminViewPage'),
+    permissionRequired: permissions.adminRead,
     exact: true,
   },
 
@@ -170,7 +161,7 @@ const privateRoutes = [
   },
 
   {
-    path: '/audit-logs',
+    path: '/audit-log',
     collapseName: 'settings',
     i18n: 'auditLog.menu',
     parent: '/settings-breadcrumb',
@@ -181,7 +172,7 @@ const privateRoutes = [
   {
     path: '/settings',
     collapseName: 'settings',
-    i18n: 'settings.tenant',
+    i18n: 'school.menu',
     parent: '/settings-breadcrumb',
     loader: () =>
       import('src/view/settings/SettingsFormPage'),
@@ -189,10 +180,30 @@ const privateRoutes = [
   },
 
   {
-    path: '/student',
+    path: '/document',
+    collapseName: 'settings',
+    i18n: 'document.menu',
+    parent: '/settings-breadcrumb',
+    //loader: () =>
+    //  import('src/view/document/DocumentFormPage'),
+    permissionRequired: permissions.settingsEdit,
+  },
+
+  {
+    path: '/student-breadcrumb',
+    collapseName: 'student',
     i18n: 'student.menu',
-    collapseName: 'student-page',
     parent: '/',
+    redirect: '/student',
+    permissionRequired: null,
+    virtual: true,
+  },
+
+  {
+    path: '/student',
+    i18n: 'common.list',
+    collapseName: 'student',
+    parent: '/student-breadcrumb',
     loader: () =>
       import('src/view/student/list/StudentPage'),
     permissionRequired: permissions.studentRead,
@@ -202,10 +213,10 @@ const privateRoutes = [
   {
     path: '/student/new',
     i18n: 'student.new.title',
-    collapseName: 'student-page',
-    parent: '/student',
+    collapseName: 'student',
+    parent: '/student-breadcrumb',
     loader: () =>
-      import('src/view/student/new/StudentNewPage'),
+      import('src/view/student/form/StudentFormPage'),
     permissionRequired: permissions.studentCreate,
     exact: true,
   },
@@ -213,8 +224,8 @@ const privateRoutes = [
   {
     path: '/student/importer',
     i18n: 'student.importer.title',
-    collapseName: 'student-page',
-    parent: '/student',
+    collapseName: 'student',
+    parent: '/student-breadcrumb',
     loader: () =>
       import(
         'src/view/student/importer/StudentImporterPage'
@@ -226,10 +237,10 @@ const privateRoutes = [
   {
     path: '/student/:id/edit',
     i18n: 'student.edit.title',
-    collapseName: 'student-page',
-    parent: '/student',
+    collapseName: 'student',
+    parent: '/student-breadcrumb',
     loader: () =>
-      import('src/view/student/edit/StudentEditPage'),
+      import('src/view/student/form/StudentFormPage'),
     permissionRequired: permissions.studentEdit,
     exact: true,
   },
@@ -237,11 +248,34 @@ const privateRoutes = [
   {
     path: '/student/:id',
     i18n: 'student.view.title',
-    collapseName: 'student-page',
-    parent: '/student',
+    collapseName: 'student',
+    parent: '/student-breadcrumb',
     loader: () =>
       import('src/view/student/view/StudentViewPage'),
     permissionRequired: permissions.studentRead,
+    exact: true,
+  },
+
+  {
+    path: '/registration',
+    i18n: 'registration.list.title',
+    collapseName: 'student',
+    parent: '/student-breadcrumb',
+    loader: () =>
+      import('src/view/registration/list/RegistrationPage'),
+    permissionRequired: permissions.studentRead,
+    exact: true,
+  },
+
+  {
+    path: '/registration/:id',
+    i18n: 'registration.assignment',
+    collapseNmae: 'student',
+    parent: '/registration',
+    loader: () =>
+      import(
+        'src/view/registration/form/RegistrationFormPage'
+      ),
     exact: true,
   },
 
@@ -303,936 +337,479 @@ const privateRoutes = [
   },
 
   {
-    path: '/vendor-management',
-    collapseName: 'vendor-management',
-    i18n: 'collapses.vendors.menu',
+    path: '/payment-breadcrumb',
+    i18n: 'payment.menu',
+    collapse: 'payment',
     parent: '/',
-    redirect: '/vendor',
+    redirect: '/payment',
+    permissionRequired: permissions.paymentRead,
+    virtual: true,
+  },
+
+  {
+    path: '/payment',
+    i18n: 'common.list',
+    collapse: 'payment',
+    parent: '/payment-breadcrumb',
+    //loader: () =>
+    //  import('src/view/payment/list/PaymentListPage'),
+    permissionRequired: permissions.paymentRead,
+    exact: true,
+  },
+
+  {
+    path: '/payment/:id/add',
+    i18n: 'payment.add.title',
+    collapse: 'payment',
+    parent: '/payment',
+    //loader: () =>
+    //  import('src/view/payment/add/PaymentAddPage'),
+    permissionRequired: permissions.paymentAdd,
+    exact: true,
+  },
+
+  {
+    path: '/payment-history',
+    i18n: 'payment.history.title',
+    collapse: 'payment',
+    parent: '/payment',
+    //loader: () =>
+    //  import('src/view/paymentHistory/PaymentHistoryPage'),
+    permissionRequired: permissions.paymentRead,
+    exact: true,
+  },
+
+  {
+    path: '/payment-expired',
+    i18n: 'payment.expired.title',
+    collapse: 'payment',
+    parent: '/payment-breadcrumb',
+    //loader: () =>
+    //  import('src/view/paymentExpired/PaymentExpiredPage'),
+    permissionRequired: permissions.paymentRead,
+    exact: true,
+  },
+
+  {
+    path: '/payment-category',
+    i18n: 'payment.category.list.title',
+    collapse: 'payment',
+    parent: '/payment-breadcrumb',
+    loader: () =>
+      import(
+        'src/view/paymentCategory/list/PaymentCategoryListPage'
+      ),
+    permissionRequired: permissions.paymentRead,
+    exact: true,
+  },
+
+  {
+    path: '/payment-category/new',
+    i18n: 'payment.category.new.title',
+    collapse: 'payment',
+    parent: '/payment-category',
+    loader: () =>
+      import(
+        'src/view/paymentCategory/form/PaymentCategoryFormPage'
+      ),
+    permissionRequired: permissions.paymentAdd,
+    exact: true,
+  },
+
+  {
+    path: '/payment-category/:id/edit',
+    i18n: 'payment.category.edit.title',
+    collapse: 'payment',
+    parent: '/payment-category',
+    loader: () =>
+      import(
+        'src/view/paymentCategory/form/PaymentCategoryFormPage'
+      ),
+    permissionRequired: permissions.paymentEdit,
+    exact: true,
+  },
+
+  {
+    path: '/payment-category/:id',
+    i18n: 'payment.category.view.title',
+    collapse: 'payment',
+    parent: '/payment-category',
+    loader: () =>
+      import(
+        'src/view/paymentCategory/view/PaymentCategoryViewPage'
+      ),
+    permissionRequired: permissions.paymentRead,
+    exact: true,
+  },
+
+  {
+    path: '/payment-method',
+    i18n: 'payment.method.list.title',
+    collapse: 'payment',
+    parent: '/payment-breadcrumb',
+    loader: () =>
+      import(
+        'src/view/paymentMethod/list/PaymentMethodListPage'
+      ),
+    permissionRequired: permissions.paymentRead,
+    exact: true,
+  },
+
+  {
+    path: '/payment-method/new',
+    i18n: 'payment.method.new.title',
+    collapse: 'payment',
+    parent: '/payment-method',
+    loader: () =>
+      import(
+        'src/view/paymentMethod/form/PaymentMethodFormPage'
+      ),
+    permissionRequired: permissions.paymentAdd,
+    exact: true,
+  },
+
+  {
+    path: '/payment-method/:id/edit',
+    i18n: 'payment.method.edit.title',
+    collapse: 'payment',
+    parent: '/payment-method',
+    loader: () =>
+      import(
+        'src/view/paymentMethod/form/PaymentMethodFormPage'
+      ),
+    permissionRequired: permissions.paymentEdit,
+    exact: true,
+  },
+
+  {
+    path: '/payment-method/:id',
+    i18n: 'payment.method.view.title',
+    collapse: 'payment',
+    parent: '/payment-method',
+    loader: () =>
+      import(
+        'src/view/paymentMethod/view/PaymentMethodViewPage'
+      ),
+    permissionRequired: permissions.paymentRead,
+    exact: true,
+  },
+
+  {
+    path: '/class-breadcrumb',
+    i18n: 'class.menu',
+    collapse: 'class',
+    parent: '/',
+    redirect: '/class',
     permissionRequired: null,
     virtual: true,
   },
 
   {
-    path: '/vendor',
-    collapseName: 'vendor-management',
-    i18n: 'entities.vendor.menu',
-    parent: '/vendor-management',
+    path: '/class',
+    i18n: 'class.list.title',
+    collapse: 'class',
+    parent: '/class-breadcrumb',
     loader: () =>
-      import('src/view/vendor/list/VendorListPage'),
-    permissionRequired: permissions.vendorRead,
+      import('src/view/class/list/ClassListPage'),
+    permissionRequired: permissions.classRead,
     exact: true,
   },
 
   {
-    path: '/vendor/new',
-    collapseName: 'vendor-management',
-    i18n: 'entities.vendor.new.title',
-    parent: '/vendor',
+    path: '/class/new',
+    i18n: 'class.new.title',
+    collapse: 'class',
+    parent: '/class-breadcrumb',
     loader: () =>
-      import('src/view/vendor/form/VendorFormPage'),
-    permissionRequired: permissions.vendorCreate,
+      import('src/view/class/form/ClassFormPage'),
+    permissionRequired: permissions.classCreate,
     exact: true,
   },
 
   {
-    path: '/vendor/importer',
-    collapseName: 'vendor-management',
-    i18n: 'entities.vendor.importer.title',
-    parent: '/vendor',
+    path: '/class/:id/edit',
+    i18n: 'class.edit.title',
+    collapse: 'class',
+    parent: '/class-breadcrumb',
     loader: () =>
-      import('src/view/vendor/importer/VendorImporterPage'),
-    permissionRequired: permissions.vendorImport,
+      import('src/view/class/form/ClassFormPage'),
+    permissionRequired: permissions.classEdit,
     exact: true,
   },
 
   {
-    path: '/vendor/:id/edit',
-    collapseName: 'vendor-management',
-    i18n: 'entities.vendor.edit.title',
-    parent: '/vendor',
+    path: '/class/:id',
+    i18n: 'class.view.title',
+    collapse: 'class',
+    parent: '/class-breadcrumb',
     loader: () =>
-      import('src/view/vendor/form/VendorFormPage'),
-    permissionRequired: permissions.vendorEdit,
+      import('src/view/class/view/ClassViewPage'),
+    permissionRequired: permissions.classRead,
     exact: true,
   },
 
   {
-    path: '/vendor/:id',
-    collapseName: 'vendor-management',
-    i18n: 'entities.vendor.view.title',
-    parent: '/vendor',
+    path: '/lesson',
+    i18n: 'lesson.list.title',
+    collapse: 'class',
+    parent: '/class-breadcrumb',
     loader: () =>
-      import('src/view/vendor/view/VendorViewPage'),
-    permissionRequired: permissions.vendorRead,
+      import('src/view/lesson/list/LessonListPage'),
+    permissionRequired: permissions.classRead,
     exact: true,
   },
 
   {
-    path: '/vendor-category',
-    collapseName: 'vendor-management',
-    i18n: 'entities.vendorCategory.menu',
-    parent: '/vendor-management',
+    path: '/lesson/new',
+    i18n: 'lesson.new.title',
+    collapse: 'class',
+    parent: '/lesson',
     loader: () =>
-      import(
-        'src/view/vendorCategory/list/VendorCategoryListPage'
-      ),
-    permissionRequired: permissions.vendorCategoryRead,
+      import('src/view/lesson/form/LessonFormPage'),
+    permissionRequired: permissions.classCreate,
     exact: true,
   },
 
   {
-    path: '/vendor-category/new',
-    collapseName: 'vendor-management',
-    i18n: 'entities.vendorCategory.new.title',
-    parent: '/vendor-category',
+    path: '/lesson/:id/edit',
+    i18n: 'lesson.edit.title',
+    collapse: 'class',
+    parent: '/lesson',
     loader: () =>
-      import(
-        'src/view/vendorCategory/form/VendorCategoryFormPage'
-      ),
-    permissionRequired: permissions.vendorCategoryCreate,
+      import('src/view/lesson/form/LessonFormPage'),
+    permissionRequired: permissions.classEdit,
     exact: true,
   },
 
   {
-    path: '/vendor-category/importer',
-    collapseName: 'vendor-management',
-    i18n: 'entities.vendorCategory.importer.title',
-    parent: '/vendor-category',
+    path: '/lesson/:id',
+    i18n: 'lesson.view.title',
+    collapse: 'class',
+    parent: '/lesson',
     loader: () =>
-      import(
-        'src/view/vendorCategory/importer/VendorCategoryImporterPage'
-      ),
-    permissionRequired: permissions.vendorCategoryImport,
+      import('src/view/lesson/view/LessonViewPage'),
+    permissionRequired: permissions.classRead,
     exact: true,
   },
 
   {
-    path: '/vendor-category/:id/edit',
-    collapseName: 'vendor-management',
-    i18n: 'entities.vendorCategory.edit.title',
-    parent: '/vendor-category',
+    path: '/class-category',
+    i18n: 'class.category.list.title',
+    collapse: 'class',
+    parent: '/class-breadcrumb',
     loader: () =>
       import(
-        'src/view/vendorCategory/form/VendorCategoryFormPage'
+        'src/view/classCategory/list/ClassCategoryListPage'
       ),
-    permissionRequired: permissions.vendorCategoryEdit,
+    permissionRequired: permissions.classRead,
     exact: true,
   },
 
   {
-    path: '/vendor-category/:id',
-    collapseName: 'vendor-management',
-    i18n: 'entities.vendorCategory.view.title',
-    parent: '/vendor-category',
+    path: '/class-category/new',
+    i18n: 'class.category.new.title',
+    collapse: 'class',
+    parent: '/class-category',
     loader: () =>
       import(
-        'src/view/vendorCategory/view/VendorCategoryViewPage'
+        'src/view/classCategory/form/ClassCategoryFormPage'
       ),
-    permissionRequired: permissions.vendorCategoryRead,
+    permissionRequired: permissions.classCreate,
     exact: true,
   },
 
   {
-    path: '/tasks-breadcrumb',
-    collapseName: 'tasks',
-    i18n: 'collapses.tasks.menu',
+    path: '/class-category/:id/edit',
+    i18n: 'class.category.edit.title',
+    collapse: 'class',
+    parent: '/class-category',
+    loader: () =>
+      import(
+        'src/view/classCategory/form/ClassCategoryFormPage'
+      ),
+    permissionRequired: permissions.classEdit,
+    exact: true,
+  },
+
+  {
+    path: '/class-category/:id',
+    i18n: 'class.category.view.title',
+    collapse: 'class',
+    parent: '/class-category',
+    loader: () =>
+      import(
+        'src/view/classCategory/view/ClassCategoryViewPage'
+      ),
+    permissionRequired: permissions.classRead,
+    exact: true,
+  },
+
+  {
+    path: '/grade-breadcrumb',
+    i18n: 'grade.menu',
+    collapse: 'grade',
     parent: '/',
-    redirect: '/task',
+    redirect: '/grade',
     permissionRequired: null,
     virtual: true,
   },
 
   {
-    path: '/task',
-    collapseName: 'tasks',
-    i18n: 'entities.task.menu',
-    parent: '/tasks-breadcrumb',
-    loader: () => import('src/view/task/list/TaskListPage'),
-    permissionRequired: permissions.taskRead,
-    exact: true,
-  },
-
-  {
-    path: '/task/new',
-    collapseName: 'tasks',
-    i18n: 'entities.task.new.title',
-    parent: '/task',
-    loader: () => import('src/view/task/form/TaskFormPage'),
-    permissionRequired: permissions.taskCreate,
-    exact: true,
-  },
-
-  {
-    path: '/task/importer',
-    collapseName: 'tasks',
-    i18n: 'entities.task.importer.title',
-    parent: '/task',
+    path: '/grade',
+    i18n: 'grade.list.title',
+    collapse: 'grade',
+    parent: '/grade-breadcrumb',
     loader: () =>
-      import('src/view/task/importer/TaskImporterPage'),
-    permissionRequired: permissions.taskImport,
+      import('src/view/grade/list/GradeListPage'),
+    permissionRequired: permissions.gradeRead,
     exact: true,
   },
 
   {
-    path: '/task/:id/edit',
-    collapseName: 'tasks',
-    i18n: 'entities.task.edit.title',
-    parent: '/task',
-    loader: () => import('src/view/task/form/TaskFormPage'),
-    permissionRequired: permissions.taskEdit,
-    exact: true,
-  },
-
-  {
-    path: '/task/:id',
-    collapseName: 'tasks',
-    i18n: 'entities.task.view.title',
-    parent: '/task',
-    loader: () => import('src/view/task/view/TaskViewPage'),
-    permissionRequired: permissions.taskRead,
-    exact: true,
-  },
-
-  {
-    path: '/task-priority',
-    collapseName: 'tasks',
-    i18n: 'entities.taskPriority.menu',
-    parent: '/tasks-breadcrumb',
+    path: '/grade/new',
+    i18n: 'grade.new.title',
+    collapse: 'grade',
+    parent: '/grade',
     loader: () =>
-      import(
-        'src/view/taskPriority/list/TaskPriorityListPage'
-      ),
-    permissionRequired: permissions.taskPriorityRead,
+      import('src/view/grade/form/GradeFormPage'),
+    permissionRequired: permissions.gradeCreate,
     exact: true,
   },
 
   {
-    path: '/task-priority/new',
-    collapseName: 'tasks',
-    i18n: 'entities.taskPriority.new.title',
-    parent: '/task-priority',
+    path: '/grade/:id/edit',
+    i18n: 'grade.edit.title',
+    collapse: 'grade',
+    parent: '/grade',
     loader: () =>
-      import(
-        'src/view/taskPriority/form/TaskPriorityFormPage'
-      ),
-    permissionRequired: permissions.taskPriorityCreate,
+      import('src/view/grade/form/GradeFormPage'),
+    permissionRequired: permissions.gradeEdit,
     exact: true,
   },
 
   {
-    path: '/task-priority/importer',
-    collapseName: 'tasks',
-    i18n: 'entities.taskPriority.importer.title',
-    parent: '/task-priority',
+    path: '/grade/:id',
+    i18n: 'grade.view.title',
+    collapse: 'grade',
+    parent: '/grade',
     loader: () =>
-      import(
-        'src/view/taskPriority/importer/TaskPriorityImporterPage'
-      ),
-    permissionRequired: permissions.taskPriorityImport,
+      import('src/view/grade/view/GradeViewPage'),
+    permissionRequired: permissions.gradeRead,
     exact: true,
   },
 
   {
-    path: '/task-priority/:id/edit',
-    collapseName: 'tasks',
-    i18n: 'entities.taskPriority.edit.title',
-    parent: '/task-priority',
+    path: '/skill',
+    i18n: 'skill.list.title',
+    collapse: 'grade',
+    parent: '/grade-breadcrumb',
     loader: () =>
-      import(
-        'src/view/taskPriority/form/TaskPriorityFormPage'
-      ),
-    permissionRequired: permissions.taskPriorityEdit,
+      import('src/view/skill/list/SkillListPage'),
+    permissionRequired: permissions.skillRead,
     exact: true,
   },
 
   {
-    path: '/task-priority/:id',
-    collapseName: 'tasks',
-    i18n: 'entities.taskPriority.view.title',
-    parent: '/task-priority',
+    path: '/skill/new',
+    i18n: 'skill.new.title',
+    collapse: 'grade',
+    parent: '/skill',
     loader: () =>
-      import(
-        'src/view/taskPriority/view/TaskPriorityViewPage'
-      ),
-    permissionRequired: permissions.taskPriorityRead,
+      import('src/view/skill/form/SkillFormPage'),
+    permissionRequired: permissions.skillCreate,
     exact: true,
   },
 
   {
-    path: '/task-list',
-    collapseName: 'tasks',
-    i18n: 'entities.taskList.menu',
-    parent: '/tasks-breadcrumb',
+    path: '/skill/:id/edit',
+    i18n: 'skill.edit.title',
+    collapse: 'grade',
+    parent: '/skill',
     loader: () =>
-      import('src/view/taskList/list/TaskListListPage'),
-    permissionRequired: permissions.taskListRead,
+      import('src/view/skill/form/SkillFormPage'),
+    permissionRequired: permissions.skillEdit,
     exact: true,
   },
 
   {
-    path: '/task-list/new',
-    collapseName: 'tasks',
-    i18n: 'entities.taskList.new.title',
-    parent: '/task-list',
+    path: '/skill/:id',
+    i18n: 'skill.view.title',
+    collapse: 'grade',
+    parent: '/skill',
     loader: () =>
-      import('src/view/taskList/form/TaskListFormPage'),
-    permissionRequired: permissions.taskListCreate,
+      import('src/view/skill/view/SkillViewPage'),
+    permissionRequired: permissions.skillRead,
     exact: true,
   },
 
   {
-    path: '/task-list/importer',
-    collapseName: 'tasks',
-    i18n: 'entities.taskList.importer.title',
-    parent: '/task-list',
-    loader: () =>
-      import(
-        'src/view/taskList/importer/TaskListImporterPage'
-      ),
-    permissionRequired: permissions.taskListImport,
-    exact: true,
-  },
-
-  {
-    path: '/task-list/:id/edit',
-    collapseName: 'tasks',
-    i18n: 'entities.taskList.edit.title',
-    parent: '/task-list',
-    loader: () =>
-      import('src/view/taskList/form/TaskListFormPage'),
-    permissionRequired: permissions.taskListEdit,
-    exact: true,
-  },
-
-  {
-    path: '/task-list/:id',
-    collapseName: 'tasks',
-    i18n: 'entities.taskList.view.title',
-    parent: '/task-list',
-    loader: () =>
-      import('src/view/taskList/view/TaskListViewPage'),
-    permissionRequired: permissions.taskListRead,
-    exact: true,
-  },
-
-  {
-    path: '/note',
-    collapseName: 'tasks',
-    i18n: 'entities.note.menu',
-    parent: '/tasks-breadcrumb',
-    loader: () => import('src/view/note/list/NoteListPage'),
-    permissionRequired: permissions.noteRead,
-    exact: true,
-  },
-
-  {
-    path: '/note/new',
-    collapseName: 'tasks',
-    i18n: 'entities.note.new.title',
-    parent: '/note',
-    loader: () => import('src/view/note/form/NoteFormPage'),
-    permissionRequired: permissions.noteCreate,
-    exact: true,
-  },
-
-  {
-    path: '/note/importer',
-    collapseName: 'tasks',
-    i18n: 'entities.note.importer.title',
-    parent: '/note',
-    loader: () =>
-      import('src/view/note/importer/NoteImporterPage'),
-    permissionRequired: permissions.noteImport,
-    exact: true,
-  },
-
-  {
-    path: '/note/:id/edit',
-    collapseName: 'tasks',
-    i18n: 'entities.note.edit.title',
-    parent: '/note',
-    loader: () => import('src/view/note/form/NoteFormPage'),
-    permissionRequired: permissions.noteEdit,
-    exact: true,
-  },
-
-  {
-    path: '/note/:id',
-    collapseName: 'tasks',
-    i18n: 'entities.note.view.title',
-    parent: '/note',
-    loader: () => import('src/view/note/view/NoteViewPage'),
-    permissionRequired: permissions.noteRead,
-    exact: true,
-  },
-
-  {
-    path: '/risk-management',
-    collapseName: 'risk-management',
-    i18n: 'collapses.risks.menu',
+    path: '/attendance-breadcrumb',
+    i18n: 'attendance.menu',
+    collapse: 'attendance',
     parent: '/',
-    redirect: '/risk',
+    redirect: '/attendance',
     permissionRequired: null,
     virtual: true,
   },
 
   {
-    path: '/risk',
-    collapseName: 'risk-management',
-    i18n: 'entities.risk.menu',
-    parent: '/risk-management',
-    loader: () => import('src/view/risk/list/RiskListPage'),
-    permissionRequired: permissions.riskRead,
+    path: '/attendance',
+    i18n: 'attendance.list.title',
+    collapse: 'attendance',
+    parent: '/attendance-breadcrumb',
+    //loader: () =>
+    //  import('src/view/attendance/list/AttendanceListPage'),
+    permissionRequired: permissions.attendanceRead,
     exact: true,
   },
 
   {
-    path: '/risk/new',
-    collapseName: 'risk-management',
-    i18n: 'entities.risk.new.title',
-    parent: '/risk',
-    loader: () => import('src/view/risk/form/RiskFormPage'),
-    permissionRequired: permissions.riskCreate,
-    exact: true,
-  },
-
-  {
-    path: '/risk/importer',
-    collapseName: 'risk-management',
-    i18n: 'entities.risk.importer.title',
-    parent: '/risk',
-    loader: () =>
-      import('src/view/risk/importer/RiskImporterPage'),
-    permissionRequired: permissions.riskImport,
-    exact: true,
-  },
-
-  {
-    path: '/risk/:id/edit',
-    collapseName: 'risk-management',
-    i18n: 'entities.risk.edit.title',
-    parent: '/risk',
-    loader: () => import('src/view/risk/form/RiskFormPage'),
-    permissionRequired: permissions.riskEdit,
-    exact: true,
-  },
-
-  {
-    path: '/risk/:id',
-    collapseName: 'risk-management',
-    i18n: 'entities.risk.view.title',
-    parent: '/risk',
-    loader: () => import('src/view/risk/view/RiskViewPage'),
-    permissionRequired: permissions.riskRead,
-    exact: true,
-  },
-
-  {
-    path: '/risk-category',
-    collapseName: 'risk-management',
-    i18n: 'entities.riskCategory.menu',
-    parent: '/risk-management',
-    loader: () =>
-      import(
-        'src/view/riskCategory/list/RiskCategoryListPage'
-      ),
-    permissionRequired: permissions.riskCategoryRead,
-    exact: true,
-  },
-
-  {
-    path: '/risk-category/new',
-    collapseName: 'risk-management',
-    i18n: 'entities.riskCategory.new.title',
-    parent: '/risk-category',
-    loader: () =>
-      import(
-        'src/view/riskCategory/form/RiskCategoryFormPage'
-      ),
-    permissionRequired: permissions.riskCategoryCreate,
-    exact: true,
-  },
-
-  {
-    path: '/risk-category/importer',
-    collapseName: 'risk-management',
-    i18n: 'entities.riskCategory.importer.title',
-    parent: '/risk-category',
-    loader: () =>
-      import(
-        'src/view/riskCategory/importer/RiskCategoryImporterPage'
-      ),
-    permissionRequired: permissions.riskCategoryImport,
-    exact: true,
-  },
-
-  {
-    path: '/risk-category/:id/edit',
-    collapseName: 'risk-management',
-    i18n: 'entities.riskCategory.edit.title',
-    parent: '/risk-category',
-    loader: () =>
-      import(
-        'src/view/riskCategory/form/RiskCategoryFormPage'
-      ),
-    permissionRequired: permissions.riskCategoryEdit,
-    exact: true,
-  },
-
-  {
-    path: '/risk-category/:id',
-    collapseName: 'risk-management',
-    i18n: 'entities.riskCategory.view.title',
-    parent: '/risk-category',
-    loader: () =>
-      import(
-        'src/view/riskCategory/view/RiskCategoryViewPage'
-      ),
-    permissionRequired: permissions.riskCategoryRead,
-    exact: true,
-  },
-
-  {
-    path: '/product',
-    collapseName: 'marketplace',
-    i18n: 'entities.product.menu',
+    path: '/properties-breadcrumb',
+    collapseName: 'properties',
+    i18n: 'properties.menu',
     parent: '/',
-    loader: () =>
-      import('src/view/product/list/ProductListPage'),
-    permissionRequired: permissions.productRead,
-    exact: true,
-  },
-
-  {
-    path: '/product/new',
-    collapseName: 'marketplace',
-    i18n: 'entities.product.new.title',
-    parent: '/product',
-    loader: () =>
-      import('src/view/product/form/ProductFormPage'),
-    permissionRequired: permissions.productCreate,
-    exact: true,
-  },
-
-  {
-    path: '/product/importer',
-    collapseName: 'marketplace',
-    i18n: 'entities.product.importer.title',
-    parent: '/product',
-    loader: () =>
-      import(
-        'src/view/product/importer/ProductImporterPage'
-      ),
-    permissionRequired: permissions.productImport,
-    exact: true,
-  },
-
-  {
-    path: '/product/:id/edit',
-    collapseName: 'marketplace',
-    i18n: 'entities.product.edit.title',
-    parent: '/product',
-    loader: () =>
-      import('src/view/product/form/ProductFormPage'),
-    permissionRequired: permissions.productEdit,
-    exact: true,
-  },
-
-  {
-    path: '/product/:id',
-    collapseName: 'marketplace',
-    i18n: 'entities.product.view.title',
-    parent: '/product',
-    loader: () =>
-      import('src/view/product/view/ProductViewPage'),
-    permissionRequired: permissions.productRead,
-    exact: true,
-  },
-
-  {
-    path: '/product-category',
-    collapseName: 'marketplace',
-    i18n: 'entities.productCategory.menu',
-    parent: '/',
-    loader: () =>
-      import(
-        'src/view/productCategory/list/ProductCategoryListPage'
-      ),
-    permissionRequired: permissions.productCategoryRead,
-    exact: true,
-  },
-
-  {
-    path: '/product-category/new',
-    collapseName: 'marketplace',
-    i18n: 'entities.productCategory.new.title',
-    parent: '/product-category',
-    loader: () =>
-      import(
-        'src/view/productCategory/form/ProductCategoryFormPage'
-      ),
-    permissionRequired: permissions.productCategoryCreate,
-    exact: true,
-  },
-
-  {
-    path: '/product-category/importer',
-    collapseName: 'marketplace',
-    i18n: 'entities.productCategory.importer.title',
-    parent: '/product-category',
-    loader: () =>
-      import(
-        'src/view/productCategory/importer/ProductCategoryImporterPage'
-      ),
-    permissionRequired: permissions.productCategoryImport,
-    exact: true,
-  },
-
-  {
-    path: '/product-category/:id/edit',
-    collapseName: 'marketplace',
-    i18n: 'entities.productCategory.edit.title',
-    parent: '/product-category',
-    loader: () =>
-      import(
-        'src/view/productCategory/form/ProductCategoryFormPage'
-      ),
-    permissionRequired: permissions.productCategoryEdit,
-    exact: true,
-  },
-
-  {
-    path: '/product-category/:id',
-    collapseName: 'marketplace',
-    i18n: 'entities.productCategory.view.title',
-    parent: '/product-category',
-    loader: () =>
-      import(
-        'src/view/productCategory/view/ProductCategoryViewPage'
-      ),
-    permissionRequired: permissions.productCategoryRead,
-    exact: true,
-  },
-
-  {
-    path: '/organization-profile',
-    i18n: 'entities.organizationProfile.menu',
-    parent: '/',
-    loader: () =>
-      import(
-        'src/view/organizationProfile/view/OrganizationProfileViewPage'
-      ),
-    permissionRequired: permissions.organizationProfileRead,
-    exact: true,
-  },
-  {
-    path: '/organization-profile/new',
-    i18n: 'entities.organizationProfile.new.title',
-    parent: '/organization-profile',
-    loader: () =>
-      import(
-        'src/view/organizationProfile/form/OrganizationProfileFormPage'
-      ),
-    permissionRequired:
-      permissions.organizationProfileCreate,
-    exact: true,
-  },
-  {
-    path: '/organization-profile/:id/edit',
-    i18n: 'entities.organizationProfile.edit.title',
-    parent: '/organization-profile',
-    loader: () =>
-      import(
-        'src/view/organizationProfile/form/OrganizationProfileFormPage'
-      ),
-    permissionRequired: permissions.organizationProfileEdit,
-    exact: true,
-  },
-
-  {
-    path: '/news-article',
-    i18n: 'entities.newsArticle.menu',
-    parent: '/',
-    loader: () =>
-      import(
-        'src/view/newsArticle/list/NewsArticleListPage'
-      ),
-    permissionRequired: permissions.newsArticleRead,
-    exact: true,
-  },
-  {
-    path: '/news-article/new',
-    i18n: 'entities.newsArticle.new.title',
-    parent: '/news-article',
-    loader: () =>
-      import(
-        'src/view/newsArticle/form/NewsArticleFormPage'
-      ),
-    permissionRequired: permissions.newsArticleCreate,
-    exact: true,
-  },
-  {
-    path: '/news-article/importer',
-    i18n: 'entities.newsArticle.importer.title',
-    parent: '/news-article',
-    loader: () =>
-      import(
-        'src/view/newsArticle/importer/NewsArticleImporterPage'
-      ),
-    permissionRequired: permissions.newsArticleImport,
-    exact: true,
-  },
-  {
-    path: '/news-article/:id/edit',
-    i18n: 'entities.newsArticle.edit.title',
-    parent: '/news-article',
-    loader: () =>
-      import(
-        'src/view/newsArticle/form/NewsArticleFormPage'
-      ),
-    permissionRequired: permissions.newsArticleEdit,
-    exact: true,
-  },
-  {
-    path: '/news-article/:id',
-    i18n: 'entities.newsArticle.view.title',
-    parent: '/news-article',
-    loader: () =>
-      import(
-        'src/view/newsArticle/view/NewsArticleViewPage'
-      ),
-    permissionRequired: permissions.newsArticleRead,
-    exact: true,
-  },
-
-  {
-    path: '/news-favorite',
-    i18n: 'entities.newsFavorite.menu',
-    parent: '/',
-    loader: () =>
-      import(
-        'src/view/newsFavorite/list/NewsFavoriteListPage'
-      ),
-    permissionRequired: permissions.newsFavoriteRead,
-    exact: true,
-  },
-  {
-    path: '/news-favorite/new',
-    i18n: 'entities.newsFavorite.new.title',
-    parent: '/news-favorite',
-    loader: () =>
-      import(
-        'src/view/newsFavorite/form/NewsFavoriteFormPage'
-      ),
-    permissionRequired: permissions.newsFavoriteCreate,
-    exact: true,
-  },
-  {
-    path: '/news-favorite/importer',
-    i18n: 'entities.newsFavorite.importer.title',
-    parent: '/news-favorite',
-    loader: () =>
-      import(
-        'src/view/newsFavorite/importer/NewsFavoriteImporterPage'
-      ),
-    permissionRequired: permissions.newsFavoriteImport,
-    exact: true,
-  },
-  {
-    path: '/news-favorite/:id/edit',
-    i18n: 'entities.newsFavorite.edit.title',
-    parent: '/news-favorite',
-    loader: () =>
-      import(
-        'src/view/newsFavorite/form/NewsFavoriteFormPage'
-      ),
-    permissionRequired: permissions.newsFavoriteEdit,
-    exact: true,
-  },
-  {
-    path: '/news-favorite/:id',
-    i18n: 'entities.newsFavorite.view.title',
-    parent: '/news-favorite',
-    loader: () =>
-      import(
-        'src/view/newsFavorite/view/NewsFavoriteViewPage'
-      ),
-    permissionRequired: permissions.newsFavoriteRead,
-    exact: true,
-  },
-
-  {
-    path: '/tag',
-    i18n: 'entities.tag.menu',
-    parent: '/',
-    loader: () => import('src/view/tag/list/TagListPage'),
-    permissionRequired: permissions.tagRead,
-    exact: true,
-  },
-  {
-    path: '/tag/new',
-    i18n: 'entities.tag.new.title',
-    parent: '/tag',
-    loader: () => import('src/view/tag/form/TagFormPage'),
-    permissionRequired: permissions.tagCreate,
-    exact: true,
-  },
-  {
-    path: '/tag/importer',
-    i18n: 'entities.tag.importer.title',
-    parent: '/tag',
-    loader: () =>
-      import('src/view/tag/importer/TagImporterPage'),
-    permissionRequired: permissions.tagImport,
-    exact: true,
-  },
-  {
-    path: '/tag/:id/edit',
-    i18n: 'entities.tag.edit.title',
-    parent: '/tag',
-    loader: () => import('src/view/tag/form/TagFormPage'),
-    permissionRequired: permissions.tagEdit,
-    exact: true,
-  },
-  {
-    path: '/tag/:id',
-    i18n: 'entities.tag.view.title',
-    parent: '/tag',
-    loader: () => import('src/view/tag/view/TagViewPage'),
-    permissionRequired: permissions.tagRead,
-    exact: true,
-  },
-
-  {
-    path: '/documents',
-    collapseName: 'documents',
-    i18n: 'collapses.documents.menu',
-    parent: '/',
-    redirect: '/document',
-    permissionRequired: permissions.documentRead,
+    redirect: '/pool',
+    permissionRequired: null,
     virtual: true,
   },
 
   {
-    path: '/document',
-    collapseName: 'documents',
-    i18n: 'entities.document.menu',
-    parent: '/documents',
-    loader: () =>
-      import('src/view/document/list/DocumentListPage'),
-    permissionRequired: permissions.documentRead,
+    path: '/pool',
+    collapseName: 'properties',
+    i18n: 'pool.menu',
+    parent: '/properties-breadcrumb',
+    loader: () => import('src/view/pool/list/PoolListPage'),
+    permissionRequired: permissions.poolRead,
     exact: true,
   },
 
   {
-    path: '/policy-template',
-    collapseName: 'documents',
-    i18n: 'entities.policyTemplate.menu',
-    parent: '/documents',
-    loader: () =>
-      import(
-        'src/view/policyTemplate/list/PolicyTemplateListPage'
-      ),
-    permissionRequired: permissions.policyTemplateRead,
-    exact: true,
-  },
-  {
-    path: '/policy-template/new',
-    collapseName: 'documents',
-    i18n: 'entities.policyTemplate.new.title',
-    parent: '/policy-template',
-    loader: () =>
-      import(
-        'src/view/policyTemplate/form/PolicyTemplateFormPage'
-      ),
-    permissionRequired: permissions.policyTemplateCreate,
-    exact: true,
-  },
-  {
-    path: '/policy-template/importer',
-    collapseName: 'documents',
-    i18n: 'entities.policyTemplate.importer.title',
-    parent: '/policy-template',
-    loader: () =>
-      import(
-        'src/view/policyTemplate/importer/PolicyTemplateImporterPage'
-      ),
-    permissionRequired: permissions.policyTemplateImport,
-    exact: true,
-  },
-  {
-    path: '/policy-template/:id/edit',
-    collapseName: 'documents',
-    i18n: 'entities.policyTemplate.edit.title',
-    parent: '/policy-template',
-    loader: () =>
-      import(
-        'src/view/policyTemplate/form/PolicyTemplateFormPage'
-      ),
-    permissionRequired: permissions.policyTemplateEdit,
-    exact: true,
-  },
-  {
-    path: '/policy-template/:id',
-    collapseName: 'documents',
-    i18n: 'entities.policyTemplate.view.title',
-    parent: '/policy-template',
-    loader: () =>
-      import(
-        'src/view/policyTemplate/view/PolicyTemplateViewPage'
-      ),
-    permissionRequired: permissions.policyTemplateRead,
+    path: '/pool/new',
+    collapseName: 'properties',
+    i18n: 'pool.new.title',
+    parent: '/pool',
+    loader: () => import('src/view/pool/form/PoolFormPage'),
+    permissionRequired: permissions.poolCreate,
     exact: true,
   },
 
   {
-    path: '/policy',
-    collapseName: 'documents',
-    i18n: 'entities.policy.menu',
-    parent: '/documents',
-    loader: () =>
-      import('src/view/policy/list/PolicyListPage'),
-    permissionRequired: permissions.policyRead,
+    path: '/pool/:id/edit',
+    collapseName: 'properties',
+    i18n: 'pool.edit.title',
+    parent: '/pool',
+    loader: () => import('src/view/pool/form/PoolFormPage'),
+    permissionRequired: permissions.poolEdit,
     exact: true,
   },
+
   {
-    path: '/policy/new',
-    collapseName: 'documents',
-    i18n: 'entities.policyTemplate.new.title',
-    parent: '/policy',
-    loader: () =>
-      import('src/view/policy/form/PolicyFormPage'),
-    permissionRequired: permissions.policyCreate,
-    exact: true,
-  },
-  {
-    path: '/policy/importer',
-    collapseName: 'documents',
-    i18n: 'entities.policyTemplate.importer.title',
-    parent: '/policy',
-    loader: () =>
-      import('src/view/policy/importer/PolicyImporterPage'),
-    permissionRequired: permissions.policyImport,
-    exact: true,
-  },
-  {
-    path: '/policy/:id/edit',
-    collapseName: 'documents',
-    i18n: 'entities.policyTemplate.edit.title',
-    parent: '/policy',
-    loader: () =>
-      import('src/view/policy/form/PolicyFormPage'),
-    permissionRequired: permissions.policyEdit,
-    exact: true,
-  },
-  {
-    path: '/policy/:id',
-    collapseName: 'documents',
-    i18n: 'entities.policyTemplate.view.title',
-    parent: '/policy',
-    loader: () =>
-      import('src/view/policy/view/PolicyViewPage'),
-    permissionRequired: permissions.policyRead,
+    path: '/pool/:id',
+    collapseName: 'properties',
+    i18n: 'pool.view.title',
+    parent: '/pool',
+    loader: () => import('src/view/pool/view/PoolViewPage'),
+    permissionRequired: permissions.poolRead,
     exact: true,
   },
 ].filter(Boolean);

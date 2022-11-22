@@ -1,0 +1,30 @@
+export default (app) => {
+  app.post(
+    `/tenant/:tenantId/class`,
+    require('./classCreate').default,
+  );
+  app.put(
+    `/tenant/:tenantId/class/:id`,
+    require('./classUpdate').default,
+  );
+  app.post(
+    `/tenant/:tenantId/class/import`,
+    require('./classImport').default,
+  );
+  app.delete(
+    `/tenant/:tenantId/class`,
+    require('./classDestroy').default,
+  );
+  app.get(
+    `/tenant/:tenantId/class/autocomplete`,
+    require('./classAutocomplete').default,
+  );
+  app.get(
+    `/tenant/:tenantId/class`,
+    require('./classList').default,
+  );
+  app.get(
+    `/tenant/:tenantId/class/:id`,
+    require('./classFind').default,
+  );
+};

@@ -1,8 +1,8 @@
 import { Card } from '@mui/material';
 import { i18n } from 'src/i18n';
-import actions from 'src/modules/user/importer/userImporterActions';
-import fields from 'src/modules/user/importer/userImporterFields';
-import selectors from 'src/modules/user/importer/userImporterSelectors';
+import actions from 'src/modules/student/importer/studentImporterActions';
+import fields from 'src/modules/student/importer/studentImporterFields';
+import selectors from 'src/modules/student/importer/studentImporterSelectors';
 import MDBox from 'src/mui/components/MDBox';
 import MDTypography from 'src/mui/components/MDTypography';
 import importerHoc from 'src/view/shared/importer/Importer';

@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useRouteMatch } from 'react-router-dom';
 import { i18n } from 'src/i18n';
 import { getHistory } from 'src/modules/store';
-import actions from 'src/modules/user/form/userFormActions';
-import selectors from 'src/modules/user/form/userFormSelectors';
+import actions from 'src/modules/teacher/form/teacherFormActions';
+import selectors from 'src/modules/teacher/form/teacherFormSelectors';
 import MDBox from 'src/mui/components/MDBox';
 import MDTypography from 'src/mui/components/MDTypography';
 import ContentWrapper from 'src/view/layout/styles/ContentWrapper';
@@ -26,7 +26,7 @@ function TeacherEditPage(props) {
     selectors.selectSaveLoading,
   );
 
-  const user = useSelector(selectors.selectUser);
+  const teacher = useSelector(selectors.selectTeacher);
 
   const match = useRouteMatch();
 
@@ -53,7 +53,7 @@ function TeacherEditPage(props) {
 
           {dispatched && !initLoading && (
             <TeacherEditForm
-              user={user}
+              teacher={teacher}
               saveLoading={saveLoading}
               onCancel={() => getHistory().push('/teacher')}
             />

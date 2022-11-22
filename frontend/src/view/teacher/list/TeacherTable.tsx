@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { selectMuiSettings } from 'src/modules/mui/muiSelectors';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
-import actions from 'src/modules/user/list/userListActions';
+import actions from 'src/modules/teacher/list/teacherListActions';
 import Checkbox from '@mui/material/Checkbox';
 import ConfirmModal from 'src/view/shared/modals/ConfirmModal';
 import DataTableBodyCell from 'src/mui/shared/Tables/DataTable/DataTableBodyCell';
@@ -18,13 +18,13 @@ import MDTypography from 'src/mui/components/MDTypography';
 import Pagination from 'src/view/shared/table/Pagination';
 import Roles from 'src/security/roles';
 import SearchIcon from '@mui/icons-material/Search';
-import selectors from 'src/modules/user/list/userListSelectors';
+import selectors from 'src/modules/teacher/list/teacherListSelectors';
 import Spinner from 'src/view/shared/Spinner';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableRow from '@mui/material/TableRow';
 import Tooltip from '@mui/material/Tooltip';
-import userSelectors from 'src/modules/user/userSelectors';
+import teacherSelectors from 'src/modules/teacher/teacherSelectors';
 import TeacherStatusView from 'src/view/teacher/view/TeacherStatusView';
 
 function TeacherTable() {
@@ -46,10 +46,10 @@ function TeacherTable() {
     selectors.selectIsAllSelected,
   );
   const hasPermissionToEdit = useSelector(
-    userSelectors.selectPermissionToEdit,
+    teacherSelectors.selectPermissionToEdit,
   );
   const hasPermissionToDestroy = useSelector(
-    userSelectors.selectPermissionToDestroy,
+    teacherSelectors.selectPermissionToDestroy,
   );
 
   const doDestroy = (id) => {

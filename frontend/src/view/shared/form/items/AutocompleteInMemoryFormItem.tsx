@@ -87,7 +87,11 @@ function AutocompleteInMemoryFormItem(props) {
       setLoading(true);
 
       try {
-        let fullDataSource = await fetchFn();
+        let fullDataSource = props.belongTo
+          ? await fetchFn(props.belongTo)
+          : await fetchFn();
+
+        console.log(fullDataSource);
 
         if (dismounted) {
           return;
@@ -130,7 +134,7 @@ function AutocompleteInMemoryFormItem(props) {
       dismounted = true;
       setLoading(false);
     };
-  }, [rerender, refresh]);
+  }, [rerender, refresh, props.belongTo]);
 
   const prioritizeFromDataSource = (selected) => {
     if (!selected) {

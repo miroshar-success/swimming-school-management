@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import actions from 'src/modules/user/list/userListActions';
+import actions from 'src/modules/student/list/studentListActions';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import FilterAccordion from 'src/view/shared/filter/FilterAccordion';
 import FilterPreview from 'src/view/shared/filter/FilterPreview';
@@ -24,27 +24,73 @@ import MDBox from 'src/mui/components/MDBox';
 import MDButton from 'src/mui/components/MDButton';
 import SearchIcon from '@mui/icons-material/Search';
 import SelectFormItem from 'src/view/shared/form/items/SelectFormItem';
-import selectors from 'src/modules/user/list/userListSelectors';
+import selectors from 'src/modules/student/list/studentListSelectors';
 import UndoIcon from '@mui/icons-material/Undo';
-import userEnumerators from 'src/modules/user/userEnumerators';
 import yupFilterSchemas from 'src/modules/shared/yup/yupFilterSchemas';
+import studentEnumerators from 'src/modules/student/studentEnumerators';
+import DatePickerFormItem from 'src/view/shared/form/items/DatePickerFormItem';
 
 const schema = yup.object().shape({
-  fullName: yupFilterSchemas.string(
-    i18n('student.fields.fullName'),
+  studentNumber: yupFilterSchemas.integer(
+    i18n('student.fields.studentNumber'),
+  ),
+  firstName: yupFilterSchemas.string(
+    i18n('student.fields.firstName'),
+  ),
+  lastName: yupFilterSchemas.string(
+    i18n('student.fields.lastName'),
+  ),
+  phoneNumber: yupFilterSchemas.string(
+    i18n('student.fields.phoneNumber'),
+  ),
+  street: yupFilterSchemas.string(
+    i18n('student.fields.street'),
+  ),
+  postalCode: yupFilterSchemas.string(
+    i18n('student.fields.postalCode'),
+  ),
+  cologne: yupFilterSchemas.string(
+    i18n('student.fields.cologne'),
+  ),
+  city: yupFilterSchemas.string(
+    i18n('student.fields.city'),
+  ),
+  RFC: yupFilterSchemas.string(i18n('student.fields.RFC')),
+  CURP: yupFilterSchemas.string(
+    i18n('student.fields.CURP'),
+  ),
+  bloodType: yupFilterSchemas.string(
+    i18n('student.fields.bloodType'),
+  ),
+  sex: yupFilterSchemas.string(i18n('student.fields.sex')),
+  birthday: yupFilterSchemas.date(
+    i18n('student.fields.birthday'),
+  ),
+  guardianPhoneNumber: yupFilterSchemas.string(
+    i18n('student.fields.guardianPhoneNumber'),
+  ),
+  guardianFullName: yupFilterSchemas.string(
+    i18n('student.fields.guardianFullName'),
+  ),
+  healthInsuranceCompany: yupFilterSchemas.string(
+    i18n('student.fields.healthInsuranceCompany'),
+  ),
+  healthInsuranceNumber: yupFilterSchemas.string(
+    i18n('student.fields.healthInsuranceNumber'),
+  ),
+  comment: yupFilterSchemas.string(
+    i18n('student.fields.comment'),
   ),
   email: yupFilterSchemas.email(
     i18n('student.fields.email'),
   ),
-  role: yupFilterSchemas.enumerator(
-    i18n('student.fields.role'),
-  ),
-  status: yupFilterSchemas.enumerator(
-    i18n('student.fields.status'),
-  ),
 });
 
 const previewRenders = {
+  studentNumber: {
+    label: i18n('student.fields.studentNumber'),
+    render: filterRenders.decimal(),
+  },
   fullName: {
     label: i18n('student.fields.fullName'),
     render: filterRenders.generic(),
@@ -53,22 +99,29 @@ const previewRenders = {
     label: i18n('student.fields.email'),
     render: filterRenders.generic(),
   },
-  role: {
-    label: i18n('student.fields.role'),
-    render: (value) =>
-      value ? i18n(`roles.${value}.label`) : null,
-  },
-  status: {
-    label: i18n('student.fields.status'),
-    render: filterRenders.enumerator('student.status'),
+  sex: {
+    label: i18n('student.fields.sex'),
+    render: filterRenders.generic(),
   },
 };
 
 const emptyValues = {
+  studentNumber: null,
   fullName: '',
   email: '',
-  role: '',
-  status: '',
+  sex: '',
+  bloodType: '',
+  birthday: '',
+  city: '',
+  postalCode: '',
+  phoneNumber: '',
+  CURP: '',
+  RFC: '',
+  guardianFullName: '',
+  guardianPhoneNumber: '',
+  healthInsuranceCompany: '',
+  healthInsuranceNumber: '',
+  status: 'active',
 };
 
 function StudentFilter(props) {
@@ -150,44 +203,135 @@ function StudentFilter(props) {
               onSubmit={form.handleSubmit(onSubmit)}
             >
               <Grid container spacing={1.6}>
-                <Grid item lg={6} xs={12}>
+                <Grid item lg={4} md={6} xs={12}>
+                  <InputFormItem
+                    name={'studentNumber'}
+                    label={i18n(
+                      'student.fields.studentNumber',
+                    )}
+                    variant="standard"
+                  />
+                </Grid>
+                <Grid item lg={4} md={6} xs={12}>
                   <InputFormItem
                     name={'email'}
                     label={i18n('student.fields.email')}
                     variant="standard"
                   />
                 </Grid>
-                <Grid item lg={6} xs={12}>
+                <Grid item lg={4} md={6} xs={12}>
                   <InputFormItem
                     name={'fullName'}
                     label={i18n('student.fields.fullName')}
                     variant="standard"
                   />
                 </Grid>
-                <Grid item lg={6} xs={12}>
+                <Grid item lg={4} md={6} xs={12}>
                   <SelectFormItem
-                    name={'role'}
-                    label={i18n('student.fields.role')}
-                    options={userEnumerators.roles.map(
+                    name={'sex'}
+                    label={i18n('student.fields.sex')}
+                    options={studentEnumerators.sex.map(
                       (value) => ({
                         value,
-                        label: i18n(`roles.${value}.label`),
+                        label: value,
                       }),
+                    )}
+                    mode="signle"
+                    variant="standard"
+                  />
+                </Grid>
+                <Grid item lg={4} md={6} xs={12}>
+                  <SelectFormItem
+                    name={'bloodType'}
+                    label={i18n('student.fields.bloodType')}
+                    options={studentEnumerators.bloodType.map(
+                      (value) => ({
+                        value,
+                        label: value,
+                      }),
+                    )}
+                    mode="single"
+                    variant="standard"
+                  />
+                </Grid>
+                <Grid item lg={4} md={6} xs={12}>
+                  <DatePickerFormItem
+                    name={'birthday'}
+                    label={i18n('student.fields.birthday')}
+                    variant="standard"
+                  />
+                </Grid>
+                <Grid item lg={4} md={6} xs={12}>
+                  <InputFormItem
+                    name={'city'}
+                    label={i18n('student.fields.city')}
+                    variant="standard"
+                  />
+                </Grid>
+                <Grid item lg={4} md={6} xs={12}>
+                  <InputFormItem
+                    name={'postalCode'}
+                    label={i18n(
+                      'student.fields.postalCode',
                     )}
                     variant="standard"
                   />
                 </Grid>
-                <Grid item lg={6} xs={12}>
-                  <SelectFormItem
-                    name={'status'}
-                    label={i18n('student.fields.status')}
-                    options={userEnumerators.status.map(
-                      (value) => ({
-                        value,
-                        label: i18n(
-                          `student.status.${value}`,
-                        ),
-                      }),
+                <Grid item lg={4} md={6} xs={12}>
+                  <InputFormItem
+                    name={'phoneNumber'}
+                    label={i18n(
+                      'student.fields.phoneNumber',
+                    )}
+                    variant="standard"
+                  />
+                </Grid>
+                <Grid item lg={4} md={6} xs={12}>
+                  <InputFormItem
+                    name={'RFC'}
+                    label={i18n('student.fields.RFC')}
+                    variant="standard"
+                  />
+                </Grid>
+                <Grid item lg={4} md={6} xs={12}>
+                  <InputFormItem
+                    name={'CURP'}
+                    label={i18n('student.fields.CURP')}
+                    variant="standard"
+                  />
+                </Grid>
+                <Grid item lg={4} md={6} xs={12}>
+                  <InputFormItem
+                    name={'guardianFullName'}
+                    label={i18n(
+                      'student.fields.guardianFullName',
+                    )}
+                    variant="standard"
+                  />
+                </Grid>
+                <Grid item lg={4} md={6} xs={12}>
+                  <InputFormItem
+                    name={'guardianPhoneNumber'}
+                    label={i18n(
+                      'student.fields.guardianPhoneNumber',
+                    )}
+                    variant="standard"
+                  />
+                </Grid>
+                <Grid item lg={4} md={6} xs={12}>
+                  <InputFormItem
+                    name={'healthInsuranceCompany'}
+                    label={i18n(
+                      'student.fields.healthInsuranceCompany',
+                    )}
+                    variant="standard"
+                  />
+                </Grid>
+                <Grid item lg={4} md={6} xs={12}>
+                  <InputFormItem
+                    name={'healthInsuranceNumber'}
+                    label={i18n(
+                      'student.fields.healthInsuranceNumber',
                     )}
                     variant="standard"
                   />

@@ -11,6 +11,7 @@ export default async (req, res) => {
 
     const payload =
       await UserRepository.findAllAutocomplete(
+        req.query.role,
         req.query.query,
         req.query.limit,
         req,

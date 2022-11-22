@@ -17,15 +17,10 @@ import SaveIcon from '@mui/icons-material/Save';
 import SelectFormItem from 'src/view/shared/form/items/SelectFormItem';
 import TagsFormItem from 'src/view/shared/form/items/TagsFormItem';
 import UndoIcon from '@mui/icons-material/Undo';
-import userEnumerators from 'src/modules/user/userEnumerators';
 import yupFormSchemas from 'src/modules/shared/yup/yupFormSchemas';
 
 const singleSchema = yup.object().shape({
   email: yupFormSchemas.email(i18n('teacher.fields.email')),
-  roles: yupFormSchemas.stringArray(
-    i18n('teacher.fields.roles'),
-    { required: true, min: 1 },
-  ),
 });
 
 const multipleSchema = yup.object().shape({
@@ -45,10 +40,6 @@ const multipleSchema = yup.object().shape({
     )
     .required()
     .min(1),
-  roles: yupFormSchemas.stringArray(
-    i18n('teacher.fields.roles'),
-    { required: true, min: 1 },
-  ),
 });
 
 function TeacherNewForm(props) {
@@ -63,7 +54,6 @@ function TeacherNewForm(props) {
   const [initialValues] = useState(() => ({
     emails: [],
     email: '',
-    roles: [],
   }));
 
   const form = useForm({
@@ -73,7 +63,8 @@ function TeacherNewForm(props) {
   });
 
   const onSubmit = (values) => {
-    const { ...data } = values;
+    let { ...data } = values;
+    data.roles = ['teacher'];
 
     if (data.email) {
       data.emails = [data.email];
@@ -117,23 +108,6 @@ function TeacherNewForm(props) {
                   shrink
                 />
               )}
-            </Grid>
-
-            <Grid item lg={7} md={8} sm={12} xs={12}>
-              <SelectFormItem
-                name="roles"
-                label={i18n('teacher.fields.roles')}
-                required={true}
-                options={userEnumerators.roles.map(
-                  (value) => ({
-                    value,
-                    label: i18n(`roles.${value}.label`),
-                  }),
-                )}
-                variant="standard"
-                mode="multiple"
-                shrink
-              />
             </Grid>
           </Grid>
 

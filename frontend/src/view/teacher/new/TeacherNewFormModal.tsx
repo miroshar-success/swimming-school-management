@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { i18n } from 'src/i18n';
 import TeacherNewForm from 'src/view/teacher/new/TeacherNewForm';
 import Errors from 'src/modules/shared/error/errors';
-import UserService from 'src/modules/user/userService';
+import TeacherService from 'src/modules/teacher/teacherService';
 import {
   DialogTitle,
   DialogContent,
@@ -21,9 +21,9 @@ function TeacherNewFormModal(props) {
   const doSubmit = async (_, data) => {
     try {
       setSaveLoading(true);
-      await UserService.create(data);
+      await TeacherService.invite(data);
 
-      const { rows } = await UserService.fetchUsers(
+      const { rows } = await TeacherService.fetchTeachers(
         {
           email: data.emails[0],
         },

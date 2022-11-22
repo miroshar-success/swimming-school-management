@@ -18,10 +18,24 @@ const menus = [
   },
 
   {
-    path: '/student',
-    icon: <Icon>people</Icon>,
     name: i18n('student.menu'),
+    icon: <Icon>people</Icon>,
+    key: 'student',
     permissionRequired: permissions.studentRead,
+    collapse: [
+      {
+        path: '/registration',
+        name: i18n('student.registration.menu'),
+        icon: <Icon>group_add</Icon>,
+        permissionRequired: permissions.studentEdit,
+      },
+      {
+        path: '/student',
+        name: i18n('common.list'),
+        icon: <Icon>people</Icon>,
+        permissionRequired: permissions.studentRead,
+      },
+    ],
   },
 
   {
@@ -31,164 +45,128 @@ const menus = [
     permissionRequired: permissions.teacherRead,
   },
 
-  /*{
-    path: '/organization-profile',
-    name: i18n('entities.organizationProfile.menu'),
-    permissionRequired: permissions.organizationProfileRead,
-    icon: <Icon>business</Icon>,
-  },
-
   {
-    name: i18n('collapses.tasks.menu'),
-    key: 'tasks',
-    icon: <Icon>assignment</Icon>,
+    key: 'payment',
+    icon: <Icon>payment</Icon>,
+    name: i18n('payment.menu'),
+    permissionRequired: permissions.paymentRead,
     collapse: [
       {
-        path: '/task',
-        permissionRequired: permissions.taskRead,
-        name: i18n('entities.task.menu'),
-        icon: <Icon>task</Icon>,
+        name: i18n('common.list'),
+        icon: <Icon>payment</Icon>,
+        path: '/payment',
+        permissionRequired: permissions.paymentRead,
       },
-
       {
-        path: '/task-priority',
-        permissionRequired: permissions.taskPriorityRead,
-        name: i18n('entities.taskPriority.menu'),
-        icon: <Icon>low_priority</Icon>,
+        name: i18n('payment.history.menu'),
+        icon: <Icon>history</Icon>,
+        path: '/payment-history',
+        permissionRequired: permissions.paymentRead,
       },
-
       {
-        path: '/task-list',
-        permissionRequired: permissions.taskListRead,
-        name: i18n('entities.taskList.menu'),
-        icon: <Icon>list_alt</Icon>,
-      },
-
-      {
-        path: '/note',
-        permissionRequired: permissions.noteRead,
-        name: i18n('entities.note.menu'),
-        icon: <Icon>note</Icon>,
-      },
-    ],
-  },
-
-  {
-    name: i18n('collapses.vendors.menu'),
-    key: 'vendor-management',
-    icon: <StorefrontIcon />,
-    collapse: [
-      {
-        path: '/vendor',
-        permissionRequired: permissions.vendorRead,
-        name: i18n('entities.vendor.menu'),
-        icon: <StorefrontIcon />,
-      },
-
-      {
-        path: '/vendor-category',
-        permissionRequired: permissions.vendorCategoryRead,
-        name: i18n('entities.vendorCategory.menu'),
-        icon: <Icon>category</Icon>,
-      },
-    ],
-  },
-
-  {
-    name: i18n('collapses.risks.menu'),
-    key: 'risk-management',
-    icon: <Icon>gpp_maybe</Icon>,
-    collapse: [
-      {
-        path: '/risk',
-        permissionRequired: permissions.riskRead,
-        name: i18n('entities.risk.menu'),
+        name: i18n('payment.expired.menu'),
         icon: <Icon>assignment_late</Icon>,
+        path: '/payment-expired',
+        permissionRequired: permissions.paymentRead,
       },
-
       {
-        path: '/risk-category',
-        permissionRequired: permissions.riskCategoryRead,
-        name: i18n('entities.riskCategory.menu'),
-        icon: <Icon>crisis_alert</Icon>,
+        name: i18n('payment.category.menu'),
+        icon: <Icon>money</Icon>,
+        path: '/payment-category',
+        permissionRequired: permissions.paymentRead,
+      },
+      {
+        name: i18n('payment.method.menu'),
+        icon: <Icon>payments</Icon>,
+        path: '/payment-method',
+        permissionRequired: permissions.paymentRead,
       },
     ],
   },
 
   {
-    path: '/product',
-    permissionRequired: permissions.productRead,
-    name: i18n('entities.product.menu'),
-    icon: <Icon>store</Icon>,
-  },
-
-  {
-    path: '/news-article',
-    key: 'news',
-    exact: true,
-    name: i18n('entities.newsArticle.menu'),
-    permissionRequired: permissions.newsArticleRead,
-    icon: <Icon>newspaper</Icon>,
-  },
-
-  visibleExtraMenus && {
-    path: '/news-favorite',
-    key: 'favorite',
-    exact: true,
-    name: i18n('entities.newsFavorite.menu'),
-    permissionRequired: permissions.newsFavoriteRead,
-    icon: <Icon>favorite</Icon>,
-  },
-
-  visibleExtraMenus && {
-    path: '/tag',
-    key: 'tag',
-    exact: true,
-    name: i18n('entities.tag.menu'),
-    permissionRequired: permissions.tagRead,
-    icon: <Icon>sell</Icon>,
-  },
-
-  {
-    name: i18n('collapses.documents.menu'),
-    key: 'documents',
-    icon: <Icon>folder</Icon>,
-    permissionRequired: permissions.documentRead,
+    key: 'class',
+    icon: <Icon>class</Icon>,
+    name: i18n('class.menu'),
+    permissionRequired: permissions.classRead,
     collapse: [
       {
-        path: '/document',
-        name: i18n('entities.document.menu'),
-        permissionRequired: permissions.documentRead,
-        icon: <Icon>upload_file</Icon>,
+        path: '/class',
+        name: i18n('class.menu'),
+        icon: <Icon>class</Icon>,
+        permissionRequired: permissions.classRead,
       },
       {
-        path: '/policy-template',
-        name: i18n('entities.policyTemplate.menu'),
-        permissionRequired: permissions.policyTemplateRead,
-        icon: <Icon>security</Icon>,
+        path: '/lesson',
+        name: i18n('lesson.menu'),
+        icon: <Icon>pool</Icon>,
+        permissionRequired: permissions.classRead,
       },
       {
-        path: '/policy',
-        name: i18n('entities.policy.menu'),
-        permissionRequired: permissions.policyRead,
-        icon: <Icon>policy</Icon>,
+        path: '/class-category',
+        name: i18n('class.category.menu'),
+        icon: <Icon>interests</Icon>,
+        permissionRequired: permissions.classRead,
       },
     ],
   },
 
   {
-    name: i18n('collapses.reports.menu'),
-    key: 'reports',
-    icon: <Icon>assessment</Icon>,
+    key: 'attendance',
+    icon: <Icon>how_to_reg</Icon>,
+    name: i18n('attendance.menu'),
+    permissionRequired: permissions.attendanceRead,
     collapse: [
       {
-        path: '/report/tasks-by-month',
-        permissionRequired: permissions.taskRead,
-        name: i18n('reports.tasksByMonth.menu'),
-        icon: <Icon>task</Icon>,
+        path: '/attendance',
+        name: i18n('attendance.class.menu'),
+        icon: <Icon>how_to_reg</Icon>,
+        permissionRequired: permissions.attendanceRead,
+      },
+      {
+        path: '/attendance-history',
+        name: i18n('attendance.history.menu'),
+        icon: <Icon>work_history</Icon>,
+        permissionRequired: permissions.attendanceRead,
       },
     ],
-  },*/
+  },
+
+  {
+    key: 'grade',
+    icon: <Icon>window</Icon>,
+    name: i18n('grade.menu'),
+    permissionRequired: permissions.gradeRead,
+    collapse: [
+      {
+        path: '/grade',
+        name: i18n('grade.menu'),
+        icon: <Icon>category</Icon>,
+        permissionRequired: permissions.gradeRead,
+      },
+      {
+        path: '/skill',
+        name: i18n('skill.menu'),
+        icon: <Icon>spoke</Icon>,
+        permissionRequired: permissions.gradeRead,
+      },
+    ],
+  },
+
+  {
+    key: 'property',
+    icon: <Icon>dataset</Icon>,
+    name: i18n('property.menu'),
+    permissionRequired: null,
+    collapse: [
+      {
+        path: '/pool',
+        icon: <Icon>pool</Icon>,
+        name: i18n('property.pool.menu'),
+        permissionRequired: permissions.poolRead,
+      },
+    ],
+  },
 
   {
     name: i18n('settings.menu'),
@@ -198,13 +176,18 @@ const menus = [
     collapse: [
       {
         path: '/settings',
-        name: i18n('settings.tenant'),
+        name: i18n('school.menu'),
         permissionRequired: permissions.settingsEdit,
-        icon: <Icon>room_preferences</Icon>,
+        icon: <Icon>school</Icon>,
       },
-
       {
-        path: '/audit-logs',
+        path: '/document',
+        name: i18n('document.menu'),
+        permissionRequired: permissions.settingsEdit,
+        icon: <Icon>folder</Icon>,
+      },
+      {
+        path: '/audit-log',
         name: i18n('auditLog.menu'),
         permissionRequired: permissions.auditLogRead,
         icon: <Icon>restore</Icon>,
@@ -230,15 +213,15 @@ const tenantRoutes = [
   {
     name: i18n('tenant.list.title'),
     path: '/tenant',
-    icon: <Icon>apps</Icon>,
+    icon: <Icon>school</Icon>,
   },
 ].filter(Boolean);
 
-const userRoutes = [
+const adminRoutes = [
   {
-    path: '/user',
-    name: i18n('user.menu'),
-    permissionRequired: permissions.userRead,
+    path: '/admin',
+    name: i18n('admin.menu'),
+    permissionRequired: permissions.adminRead,
     icon: <Icon>person</Icon>,
   },
 ].filter(Boolean);
@@ -256,6 +239,6 @@ export {
   menus,
   profileRoutes,
   tenantRoutes,
-  userRoutes,
+  adminRoutes,
   planRoutes,
 };

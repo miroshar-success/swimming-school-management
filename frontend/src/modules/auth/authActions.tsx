@@ -97,7 +97,7 @@ const authActions = {
   },
 
   doRegisterEmailAndPassword:
-    (email, password, roles) => async (dispatch) => {
+    (email, password) => async (dispatch) => {
       try {
         dispatch({ type: authActions.AUTH_START });
 
@@ -105,7 +105,6 @@ const authActions = {
           await service.registerWithEmailAndPassword(
             email,
             password,
-            roles,
           );
 
         AuthToken.set(token, true);

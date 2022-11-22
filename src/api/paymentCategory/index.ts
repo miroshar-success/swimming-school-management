@@ -1,0 +1,30 @@
+export default (app) => {
+  app.post(
+    `/tenant/:tenantId/payment-category`,
+    require('./paymentCategoryCreate').default,
+  );
+  app.put(
+    `/tenant/:tenantId/payment-category/:id`,
+    require('./paymentCategoryUpdate').default,
+  );
+  app.post(
+    `/tenant/:tenantId/payment-category/import`,
+    require('./paymentCategoryImport').default,
+  );
+  app.delete(
+    `/tenant/:tenantId/payment-category`,
+    require('./paymentCategoryDestroy').default,
+  );
+  app.get(
+    `/tenant/:tenantId/payment-category/autocomplete`,
+    require('./paymentCategoryAutocomplete').default,
+  );
+  app.get(
+    `/tenant/:tenantId/payment-category`,
+    require('./paymentCategoryList').default,
+  );
+  app.get(
+    `/tenant/:tenantId/payment-category/:id`,
+    require('./paymentCategoryFind').default,
+  );
+};

@@ -56,6 +56,7 @@ function DataTableHeadCell({
         borders: { borderWidth },
       }: Theme) => ({
         borderBottom: `${borderWidth[1]} solid ${light.main}`,
+        width: { width },
       })}
     >
       <MDBox

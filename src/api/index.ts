@@ -11,7 +11,6 @@ import cors from 'cors';
 import express from 'express';
 import helmet from 'helmet';
 import path from 'path';
-import setupSwaggerUI from './apiDocumentation';
 
 const app = express();
 
@@ -27,9 +26,6 @@ app.use(languageMiddleware);
 // Configures the authentication middleware
 // to set the currentUser to the requests
 app.use(authMiddleware);
-
-// Setup the Documentation
-setupSwaggerUI(app);
 
 // Default rate limiter
 const defaultRateLimiter = createRateLimiter({
@@ -81,9 +77,6 @@ const routes = express.Router();
 // Enable Passport for Social Sign-in
 authSocial(app, routes);
 
-require('./document').default(routes);
-require('./widget').default(routes);
-require('./schedule').default(routes);
 require('./mui').default(routes);
 require('./auditLog').default(routes);
 require('./auth').default(routes);
@@ -92,26 +85,15 @@ require('./tenant').default(routes);
 require('./file').default(routes);
 require('./user').default(routes);
 require('./settings').default(routes);
-require('./vendor').default(routes);
-require('./vendorCategory').default(routes);
-require('./task').default(routes);
-require('./taskInstance').default(routes);
-require('./taskPriority').default(routes);
-require('./taskList').default(routes);
-require('./note').default(routes);
-require('./risk').default(routes);
-require('./riskCategory').default(routes);
-require('./product').default(routes);
-require('./productCategory').default(routes);
-require('./productFavorite').default(routes);
-require('./organizationProfile').default(routes);
-require('./newsArticle').default(routes);
-require('./newsFavorite').default(routes);
-require('./tag').default(routes);
-require('./policyTemplate').default(routes);
-require('./policyTemplateFavorite').default(routes);
-require('./policy').default(routes);
-require('./policyFavorite').default(routes);
+require('./grade').default(routes);
+require('./skill').default(routes);
+require('./pool').default(routes);
+require('./class').default(routes);
+require('./lesson').default(routes);
+require('./classCategory').default(routes);
+require('./paymentCategory').default(routes);
+require('./paymentMethod').default(routes);
+require('./registration').default(routes);
 
 // Loads the Tenant if the :tenantId param is passed
 routes.param('tenantId', tenantMiddleware);

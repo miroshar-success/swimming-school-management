@@ -6,7 +6,7 @@ import {
   menus,
   profileRoutes,
   tenantRoutes,
-  userRoutes,
+  adminRoutes,
   planRoutes,
 } from 'src/view/menus';
 
@@ -527,7 +527,7 @@ function Menu({ ...rest }: Props): JSX.Element {
                       ? tenantRoutes
                       : [],
                   )
-                  .concat([...userRoutes, ...planRoutes]),
+                  .concat([...adminRoutes, ...planRoutes]),
               },
               { type: 'divider', key: 'divider-0' },
               ...menus,

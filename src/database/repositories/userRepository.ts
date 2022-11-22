@@ -10,7 +10,6 @@ import MongooseQueryUtils from '../utils/mongooseQueryUtils';
 import MongooseRepository from './mongooseRepository';
 import MuiRepository from './muiRepository';
 import SettingsRepository from './settingsRepository';
-import TaskPriorityRepositoryEx from './extend/taskPriorityRepositoryEx';
 import User from '../models/user';
 export default class UserRepository {
   static async create(data, options: IRepositoryOptions) {
@@ -27,6 +26,7 @@ export default class UserRepository {
           lastName: data.lastName || null,
           fullName: data.fullName || null,
           phoneNumber: data.phoneNumber || null,
+          studentNumber: data.studentNumber || null,
           importHash: data.importHash || null,
           avatars: data.avatars || [],
           street: data.street || null,
@@ -41,6 +41,10 @@ export default class UserRepository {
           guardianFullName: data.guardianFullName || null,
           guardianPhoneNumber:
             data.guardianPhoneNumber || null,
+          healthInsuranceCompany:
+            data.healthInsuranceCompany || null,
+          healthInsuranceNumber:
+            data.healthInsuranceNumber || null,
           comment: data.comment || null,
           createdBy: currentUser.id,
           updatedBy: currentUser.id,
@@ -75,10 +79,12 @@ export default class UserRepository {
       [
         {
           email: data.email,
+          password: data.password,
           firstName: data.firstName || null,
           lastName: data.lastName || null,
           fullName: data.fullName || null,
           phoneNumber: data.phoneNumber || null,
+          studentNumber: data.studentNumber || null,
           importHash: data.importHash || null,
           avatars: data.avatars || [],
           street: data.street || null,
@@ -93,6 +99,10 @@ export default class UserRepository {
           guardianFullName: data.guardianFullName || null,
           guardianPhoneNumber:
             data.guardianPhoneNumber || null,
+          healthInsuranceCompany:
+            data.healthInsuranceCompany || null,
+          healthInsuranceNumber:
+            data.healthInsuranceNumber || null,
           comment: data.comment || null,
         },
       ],
@@ -300,24 +310,7 @@ export default class UserRepository {
     await User(options.database).updateOne(
       { _id: id },
       {
-        firstName: data.firstName || null,
-        lastName: data.lastName || null,
-        fullName: data.fullName || null,
-        phoneNumber: data.phoneNumber || null,
-        avatars: data.avatars || [],
-        street: data.street || null,
-        postalCode: data.postalCode || null,
-        cologne: data.cologne || null,
-        city: data.city || null,
-        RFC: data.RFC || null,
-        CURP: data.CURP || null,
-        bloodType: data.bloodType || null,
-        sex: data.sex || null,
-        birthday: data.birthday || null,
-        guardianFullName: data.guardianFullName || null,
-        guardianPhoneNumber:
-          data.guardianPhoneNumber || null,
-        comment: data.comment || null,
+        ...data,
         updatedBy: currentUser.id,
       },
       options,
@@ -367,7 +360,8 @@ export default class UserRepository {
           },
         })
         .populate('avatars')
-        .populate('tenants.tenant'),
+        .populate('tenants.tenant')
+        .populate('lessons'),
       options,
     );
   }
@@ -507,7 +501,8 @@ export default class UserRepository {
           .limit(limitEscaped)
           .sort(sort)
           .populate('avatars')
-          .populate('tenants.tenant'),
+          .populate('tenants.tenant')
+          .populate('lessons'),
         options,
       );
 
@@ -535,6 +530,7 @@ export default class UserRepository {
   }
 
   static async findAllAutocomplete(
+    role,
     search,
     limit,
     options: IRepositoryOptions,
@@ -542,13 +538,42 @@ export default class UserRepository {
     const currentTenant =
       MongooseRepository.getCurrentTenant(options);
 
-    let criteriaAnd: Array<any> = [
-      {
+    let criteriaAnd: any = [];
+
+    if (role === 'admin') {
+      criteriaAnd.push({
         tenants: {
-          $elemMatch: { tenant: currentTenant.id },
+          $elemMatch: {
+            tenant: currentTenant.id,
+            roles: {
+              $elemMatch: { $in: ['admin', 'manager'] },
+            },
+          },
         },
-      },
-    ];
+      });
+    } else if (role === 'teacher') {
+      criteriaAnd.push({
+        tenants: {
+          $elemMatch: {
+            tenant: currentTenant.id,
+            roles: {
+              $elemMatch: { $in: ['teacher'] },
+            },
+          },
+        },
+      });
+    } else {
+      criteriaAnd.push({
+        tenants: {
+          $elemMatch: {
+            tenant: currentTenant.id,
+            roles: {
+              $elemMatch: { $in: ['student'] },
+            },
+          },
+        },
+      });
+    }
 
     if (search) {
       criteriaAnd.push({
@@ -586,7 +611,8 @@ export default class UserRepository {
           .limit(limitEscaped)
           .sort(sort)
           .populate('avatars')
-          .populate('tenants.tenant'),
+          .populate('tenants.tenant')
+          .populate('lessons'),
         options,
       );
 
@@ -661,7 +687,8 @@ export default class UserRepository {
       User(options.database)
         .findById(id)
         .populate('avatars')
-        .populate('tenants.tenant'),
+        .populate('tenants.tenant')
+        .populate('lessons'),
       options,
     );
   }
@@ -676,7 +703,8 @@ export default class UserRepository {
         User(options.database)
           .findById(id)
           .populate('avatars')
-          .populate('tenants.tenant'),
+          .populate('tenants.tenant')
+          .populate('lessons'),
         options,
       );
 
@@ -904,11 +932,6 @@ export default class UserRepository {
             currentTenant: userTenant.tenant,
             ...options,
           });
-          userTenant.tenant.defaultTaskPriority =
-            await TaskPriorityRepositoryEx.defaultPriority({
-              currentTenant: userTenant.tenant,
-              ...options,
-            });
         }),
       );
     }

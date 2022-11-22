@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 import { i18n } from 'src/i18n';
 import ToolbarWrapper from 'src/view/shared/styles/ToolbarWrapper';
 import { useSelector } from 'react-redux';
-import userSelectors from 'src/modules/user/userSelectors';
-import selectors from 'src/modules/user/view/userViewSelectors';
+import teacherSelectors from 'src/modules/teacher/teacherSelectors';
+import selectors from 'src/modules/teacher/view/teacherViewSelectors';
 import auditLogSelectors from 'src/modules/auditLog/auditLogSelectors';
 import { Button } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
@@ -17,12 +17,12 @@ function TeacherViewToolbar(props) {
   const { sidenavColor } = selectMuiSettings();
   const { match } = props;
 
-  const user = useSelector(selectors.selectUser);
+  const teacher = useSelector(selectors.selectTeacher);
   const hasPermissionToAuditLogs = useSelector(
     auditLogSelectors.selectPermissionToRead,
   );
   const hasPermissionToEdit = useSelector(
-    userSelectors.selectPermissionToEdit,
+    teacherSelectors.selectPermissionToEdit,
   );
 
   const id = match.params.id;
@@ -46,7 +46,7 @@ function TeacherViewToolbar(props) {
       {hasPermissionToAuditLogs && (
         <MDButton
           component={Link}
-          to={`/audit-logs?entityId=${encodeURIComponent(
+          to={`/audit-log?entityId=${encodeURIComponent(
             id,
           )}`}
           color={sidenavColor}
@@ -58,21 +58,23 @@ function TeacherViewToolbar(props) {
         </MDButton>
       )}
 
-      {user && user.email && hasPermissionToAuditLogs && (
-        <MDButton
-          component={Link}
-          type="button"
-          color={sidenavColor}
-          variant="outlined"
-          to={`/audit-logs?createdByEmail=${encodeURIComponent(
-            user.email,
-          )}`}
-          startIcon={<VisibilityIcon />}
-          size="small"
-        >
-          {i18n('teacher.view.activity')}
-        </MDButton>
-      )}
+      {teacher &&
+        teacher.email &&
+        hasPermissionToAuditLogs && (
+          <MDButton
+            component={Link}
+            type="button"
+            color={sidenavColor}
+            variant="outlined"
+            to={`/audit-log?createdByEmail=${encodeURIComponent(
+              teacher.email,
+            )}`}
+            startIcon={<VisibilityIcon />}
+            size="small"
+          >
+            {i18n('teacher.view.activity')}
+          </MDButton>
+        )}
     </ToolbarWrapper>
   );
 }

@@ -6,9 +6,9 @@ import HistoryIcon from '@mui/icons-material/History';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { i18n } from 'src/i18n';
 import auditLogSelectors from 'src/modules/auditLog/auditLogSelectors';
-import actions from 'src/modules/user/list/userListActions';
-import selectors from 'src/modules/user/list/userListSelectors';
-import userSelectors from 'src/modules/user/userSelectors';
+import actions from 'src/modules/student/list/studentListActions';
+import selectors from 'src/modules/student/list/studentListSelectors';
+import studentSelectors from 'src/modules/student/studentSelectors';
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -32,13 +32,13 @@ function StudentToolbar(props) {
     auditLogSelectors.selectPermissionToRead,
   );
   const hasPermissionToCreate = useSelector(
-    userSelectors.selectPermissionToCreate,
+    studentSelectors.selectPermissionToCreate,
   );
   const hasPermissionToImport = useSelector(
-    userSelectors.selectPermissionToImport,
+    studentSelectors.selectPermissionToImport,
   );
   const hasPermissionToDestroy = useSelector(
-    userSelectors.selectPermissionToDestroy,
+    studentSelectors.selectPermissionToDestroy,
   );
 
   const hasRows = useSelector(selectors.selectHasRows);
@@ -147,7 +147,7 @@ function StudentToolbar(props) {
           startIcon={<EmailIcon />}
           size="small"
         >
-          {i18n('student.invite')}
+          {i18n('student.create')}
         </MDButton>
       )}
 
@@ -171,7 +171,7 @@ function StudentToolbar(props) {
           variant="outlined"
           color={sidenavColor}
           component={Link}
-          to="/audit-logs?entityNames=student"
+          to="/audit-log?entityNames=student"
           startIcon={<HistoryIcon />}
           size="small"
         >

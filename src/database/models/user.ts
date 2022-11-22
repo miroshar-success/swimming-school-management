@@ -1,5 +1,7 @@
 import mongoose from 'mongoose';
 import TenantUserSchema from './schemas/tenantUserSchema';
+import AttendanceSchema from './schemas/AttendanceSchema';
+import PaymentSchema from './schemas/PaymentSchema';
 const Schema = mongoose.Schema;
 
 export default (database) => {
@@ -15,6 +17,7 @@ export default (database) => {
       firstName: { type: String, maxlength: 80 },
       lastName: { type: String, maxlength: 175 },
       phoneNumber: { type: String, maxlength: 24 },
+      studentNumber: { type: Number },
       street: {
         type: String,
         maxlength: 255,
@@ -36,12 +39,10 @@ export default (database) => {
       bloodType: {
         type: String,
         maxlength: 2,
-        enum: ['O', 'A', 'B', 'AB'],
       },
       sex: {
         type: String,
         maxlength: 6,
-        enum: ['male', 'female'],
       },
       birthday: { type: Date },
       guardianFullName: { type: String, maxlength: 255 },
@@ -86,6 +87,14 @@ export default (database) => {
         },
       ],
       tenants: [TenantUserSchema],
+      lessons: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: 'lesson',
+        },
+      ],
+      attendances: [AttendanceSchema],
+      payments: [PaymentSchema],
       jwtTokenInvalidBefore: { type: Date },
       createdBy: {
         type: Schema.Types.ObjectId,

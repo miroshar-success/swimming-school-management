@@ -6,26 +6,15 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import authSelectors from 'src/modules/auth/authSelectors';
 import AutocompleteInMemoryFormItem from 'src/view/shared/form/items/AutocompleteInMemoryFormItem';
 import MDBox from 'src/mui/components/MDBox';
-import selectors from 'src/modules/user/userSelectors';
-import UserService from 'src/modules/user/userService';
+import selectors from 'src/modules/teacher/teacherSelectors';
+import TeacherService from 'src/modules/teacher/teacherService';
 import {
   getUserAvatar,
   getUserNameOrEmailPrefix,
 } from 'src/modules/utils';
 
 function TeacherAutocompleteFormItem(props) {
-  const {
-    autoFocus,
-    label,
-    margin,
-    mode,
-    name,
-    required,
-    rerender: parentRerender,
-    shrink,
-    size,
-    variant,
-  } = props;
+  const { mode, name, rerender: parentRerender } = props;
 
   const { setValue, getValues } = useFormContext();
 
@@ -38,30 +27,34 @@ function TeacherAutocompleteFormItem(props) {
     selectors.selectPermissionToCreate,
   );
 
-  const currentUser = useSelector(
+  const currentTeacher = useSelector(
     authSelectors.selectCurrentUser,
   );
 
-  const onChangeUserAutocomplete = (value) => {
+  const onChangeTeacherAutocomplete = (value) => {
     setAvatar(
       (value && (value.avatar || getUserAvatar(value))) ??
         null,
     );
   };
 
-  const doSelectCurrentUser = () => {
-    const user = {
-      id: currentUser.id,
-      label: getUserNameOrEmailPrefix(currentUser),
-      avatar: getUserAvatar(currentUser),
+  const doSelectCurrentTeacher = () => {
+    const teacher = {
+      id: currentTeacher.id,
+      label: getUserNameOrEmailPrefix(currentTeacher),
+      avatar: getUserAvatar(currentTeacher),
     };
     if (isMultiple) {
-      setValue(name, [...(getValues()[name] || []), user], {
-        shouldValidate: false,
-        shouldDirty: true,
-      });
+      setValue(
+        name,
+        [...(getValues()[name] || []), teacher],
+        {
+          shouldValidate: false,
+          shouldDirty: true,
+        },
+      );
     } else {
-      setValue(name, user, {
+      setValue(name, teacher, {
         shouldValidate: false,
         shouldDirty: true,
       });
@@ -70,7 +63,10 @@ function TeacherAutocompleteFormItem(props) {
   };
 
   const fetchFn = (value, limit) => {
-    return UserService.fetchUserAutocomplete(value, limit);
+    return TeacherService.fetchTeacherAutocomplete(
+      value,
+      limit,
+    );
   };
 
   const mapper = {
@@ -135,10 +131,10 @@ function TeacherAutocompleteFormItem(props) {
           )}
           fetchFn={fetchFn}
           mapper={mapper}
-          onOpenModal={() => doSelectCurrentUser()}
+          onOpenModal={() => doSelectCurrentTeacher()}
           hasPermissionToCreate={hasPermissionToCreate}
           rerender={rerender}
-          onChange={onChangeUserAutocomplete}
+          onChange={onChangeTeacherAutocomplete}
           createButtonIcon={<AccountCircleIcon />}
         />
       </MDBox>

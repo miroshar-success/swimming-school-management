@@ -3,8 +3,8 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouteMatch } from 'react-router-dom';
 import { i18n } from 'src/i18n';
-import actions from 'src/modules/user/view/userViewActions';
-import selectors from 'src/modules/user/view/userViewSelectors';
+import actions from 'src/modules/student/view/studentViewActions';
+import selectors from 'src/modules/student/view/studentViewSelectors';
 import MDBox from 'src/mui/components/MDBox';
 import MDTypography from 'src/mui/components/MDTypography';
 import StudentView from 'src/view/student/view/StudentView';
@@ -15,7 +15,7 @@ function StudentViewPage(props) {
   const match = useRouteMatch();
 
   const loading = useSelector(selectors.selectLoading);
-  const user = useSelector(selectors.selectUser);
+  const student = useSelector(selectors.selectStudent);
 
   useEffect(() => {
     dispatch(actions.doFind(match.params.id));
@@ -36,7 +36,10 @@ function StudentViewPage(props) {
             </MDTypography>
             <StudentViewToolbar match={match} />
           </MDBox>
-          <StudentView loading={loading} user={user} />
+          <StudentView
+            loading={loading}
+            student={student}
+          />
         </MDBox>
       </Card>
     </>

@@ -11,10 +11,10 @@ import TextViewItem from 'src/view/shared/view/TextViewItem';
 import TeacherStatusView from 'src/view/teacher/view/TeacherStatusView';
 
 function TeacherView(props) {
-  const { user, loading } = props;
+  const { teacher, loading } = props;
   const { sidenavColor } = selectMuiSettings();
 
-  if (loading || !user) {
+  if (loading || !teacher) {
     return <Spinner />;
   }
 
@@ -28,7 +28,7 @@ function TeacherView(props) {
         >
           <LogoViewItem
             label={i18n('teacher.fields.avatars')}
-            value={user.avatars}
+            value={teacher.avatars}
           />
         </MDBox>
       </Grid>
@@ -43,34 +43,34 @@ function TeacherView(props) {
         <Grid item xs={12}>
           <TextViewItem
             label={i18n('teacher.fields.email')}
-            value={user.email}
+            value={teacher.email}
           />
         </Grid>
         <Grid container item spacing={1.6}>
           <Grid item xs={12} md={6} xl={6}>
             <TextViewItem
               label={i18n('teacher.fields.firstName')}
-              value={user.firstName}
+              value={teacher.firstName}
             />
           </Grid>
           <Grid item xs={12} md={6} xl={6}>
             <TextViewItem
               label={i18n('teacher.fields.lastName')}
-              value={user.lastName}
+              value={teacher.lastName}
             />
           </Grid>
         </Grid>
         <Grid item xs={12}>
           <TextViewItem
             label={i18n('teacher.fields.phoneNumber')}
-            value={user.phoneNumber}
+            value={teacher.phoneNumber}
             prefix={'+'}
           />
         </Grid>
         <Grid item xs={12}>
           <CustomViewItem
             label={i18n('teacher.fields.roles')}
-            value={user.roles}
+            value={teacher.roles}
             render={(value) =>
               value.map((roleId) => (
                 <MDBadgeDot
@@ -86,7 +86,7 @@ function TeacherView(props) {
           />
         </Grid>
         <Grid item xs={12}>
-          <TeacherStatusView value={user.status} />
+          <TeacherStatusView value={teacher.status} />
         </Grid>
       </Grid>
     </Grid>

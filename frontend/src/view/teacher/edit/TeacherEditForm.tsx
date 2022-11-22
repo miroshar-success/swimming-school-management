@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import actions from 'src/modules/user/form/userFormActions';
+import actions from 'src/modules/teacher/form/teacherFormActions';
 import CloseIcon from '@mui/icons-material/Close';
 import formActions from 'src/modules/form/formActions';
 import FormWrapper, {
@@ -16,7 +16,6 @@ import MDButton from 'src/mui/components/MDButton';
 import SaveIcon from '@mui/icons-material/Save';
 import SelectFormItem from 'src/view/shared/form/items/SelectFormItem';
 import UndoIcon from '@mui/icons-material/Undo';
-import userEnumerators from 'src/modules/user/userEnumerators';
 import yupFormSchemas from 'src/modules/shared/yup/yupFormSchemas';
 
 const schema = yup.object().shape({
@@ -30,7 +29,9 @@ function TeacherEditForm(props) {
 
   const { sidenavColor } = selectMuiSettings();
 
-  const [initialValues] = useState(() => props.user || {});
+  const [initialValues] = useState(
+    () => props.teacher || {},
+  );
 
   const form = useForm({
     resolver: yupResolver(schema),
@@ -40,7 +41,7 @@ function TeacherEditForm(props) {
 
   const onSubmit = (values) => {
     const data = {
-      id: props.user.id,
+      id: props.teacher.id,
       ...values,
     };
     delete data.email;
@@ -64,7 +65,7 @@ function TeacherEditForm(props) {
                 id="email"
                 name="email"
                 label={i18n('teacher.fields.email')}
-                value={props.user.email}
+                value={props.teacher.email}
                 fullWidth
                 margin="normal"
                 InputProps={{
@@ -75,20 +76,6 @@ function TeacherEditForm(props) {
                 }}
                 variant="standard"
                 size="small"
-              />
-            </Grid>
-            <Grid item lg={7} md={8} sm={12} xs={12}>
-              <SelectFormItem
-                name="roles"
-                label={i18n('teacher.fields.roles')}
-                options={userEnumerators.roles.map(
-                  (value) => ({
-                    value,
-                    label: i18n(`roles.${value}.label`),
-                  }),
-                )}
-                mode="multiple"
-                variant="standard"
               />
             </Grid>
           </Grid>

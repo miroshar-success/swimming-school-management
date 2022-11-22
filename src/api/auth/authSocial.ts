@@ -25,7 +25,6 @@ export default (app, routes) => {
           req.currentUser,
           req.body.invitationToken,
           req.body.tenantId,
-          [],
           req,
         );
 
