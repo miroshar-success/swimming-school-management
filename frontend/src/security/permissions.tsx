@@ -247,8 +247,8 @@ class Permissions {
           plans.enterprise,
         ],
       },
-      paymentAdd: {
-        id: 'paymentAdd',
+      paymentCreate: {
+        id: 'paymentCreate',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,
@@ -258,6 +258,15 @@ class Permissions {
       },
       paymentEdit: {
         id: 'paymentEdit',
+        allowedRoles: [roles.admin, roles.manager],
+        allowedPlans: [
+          plans.free,
+          plans.growth,
+          plans.enterprise,
+        ],
+      },
+      paymentDestroy: {
+        id: 'paymentDestroy',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,

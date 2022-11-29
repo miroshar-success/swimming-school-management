@@ -361,7 +361,12 @@ export default class UserRepository {
         })
         .populate('avatars')
         .populate('tenants.tenant')
-        .populate('lessons'),
+        .populate({
+          path: 'lessons',
+          populate: {
+            path: 'class',
+          },
+        }),
       options,
     );
   }
@@ -502,7 +507,12 @@ export default class UserRepository {
           .sort(sort)
           .populate('avatars')
           .populate('tenants.tenant')
-          .populate('lessons'),
+          .populate({
+            path: 'lessons',
+            populate: {
+              path: 'class',
+            },
+          }),
         options,
       );
 
@@ -612,7 +622,12 @@ export default class UserRepository {
           .sort(sort)
           .populate('avatars')
           .populate('tenants.tenant')
-          .populate('lessons'),
+          .populate({
+            path: 'lessons',
+            populate: {
+              path: 'class',
+            },
+          }),
         options,
       );
 
@@ -688,7 +703,12 @@ export default class UserRepository {
         .findById(id)
         .populate('avatars')
         .populate('tenants.tenant')
-        .populate('lessons'),
+        .populate({
+          path: 'lessons',
+          populate: {
+            path: 'class',
+          },
+        }),
       options,
     );
   }
@@ -704,7 +724,12 @@ export default class UserRepository {
           .findById(id)
           .populate('avatars')
           .populate('tenants.tenant')
-          .populate('lessons'),
+          .populate({
+            path: 'lessons',
+            populate: {
+              path: 'class',
+            },
+          }),
         options,
       );
 

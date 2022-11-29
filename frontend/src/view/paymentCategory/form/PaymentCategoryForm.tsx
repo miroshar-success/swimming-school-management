@@ -27,18 +27,6 @@ const schema = yup.object().shape({
       min: 1,
     },
   ),
-  duration: yupFormSchemas.integer(
-    i18n('paymentCategory.fields.duration'),
-    {
-      required: true,
-    },
-  ),
-  price: yupFormSchemas.integer(
-    i18n('paymentCategory.fields.price'),
-    {
-      required: true,
-    },
-  ),
 });
 
 function PaymentCategoryForm(props) {
@@ -49,8 +37,6 @@ function PaymentCategoryForm(props) {
 
     return {
       name: record.name,
-      duration: record.duration,
-      price: record.price,
     };
   });
 
@@ -82,28 +68,6 @@ function PaymentCategoryForm(props) {
               <InputFormItem
                 name="name"
                 label={i18n('paymentCategory.fields.name')}
-                required={true}
-                variant="standard"
-                fullWidth
-                autoFocus
-              />
-            </Grid>
-            <Grid item lg={6} md={8} sm={12} xs={12}>
-              <InputFormItem
-                name="duration"
-                label={i18n(
-                  'paymentCategory.fields.duration',
-                )}
-                required={true}
-                variant="standard"
-                fullWidth
-                autoFocus
-              />
-            </Grid>
-            <Grid item lg={6} md={8} sm={12} xs={12}>
-              <InputFormItem
-                name="price"
-                label={i18n('paymentCategory.fields.price')}
                 required={true}
                 variant="standard"
                 fullWidth

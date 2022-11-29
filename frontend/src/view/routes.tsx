@@ -351,20 +351,20 @@ const privateRoutes = [
     i18n: 'common.list',
     collapse: 'payment',
     parent: '/payment-breadcrumb',
-    //loader: () =>
-    //  import('src/view/payment/list/PaymentListPage'),
+    loader: () =>
+      import('src/view/payment/list/PaymentListPage'),
     permissionRequired: permissions.paymentRead,
     exact: true,
   },
 
   {
-    path: '/payment/:id/add',
-    i18n: 'payment.add.title',
+    path: '/payment/:id/create',
+    i18n: 'payment.create.title',
     collapse: 'payment',
     parent: '/payment',
-    //loader: () =>
-    //  import('src/view/payment/add/PaymentAddPage'),
-    permissionRequired: permissions.paymentAdd,
+    loader: () =>
+      import('src/view/payment/form/PaymentFormPage'),
+    permissionRequired: permissions.paymentCreate,
     exact: true,
   },
 
@@ -412,7 +412,7 @@ const privateRoutes = [
       import(
         'src/view/paymentCategory/form/PaymentCategoryFormPage'
       ),
-    permissionRequired: permissions.paymentAdd,
+    permissionRequired: permissions.paymentCreate,
     exact: true,
   },
 
@@ -464,7 +464,7 @@ const privateRoutes = [
       import(
         'src/view/paymentMethod/form/PaymentMethodFormPage'
       ),
-    permissionRequired: permissions.paymentAdd,
+    permissionRequired: permissions.paymentCreate,
     exact: true,
   },
 

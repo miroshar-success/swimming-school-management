@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
-import actions from 'src/modules/paymentCategory/list/paymentCategoryListActions';
+import actions from 'src/modules/student/list/studentListActions';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import FilterAccordion from 'src/view/shared/filter/FilterAccordion';
 import FilterPreview from 'src/view/shared/filter/FilterPreview';
@@ -23,21 +23,19 @@ import InputFormItem from 'src/view/shared/form/items/InputFormItem';
 import MDBox from 'src/mui/components/MDBox';
 import MDButton from 'src/mui/components/MDButton';
 import SearchIcon from '@mui/icons-material/Search';
-import SelectFormItem from 'src/view/shared/form/items/SelectFormItem';
-import selectors from 'src/modules/paymentCategory/list/paymentCategoryListSelectors';
+import selectors from 'src/modules/student/list/studentListSelectors';
 import UndoIcon from '@mui/icons-material/Undo';
 import yupFilterSchemas from 'src/modules/shared/yup/yupFilterSchemas';
-import DatePickerFormItem from 'src/view/shared/form/items/DatePickerFormItem';
 
 const schema = yup.object().shape({
   name: yupFilterSchemas.string(
-    i18n('paymentCategory.fields.name'),
+    i18n('payment.fields.name'),
   ),
 });
 
 const previewRenders = {
   name: {
-    label: i18n('paymentCategory.fields.name'),
+    label: i18n('payment.fields.name'),
     render: filterRenders.generic(),
   },
 };
@@ -46,7 +44,7 @@ const emptyValues = {
   name: '',
 };
 
-function PaymentCategoryListFilter(props) {
+function PaymentListFilter(props) {
   const { sidenavColor } = selectMuiSettings();
   const rawFilter = useSelector(selectors.selectRawFilter);
   const dispatch = useDispatch();
@@ -125,12 +123,10 @@ function PaymentCategoryListFilter(props) {
               onSubmit={form.handleSubmit(onSubmit)}
             >
               <Grid container spacing={1.6}>
-                <Grid item lg={7} md={8} xs={12}>
+                <Grid item lg={6} md={8} xs={12}>
                   <InputFormItem
                     name={'name'}
-                    label={i18n(
-                      'paymentCategory.fields.name',
-                    )}
+                    label={i18n('payment.fields.name')}
                     variant="standard"
                   />
                 </Grid>
@@ -167,4 +163,4 @@ function PaymentCategoryListFilter(props) {
   );
 }
 
-export default PaymentCategoryListFilter;
+export default PaymentListFilter;

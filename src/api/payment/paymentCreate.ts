@@ -10,6 +10,7 @@ export default async (req, res, next) => {
     );
 
     const payload = await new PaymentService(req).create(
+      req.body.id,
       req.body.data,
     );
 

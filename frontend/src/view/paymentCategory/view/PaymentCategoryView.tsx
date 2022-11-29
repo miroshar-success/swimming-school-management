@@ -17,18 +17,6 @@ function PaymentCategoryView(props) {
             value={record.name}
           />
         </Grid>
-        <Grid md={6} xs={12} item>
-          <TextViewItem
-            label={i18n('paymentCategory.fields.name')}
-            value={record.duration}
-          />
-        </Grid>
-        <Grid md={6} xs={12} item>
-          <TextViewItem
-            label={i18n('paymentCategory.fields.name')}
-            value={record.price}
-          />
-        </Grid>
         <Grid xs={12} item>
           <CreationInfo {...props} />
         </Grid>

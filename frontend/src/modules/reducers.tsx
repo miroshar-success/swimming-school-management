@@ -14,6 +14,7 @@ import skill from 'src/modules/skill/skillReducers';
 import classCategory from 'src/modules/classCategory/classCategoryReducers';
 import classReducers from 'src/modules/class/classReducers';
 import lesson from 'src/modules/lesson/lessonReducers';
+import payment from 'src/modules/payment/paymentReducers';
 import paymentCategory from 'src/modules/paymentCategory/paymentCategoryReducers';
 import paymentMethod from 'src/modules/paymentMethod/paymentMethodReducers';
 import { combineReducers } from 'redux';
@@ -38,6 +39,7 @@ export default (history) =>
     grade,
     skill,
     classCategory,
+    payment,
     paymentCategory,
     paymentMethod,
     class: classReducers,

@@ -204,7 +204,6 @@ const yupFormSchemas = {
           id: item.id,
           new: item.new || false,
           title: item.title,
-          tags: (item.tags || []).map((tag) => tag.id),
         }));
       });
 

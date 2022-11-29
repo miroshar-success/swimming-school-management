@@ -91,6 +91,7 @@ require('./pool').default(routes);
 require('./class').default(routes);
 require('./lesson').default(routes);
 require('./classCategory').default(routes);
+require('./payment').default(routes);
 require('./paymentCategory').default(routes);
 require('./paymentMethod').default(routes);
 require('./registration').default(routes);

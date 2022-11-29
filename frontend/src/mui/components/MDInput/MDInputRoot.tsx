@@ -105,7 +105,9 @@ export default styled(TextField)(
 
     return {
       backgroundColor: disabled
-        ? `${grey[200]} !important`
+        ? darkMode
+          ? `${grey[800]} !important`
+          : `${grey[200]} !important`
         : transparent.main,
       pointerEvents: disabled ? 'none' : 'auto',
       '& .MuiInputLabel-root.MuiInputLabel-outlined': {

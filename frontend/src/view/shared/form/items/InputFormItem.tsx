@@ -169,6 +169,7 @@ InputFormItem.propTypes = {
   margin: PropTypes.string,
   name: PropTypes.string,
   onChange: PropTypes.func,
+  onBlur: PropTypes.func,
   placeholder: PropTypes.string,
   prefix: PropTypes.string,
   required: PropTypes.bool,

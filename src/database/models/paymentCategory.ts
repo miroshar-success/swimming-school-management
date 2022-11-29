@@ -11,12 +11,6 @@ export default (database) => {
   const PaymentCategorySchema = new Schema(
     {
       name: { type: String, maxlength: 255 },
-      duration: {
-        type: Number,
-      },
-      price: {
-        type: Number,
-      },
       tenant: {
         type: Schema.Types.ObjectId,
         ref: 'tenant',

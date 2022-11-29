@@ -135,27 +135,6 @@ function PaymentCategoryListTable(props) {
               >
                 {i18n('paymentCategory.fields.name')}
               </DataTableHeadCell>
-              <DataTableHeadCell
-                onClick={() => doChangeSort('duration')}
-                sorted={
-                  sorter.field === 'duration'
-                    ? sorter.order
-                    : 'none'
-                }
-              >
-                {i18n('paymentCategory.fields.duration')}
-              </DataTableHeadCell>
-
-              <DataTableHeadCell
-                onClick={() => doChangeSort('price')}
-                sorted={
-                  sorter.field === 'price'
-                    ? sorter.order
-                    : 'none'
-                }
-              >
-                {i18n('paymentCategory.fields.price')}
-              </DataTableHeadCell>
             </TableRow>
           </MDBox>
           <TableBody>
@@ -251,12 +230,6 @@ function PaymentCategoryListTable(props) {
                   </DataTableBodyCell>
                   <DataTableBodyCell>
                     {row.name}
-                  </DataTableBodyCell>
-                  <DataTableBodyCell>
-                    {row.duration}
-                  </DataTableBodyCell>
-                  <DataTableBodyCell>
-                    {row.price}
                   </DataTableBodyCell>
                 </TableRow>
               ))}

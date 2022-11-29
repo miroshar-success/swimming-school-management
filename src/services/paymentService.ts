@@ -10,15 +10,15 @@ export default class PaymentService {
     this.options = options;
   }
 
-  async create(data) {
+  async create(id, data) {
     const session = await MongooseRepository.createSession(
       this.options.database,
     );
 
     try {
       const record = await PaymentUserRepository.create(
+        id,
         data,
-        this.options.currentUser,
         {
           ...this.options,
           session,

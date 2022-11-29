@@ -32,22 +32,23 @@ export default class PaymentUserRepository {
   }
 
   static async create(
+    userId,
     payment,
-    user,
     options: IRepositoryOptions,
   ) {
     await User(options.database).updateMany(
-      { _id: user.id },
+      { _id: userId },
       {
         $push: {
           payments: {
             category: payment.category || null,
             paymentMethod: payment.paymentMethod || null,
-            subCost: payment.subCost || null,
+            price: payment.price || null,
+            quantity: payment.quantity || null,
             VAT: payment.VAT || null,
             cost: payment.cost || null,
             month: payment.month || null,
-            classNumber: payment.classNumber || null,
+            lessonsNumber: payment.lessonsNumber || null,
           },
         },
       },

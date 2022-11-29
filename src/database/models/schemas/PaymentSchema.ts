@@ -10,11 +10,12 @@ const PaymentSchema = new Schema(
       type: String,
     },
     month: {
-      type: Number,
-      min: 0,
-      max: 12,
+      type: String,
     },
-    subCost: {
+    price: {
+      type: Number,
+    },
+    quantity: {
       type: Number,
     },
     VAT: {
@@ -23,7 +24,7 @@ const PaymentSchema = new Schema(
     cost: {
       type: Number,
     },
-    classNumber: {
+    lessonsNumber: {
       type: Number,
     },
   },
