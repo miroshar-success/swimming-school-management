@@ -15,13 +15,13 @@ const paymentDestroyActions = {
   DESTROY_ALL_SUCCESS: `${prefix}_DESTROY_ALL_SUCCESS`,
   DESTROY_ALL_ERROR: `${prefix}_DESTROY_ALL_ERROR`,
 
-  doDestroy: (id) => async (dispatch) => {
+  doDestroy: (userId, paymentId) => async (dispatch) => {
     try {
       dispatch({
         type: paymentDestroyActions.DESTROY_STARTED,
       });
 
-      await PaymentService.destroyAll([id]);
+      await PaymentService.destroyAll(userId, [paymentId]);
 
       dispatch({
         type: paymentDestroyActions.DESTROY_SUCCESS,
@@ -39,29 +39,30 @@ const paymentDestroyActions = {
     }
   },
 
-  doDestroyAll: (ids) => async (dispatch) => {
-    try {
-      dispatch({
-        type: paymentDestroyActions.DESTROY_ALL_STARTED,
-      });
+  doDestroyAll:
+    (userId, paymentIds) => async (dispatch) => {
+      try {
+        dispatch({
+          type: paymentDestroyActions.DESTROY_ALL_STARTED,
+        });
 
-      await PaymentService.destroyAll(ids);
+        await PaymentService.destroyAll(userId, paymentIds);
 
-      dispatch({
-        type: paymentDestroyActions.DESTROY_ALL_SUCCESS,
-      });
+        dispatch({
+          type: paymentDestroyActions.DESTROY_ALL_SUCCESS,
+        });
 
-      Message.success(i18n('payment.destroyAll.success'));
+        Message.success(i18n('payment.destroyAll.success'));
 
-      getHistory().push('/payment');
-    } catch (error) {
-      Errors.handle(error);
+        getHistory().push('/payment');
+      } catch (error) {
+        Errors.handle(error);
 
-      dispatch({
-        type: paymentDestroyActions.DESTROY_ALL_ERROR,
-      });
-    }
-  },
+        dispatch({
+          type: paymentDestroyActions.DESTROY_ALL_ERROR,
+        });
+      }
+    },
 };
 
 export default paymentDestroyActions;

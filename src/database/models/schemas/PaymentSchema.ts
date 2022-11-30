@@ -4,10 +4,14 @@ const Schema = mongoose.Schema;
 const PaymentSchema = new Schema(
   {
     category: {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref: 'paymentCategory',
+      required: true,
     },
     paymentMethod: {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref: 'paymentMethod',
+      required: true,
     },
     month: {
       type: String,

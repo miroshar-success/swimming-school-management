@@ -9,7 +9,10 @@ export default async (req, res, next) => {
       Permissions.values.paymentDestroy,
     );
 
-    await new PaymentService(req).destroyAll(req.query.ids);
+    await new PaymentService(req).destroyAll(
+      req.query.userId,
+      req.query.paymentIds,
+    );
 
     const payload = true;
 

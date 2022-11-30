@@ -18,9 +18,10 @@ export default class PaymentService {
     return response.data;
   }
 
-  static async destroyAll(ids) {
+  static async destroyAll(userId, paymentIds) {
     const params = {
-      ids,
+      userId,
+      paymentIds,
     };
 
     const tenantId = AuthCurrentTenant.get();

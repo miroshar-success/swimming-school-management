@@ -372,11 +372,25 @@ const privateRoutes = [
     path: '/payment-history',
     i18n: 'payment.history.title',
     collapse: 'payment',
-    parent: '/payment',
-    //loader: () =>
-    //  import('src/view/paymentHistory/PaymentHistoryPage'),
+    parent: '/payment-breadcrumb',
+    loader: () =>
+      import(
+        'src/view/paymentHistory/list/PaymentHistoryListPage'
+      ),
     permissionRequired: permissions.paymentRead,
     exact: true,
+  },
+
+  {
+    path: '/payment-history/:userId/:paymentId',
+    i18n: 'payment.history.view.title',
+    collapse: 'payment',
+    parent: '/payment-history',
+    loader: () =>
+      import(
+        'src/view/paymentHistory/view/PaymentHistoryViewPage'
+      ),
+    permissionRequired: permissions.paymentRead,
   },
 
   {

@@ -361,6 +361,8 @@ export default class UserRepository {
         })
         .populate('avatars')
         .populate('tenants.tenant')
+        .populate('payments.category')
+        .populate('payments.paymentMethod')
         .populate({
           path: 'lessons',
           populate: {
@@ -507,6 +509,8 @@ export default class UserRepository {
           .sort(sort)
           .populate('avatars')
           .populate('tenants.tenant')
+          .populate('payments.category')
+          .populate('payments.paymentMethod')
           .populate({
             path: 'lessons',
             populate: {
@@ -622,6 +626,8 @@ export default class UserRepository {
           .sort(sort)
           .populate('avatars')
           .populate('tenants.tenant')
+          .populate('payments.category')
+          .populate('payments.paymentMethod')
           .populate({
             path: 'lessons',
             populate: {
@@ -703,6 +709,8 @@ export default class UserRepository {
         .findById(id)
         .populate('avatars')
         .populate('tenants.tenant')
+        .populate('payments.category')
+        .populate('payments.paymentMethod')
         .populate({
           path: 'lessons',
           populate: {
@@ -724,6 +732,8 @@ export default class UserRepository {
           .findById(id)
           .populate('avatars')
           .populate('tenants.tenant')
+          .populate('payments.category')
+          .populate('payments.paymentMethod')
           .populate({
             path: 'lessons',
             populate: {

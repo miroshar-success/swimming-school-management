@@ -206,7 +206,7 @@ function RegistrationTable() {
                           <IconButton
                             size="small"
                             component={Link}
-                            to={`/payment/${row.id}/add`}
+                            to={`/payment/${row.id}/create`}
                             color={sidenavColor}
                           >
                             <PriceCheckIcon />

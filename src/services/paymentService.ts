@@ -41,21 +41,17 @@ export default class PaymentService {
     }
   }
 
-  async destroyAll(ids) {
+  async destroyAll(userId, paymentIds) {
     const session = await MongooseRepository.createSession(
       this.options.database,
     );
 
     try {
-      for (const id of ids) {
-        await PaymentUserRepository.destroy(
-          id,
-          this.options.currentUser.id,
-          {
-            ...this.options,
-            session,
-          },
-        );
+      for (const id of paymentIds) {
+        await PaymentUserRepository.destroy(id, userId, {
+          ...this.options,
+          session,
+        });
       }
 
       await MongooseRepository.commitTransaction(session);
