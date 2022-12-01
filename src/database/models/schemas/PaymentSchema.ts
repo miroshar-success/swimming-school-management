@@ -13,8 +13,11 @@ const PaymentSchema = new Schema(
       ref: 'paymentMethod',
       required: true,
     },
+    year: {
+      type: Number,
+    },
     month: {
-      type: String,
+      type: Number,
     },
     price: {
       type: Number,

@@ -55,11 +55,16 @@ const schema = yup.object().shape({
   VAT: yupFormSchemas.decimal(i18n('payment.fields.VAT'), {
     required: true,
   }),
-  month: yupFormSchemas.enumerator(
+  year: yupFormSchemas.integer(
+    i18n('payment.fields.year'),
+    {
+      required: true,
+    },
+  ),
+  month: yupFormSchemas.integer(
     i18n('payment.fields.month'),
     {
       required: true,
-      options: paymentEnumerators.months,
     },
   ),
   paymentMethod: yupFormSchemas.relationToOne(
@@ -92,7 +97,8 @@ function PaymentForm(props) {
       price: 0,
       quantity: 0,
       VAT: 0,
-      month: '',
+      year: new Date().getFullYear(),
+      month: new Date().getMonth(),
       paymentMethod: '',
       lessonsNumber: '',
       cost: 0,
@@ -106,6 +112,7 @@ function PaymentForm(props) {
   });
 
   const onSubmit = (values) => {
+    console.log(values);
     props.onSubmit(props.record?.id, values);
   };
 
@@ -215,15 +222,32 @@ function PaymentForm(props) {
                           fullWidth
                         />
                       </Grid>
-                      <Grid item md={4} xs={12}>
+                      <Grid item md={3} xs={12}>
+                        <SelectFormItem
+                          name="year"
+                          label={i18n(
+                            'payment.fields.year',
+                          )}
+                          options={paymentEnumerators.years.map(
+                            (value) => ({
+                              value,
+                              label: value.toString(),
+                            }),
+                          )}
+                          required={true}
+                          mode="single"
+                          variant="standard"
+                        />
+                      </Grid>
+                      <Grid item md={3} xs={12}>
                         <SelectFormItem
                           name="month"
                           label={i18n(
                             'payment.fields.month',
                           )}
                           options={paymentEnumerators.months.map(
-                            (value) => ({
-                              value,
+                            (value, index) => ({
+                              value: index,
                               label: value,
                             }),
                           )}
@@ -232,7 +256,7 @@ function PaymentForm(props) {
                           variant="standard"
                         />
                       </Grid>
-                      <Grid item md={4} xs={12}>
+                      <Grid item md={2} xs={12}>
                         <InputFormItem
                           name="lessonsNumber"
                           label={i18n(

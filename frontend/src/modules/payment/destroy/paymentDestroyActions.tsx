@@ -29,7 +29,7 @@ const paymentDestroyActions = {
 
       Message.success(i18n('payment.destroy.success'));
 
-      getHistory().push('/payment');
+      getHistory().push('/payment-history');
     } catch (error) {
       Errors.handle(error);
 
@@ -54,7 +54,7 @@ const paymentDestroyActions = {
 
         Message.success(i18n('payment.destroyAll.success'));
 
-        getHistory().push('/payment');
+        getHistory().push('/payment-history');
       } catch (error) {
         Errors.handle(error);
 

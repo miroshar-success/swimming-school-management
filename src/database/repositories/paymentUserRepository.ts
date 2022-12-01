@@ -47,6 +47,7 @@ export default class PaymentUserRepository {
             quantity: payment.quantity || 0,
             VAT: payment.VAT || 0,
             cost: payment.cost || 0,
+            year: payment.year || null,
             month: payment.month || null,
             lessonsNumber: payment.lessonsNumber || null,
           },

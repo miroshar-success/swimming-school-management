@@ -220,24 +220,23 @@ function PaymentHistoryListTable(props) {
         showTotalEntries
       />
 
-      {recordUserIdToDestroy &&
-        recordPaymentIdToDestroy(
-          <ConfirmModal
-            title={i18n('common.areYouSure')}
-            onConfirm={() =>
-              doDestroy(
-                recordUserIdToDestroy,
-                recordPaymentIdToDestroy,
-              )
-            }
-            onClose={() => {
-              setRecordUserIdToDestroy(null);
-              setRecordPaymentIdToDestroy(null);
-            }}
-            okText={i18n('common.yes')}
-            cancelText={i18n('common.no')}
-          />,
-        )}
+      {recordUserIdToDestroy && recordPaymentIdToDestroy && (
+        <ConfirmModal
+          title={i18n('common.areYouSure')}
+          onConfirm={() =>
+            doDestroy(
+              recordUserIdToDestroy,
+              recordPaymentIdToDestroy,
+            )
+          }
+          onClose={() => {
+            setRecordUserIdToDestroy(null);
+            setRecordPaymentIdToDestroy(null);
+          }}
+          okText={i18n('common.yes')}
+          cancelText={i18n('common.no')}
+        />
+      )}
     </>
   );
 }
