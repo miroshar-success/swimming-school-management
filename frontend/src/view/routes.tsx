@@ -395,11 +395,26 @@ const privateRoutes = [
 
   {
     path: '/payment-expired',
-    i18n: 'payment.expired.title',
+    i18n: 'payment.expired.list.title',
     collapse: 'payment',
     parent: '/payment-breadcrumb',
-    //loader: () =>
-    //  import('src/view/paymentExpired/PaymentExpiredPage'),
+    loader: () =>
+      import(
+        'src/view/paymentExpired/list/PaymentExpiredListPage'
+      ),
+    permissionRequired: permissions.paymentRead,
+    exact: true,
+  },
+
+  {
+    path: '/payment-expired/:id',
+    i18n: 'payment.expired.view.title',
+    collapse: 'payment',
+    parent: '/payment-expired',
+    loader: () =>
+      import(
+        'src/view/paymentExpired/view/PaymentExpiredViewPage'
+      ),
     permissionRequired: permissions.paymentRead,
     exact: true,
   },

@@ -1,22 +1,17 @@
-import UserEditor from '../../services/user/userEditor';
 import PermissionChecker from '../../services/user/permissionChecker';
 import ApiResponseHandler from '../apiResponseHandler';
 import Permissions from '../../security/permissions';
-import UserRepository from '../../database/repositories/userRepository';
+import PaymentService from '../../services/paymentService';
 
-export default async (req, res) => {
+export default async (req, res, next) => {
   try {
     new PermissionChecker(req).validateHas(
-      Permissions.values.userEdit,
+      Permissions.values.paymentRead,
     );
 
-    await UserRepository.registerLessons(
-      req.body.data.id,
-      req.body.data,
+    const payload = await new PaymentService(
       req,
-    );
-
-    const payload = true;
+    ).expiredFindAll();
 
     await ApiResponseHandler.success(req, res, payload);
   } catch (error) {

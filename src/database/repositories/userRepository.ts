@@ -331,6 +331,38 @@ export default class UserRepository {
     return user;
   }
 
+  static async registerLessons(
+    id,
+    data,
+    options: IRepositoryOptions,
+  ) {
+    const currentUser =
+      MongooseRepository.getCurrentUser(options);
+
+    await User(options.database).updateOne(
+      { _id: id },
+      {
+        ...data,
+        updatedBy: currentUser.id,
+      },
+      options,
+    );
+
+    const user = await this.findById(id, options);
+
+    await AuditLogRepository.log(
+      {
+        entityName: 'user',
+        entityId: id,
+        action: AuditLogRepository.UPDATE,
+        values: user,
+      },
+      options,
+    );
+
+    return user;
+  }
+
   static async findByEmail(
     email,
     options: IRepositoryOptions,

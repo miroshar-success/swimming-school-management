@@ -249,7 +249,7 @@ function RegistrationTable() {
                     {row.fullName}
                   </DataTableBodyCell>
                   <DataTableBodyCell>
-                    {row.class}
+                    {row.lessons[0]?.class.name}
                   </DataTableBodyCell>
                   <DataTableBodyCell>
                     {moment(row.createdAt).format(

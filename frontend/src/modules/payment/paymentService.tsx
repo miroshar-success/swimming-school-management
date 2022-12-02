@@ -35,4 +35,14 @@ export default class PaymentService {
 
     return response.data;
   }
+
+  static async fetchExpiredList() {
+    const tenantId = AuthCurrentTenant.get();
+
+    const response = await authAxios.get(
+      `/tenant/${tenantId}/expired`,
+    );
+
+    return response.data;
+  }
 }

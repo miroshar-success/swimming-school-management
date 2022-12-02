@@ -30,6 +30,7 @@ import Spinner from 'src/view/shared/Spinner';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableRow from '@mui/material/TableRow';
+import paymentEnumerators from 'src/modules/payment/paymentEnumerators';
 
 function PaymentHistoryListTable(props) {
   const { sidenavColor } = selectMuiSettings();
@@ -195,7 +196,11 @@ function PaymentHistoryListTable(props) {
                       {row.fullName}
                     </DataTableBodyCell>
                     <DataTableBodyCell>
-                      {payment.month}
+                      {
+                        paymentEnumerators.months[
+                          payment.month
+                        ]
+                      }
                     </DataTableBodyCell>
                     <DataTableBodyCell>
                       {moment(payment.createdAt).format(

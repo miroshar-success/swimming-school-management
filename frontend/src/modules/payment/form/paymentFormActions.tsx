@@ -4,7 +4,7 @@ import Message from 'src/view/shared/message';
 import { getHistory } from 'src/modules/store';
 import { i18n } from 'src/i18n';
 
-const prefix = 'LESSON_FORM';
+const prefix = 'PAYMENT_FORM';
 
 const paymentFormActions = {
   INIT_STARTED: `${prefix}_INIT_STARTED`,

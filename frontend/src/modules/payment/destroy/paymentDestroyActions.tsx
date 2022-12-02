@@ -4,7 +4,7 @@ import { i18n } from 'src/i18n';
 import { getHistory } from 'src/modules/store';
 import Message from 'src/view/shared/message';
 
-const prefix = 'LESSON_DESTROY';
+const prefix = 'PAYMENT_DESTROY';
 
 const paymentDestroyActions = {
   DESTROY_STARTED: `${prefix}_DESTROY_STARTED`,

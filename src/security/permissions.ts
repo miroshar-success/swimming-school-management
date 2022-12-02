@@ -493,6 +493,15 @@ class Permissions {
           plans.enterprise,
         ],
       },
+      paymentRead: {
+        id: 'paymentRead',
+        allowedRoles: [roles.admin, roles.manager],
+        allowedPlans: [
+          plans.free,
+          plans.growth,
+          plans.enterprise,
+        ],
+      },
       paymentMethodAutocomplete: {
         id: 'paymentMethodAutocomplete',
         allowedRoles: [roles.admin, roles.manager],

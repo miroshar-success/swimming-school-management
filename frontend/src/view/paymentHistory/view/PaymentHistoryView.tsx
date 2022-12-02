@@ -10,6 +10,7 @@ import Spinner from 'src/view/shared/Spinner';
 import TextViewItem from 'src/view/shared/view/TextViewItem';
 import moment from 'moment';
 import { DEFAULT_MOMENT_FORMAT_DATE_ONLY } from 'src/config/common';
+import paymentEnumerators from 'src/modules/payment/paymentEnumerators';
 
 function PaymentHistoryView(props) {
   const { student, paymentId, loading } = props;
@@ -92,20 +93,6 @@ function PaymentHistoryView(props) {
         </Grid>
         <Grid item xs={12} md={4}>
           <TextViewItem
-            label={i18n('payment.fields.paymentDate')}
-            value={moment(payment.createdAt).format(
-              DEFAULT_MOMENT_FORMAT_DATE_ONLY,
-            )}
-          />
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <TextViewItem
-            label={i18n('payment.fields.month')}
-            value={payment.month}
-          />
-        </Grid>
-        <Grid item xs={12} md={4}>
-          <TextViewItem
             label={i18n('payment.fields.VAT')}
             value={payment.VAT}
           />
@@ -114,6 +101,26 @@ function PaymentHistoryView(props) {
           <TextViewItem
             label={i18n('payment.fields.total')}
             value={payment.cost}
+          />
+        </Grid>
+        <Grid item xs={12} md={4}>
+          <TextViewItem
+            label={i18n('payment.fields.paymentDate')}
+            value={moment(payment.createdAt).format(
+              DEFAULT_MOMENT_FORMAT_DATE_ONLY,
+            )}
+          />
+        </Grid>
+        <Grid item xs={12} md={2}>
+          <TextViewItem
+            label={i18n('payment.fields.month')}
+            value={payment.year}
+          />
+        </Grid>
+        <Grid item xs={12} md={2}>
+          <TextViewItem
+            label={i18n('payment.fields.month')}
+            value={paymentEnumerators.months[payment.month]}
           />
         </Grid>
       </Grid>

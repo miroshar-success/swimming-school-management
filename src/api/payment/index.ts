@@ -7,4 +7,8 @@ export default (app) => {
     `/tenant/:tenantId/payment`,
     require('./paymentDestroy').default,
   );
+  app.get(
+    `/tenant/:tenantId/expired`,
+    require('./expiredList').default,
+  );
 };
