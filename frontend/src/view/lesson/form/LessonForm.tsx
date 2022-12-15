@@ -22,6 +22,8 @@ import ImagesFormItem from 'src/view/shared/form/items/ImagesFormItem';
 import Storage from 'src/security/storage';
 import InputFormItem from 'src/view/shared/form/items/InputFormItem';
 import TimePickerFormItem from 'src/view/shared/form/items/TimePickerFormItem';
+import lessonEnumerators from 'src/modules/lesson/lessonEnumerators';
+import SelectFormItem from 'src/view/shared/form/items/SelectFormItem';
 
 const schema = yup.object().shape({
   class: yupFormSchemas.relationToOne(
@@ -30,7 +32,7 @@ const schema = yup.object().shape({
       required: true,
     },
   ),
-  day: yupFormSchemas.string(i18n('lesson.fields.day'), {
+  day: yupFormSchemas.integer(i18n('lesson.fields.day'), {
     required: true,
   }),
   time: yupFormSchemas.datetime(
@@ -98,13 +100,18 @@ function LessonForm(props) {
               />
             </Grid>
             <Grid item lg={6} md={8} sm={12} xs={12}>
-              <InputFormItem
+              <SelectFormItem
                 name="day"
                 label={i18n('lesson.fields.day')}
+                options={lessonEnumerators.day.map(
+                  (value, index) => ({
+                    value: index,
+                    label: value,
+                  }),
+                )}
                 required={true}
+                mode="single"
                 variant="standard"
-                fullWidth
-                autoFocus
               />
             </Grid>
             <Grid item lg={6} md={8} sm={12} xs={12}>

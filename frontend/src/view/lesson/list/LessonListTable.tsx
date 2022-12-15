@@ -15,7 +15,7 @@ import destroySelectors from 'src/modules/lesson/destroy/lessonDestroySelectors'
 import EditIcon from '@mui/icons-material/Edit';
 import IconButton from '@mui/material/IconButton';
 import MDBox from 'src/mui/components/MDBox';
-
+import lessonEnumerators from 'src/modules/lesson/lessonEnumerators';
 import MDTypography from 'src/mui/components/MDTypography';
 import lessonSelectors from 'src/modules/lesson/lessonSelectors';
 import Pagination from 'src/view/shared/table/Pagination';
@@ -252,7 +252,7 @@ function LessonListTable(props) {
                     <ClassListItem value={row.class} />
                   </DataTableBodyCell>
                   <DataTableBodyCell>
-                    {row.day}
+                    {lessonEnumerators.day[row.day]}
                   </DataTableBodyCell>
                   <DataTableBodyCell>
                     {row.time}

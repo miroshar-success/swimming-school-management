@@ -31,6 +31,7 @@ import DatePickerFormItem from 'src/view/shared/form/items/DatePickerFormItem';
 import GradeAutocompleteFormItem from 'src/view/grade/autocomplete/GradeAutocompleteFormItem';
 import ClassAutocompleteFormItem from 'src/view/class/autocomplete/ClassAutocompleteFormItem';
 import TeacherAutocompleteFormItem from 'src/view/teacher/autocomplete/TeacherAutocompleteFormItem';
+import lessonEnumerators from 'src/modules/lesson/lessonEnumerators';
 
 const schema = yup.object().shape({
   class: yupFilterSchemas.relationToOne(
@@ -158,9 +159,16 @@ function LessonListFilter(props) {
                   />
                 </Grid>
                 <Grid item lg={6} md={8} xs={12}>
-                  <InputFormItem
+                  <SelectFormItem
                     name={'day'}
                     label={i18n('lesson.fields.day')}
+                    options={lessonEnumerators.day.map(
+                      (value, index) => ({
+                        value: index,
+                        label: value,
+                      }),
+                    )}
+                    mode="single"
                     variant="standard"
                   />
                 </Grid>

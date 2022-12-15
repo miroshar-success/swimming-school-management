@@ -19,7 +19,7 @@ export default (database) => {
         ref: 'user',
       },
       day: {
-        type: String,
+        type: Number,
       },
       time: {
         type: Date,
