@@ -100,25 +100,6 @@ class LessonRepository {
       throw new Error404();
     }
 
-    let users =
-      await MongooseRepository.wrapWithSessionIfExists(
-        User(options.database).countDocuments({
-          lessons: {
-            $in: [id],
-          },
-          tenant: currentTenant.id,
-        }),
-        options,
-      );
-
-    if (users) {
-      throw new Error400(
-        currentTenant.language,
-        'errors.inUse.message',
-        record.name,
-      );
-    }
-
     await Lesson(options.database).deleteOne(
       { _id: id },
       options,
