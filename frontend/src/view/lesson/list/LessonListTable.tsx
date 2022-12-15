@@ -4,6 +4,8 @@ import { selectMuiSettings } from 'src/modules/mui/muiSelectors';
 import { TableContainer, Tooltip } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
+import moment from 'moment';
+import { DEFAULT_MOMENT_FORMAT_DATE_ONLY } from 'src/config/common';
 import actions from 'src/modules/lesson/list/lessonListActions';
 import Checkbox from '@mui/material/Checkbox';
 import ConfirmModal from 'src/view/shared/modals/ConfirmModal';
@@ -255,7 +257,9 @@ function LessonListTable(props) {
                     {lessonEnumerators.day[row.day]}
                   </DataTableBodyCell>
                   <DataTableBodyCell>
-                    {row.time}
+                    {moment(row.time).format(
+                      DEFAULT_MOMENT_FORMAT_DATE_ONLY,
+                    )}
                   </DataTableBodyCell>
                   <DataTableBodyCell>
                     <TeacherListItem value={row.teacher} />

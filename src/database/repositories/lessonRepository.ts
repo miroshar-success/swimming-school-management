@@ -334,10 +334,22 @@ class LessonRepository {
       .limit(limitEscaped)
       .sort(sort);
 
+    const day = [
+      'Sunday',
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+    ];
+
     return records.map((record) => ({
       id: record.id,
       label:
-        record.day + ' ' + moment(record.time).format('LT'),
+        day[record.day] +
+        ' ' +
+        moment(record.time).format('LT'),
     }));
   }
 

@@ -2,6 +2,9 @@ import Error400 from '../errors/Error400';
 import MongooseRepository from '../database/repositories/mongooseRepository';
 import { IServiceOptions } from './IServiceOptions';
 import AttendanceUserRepository from '../database/repositories/attendanceUserRepository';
+import LessonRepository from '../database/repositories/lessonRepository';
+import Lesson from '../database/models/lesson';
+import { Mongoose } from 'mongoose';
 
 export default class AttendanceService {
   options: IServiceOptions;
@@ -37,6 +40,64 @@ export default class AttendanceService {
         'attendance',
       );
 
+      throw error;
+    }
+  }
+
+  async listLessons(filter) {
+    const session = await MongooseRepository.createSession(
+      this.options.database,
+    );
+
+    try {
+      const lessons = await Lesson(this.options.database)
+        .find({ day: new Date().getDay() })
+        .populate('class')
+        .toObject();
+
+      await MongooseRepository.commitTransaction(session);
+
+      if (filter) {
+        let first = 0;
+        let last = 0;
+        let current = 0;
+        let result: Array<any> = [];
+        if (filter === 'finished') {
+          for (let i = 0; i < lessons.length; i++) {
+            last =
+              first + lessons[i].class.duration * 60 * 1000;
+            current =
+              new Date().getTime() % (3600 * 1000 * 24);
+            if (last < current) result.push(lessons[i]);
+          }
+        } else if (filter === 'progress') {
+          for (let i = 0; i < lessons.length; i++) {
+            first =
+              lessons[i].time.getTime() %
+              (3600 * 1000 * 24);
+            last =
+              first + lessons[i].class.duration * 60 * 1000;
+            current =
+              new Date().getTime() % (3600 * 1000 * 24);
+            if (first <= current && current <= last)
+              result.push(lessons[i]);
+          }
+        } else if (filter === 'upcoming') {
+          for (let i = 0; i < lessons.length; i++) {
+            first =
+              lessons[i].time.getTime() %
+              (3600 * 1000 * 24);
+            last =
+              first + lessons[i].class.duration * 60 * 1000;
+            current =
+              new Date().getTime() % (3600 * 1000 * 24);
+            if (current < first) result.push(lessons[i]);
+          }
+        }
+        return result;
+      } else return lessons;
+    } catch (error) {
+      await MongooseRepository.abortTransaction(session);
       throw error;
     }
   }

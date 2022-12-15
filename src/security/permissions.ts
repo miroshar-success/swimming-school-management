@@ -475,6 +475,15 @@ class Permissions {
           plans.enterprise,
         ],
       },
+      attendanceRead: {
+        id: 'attendanceRead',
+        allowedRoles: [roles.admin, roles.manager],
+        allowedPlans: [
+          plans.free,
+          plans.growth,
+          plans.enterprise,
+        ],
+      },
       paymentCreate: {
         id: 'paymentCreate',
         allowedRoles: [roles.admin, roles.manager],
