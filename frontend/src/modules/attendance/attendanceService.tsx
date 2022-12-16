@@ -1,40 +1,7 @@
 import authAxios from 'src/modules/shared/axios/authAxios';
 import AuthCurrentTenant from 'src/modules/auth/authCurrentTenant';
 
-export default class ClassService {
-  static async update(id, data) {
-    const body = {
-      id,
-      data,
-    };
-
-    const tenantId = AuthCurrentTenant.get();
-
-    const response = await authAxios.put(
-      `/tenant/${tenantId}/class/${id}`,
-      body,
-    );
-
-    return response.data;
-  }
-
-  static async destroyAll(ids) {
-    const params = {
-      ids,
-    };
-
-    const tenantId = AuthCurrentTenant.get();
-
-    const response = await authAxios.delete(
-      `/tenant/${tenantId}/class`,
-      {
-        params,
-      },
-    );
-
-    return response.data;
-  }
-
+export default class AttendanceService {
   static async create(data) {
     const body = {
       data,
@@ -42,8 +9,8 @@ export default class ClassService {
 
     const tenantId = AuthCurrentTenant.get();
 
-    const response = await authAxios.post(
-      `/tenant/${tenantId}/class`,
+    const response = await authAxios.put(
+      `/tenant/${tenantId}/attendance`,
       body,
     );
 
@@ -72,24 +39,6 @@ export default class ClassService {
 
     const response = await authAxios.get(
       `/tenant/${tenantId}/class`,
-      {
-        params,
-      },
-    );
-
-    return response.data;
-  }
-
-  static async listAutocomplete(query, limit) {
-    const params = {
-      query,
-      limit,
-    };
-
-    const tenantId = AuthCurrentTenant.get();
-
-    const response = await authAxios.get(
-      `/tenant/${tenantId}/class/autocomplete`,
       {
         params,
       },

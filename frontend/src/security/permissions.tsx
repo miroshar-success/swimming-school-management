@@ -592,7 +592,7 @@ class Permissions {
           plans.enterprise,
         ],
       },
-      attendanceDestory: {
+      attendanceDestroy: {
         id: 'attendanceDestroy',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [

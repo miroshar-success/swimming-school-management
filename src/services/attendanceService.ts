@@ -13,15 +13,15 @@ export default class AttendanceService {
     this.options = options;
   }
 
-  async create(data) {
+  async create(id, data) {
     const session = await MongooseRepository.createSession(
       this.options.database,
     );
 
     try {
       const record = await AttendanceUserRepository.create(
+        id,
         data,
-        this.options.currentUser,
         {
           ...this.options,
           session,

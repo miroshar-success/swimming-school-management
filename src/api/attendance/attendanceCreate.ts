@@ -10,6 +10,7 @@ export default async (req, res, next) => {
     );
 
     const payload = await new AttendanceService(req).create(
+      req.params.id,
       req.body.data,
     );
 

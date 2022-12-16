@@ -32,18 +32,18 @@ export default class AttendanceUserRepository {
   }
 
   static async create(
+    userId,
     attendance,
-    user,
     options: IRepositoryOptions,
   ) {
-    await User(options.database).updateMany(
-      { _id: user.id },
+    await User(options.database).updateOne(
+      { _id: userId },
       {
         $push: {
           attendances: {
             class: attendance.class || null,
-            time: attendance.time || null,
-            isAttended: attendance.isAttended || null,
+            time: new Date(),
+            isAttended: true,
           },
         },
       },
