@@ -574,6 +574,33 @@ class Permissions {
           plans.enterprise,
         ],
       },
+      attendanceCreate: {
+        id: 'attendanceCreate',
+        allowedRoles: [roles.admin, roles.manager],
+        allowedPlans: [
+          plans.free,
+          plans.growth,
+          plans.enterprise,
+        ],
+      },
+      attendanceEdit: {
+        id: 'attendanceEdit',
+        allowedRoles: [roles.admin, roles.manager],
+        allowedPlans: [
+          plans.free,
+          plans.growth,
+          plans.enterprise,
+        ],
+      },
+      attendanceDestory: {
+        id: 'attendanceDestroy',
+        allowedRoles: [roles.admin, roles.manager],
+        allowedPlans: [
+          plans.free,
+          plans.growth,
+          plans.enterprise,
+        ],
+      },
     };
   }
 
