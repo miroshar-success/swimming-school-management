@@ -786,8 +786,8 @@ const privateRoutes = [
     i18n: 'attendance.list.title',
     collapse: 'attendance',
     parent: '/attendance-breadcrumb',
-    //loader: () =>
-    //  import('src/view/attendance/list/AttendanceListPage'),
+    loader: () =>
+      import('src/view/attendance/list/AttendanceListPage'),
     permissionRequired: permissions.attendanceRead,
     exact: true,
   },

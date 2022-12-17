@@ -84,6 +84,7 @@ require('./plan').default(routes);
 require('./tenant').default(routes);
 require('./file').default(routes);
 require('./user').default(routes);
+require('./attendance').default(routes);
 require('./settings').default(routes);
 require('./grade').default(routes);
 require('./skill').default(routes);

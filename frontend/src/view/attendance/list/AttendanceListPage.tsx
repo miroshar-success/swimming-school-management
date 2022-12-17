@@ -40,7 +40,7 @@ function AttendanceListPage(props) {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(actions.doFetch());
+    dispatch(actions.doFetch(filterValue));
     // eslint-disable-next-line
   }, [dispatch]);
 
@@ -71,49 +71,113 @@ function AttendanceListPage(props) {
     <Grid container spacing={1.6}>
       <Grid item md={9} sm={12}>
         <Card>
-          <ToggleButtonGroup
-            color={sidenavColor}
-            value={filterValue}
-            exclusive
-            onChange={handleChange}
+          <MDBox
+            display="flex"
+            justifyContent="center"
+            py={1}
           >
-            <ToggleButton value="progress">
-              In progress
-            </ToggleButton>
-            <ToggleButton value="finished">
-              Finished
-            </ToggleButton>
-            <ToggleButton value="upcoming">
-              Upcoming
-            </ToggleButton>
-            <ToggleButton value="all">See all</ToggleButton>
-          </ToggleButtonGroup>
+            <ToggleButtonGroup
+              color={sidenavColor}
+              value={filterValue}
+              exclusive
+              onChange={handleChange}
+            >
+              <ToggleButton
+                value="progress"
+                sx={{
+                  mx: 6,
+                  border: 'none',
+                  padding: 1,
+                  borderRadius: 0,
+                }}
+              >
+                <MDTypography variant="h4">
+                  In progress
+                </MDTypography>
+              </ToggleButton>
+              <ToggleButton
+                sx={{
+                  mx: 6,
+                  border: 'none',
+                  padding: 1,
+                  borderRadius: 0,
+                }}
+                value="finished"
+              >
+                <MDTypography variant="h4">
+                  Finished
+                </MDTypography>
+              </ToggleButton>
+              <ToggleButton
+                sx={{
+                  mx: 6,
+                  border: 'none',
+                  padding: 1,
+                  borderRadius: 0,
+                }}
+                value="upcoming"
+              >
+                <MDTypography variant="h4">
+                  Upcoming
+                </MDTypography>
+              </ToggleButton>
+              <ToggleButton
+                sx={{
+                  mx: 6,
+                  border: 'none',
+                  padding: 1,
+                  borderRadius: 0,
+                }}
+                value="all"
+              >
+                <MDTypography variant="h4">
+                  See all
+                </MDTypography>
+              </ToggleButton>
+            </ToggleButtonGroup>
+          </MDBox>
         </Card>
       </Grid>
       <Grid item md={3} sm={12}>
         <Card>
-          <MDTypography>
-            {moment().format('LT')}
-          </MDTypography>
+          <MDBox textAlign="center" py={2}>
+            <MDTypography variant="h3">
+              {moment().format('LT')}
+            </MDTypography>
+          </MDBox>
         </Card>
       </Grid>
       <Grid item md={12} sm={12}>
         <Card>
-          <MDBox>
+          <MDBox px={2}>
             {loading && (
               <MDBox>
                 <Spinner />
               </MDBox>
             )}
+            {!loading && lessons.length === 0 && (
+              <MDBox textAlign="center" py={2}>
+                <MDTypography>
+                  {i18n('table.noData')}
+                </MDTypography>
+              </MDBox>
+            )}
             {!loading &&
               lessons.map((lesson) => (
                 <MDBox
+                  m={2}
+                  px={4}
+                  py={2}
+                  border={0.5}
+                  borderRadius="10%"
                   display="flex"
                   justifyContent="space-between"
                   key={lesson.id}
                 >
-                  <MDBox>{lesson.class.name}</MDBox>
-                  <MDBox>
+                  <MDTypography>
+                    {lesson.class.name}
+                  </MDTypography>
+                  <MDTypography>
                     {moment(lesson.time).format('LT') +
                       ' ~ ' +
                       moment(lesson.time)
@@ -122,8 +186,10 @@ function AttendanceListPage(props) {
                           'minutes',
                         )
                         .format('LT')}
-                  </MDBox>
-                  <MDBox>{lesson.teacher}</MDBox>
+                  </MDTypography>
+                  <MDTypography>
+                    {lesson.teacher.fullName}
+                  </MDTypography>
                 </MDBox>
               ))}
           </MDBox>
