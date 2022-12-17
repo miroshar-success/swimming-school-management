@@ -164,33 +164,37 @@ function AttendanceListPage(props) {
             )}
             {!loading &&
               lessons.map((lesson) => (
-                <MDBox
-                  m={2}
-                  px={4}
-                  py={2}
-                  border={0.5}
-                  borderRadius="10%"
-                  display="flex"
-                  justifyContent="space-between"
+                <Link
+                  to={`/attendance/${lesson.id}`}
                   key={lesson.id}
                 >
-                  <MDTypography>
-                    {lesson.class.name}
-                  </MDTypography>
-                  <MDTypography>
-                    {moment(lesson.time).format('LT') +
-                      ' ~ ' +
-                      moment(lesson.time)
-                        .add(
-                          lesson.class.duration,
-                          'minutes',
-                        )
-                        .format('LT')}
-                  </MDTypography>
-                  <MDTypography>
-                    {lesson.teacher.fullName}
-                  </MDTypography>
-                </MDBox>
+                  <MDBox
+                    m={2}
+                    px={4}
+                    py={2}
+                    border={0.5}
+                    borderRadius="10%"
+                    display="flex"
+                    justifyContent="space-between"
+                  >
+                    <MDTypography>
+                      {lesson.class.name}
+                    </MDTypography>
+                    <MDTypography>
+                      {moment(lesson.time).format('LT') +
+                        ' ~ ' +
+                        moment(lesson.time)
+                          .add(
+                            lesson.class.duration,
+                            'minutes',
+                          )
+                          .format('LT')}
+                    </MDTypography>
+                    <MDTypography>
+                      {lesson.teacher.fullName}
+                    </MDTypography>
+                  </MDBox>
+                </Link>
               ))}
           </MDBox>
         </Card>
