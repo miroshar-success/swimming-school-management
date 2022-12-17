@@ -4,6 +4,7 @@ import auth from 'src/modules/auth/authReducers';
 import tenant from 'src/modules/tenant/tenantReducers';
 import plan from 'src/modules/plan/planReducers';
 import admin from 'src/modules/admin/adminReducers';
+import attendance from 'src/modules/attendance/attendanceReducers';
 import teacher from 'src/modules/teacher/teacherReducers';
 import student from 'src/modules/student/studentReducers';
 import auditLog from 'src/modules/auditLog/auditLogReducers';
@@ -31,6 +32,7 @@ export default (history) =>
     tenant,
     plan,
     admin,
+    attendance,
     teacher,
     student,
     auditLog,

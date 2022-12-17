@@ -47,11 +47,11 @@ const selectPermissionToDestroy = createSelector(
     ),
 );
 
-const classSelectors = {
+const attendanceSelectors = {
   selectPermissionToRead,
   selectPermissionToEdit,
   selectPermissionToCreate,
   selectPermissionToDestroy,
 };
 
-export default classSelectors;
+export default attendanceSelectors;

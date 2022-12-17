@@ -2,7 +2,7 @@ import authAxios from 'src/modules/shared/axios/authAxios';
 import AuthCurrentTenant from 'src/modules/auth/authCurrentTenant';
 
 export default class AttendanceService {
-  static async create(data) {
+  static async create(id, data) {
     const body = {
       data,
     };
@@ -10,7 +10,7 @@ export default class AttendanceService {
     const tenantId = AuthCurrentTenant.get();
 
     const response = await authAxios.put(
-      `/tenant/${tenantId}/attendance`,
+      `/tenant/${tenantId}/attendance/${id}`,
       body,
     );
 
@@ -21,24 +21,21 @@ export default class AttendanceService {
     const tenantId = AuthCurrentTenant.get();
 
     const response = await authAxios.get(
-      `/tenant/${tenantId}/class/${id}`,
+      `/tenant/${tenantId}/attendance/${id}`,
     );
 
     return response.data;
   }
 
-  static async list(filter, orderBy, limit, offset) {
+  static async list(filter) {
     const params = {
       filter,
-      orderBy,
-      limit,
-      offset,
     };
 
     const tenantId = AuthCurrentTenant.get();
 
     const response = await authAxios.get(
-      `/tenant/${tenantId}/class`,
+      `/tenant/${tenantId}/attendance`,
       {
         params,
       },

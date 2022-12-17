@@ -44,7 +44,7 @@ export default class AttendanceService {
     }
   }
 
-  async listLessons(filter) {
+  async listLessons({ filter }) {
     const session = await MongooseRepository.createSession(
       this.options.database,
     );
@@ -57,11 +57,12 @@ export default class AttendanceService {
 
       await MongooseRepository.commitTransaction(session);
 
+      let result: Array<any> = [];
+
       if (filter) {
         let first = 0;
         let last = 0;
         let current = 0;
-        let result: Array<any> = [];
         if (filter === 'finished') {
           for (let i = 0; i < lessons.length; i++) {
             last =
@@ -95,7 +96,7 @@ export default class AttendanceService {
           }
         }
         return result;
-      } else return lessons;
+      } else return (result = lessons);
     } catch (error) {
       await MongooseRepository.abortTransaction(session);
       throw error;
