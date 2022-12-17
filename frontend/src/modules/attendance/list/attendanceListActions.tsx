@@ -20,7 +20,7 @@ const attendanceListActions = {
       dispatch({
         type: attendanceListActions.FETCH_SUCCESS,
         payload: {
-          lessons: response.result,
+          lessons: response,
         },
       });
     } catch (error) {

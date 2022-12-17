@@ -257,9 +257,11 @@ function LessonListTable(props) {
                     {lessonEnumerators.day[row.day]}
                   </DataTableBodyCell>
                   <DataTableBodyCell>
-                    {moment(row.time).format(
-                      DEFAULT_MOMENT_FORMAT_DATE_ONLY,
-                    )}
+                    {moment(row.time).format('LT') +
+                      ' ~ ' +
+                      moment(row.time)
+                        .add(row.class.duration, 'minutes')
+                        .format('LT')}
                   </DataTableBodyCell>
                   <DataTableBodyCell>
                     <TeacherListItem value={row.teacher} />

@@ -53,7 +53,7 @@ export default class AttendanceService {
       const lessons = await Lesson(this.options.database)
         .find({ day: new Date().getDay() })
         .populate('class')
-        .toObject();
+        .populate('teacher');
 
       await MongooseRepository.commitTransaction(session);
 
@@ -65,6 +65,9 @@ export default class AttendanceService {
         let current = 0;
         if (filter === 'finished') {
           for (let i = 0; i < lessons.length; i++) {
+            first =
+              lessons[i].time.getTime() %
+              (3600 * 1000 * 24);
             last =
               first + lessons[i].class.duration * 60 * 1000;
             current =
@@ -94,9 +97,9 @@ export default class AttendanceService {
               new Date().getTime() % (3600 * 1000 * 24);
             if (current < first) result.push(lessons[i]);
           }
-        }
+        } else result = lessons;
         return result;
-      } else return (result = lessons);
+      } else return [];
     } catch (error) {
       await MongooseRepository.abortTransaction(session);
       throw error;
