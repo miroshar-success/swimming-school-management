@@ -3,6 +3,7 @@ import MongooseRepository from '../database/repositories/mongooseRepository';
 import { IServiceOptions } from './IServiceOptions';
 import AttendanceUserRepository from '../database/repositories/attendanceUserRepository';
 import LessonRepository from '../database/repositories/lessonRepository';
+import User from '../database/models/user';
 import Lesson from '../database/models/lesson';
 import { Mongoose } from 'mongoose';
 
@@ -100,6 +101,24 @@ export default class AttendanceService {
         } else result = lessons;
         return result;
       } else return [];
+    } catch (error) {
+      await MongooseRepository.abortTransaction(session);
+      throw error;
+    }
+  }
+
+  async listStudents(id) {
+    const session = await MongooseRepository.createSession(
+      this.options.database,
+    );
+
+    try {
+      const students = await User(
+        this.options.database,
+      ).find({ lessons: { $in: [id] } });
+      await MongooseRepository.commitTransaction(session);
+
+      return students;
     } catch (error) {
       await MongooseRepository.abortTransaction(session);
       throw error;

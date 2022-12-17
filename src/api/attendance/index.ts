@@ -11,4 +11,8 @@ export default (app) => {
     `/tenant/:tenantId/attendance`,
     require('./attendanceDestroy').default,
   );
+  app.get(
+    `/tenant/:tenantId/attendance/:id`,
+    require('./attendanceFind').default,
+  );
 };
