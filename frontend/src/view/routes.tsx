@@ -793,6 +793,17 @@ const privateRoutes = [
   },
 
   {
+    path: '/attendance/:id',
+    i18n: 'attendance.view.title',
+    collapse: 'attendance',
+    parent: '/attendance',
+    loader: () =>
+      import('src/view/attendance/view/AttendanceViewPage'),
+    permissionRequired: permissions.attendanceRead,
+    exact: true,
+  },
+
+  {
     path: '/properties-breadcrumb',
     collapseName: 'properties',
     i18n: 'properties.menu',

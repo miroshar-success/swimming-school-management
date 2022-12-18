@@ -5,6 +5,7 @@ import AttendanceUserRepository from '../database/repositories/attendanceUserRep
 import LessonRepository from '../database/repositories/lessonRepository';
 import User from '../database/models/user';
 import Lesson from '../database/models/lesson';
+import UserRepository from '../database/repositories/userRepository';
 import { Mongoose } from 'mongoose';
 
 export default class AttendanceService {
@@ -113,12 +114,22 @@ export default class AttendanceService {
     );
 
     try {
-      const students = await User(
-        this.options.database,
-      ).find({ lessons: { $in: [id] } });
+      let students = await UserRepository.findAndCountAll(
+        { filter: { lessons: [id] } },
+        'student',
+        {
+          ...this.options,
+          session,
+        },
+      );
+      const lesson = await Lesson(this.options.database)
+        .find({ _id: id })
+        .populate('class');
+
       await MongooseRepository.commitTransaction(session);
 
-      return students;
+      students = students.rows;
+      return { students, lesson };
     } catch (error) {
       await MongooseRepository.abortTransaction(session);
       throw error;

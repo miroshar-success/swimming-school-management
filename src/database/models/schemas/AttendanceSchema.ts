@@ -3,12 +3,13 @@ const Schema = mongoose.Schema;
 
 const AttendanceSchema = new Schema(
   {
-    class: {
-      type: String,
-      maxlength: 255,
+    lesson: {
+      type: Schema.Types.ObjectId,
+      ref: 'lesson',
     },
     time: {
-      type: Date,
+      type: String,
+      maxlength: 255,
     },
     isAttended: {
       type: Boolean,
