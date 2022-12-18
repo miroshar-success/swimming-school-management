@@ -36,13 +36,13 @@ const attendanceViewActions = {
     }
   },
 
-  doCreate: (id, data) => async (dispatch) => {
+  doCreate: (id, lessonId) => async (dispatch) => {
     try {
       dispatch({
         type: attendanceViewActions.CREATE_STARTED,
       });
 
-      await AttendanceService.create(id, data);
+      await AttendanceService.create(id, lessonId);
 
       dispatch({
         type: attendanceViewActions.CREATE_SUCCESS,

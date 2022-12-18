@@ -2,9 +2,9 @@ import authAxios from 'src/modules/shared/axios/authAxios';
 import AuthCurrentTenant from 'src/modules/auth/authCurrentTenant';
 
 export default class AttendanceService {
-  static async create(id, data) {
+  static async create(id, lessonId) {
     const body = {
-      data,
+      lessonId,
     };
 
     const tenantId = AuthCurrentTenant.get();

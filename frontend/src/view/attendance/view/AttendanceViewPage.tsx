@@ -73,9 +73,10 @@ function AttendancePage() {
                           if (event.target.checked) {
                             setChecked(true);
                             dispatch(
-                              actions.doCreate(student.id, {
-                                className,
-                              }),
+                              actions.doCreate(
+                                student.id,
+                                match.params.id,
+                              ),
                             );
                           }
                         }}
