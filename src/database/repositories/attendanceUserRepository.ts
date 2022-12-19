@@ -5,13 +5,15 @@ import { IRepositoryOptions } from './IRepositoryOptions';
 import moment from 'moment';
 
 export default class AttendanceUserRepository {
-  static async findByLessonAndDate(
+  static async exist(
+    userId,
     lessonId,
     options: IRepositoryOptions,
   ) {
     let user =
       await MongooseRepository.wrapWithSessionIfExists(
         User(options.database).findOne({
+          _id: userId,
           attendances: {
             $elemMatch: {
               lesson: lessonId,
@@ -23,25 +25,9 @@ export default class AttendanceUserRepository {
       );
 
     if (!user) {
-      return null;
+      return false;
     }
-
-    user = user.toObject ? user.toObject() : user;
-
-    const attendanceUser = user.attendances.find(
-      (userAttendance) => {
-        return (
-          userAttendance.lesson === lessonId &&
-          userAttendance.time ===
-            moment().format('YYYY-MM-DD')
-        );
-      },
-    );
-
-    return {
-      ...attendanceUser,
-      user,
-    };
+    return true;
   }
 
   static async create(
@@ -49,19 +35,26 @@ export default class AttendanceUserRepository {
     lessonId,
     options: IRepositoryOptions,
   ) {
-    await User(options.database).updateOne(
-      { _id: userId },
-      {
-        $push: {
-          attendances: {
-            lesson: lessonId || null,
-            time: moment().format('YYYY-MM-DD'),
-            isAttended: true,
-          },
-        },
-      },
+    const exist = await this.exist(
+      userId,
+      lessonId,
       options,
     );
+    if (!exist) {
+      await User(options.database).updateOne(
+        { _id: userId },
+        {
+          $push: {
+            attendances: {
+              lesson: lessonId || null,
+              time: moment().format('YYYY-MM-DD'),
+              isAttended: true,
+            },
+          },
+        },
+        options,
+      );
+    }
   }
 
   static async destroy(

@@ -159,11 +159,4 @@ export default class AttendanceService {
       throw error;
     }
   }
-
-  async findById(id) {
-    return AttendanceUserRepository.findById(
-      id,
-      this.options,
-    );
-  }
 }
