@@ -21,7 +21,6 @@ import Spinner from 'src/view/shared/Spinner';
 function AttendancePage() {
   const dispatch = useDispatch();
   const match = useRouteMatch();
-  const [checked, setChecked] = useState(false);
 
   const initLoading = useSelector(selectors.selectLoading);
   const saveLoading = useSelector(
@@ -29,7 +28,6 @@ function AttendancePage() {
   );
   const loading = initLoading || saveLoading;
   const students = useSelector(selectors.selectStudents);
-  const className = useSelector(selectors.selectClass);
 
   useEffect(() => {
     dispatch(actions.doFind(match.params.id));
@@ -68,13 +66,17 @@ function AttendancePage() {
                   {students.map((student, index) => (
                     <Grid item key={index}>
                       <Checkbox
-                        checked={checked}
+                        checked={student.checked}
                         onChange={(event) => {
                           if (event.target.checked) {
-                            setChecked(true);
                             dispatch(
                               actions.doCreate(
                                 student.id,
+                                match.params.id,
+                              ),
+                            );
+                            dispatch(
+                              actions.doFind(
                                 match.params.id,
                               ),
                             );

@@ -4,7 +4,6 @@ const initialData = {
   loading: false,
   saveLoading: false,
   students: [],
-  class: '',
 };
 
 export default (state = initialData, { type, payload }) => {
@@ -12,7 +11,6 @@ export default (state = initialData, { type, payload }) => {
     return {
       ...state,
       students: [],
-      class: '',
       loading: true,
     };
   }
@@ -21,7 +19,6 @@ export default (state = initialData, { type, payload }) => {
     return {
       ...state,
       students: payload.students,
-      class: payload.lesson[0]?.class.name,
       loading: false,
     };
   }
@@ -30,7 +27,6 @@ export default (state = initialData, { type, payload }) => {
     return {
       ...state,
       students: [],
-      class: '',
       loading: false,
     };
   }

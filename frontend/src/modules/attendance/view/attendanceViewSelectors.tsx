@@ -7,11 +7,6 @@ const selectStudents = createSelector(
   (raw) => raw.students,
 );
 
-const selectClass = createSelector(
-  [selectRaw],
-  (raw) => raw.class,
-);
-
 const selectLoading = createSelector([selectRaw], (raw) =>
   Boolean(raw.loading),
 );
@@ -25,7 +20,6 @@ const attendanceViewSelectors = {
   selectLoading,
   selectSaveLoading,
   selectStudents,
-  selectClass,
   selectRaw,
 };
 

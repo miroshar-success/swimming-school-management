@@ -125,6 +125,17 @@ export default class AttendanceService {
       const lesson = await Lesson(this.options.database)
         .find({ _id: id })
         .populate('class');
+      for (let i = 0; i < students.rows.length; i++) {
+        const exist = await AttendanceUserRepository.exist(
+          students.rows[i].id,
+          id,
+          {
+            ...this.options,
+            session,
+          },
+        );
+        students.rows[i]['checked'] = exist;
+      }
 
       await MongooseRepository.commitTransaction(session);
 
