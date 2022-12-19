@@ -52,7 +52,7 @@ function AttendancePage() {
             <MDTypography>
               {i18n('attendance.view.note')}
             </MDTypography>
-            <MDBox>
+            <MDBox mt={2}>
               {loading && <Spinner />}
               {!loading && students.length === 0 && (
                 <MDBox textAlign="center" py={2}>
