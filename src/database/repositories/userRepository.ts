@@ -457,6 +457,14 @@ export default class UserRepository {
         });
       }
 
+      if (filter.lessons) {
+        criteriaAnd.push({
+          ['lessons']: {
+            $in: filter.lessons,
+          },
+        });
+      }
+
       if (filter.fullName) {
         criteriaAnd.push({
           ['fullName']: {

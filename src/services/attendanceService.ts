@@ -3,7 +3,9 @@ import MongooseRepository from '../database/repositories/mongooseRepository';
 import { IServiceOptions } from './IServiceOptions';
 import AttendanceUserRepository from '../database/repositories/attendanceUserRepository';
 import LessonRepository from '../database/repositories/lessonRepository';
+import User from '../database/models/user';
 import Lesson from '../database/models/lesson';
+import UserRepository from '../database/repositories/userRepository';
 import { Mongoose } from 'mongoose';
 
 export default class AttendanceService {
@@ -13,7 +15,7 @@ export default class AttendanceService {
     this.options = options;
   }
 
-  async create(id, data) {
+  async create(id, lessonId) {
     const session = await MongooseRepository.createSession(
       this.options.database,
     );
@@ -21,7 +23,7 @@ export default class AttendanceService {
     try {
       const record = await AttendanceUserRepository.create(
         id,
-        data,
+        lessonId,
         {
           ...this.options,
           session,
@@ -106,6 +108,45 @@ export default class AttendanceService {
     }
   }
 
+  async listStudents(id) {
+    const session = await MongooseRepository.createSession(
+      this.options.database,
+    );
+
+    try {
+      let students = await UserRepository.findAndCountAll(
+        { filter: { lessons: [id] } },
+        'student',
+        {
+          ...this.options,
+          session,
+        },
+      );
+      const lesson = await Lesson(this.options.database)
+        .find({ _id: id })
+        .populate('class');
+      for (let i = 0; i < students.rows.length; i++) {
+        const exist = await AttendanceUserRepository.exist(
+          students.rows[i].id,
+          id,
+          {
+            ...this.options,
+            session,
+          },
+        );
+        students.rows[i]['checked'] = exist;
+      }
+
+      await MongooseRepository.commitTransaction(session);
+
+      students = students.rows;
+      return { students, lesson };
+    } catch (error) {
+      await MongooseRepository.abortTransaction(session);
+      throw error;
+    }
+  }
+
   async destroyAll(ids) {
     const session = await MongooseRepository.createSession(
       this.options.database,
@@ -128,12 +169,5 @@ export default class AttendanceService {
       await MongooseRepository.abortTransaction(session);
       throw error;
     }
-  }
-
-  async findById(id) {
-    return AttendanceUserRepository.findById(
-      id,
-      this.options,
-    );
   }
 }

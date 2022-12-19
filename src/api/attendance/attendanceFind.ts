@@ -6,13 +6,12 @@ import AttendanceService from '../../services/attendanceService';
 export default async (req, res, next) => {
   try {
     new PermissionChecker(req).validateHas(
-      Permissions.values.attendanceCreate,
+      Permissions.values.attendanceRead,
     );
 
-    const payload = await new AttendanceService(req).create(
-      req.params.id,
-      req.body.lessonId,
-    );
+    const payload = await new AttendanceService(
+      req,
+    ).listStudents(req.params.id);
 
     await ApiResponseHandler.success(req, res, payload);
   } catch (error) {
