@@ -772,20 +772,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/attendance-breadcrumb',
-    i18n: 'attendance.menu',
-    collapse: 'attendance',
-    parent: '/',
-    redirect: '/attendance',
-    permissionRequired: null,
-    virtual: true,
-  },
-
-  {
     path: '/attendance',
     i18n: 'attendance.list.title',
     collapse: 'attendance',
-    parent: '/attendance-breadcrumb',
+    parent: '/',
     loader: () =>
       import('src/view/attendance/list/AttendanceListPage'),
     permissionRequired: permissions.attendanceRead,

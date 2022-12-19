@@ -112,24 +112,10 @@ const menus = [
   },
 
   {
-    key: 'attendance',
+    path: '/attendance',
     icon: <Icon>how_to_reg</Icon>,
     name: i18n('attendance.menu'),
     permissionRequired: permissions.attendanceRead,
-    collapse: [
-      {
-        path: '/attendance',
-        name: i18n('attendance.class.menu'),
-        icon: <Icon>how_to_reg</Icon>,
-        permissionRequired: permissions.attendanceRead,
-      },
-      {
-        path: '/attendance-history',
-        name: i18n('attendance.history.menu'),
-        icon: <Icon>work_history</Icon>,
-        permissionRequired: permissions.attendanceRead,
-      },
-    ],
   },
 
   {
