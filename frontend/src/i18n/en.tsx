@@ -380,6 +380,10 @@ const en = {
       newPassword: 'New Password',
       newPasswordConfirmation: 'New Password Confirmation',
       rememberMe: 'Remember me',
+      generalInfo: 'General Information',
+      schedules: 'Schedules',
+      paymentList: 'Payment History',
+      attendance: 'Attendance',
     },
     status: {
       active: 'Active',
