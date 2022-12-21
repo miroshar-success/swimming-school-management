@@ -118,17 +118,6 @@ const privateRoutes = [
   },
 
   {
-    path: '/admin/importer',
-    i18n: 'admin.importer.title',
-    collapseName: 'my-profile',
-    parent: '/admin',
-    loader: () =>
-      import('src/view/admin/importer/AdminImporterPage'),
-    permissionRequired: permissions.adminImport,
-    exact: true,
-  },
-
-  {
     path: '/admin/:id/edit',
     i18n: 'admin.edit.title',
     collapseName: 'my-profile',
@@ -222,19 +211,6 @@ const privateRoutes = [
   },
 
   {
-    path: '/student/importer',
-    i18n: 'student.importer.title',
-    collapseName: 'student',
-    parent: '/student-breadcrumb',
-    loader: () =>
-      import(
-        'src/view/student/importer/StudentImporterPage'
-      ),
-    permissionRequired: permissions.studentImport,
-    exact: true,
-  },
-
-  {
     path: '/student/:id/edit',
     i18n: 'student.edit.title',
     collapseName: 'student',
@@ -298,19 +274,6 @@ const privateRoutes = [
     loader: () =>
       import('src/view/teacher/new/TeacherNewPage'),
     permissionRequired: permissions.teacherCreate,
-    exact: true,
-  },
-
-  {
-    path: '/teacher/importer',
-    i18n: 'teacher.importer.title',
-    collapseName: 'teacher-page',
-    parent: '/teacher',
-    loader: () =>
-      import(
-        'src/view/teacher/importer/TeacherImporterPage'
-      ),
-    permissionRequired: permissions.teacherImport,
     exact: true,
   },
 

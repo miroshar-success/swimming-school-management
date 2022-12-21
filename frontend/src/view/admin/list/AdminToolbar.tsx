@@ -1,5 +1,4 @@
 import { Button, Tooltip } from '@mui/material';
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import DescriptionIcon from '@mui/icons-material/Description';
 import EmailIcon from '@mui/icons-material/Email';
 import HistoryIcon from '@mui/icons-material/History';
@@ -33,9 +32,6 @@ function AdminToolbar(props) {
   );
   const hasPermissionToCreate = useSelector(
     adminSelectors.selectPermissionToCreate,
-  );
-  const hasPermissionToImport = useSelector(
-    adminSelectors.selectPermissionToImport,
   );
   const hasPermissionToDestroy = useSelector(
     adminSelectors.selectPermissionToDestroy,
@@ -148,19 +144,6 @@ function AdminToolbar(props) {
           size="small"
         >
           {i18n('admin.invite')}
-        </MDButton>
-      )}
-
-      {hasPermissionToImport && (
-        <MDButton
-          variant="contained"
-          color={sidenavColor}
-          component={Link}
-          to="/admin/importer"
-          startIcon={<CloudUploadIcon />}
-          size="small"
-        >
-          {i18n('common.import')}
         </MDButton>
       )}
 

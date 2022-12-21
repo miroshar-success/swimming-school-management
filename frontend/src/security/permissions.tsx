@@ -72,15 +72,6 @@ class Permissions {
           plans.enterprise,
         ],
       },
-      adminImport: {
-        id: 'adminImport',
-        allowedRoles: [roles.admin],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-      },
       adminRead: {
         id: 'adminRead',
         allowedRoles: [roles.admin],
@@ -157,15 +148,6 @@ class Permissions {
           plans.enterprise,
         ],
       },
-      studentImport: {
-        id: 'studentImport',
-        allowedRoles: [roles.admin, roles.manager],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-      },
       studentRead: {
         id: 'studentRead',
         allowedRoles: [roles.admin, roles.manager],
@@ -204,15 +186,6 @@ class Permissions {
       },
       teacherCreate: {
         id: 'teacherCreate',
-        allowedRoles: [roles.admin, roles.manager],
-        allowedPlans: [
-          plans.free,
-          plans.growth,
-          plans.enterprise,
-        ],
-      },
-      teacherImport: {
-        id: 'teacherImport',
         allowedRoles: [roles.admin, roles.manager],
         allowedPlans: [
           plans.free,

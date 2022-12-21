@@ -1,5 +1,4 @@
 import { Button, Tooltip } from '@mui/material';
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import DescriptionIcon from '@mui/icons-material/Description';
 import EmailIcon from '@mui/icons-material/Email';
 import HistoryIcon from '@mui/icons-material/History';
@@ -16,7 +15,6 @@ import ToolbarWrapper from 'src/view/shared/styles/ToolbarWrapper';
 import MDButton from 'src/mui/components/MDButton';
 
 // for MUI 2 Dashboard
-import muiActions from 'src/modules/mui/muiActions';
 import { selectMuiSettings } from 'src/modules/mui/muiSelectors';
 import ConfirmModal from 'src/view/shared/modals/ConfirmModal';
 
@@ -33,9 +31,6 @@ function TeacherToolbar(props) {
   );
   const hasPermissionToCreate = useSelector(
     teacherSelectors.selectPermissionToCreate,
-  );
-  const hasPermissionToImport = useSelector(
-    teacherSelectors.selectPermissionToImport,
   );
   const hasPermissionToDestroy = useSelector(
     teacherSelectors.selectPermissionToDestroy,
@@ -148,19 +143,6 @@ function TeacherToolbar(props) {
           size="small"
         >
           {i18n('teacher.invite')}
-        </MDButton>
-      )}
-
-      {hasPermissionToImport && (
-        <MDButton
-          variant="contained"
-          color={sidenavColor}
-          component={Link}
-          to="/teacher/importer"
-          startIcon={<CloudUploadIcon />}
-          size="small"
-        >
-          {i18n('common.import')}
         </MDButton>
       )}
 

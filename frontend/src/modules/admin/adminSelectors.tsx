@@ -47,22 +47,10 @@ const selectPermissionToCreate = createSelector(
     ),
 );
 
-const selectPermissionToImport = createSelector(
-  [
-    authSelectors.selectCurrentTenant,
-    authSelectors.selectCurrentUser,
-  ],
-  (currentTenant, currentUser) =>
-    new PermissionChecker(currentTenant, currentUser).match(
-      Permissions.values.adminImport,
-    ),
-);
-
 const adminSelectors = {
   selectPermissionToRead,
   selectPermissionToEdit,
   selectPermissionToCreate,
-  selectPermissionToImport,
   selectPermissionToDestroy,
 };
 
