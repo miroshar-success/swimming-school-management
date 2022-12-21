@@ -13,6 +13,8 @@ import TextViewItem from 'src/view/shared/view/TextViewItem';
 import StudentStatusView from 'src/view/student/view/StudentStatusView';
 import moment from 'moment';
 import { DEFAULT_MOMENT_FORMAT_DATE_ONLY } from 'src/config/common';
+import MDTypography from 'src/mui/components/MDTypography';
+import lessonEnumerators from 'src/modules/lesson/lessonEnumerators';
 
 function StudentView(props) {
   const { student, loading } = props;
@@ -257,7 +259,66 @@ function StudentView(props) {
                     </MDBox>
                   </TabPanel>
                   <TabPanel value="schedules">
-                    fwefewfwe
+                    <MDBox pt={2}>
+                      <MDBox
+                        sx={{
+                          borderBottom: 1,
+                          borderColor: 'divider',
+                        }}
+                      >
+                        <Grid container spacing={1.6}>
+                          <Grid item md={6} xs={12}>
+                            <MDTypography>
+                              {
+                                student.lessons[0].class
+                                  .name
+                              }
+                            </MDTypography>
+                          </Grid>
+                        </Grid>
+                      </MDBox>
+                      <MDBox p={2}>
+                        {student.lessons.map(
+                          (lesson, index) => (
+                            <Grid
+                              container
+                              spacing={1.6}
+                              key={index}
+                            >
+                              <Grid item md={4} xs={12}>
+                                <MDTypography>
+                                  {
+                                    lessonEnumerators.day[
+                                      lesson.day
+                                    ]
+                                  }
+                                </MDTypography>
+                              </Grid>
+                              <Grid item md={4} xs={12}>
+                                <MDTypography>
+                                  {moment(
+                                    lesson.time,
+                                  ).format('LT') +
+                                    ' ~ ' +
+                                    moment(lesson.time)
+                                      .add(
+                                        lesson.class
+                                          .duration,
+                                        'minutes',
+                                      )
+                                      .format('LT')}
+                                </MDTypography>
+                              </Grid>
+                              <Grid item md={4} xs={12}>
+                                <MDTypography>
+                                  {lesson.teacher.fullName}
+                                </MDTypography>
+                              </Grid>
+                            </Grid>
+                          ),
+                        )}
+                      </MDBox>
+                    </MDBox>
                   </TabPanel>
                   <TabPanel value="payment">
                     fwefwe

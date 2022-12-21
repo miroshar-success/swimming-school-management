@@ -556,7 +556,8 @@ export default class UserRepository {
             populate: {
               path: 'class',
             },
-          }),
+          })
+          .populate('lessons.teacher'),
         options,
       );
 
