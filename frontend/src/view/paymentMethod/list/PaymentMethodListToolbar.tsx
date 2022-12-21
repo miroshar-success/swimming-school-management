@@ -5,7 +5,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import DescriptionIcon from '@mui/icons-material/Description';
 import HistoryIcon from '@mui/icons-material/History';
 import { i18n } from 'src/i18n';
-import auditLogSelectors from 'src/modules/auditLog/auditLogSelectors';
 import paymentMethodSelectors from 'src/modules/paymentMethod/paymentMethodSelectors';
 import destroyActions from 'src/modules/paymentMethod/destroy/paymentMethodDestroyActions';
 import destroySelectors from 'src/modules/paymentMethod/destroy/paymentMethodDestroySelectors';
@@ -39,9 +38,6 @@ function PaymentMethodToolbar(props) {
     selectors.selectExportLoading,
   );
   const hasRows = useSelector(selectors.selectHasRows);
-  const hasPermissionToAuditLogs = useSelector(
-    auditLogSelectors.selectPermissionToRead,
-  );
   const hasPermissionToDestroy = useSelector(
     paymentMethodSelectors.selectPermissionToDestroy,
   );
@@ -114,19 +110,6 @@ function PaymentMethodToolbar(props) {
       )}
 
       {renderDestroyButton()}
-
-      {hasPermissionToAuditLogs && (
-        <MDButton
-          variant="outlined"
-          color={sidenavColor}
-          component={Link}
-          to="/audit-logs?entityNames=paymentMethod"
-          startIcon={<HistoryIcon />}
-          size="small"
-        >
-          {i18n('auditLog.menu')}
-        </MDButton>
-      )}
 
       {destroyAllConfirmVisible && (
         <ConfirmModal
