@@ -775,10 +775,24 @@ export default class UserRepository {
           .populate('payments.category')
           .populate('payments.paymentMethod')
           .populate({
-            path: 'lessons',
+            path: 'attendances.lesson',
             populate: {
               path: 'class',
             },
+          })
+          .populate({
+            path: 'lessons',
+            populate: [
+              {
+                path: 'class',
+                populate: {
+                  path: 'pool',
+                },
+              },
+              {
+                path: 'teacher',
+              },
+            ],
           }),
         options,
       );
