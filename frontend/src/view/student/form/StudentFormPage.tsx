@@ -1,4 +1,3 @@
-import { Card } from '@mui/material';
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouteMatch } from 'react-router-dom';
@@ -6,11 +5,6 @@ import { i18n } from 'src/i18n';
 import { getHistory } from 'src/modules/store';
 import actions from 'src/modules/student/form/studentFormActions';
 import selectors from 'src/modules/student/form/studentFormSelectors';
-import MDBox from 'src/mui/components/MDBox';
-import MDTypography from 'src/mui/components/MDTypography';
-import ContentWrapper from 'src/view/layout/styles/ContentWrapper';
-import Breadcrumb from 'src/view/shared/Breadcrumb';
-import PageTitle from 'src/view/shared/styles/PageTitle';
 import StudentForm from 'src/view/student/form/StudentForm';
 import Spinner from 'src/view/shared/Spinner';
 

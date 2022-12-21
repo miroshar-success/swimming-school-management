@@ -43,44 +43,10 @@ const schema = yup.object().shape({
   phoneNumber: yupFilterSchemas.string(
     i18n('student.fields.phoneNumber'),
   ),
-  street: yupFilterSchemas.string(
-    i18n('student.fields.street'),
-  ),
-  postalCode: yupFilterSchemas.string(
-    i18n('student.fields.postalCode'),
-  ),
-  cologne: yupFilterSchemas.string(
-    i18n('student.fields.cologne'),
-  ),
-  city: yupFilterSchemas.string(
-    i18n('student.fields.city'),
-  ),
-  RFC: yupFilterSchemas.string(i18n('student.fields.RFC')),
-  CURP: yupFilterSchemas.string(
-    i18n('student.fields.CURP'),
-  ),
   bloodType: yupFilterSchemas.string(
     i18n('student.fields.bloodType'),
   ),
   sex: yupFilterSchemas.string(i18n('student.fields.sex')),
-  birthday: yupFilterSchemas.date(
-    i18n('student.fields.birthday'),
-  ),
-  guardianPhoneNumber: yupFilterSchemas.string(
-    i18n('student.fields.guardianPhoneNumber'),
-  ),
-  guardianFullName: yupFilterSchemas.string(
-    i18n('student.fields.guardianFullName'),
-  ),
-  healthInsuranceCompany: yupFilterSchemas.string(
-    i18n('student.fields.healthInsuranceCompany'),
-  ),
-  healthInsuranceNumber: yupFilterSchemas.string(
-    i18n('student.fields.healthInsuranceNumber'),
-  ),
-  comment: yupFilterSchemas.string(
-    i18n('student.fields.comment'),
-  ),
   email: yupFilterSchemas.email(
     i18n('student.fields.email'),
   ),
@@ -99,8 +65,16 @@ const previewRenders = {
     label: i18n('student.fields.email'),
     render: filterRenders.generic(),
   },
+  phoneNumber: {
+    label: i18n('student.fields.phoneNumber'),
+    render: filterRenders.generic(),
+  },
   sex: {
     label: i18n('student.fields.sex'),
+    render: filterRenders.generic(),
+  },
+  bloodType: {
+    label: i18n('student.fields.bloodType'),
     render: filterRenders.generic(),
   },
 };
@@ -111,16 +85,7 @@ const emptyValues = {
   email: '',
   sex: '',
   bloodType: '',
-  birthday: '',
-  city: '',
-  postalCode: '',
   phoneNumber: '',
-  CURP: '',
-  RFC: '',
-  guardianFullName: '',
-  guardianPhoneNumber: '',
-  healthInsuranceCompany: '',
-  healthInsuranceNumber: '',
   status: 'active',
 };
 
@@ -255,83 +220,10 @@ function StudentFilter(props) {
                   />
                 </Grid>
                 <Grid item lg={4} md={6} xs={12}>
-                  <DatePickerFormItem
-                    name={'birthday'}
-                    label={i18n('student.fields.birthday')}
-                    variant="standard"
-                  />
-                </Grid>
-                <Grid item lg={4} md={6} xs={12}>
-                  <InputFormItem
-                    name={'city'}
-                    label={i18n('student.fields.city')}
-                    variant="standard"
-                  />
-                </Grid>
-                <Grid item lg={4} md={6} xs={12}>
-                  <InputFormItem
-                    name={'postalCode'}
-                    label={i18n(
-                      'student.fields.postalCode',
-                    )}
-                    variant="standard"
-                  />
-                </Grid>
-                <Grid item lg={4} md={6} xs={12}>
                   <InputFormItem
                     name={'phoneNumber'}
                     label={i18n(
                       'student.fields.phoneNumber',
-                    )}
-                    variant="standard"
-                  />
-                </Grid>
-                <Grid item lg={4} md={6} xs={12}>
-                  <InputFormItem
-                    name={'RFC'}
-                    label={i18n('student.fields.RFC')}
-                    variant="standard"
-                  />
-                </Grid>
-                <Grid item lg={4} md={6} xs={12}>
-                  <InputFormItem
-                    name={'CURP'}
-                    label={i18n('student.fields.CURP')}
-                    variant="standard"
-                  />
-                </Grid>
-                <Grid item lg={4} md={6} xs={12}>
-                  <InputFormItem
-                    name={'guardianFullName'}
-                    label={i18n(
-                      'student.fields.guardianFullName',
-                    )}
-                    variant="standard"
-                  />
-                </Grid>
-                <Grid item lg={4} md={6} xs={12}>
-                  <InputFormItem
-                    name={'guardianPhoneNumber'}
-                    label={i18n(
-                      'student.fields.guardianPhoneNumber',
-                    )}
-                    variant="standard"
-                  />
-                </Grid>
-                <Grid item lg={4} md={6} xs={12}>
-                  <InputFormItem
-                    name={'healthInsuranceCompany'}
-                    label={i18n(
-                      'student.fields.healthInsuranceCompany',
-                    )}
-                    variant="standard"
-                  />
-                </Grid>
-                <Grid item lg={4} md={6} xs={12}>
-                  <InputFormItem
-                    name={'healthInsuranceNumber'}
-                    label={i18n(
-                      'student.fields.healthInsuranceNumber',
                     )}
                     variant="standard"
                   />

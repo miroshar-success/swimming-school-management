@@ -457,6 +457,30 @@ export default class UserRepository {
         });
       }
 
+      if (filter.studentNumber) {
+        criteriaAnd.push({
+          ['studentNumber']: filter.studentNumber,
+        });
+      }
+
+      if (filter.sex) {
+        criteriaAnd.push({
+          ['sex']: filter.sex,
+        });
+      }
+
+      if (filter.bloodType) {
+        criteriaAnd.push({
+          ['bloodType']: filter.bloodType,
+        });
+      }
+
+      if (filter.phoneNumber) {
+        criteriaAnd.push({
+          ['phoneNumber']: filter.phoneNumber,
+        });
+      }
+
       if (filter.lessons) {
         criteriaAnd.push({
           ['lessons']: {

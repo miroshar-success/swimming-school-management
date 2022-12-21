@@ -2,7 +2,6 @@ import {
   Grid,
   Card,
   Tab,
-  Box,
   TableContainer,
   TableRow,
   TableBody,
@@ -14,9 +13,7 @@ import { TabContext, TabList, TabPanel } from '@mui/lab';
 import { useState } from 'react';
 import { i18n } from 'src/i18n';
 import { selectMuiSettings } from 'src/modules/mui/muiSelectors';
-import CustomViewItem from 'src/view/shared/view/CustomViewItem';
 import LogoViewItem from 'src/view/shared/view/LogoViewItem';
-import MDBadgeDot from 'src/mui/components/MDBadgeDot';
 import MDBox from 'src/mui/components/MDBox';
 import Roles from 'src/security/roles';
 import Spinner from 'src/view/shared/Spinner';
