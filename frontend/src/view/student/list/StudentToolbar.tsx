@@ -1,11 +1,8 @@
-import { Button, Tooltip } from '@mui/material';
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import { Tooltip } from '@mui/material';
 import DescriptionIcon from '@mui/icons-material/Description';
 import EmailIcon from '@mui/icons-material/Email';
-import HistoryIcon from '@mui/icons-material/History';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { i18n } from 'src/i18n';
-import auditLogSelectors from 'src/modules/auditLog/auditLogSelectors';
 import actions from 'src/modules/student/list/studentListActions';
 import selectors from 'src/modules/student/list/studentListSelectors';
 import studentSelectors from 'src/modules/student/studentSelectors';
@@ -16,7 +13,6 @@ import ToolbarWrapper from 'src/view/shared/styles/ToolbarWrapper';
 import MDButton from 'src/mui/components/MDButton';
 
 // for MUI 2 Dashboard
-import muiActions from 'src/modules/mui/muiActions';
 import { selectMuiSettings } from 'src/modules/mui/muiSelectors';
 import ConfirmModal from 'src/view/shared/modals/ConfirmModal';
 
@@ -27,15 +23,8 @@ function StudentToolbar(props) {
     destroyAllConfirmVisible,
     setDestroyAllConfirmVisible,
   ] = useState(false);
-
-  const hasPermissionToAuditLogs = useSelector(
-    auditLogSelectors.selectPermissionToRead,
-  );
   const hasPermissionToCreate = useSelector(
     studentSelectors.selectPermissionToCreate,
-  );
-  const hasPermissionToImport = useSelector(
-    studentSelectors.selectPermissionToImport,
   );
   const hasPermissionToDestroy = useSelector(
     studentSelectors.selectPermissionToDestroy,
@@ -151,33 +140,7 @@ function StudentToolbar(props) {
         </MDButton>
       )}
 
-      {hasPermissionToImport && (
-        <MDButton
-          variant="contained"
-          color={sidenavColor}
-          component={Link}
-          to="/student/importer"
-          startIcon={<CloudUploadIcon />}
-          size="small"
-        >
-          {i18n('common.import')}
-        </MDButton>
-      )}
-
       {renderDestroyButton()}
-
-      {hasPermissionToAuditLogs && (
-        <MDButton
-          variant="outlined"
-          color={sidenavColor}
-          component={Link}
-          to="/audit-log?entityNames=student"
-          startIcon={<HistoryIcon />}
-          size="small"
-        >
-          {i18n('auditLog.menu')}
-        </MDButton>
-      )}
 
       {renderExportButton()}
 
