@@ -99,7 +99,7 @@ function StudentView(props) {
             <Card>
               <MDBox p={2.4}>
                 <Grid container spacing={1.6}>
-                  <Grid item md={4} xs={12}>
+                  <Grid item md={3} xs={12}>
                     <TextViewItem
                       label={i18n(
                         'student.fields.registrationDate',
@@ -117,13 +117,20 @@ function StudentView(props) {
                       value={student.lessons[0].class.name}
                     />
                   </Grid>
-                  <Grid item md={4} xs={12}>
+                  <Grid item md={3} xs={12}>
                     <TextViewItem
                       label={i18n(
                         'student.fields.nextPaymentDate',
                       )}
                       value={paymentDate}
                     />
+                  </Grid>
+                  <Grid item md={2} xs={12}>
+                    <MDBox pt={1}>
+                      <StudentStatusView
+                        value={student.status}
+                      />
+                    </MDBox>
                   </Grid>
                 </Grid>
               </MDBox>
