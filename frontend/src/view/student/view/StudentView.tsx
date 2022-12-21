@@ -26,6 +26,7 @@ import moment from 'moment';
 import { DEFAULT_MOMENT_FORMAT_DATE_ONLY } from 'src/config/common';
 import MDTypography from 'src/mui/components/MDTypography';
 import lessonEnumerators from 'src/modules/lesson/lessonEnumerators';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 function StudentView(props) {
   const { student, loading } = props;
@@ -277,9 +278,24 @@ function StudentView(props) {
                         borderColor: 'divider',
                       }}
                     >
-                      <MDTypography>
-                        {student.lessons[0].class.name}
-                      </MDTypography>
+                      <Grid container spacing={1.6}>
+                        <Grid item md={6} xs={12}>
+                          <MDTypography variant="h4">
+                            {student.lessons[0].class.name}
+                          </MDTypography>
+                        </Grid>
+                        <Grid item md={6} xs={12}>
+                          <MDBox
+                            color="white"
+                            sx={{ fontSize: '12px' }}
+                          >
+                            {
+                              student.lessons[0].class.pool
+                                ?.name
+                            }
+                          </MDBox>
+                        </Grid>
+                      </Grid>
                     </MDBox>
                     <MDBox p={2}>
                       {student.lessons.map(
@@ -289,7 +305,13 @@ function StudentView(props) {
                             spacing={1.6}
                             key={index}
                           >
-                            <Grid item md={4} xs={12}>
+                            <Grid item md={1} xs={4}>
+                              <CheckCircleIcon
+                                fontSize="large"
+                                color="success"
+                              />
+                            </Grid>
+                            <Grid item md={3} xs={8}>
                               <MDTypography>
                                 {
                                   lessonEnumerators.day[
@@ -322,6 +344,54 @@ function StudentView(props) {
                       )}
                     </MDBox>
                   </TabPanel>
+                  <TabPanel value="attendance">
+                    <MDBox
+                      pt={2}
+                      sx={{
+                        borderBottom: 1,
+                        borderColor: 'divider',
+                      }}
+                    >
+                      <MDTypography>
+                        {i18n(
+                          'student.fields.attendanceHistory',
+                        )}
+                      </MDTypography>
+                    </MDBox>
+                    <MDBox p={2}>
+                      {student.attendances.map(
+                        (attendance, index) => (
+                          <Grid
+                            container
+                            spacing={1.6}
+                            key={index}
+                          >
+                            <Grid item md={4} xs={12}>
+                              <MDTypography>
+                                {
+                                  attendance.lesson.class
+                                    ?.name
+                                }
+                              </MDTypography>
+                            </Grid>
+                            <Grid item md={4} xs={12}>
+                              <MDTypography>
+                                {attendance.time}
+                              </MDTypography>
+                            </Grid>
+                            <Grid item md={4} xs={12}>
+                              <MDTypography>
+                                <CheckCircleIcon
+                                  fontSize="large"
+                                  color="success"
+                                />
+                              </MDTypography>
+                            </Grid>
+                          </Grid>
+                        ),
+                      )}
+                    </MDBox>
+                  </TabPanel>
                   <TabPanel value="payment">
                     <MDBox
                       pt={2}
@@ -337,7 +407,9 @@ function StudentView(props) {
                       </MDTypography>
                     </MDBox>
                     <MDBox pt={2}>
-                      <TableContainer>
+                      <TableContainer
+                        sx={{ boxShadow: 'none' }}
+                      >
                         <Table>
                           <MDBox component="thead">
                             <TableRow>
@@ -433,9 +505,6 @@ function StudentView(props) {
                         </Table>
                       </TableContainer>
                     </MDBox>
-                  </TabPanel>
-                  <TabPanel value="attendance">
-                    fwefew
                   </TabPanel>
                   <TabPanel value="address">wfewf</TabPanel>
                 </TabContext>
