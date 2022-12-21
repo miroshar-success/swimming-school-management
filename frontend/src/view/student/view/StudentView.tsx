@@ -13,6 +13,8 @@ import TextViewItem from 'src/view/shared/view/TextViewItem';
 import StudentStatusView from 'src/view/student/view/StudentStatusView';
 import moment from 'moment';
 import { DEFAULT_MOMENT_FORMAT_DATE_ONLY } from 'src/config/common';
+import MDTypography from 'src/mui/components/MDTypography';
+import lessonEnumerators from 'src/modules/lesson/lessonEnumerators';
 
 function StudentView(props) {
   const { student, loading } = props;
@@ -48,15 +50,34 @@ function StudentView(props) {
     <Grid container spacing={1.6} mb={4.8}>
       <Grid item md={4} xs={12}>
         <Card>
-          <MDBox
-            display="flex"
-            justifyContent="center"
-            p={2.4}
-          >
-            <LogoViewItem
-              label={i18n('student.fields.avatars')}
-              value={student.avatars}
-            />
+          <MDBox p={2.4}>
+            <Grid container spacing={1.6}>
+              <Grid item md={12}>
+                <MDBox
+                  display="flex"
+                  justifyContent="center"
+                >
+                  <LogoViewItem
+                    value={student.avatars}
+                    hiddenLabel
+                  />
+                </MDBox>
+              </Grid>
+              <Grid item md={4} xs={12}>
+                <TextViewItem
+                  label={i18n(
+                    'student.fields.studentNumber',
+                  )}
+                  value={student.studentNumber}
+                />
+              </Grid>
+              <Grid item md={8} xs={12}>
+                <TextViewItem
+                  label={i18n('student.fields.name')}
+                  value={student.fullName}
+                />
+              </Grid>
+            </Grid>
           </MDBox>
         </Card>
       </Grid>
@@ -140,10 +161,164 @@ function StudentView(props) {
                     </TabList>
                   </MDBox>
                   <TabPanel value="general">
-                    faewfesfwefew
+                    <MDBox pt={2}>
+                      <Grid container spacing={1.6}>
+                        <Grid item md={4} xs={12}>
+                          <TextViewItem
+                            label={i18n(
+                              'student.fields.email',
+                            )}
+                            value={student.email}
+                          />
+                        </Grid>
+                        <Grid item md={4} xs={12}>
+                          <TextViewItem
+                            label={i18n(
+                              'student.fields.phoneNumber',
+                            )}
+                            value={student.phoneNumber}
+                          />
+                        </Grid>
+                        <Grid item md={4} xs={12}>
+                          <TextViewItem
+                            label={i18n(
+                              'student.fields.bloodType',
+                            )}
+                            value={student.bloodType}
+                          />
+                        </Grid>
+                        <Grid item md={4} xs={12}>
+                          <TextViewItem
+                            label={i18n(
+                              'student.fields.sex',
+                            )}
+                            value={student.sex}
+                          />
+                        </Grid>
+                        <Grid item md={4} xs={12}>
+                          <TextViewItem
+                            label={i18n(
+                              'student.fields.birthday',
+                            )}
+                            value={moment(
+                              student.birthday,
+                            ).format(
+                              DEFAULT_MOMENT_FORMAT_DATE_ONLY,
+                            )}
+                          />
+                        </Grid>
+                        <Grid item md={4} xs={12}>
+                          <TextViewItem
+                            label={i18n(
+                              'student.fields.RFC',
+                            )}
+                            value={student.RFC}
+                          />
+                        </Grid>
+                        <Grid item md={4} xs={12}>
+                          <TextViewItem
+                            label={i18n(
+                              'student.fields.CURP',
+                            )}
+                            value={student.CURP}
+                          />
+                        </Grid>
+                        {student.guardianFullName && (
+                          <Grid item md={4} xs={12}>
+                            <TextViewItem
+                              label={i18n(
+                                'student.fields.guardianFullName',
+                              )}
+                              value={
+                                student.guardianFullName
+                              }
+                            />
+                          </Grid>
+                        )}
+                        {student.guardianPhoneNumber && (
+                          <Grid item md={4} xs={12}>
+                            <TextViewItem
+                              label={i18n(
+                                'student.fields.guardianPhoneNumber',
+                              )}
+                              value={
+                                student.guardianPhoneNumber
+                              }
+                            />
+                          </Grid>
+                        )}
+                        <Grid item xs={12}>
+                          <TextViewItem
+                            label={i18n(
+                              'student.fields.comment',
+                            )}
+                            value={student.comment}
+                          />
+                        </Grid>
+                      </Grid>
+                    </MDBox>
                   </TabPanel>
                   <TabPanel value="schedules">
-                    fwefewfwe
+                    <MDBox pt={2}>
+                      <MDBox
+                        sx={{
+                          borderBottom: 1,
+                          borderColor: 'divider',
+                        }}
+                      >
+                        <Grid container spacing={1.6}>
+                          <Grid item md={6} xs={12}>
+                            <MDTypography>
+                              {
+                                student.lessons[0].class
+                                  .name
+                              }
+                            </MDTypography>
+                          </Grid>
+                        </Grid>
+                      </MDBox>
+                      <MDBox p={2}>
+                        {student.lessons.map(
+                          (lesson, index) => (
+                            <Grid
+                              container
+                              spacing={1.6}
+                              key={index}
+                            >
+                              <Grid item md={4} xs={12}>
+                                <MDTypography>
+                                  {
+                                    lessonEnumerators.day[
+                                      lesson.day
+                                    ]
+                                  }
+                                </MDTypography>
+                              </Grid>
+                              <Grid item md={4} xs={12}>
+                                <MDTypography>
+                                  {moment(
+                                    lesson.time,
+                                  ).format('LT') +
+                                    ' ~ ' +
+                                    moment(lesson.time)
+                                      .add(
+                                        lesson.class
+                                          .duration,
+                                        'minutes',
+                                      )
+                                      .format('LT')}
+                                </MDTypography>
+                              </Grid>
+                              <Grid item md={4} xs={12}>
+                                <MDTypography>
+                                  {lesson.teacher.fullName}
+                                </MDTypography>
+                              </Grid>
+                            </Grid>
+                          ),
+                        )}
+                      </MDBox>
+                    </MDBox>
                   </TabPanel>
                   <TabPanel value="payment">
                     fwefwe
