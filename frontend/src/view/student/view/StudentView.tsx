@@ -1,4 +1,15 @@
-import { Grid, Card, Tab, Box } from '@mui/material';
+import {
+  Grid,
+  Card,
+  Tab,
+  Box,
+  TableContainer,
+  TableRow,
+  TableBody,
+  Table,
+} from '@mui/material';
+import DataTableBodyCell from 'src/mui/shared/Tables/DataTable/DataTableBodyCell';
+import DataTableHeadCell from 'src/mui/shared/Tables/DataTable/DataTableHeadCell';
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import { useState } from 'react';
 import { i18n } from 'src/i18n';
@@ -259,69 +270,169 @@ function StudentView(props) {
                     </MDBox>
                   </TabPanel>
                   <TabPanel value="schedules">
-                    <MDBox pt={2}>
-                      <MDBox
-                        sx={{
-                          borderBottom: 1,
-                          borderColor: 'divider',
-                        }}
-                      >
-                        <Grid container spacing={1.6}>
-                          <Grid item md={6} xs={12}>
-                            <MDTypography>
-                              {
-                                student.lessons[0].class
-                                  .name
-                              }
-                            </MDTypography>
-                          </Grid>
-                        </Grid>
-                      </MDBox>
-                      <MDBox p={2}>
-                        {student.lessons.map(
-                          (lesson, index) => (
-                            <Grid
-                              container
-                              spacing={1.6}
-                              key={index}
-                            >
-                              <Grid item md={4} xs={12}>
-                                <MDTypography>
-                                  {
-                                    lessonEnumerators.day[
-                                      lesson.day
-                                    ]
-                                  }
-                                </MDTypography>
-                              </Grid>
-                              <Grid item md={4} xs={12}>
-                                <MDTypography>
-                                  {moment(
-                                    lesson.time,
-                                  ).format('LT') +
-                                    ' ~ ' +
-                                    moment(lesson.time)
-                                      .add(
-                                        lesson.class
-                                          .duration,
-                                        'minutes',
-                                      )
-                                      .format('LT')}
-                                </MDTypography>
-                              </Grid>
-                              <Grid item md={4} xs={12}>
-                                <MDTypography>
-                                  {lesson.teacher.fullName}
-                                </MDTypography>
-                              </Grid>
+                    <MDBox
+                      pt={2}
+                      sx={{
+                        borderBottom: 1,
+                        borderColor: 'divider',
+                      }}
+                    >
+                      <MDTypography>
+                        {student.lessons[0].class.name}
+                      </MDTypography>
+                    </MDBox>
+                    <MDBox p={2}>
+                      {student.lessons.map(
+                        (lesson, index) => (
+                          <Grid
+                            container
+                            spacing={1.6}
+                            key={index}
+                          >
+                            <Grid item md={4} xs={12}>
+                              <MDTypography>
+                                {
+                                  lessonEnumerators.day[
+                                    lesson.day
+                                  ]
+                                }
+                              </MDTypography>
                             </Grid>
-                          ),
-                        )}
-                      </MDBox>
+                            <Grid item md={4} xs={12}>
+                              <MDTypography>
+                                {moment(lesson.time).format(
+                                  'LT',
+                                ) +
+                                  ' ~ ' +
+                                  moment(lesson.time)
+                                    .add(
+                                      lesson.class.duration,
+                                      'minutes',
+                                    )
+                                    .format('LT')}
+                              </MDTypography>
+                            </Grid>
+                            <Grid item md={4} xs={12}>
+                              <MDTypography>
+                                {lesson.teacher.fullName}
+                              </MDTypography>
+                            </Grid>
+                          </Grid>
+                        ),
+                      )}
                     </MDBox>
                   </TabPanel>
                   <TabPanel value="payment">
-                    fwefwe
+                    <MDBox
+                      pt={2}
+                      sx={{
+                        borderBottom: 1,
+                        borderColor: 'divider',
+                      }}
+                    >
+                      <MDTypography>
+                        {i18n(
+                          'student.fields.paymentHistory',
+                        )}
+                      </MDTypography>
+                    </MDBox>
+                    <MDBox pt={2}>
+                      <TableContainer>
+                        <Table>
+                          <MDBox component="thead">
+                            <TableRow>
+                              <DataTableHeadCell
+                                sorted={false}
+                              >
+                                {i18n(
+                                  'student.fields.paymentCategory',
+                                )}
+                              </DataTableHeadCell>
+                              <DataTableHeadCell
+                                sorted={false}
+                              >
+                                {i18n(
+                                  'student.fields.paymentMethod',
+                                )}
+                              </DataTableHeadCell>
+                              <DataTableHeadCell
+                                sorted={false}
+                              >
+                                {i18n(
+                                  'student.fields.paymentDate',
+                                )}
+                              </DataTableHeadCell>
+                              <DataTableHeadCell
+                                sorted={false}
+                              >
+                                {i18n(
+                                  'student.fields.subTotal',
+                                )}
+                              </DataTableHeadCell>
+                              <DataTableHeadCell
+                                sorted={false}
+                              >
+                                {i18n('student.fields.VAT')}
+                              </DataTableHeadCell>
+                              <DataTableHeadCell
+                                sorted={false}
+                              >
+                                {i18n(
+                                  'student.fields.total',
+                                )}
+                              </DataTableHeadCell>
+                            </TableRow>
+                          </MDBox>
+                          <TableBody>
+                            {student.payments.length ===
+                              0 && (
+                              <TableRow>
+                                <DataTableBodyCell
+                                  align="center"
+                                  colSpan={100}
+                                >
+                                  <MDTypography>
+                                    {i18n('table.noData')}
+                                  </MDTypography>
+                                </DataTableBodyCell>
+                              </TableRow>
+                            )}
+                            {student.payments.map(
+                              (payment, index) => (
+                                <TableRow key={index}>
+                                  <DataTableBodyCell>
+                                    {payment.category?.name}
+                                  </DataTableBodyCell>
+                                  <DataTableBodyCell>
+                                    {
+                                      payment.paymentMethod
+                                        ?.name
+                                    }
+                                  </DataTableBodyCell>
+                                  <DataTableBodyCell>
+                                    {moment(
+                                      payment.createdAt,
+                                    ).format(
+                                      DEFAULT_MOMENT_FORMAT_DATE_ONLY,
+                                    )}
+                                  </DataTableBodyCell>
+                                  <DataTableBodyCell>
+                                    {payment.quantity *
+                                      payment.price}
+                                  </DataTableBodyCell>
+                                  <DataTableBodyCell>
+                                    {payment.VAT}
+                                  </DataTableBodyCell>
+                                  <DataTableBodyCell>
+                                    {payment.cost}
+                                  </DataTableBodyCell>
+                                </TableRow>
+                              ),
+                            )}
+                          </TableBody>
+                        </Table>
+                      </TableContainer>
+                    </MDBox>
                   </TabPanel>
                   <TabPanel value="attendance">
                     fwefew
