@@ -5,7 +5,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import DescriptionIcon from '@mui/icons-material/Description';
 import HistoryIcon from '@mui/icons-material/History';
 import { i18n } from 'src/i18n';
-import auditLogSelectors from 'src/modules/auditLog/auditLogSelectors';
 import gradeSelectors from 'src/modules/grade/gradeSelectors';
 import destroyActions from 'src/modules/grade/destroy/gradeDestroyActions';
 import destroySelectors from 'src/modules/grade/destroy/gradeDestroySelectors';
@@ -39,9 +38,6 @@ function GradeToolbar(props) {
     selectors.selectExportLoading,
   );
   const hasRows = useSelector(selectors.selectHasRows);
-  const hasPermissionToAuditLogs = useSelector(
-    auditLogSelectors.selectPermissionToRead,
-  );
   const hasPermissionToDestroy = useSelector(
     gradeSelectors.selectPermissionToDestroy,
   );
@@ -114,19 +110,6 @@ function GradeToolbar(props) {
       )}
 
       {renderDestroyButton()}
-
-      {hasPermissionToAuditLogs && (
-        <MDButton
-          variant="outlined"
-          color={sidenavColor}
-          component={Link}
-          to="/audit-logs?entityNames=grade"
-          startIcon={<HistoryIcon />}
-          size="small"
-        >
-          {i18n('auditLog.menu')}
-        </MDButton>
-      )}
 
       {destroyAllConfirmVisible && (
         <ConfirmModal

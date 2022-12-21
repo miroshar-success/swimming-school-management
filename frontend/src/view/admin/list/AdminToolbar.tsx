@@ -4,7 +4,6 @@ import EmailIcon from '@mui/icons-material/Email';
 import HistoryIcon from '@mui/icons-material/History';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { i18n } from 'src/i18n';
-import auditLogSelectors from 'src/modules/auditLog/auditLogSelectors';
 import actions from 'src/modules/admin/list/adminListActions';
 import selectors from 'src/modules/admin/list/adminListSelectors';
 import adminSelectors from 'src/modules/admin/adminSelectors';
@@ -27,9 +26,6 @@ function AdminToolbar(props) {
     setDestroyAllConfirmVisible,
   ] = useState(false);
 
-  const hasPermissionToAuditLogs = useSelector(
-    auditLogSelectors.selectPermissionToRead,
-  );
   const hasPermissionToCreate = useSelector(
     adminSelectors.selectPermissionToCreate,
   );
@@ -148,19 +144,6 @@ function AdminToolbar(props) {
       )}
 
       {renderDestroyButton()}
-
-      {hasPermissionToAuditLogs && (
-        <MDButton
-          variant="outlined"
-          color={sidenavColor}
-          component={Link}
-          to="/audit-log?entityNames=admin"
-          startIcon={<HistoryIcon />}
-          size="small"
-        >
-          {i18n('auditLog.menu')}
-        </MDButton>
-      )}
 
       {renderExportButton()}
 

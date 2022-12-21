@@ -1,6 +1,5 @@
 import HistoryIcon from '@mui/icons-material/History';
 import { i18n } from 'src/i18n';
-import auditLogSelectors from 'src/modules/auditLog/auditLogSelectors';
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -12,26 +11,7 @@ import { selectMuiSettings } from 'src/modules/mui/muiSelectors';
 function PaymentHistoryToolbar(props) {
   const { sidenavColor } = selectMuiSettings();
 
-  const hasPermissionToAuditLogs = useSelector(
-    auditLogSelectors.selectPermissionToRead,
-  );
-
-  return (
-    <ToolbarWrapper>
-      {hasPermissionToAuditLogs && (
-        <MDButton
-          variant="outlined"
-          color={sidenavColor}
-          component={Link}
-          to="/audit-logs?entityNames=payment"
-          startIcon={<HistoryIcon />}
-          size="small"
-        >
-          {i18n('auditLog.menu')}
-        </MDButton>
-      )}
-    </ToolbarWrapper>
-  );
+  return <ToolbarWrapper></ToolbarWrapper>;
 }
 
 export default PaymentHistoryToolbar;

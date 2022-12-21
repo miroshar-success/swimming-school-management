@@ -4,7 +4,6 @@ import EmailIcon from '@mui/icons-material/Email';
 import HistoryIcon from '@mui/icons-material/History';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { i18n } from 'src/i18n';
-import auditLogSelectors from 'src/modules/auditLog/auditLogSelectors';
 import actions from 'src/modules/teacher/list/teacherListActions';
 import selectors from 'src/modules/teacher/list/teacherListSelectors';
 import teacherSelectors from 'src/modules/teacher/teacherSelectors';
@@ -25,10 +24,6 @@ function TeacherToolbar(props) {
     destroyAllConfirmVisible,
     setDestroyAllConfirmVisible,
   ] = useState(false);
-
-  const hasPermissionToAuditLogs = useSelector(
-    auditLogSelectors.selectPermissionToRead,
-  );
   const hasPermissionToCreate = useSelector(
     teacherSelectors.selectPermissionToCreate,
   );
@@ -147,19 +142,6 @@ function TeacherToolbar(props) {
       )}
 
       {renderDestroyButton()}
-
-      {hasPermissionToAuditLogs && (
-        <MDButton
-          variant="outlined"
-          color={sidenavColor}
-          component={Link}
-          to="/audit-log?entityNames=teacher"
-          startIcon={<HistoryIcon />}
-          size="small"
-        >
-          {i18n('auditLog.menu')}
-        </MDButton>
-      )}
 
       {renderExportButton()}
 
