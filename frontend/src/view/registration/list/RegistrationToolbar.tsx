@@ -34,9 +34,6 @@ function RegistrationToolbar(props) {
   const hasPermissionToCreate = useSelector(
     studentSelectors.selectPermissionToCreate,
   );
-  const hasPermissionToImport = useSelector(
-    studentSelectors.selectPermissionToImport,
-  );
   const hasPermissionToDestroy = useSelector(
     studentSelectors.selectPermissionToDestroy,
   );
