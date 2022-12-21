@@ -506,7 +506,44 @@ function StudentView(props) {
                       </TableContainer>
                     </MDBox>
                   </TabPanel>
-                  <TabPanel value="address">wfewf</TabPanel>
+                  <TabPanel value="address">
+                    <MDBox pt={2}>
+                      <Grid container spacing={1.6}>
+                        <Grid item xs={12}>
+                          <TextViewItem
+                            label={i18n(
+                              'student.fields.street',
+                            )}
+                            value={student.street}
+                          />
+                        </Grid>
+                        <Grid item md={4} xs={12}>
+                          <TextViewItem
+                            label={i18n(
+                              'student.fields.postalCode',
+                            )}
+                            value={student.postalCode}
+                          />
+                        </Grid>
+                        <Grid item md={4} xs={12}>
+                          <TextViewItem
+                            label={i18n(
+                              'student.fields.cologne',
+                            )}
+                            value={student.cologne}
+                          />
+                        </Grid>
+                        <Grid item md={4} xs={12}>
+                          <TextViewItem
+                            label={i18n(
+                              'student.fields.city',
+                            )}
+                            value={student.city}
+                          />
+                        </Grid>
+                      </Grid>
+                    </MDBox>
+                  </TabPanel>
                 </TabContext>
               </MDBox>
             </Card>
