@@ -3,6 +3,7 @@ import MongooseRepository from '../database/repositories/mongooseRepository';
 import { IServiceOptions } from './IServiceOptions';
 import PaymentUserRepository from '../database/repositories/paymentUserRepository';
 import UserRepository from '../database/repositories/userRepository';
+import TenantUserRepository from '../database/repositories/tenantUserRepository';
 import { AnyARecord } from 'dns';
 
 export default class PaymentService {
@@ -21,6 +22,16 @@ export default class PaymentService {
       const record = await PaymentUserRepository.create(
         id,
         data,
+        {
+          ...this.options,
+          session,
+        },
+      );
+
+      await TenantUserRepository.updateStatus(
+        this.options.database,
+        id,
+        'active',
         {
           ...this.options,
           session,
