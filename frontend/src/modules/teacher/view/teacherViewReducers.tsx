@@ -3,6 +3,7 @@ import actions from 'src/modules/teacher/view/teacherViewActions';
 const initialData = {
   loading: false,
   teacher: null,
+  lessons: [],
 };
 
 export default (state = initialData, { type, payload }) => {
@@ -10,6 +11,7 @@ export default (state = initialData, { type, payload }) => {
     return {
       ...state,
       teacher: null,
+      lessons: [],
       loading: true,
     };
   }
@@ -17,7 +19,8 @@ export default (state = initialData, { type, payload }) => {
   if (type === actions.FIND_SUCCESS) {
     return {
       ...state,
-      teacher: payload,
+      teacher: payload.user,
+      lessons: payload.lessons,
       loading: false,
     };
   }
@@ -26,6 +29,7 @@ export default (state = initialData, { type, payload }) => {
     return {
       ...state,
       teacher: null,
+      lessons: [],
       loading: false,
     };
   }

@@ -111,7 +111,7 @@ function StudentView(props) {
                   <Grid item md={4} xs={12}>
                     <TextViewItem
                       label={i18n('student.fields.class')}
-                      value={student.lessons[0].class.name}
+                      value={student.lessons[0]?.class.name}
                     />
                   </Grid>
                   <Grid item md={3} xs={12}>
@@ -285,7 +285,7 @@ function StudentView(props) {
                       <Grid container spacing={1.6}>
                         <Grid item md={6} xs={12}>
                           <MDTypography variant="h4">
-                            {student.lessons[0].class.name}
+                            {student.lessons[0]?.class.name}
                           </MDTypography>
                         </Grid>
                         <Grid item md={6} xs={12}>
@@ -294,7 +294,7 @@ function StudentView(props) {
                             sx={{ fontSize: '12px' }}
                           >
                             {
-                              student.lessons[0].class.pool
+                              student.lessons[0]?.class.pool
                                 ?.name
                             }
                           </MDBox>

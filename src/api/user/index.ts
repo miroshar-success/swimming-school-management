@@ -39,4 +39,8 @@ export default (app) => {
     `/tenant/:tenantId/user/:id`,
     require('./userFind').default,
   );
+  app.get(
+    `/tenant/:tenantId/teacher/:id`,
+    require('./teacherFind').default,
+  );
 };

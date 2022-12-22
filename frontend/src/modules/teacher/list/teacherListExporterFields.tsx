@@ -3,25 +3,28 @@ import exporterRenders from 'src/modules/shared/exporter/exporterRenders';
 
 export default [
   {
-    name: 'id',
-    label: i18n('teacher.fields.id'),
+    name: 'fullName',
+    label: i18n('teacher.fields.fullName'),
   },
   {
     name: 'email',
     label: i18n('teacher.fields.email'),
   },
   {
-    name: 'fullName',
-    label: i18n('teacher.fields.fullName'),
+    name: 'birthday',
+    label: i18n('teacher.fields.birthday'),
   },
   {
     name: 'phoneNumber',
     label: i18n('teacher.fields.phoneNumber'),
   },
   {
-    name: 'avatars',
-    label: i18n('teacher.fields.avatars'),
-    render: exporterRenders.filesOrImages(),
+    name: 'RFC',
+    label: i18n('teacher.fields.RFC'),
+  },
+  {
+    name: 'CURP',
+    label: i18n('teacher.fields.CURP'),
   },
   {
     name: 'roles',

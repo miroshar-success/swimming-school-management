@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { i18n } from 'src/i18n';
-import TeacherNewForm from 'src/view/teacher/new/TeacherNewForm';
+import TeacherForm from 'src/view/teacher/form/TeacherForm';
 import Errors from 'src/modules/shared/error/errors';
 import TeacherService from 'src/modules/teacher/teacherService';
 import {
@@ -15,13 +15,13 @@ import MDBox from 'src/mui/components/MDBox';
 import MDTypography from 'src/mui/components/MDTypography';
 import { selectMuiSettings } from 'src/modules/mui/muiSelectors';
 
-function TeacherNewFormModal(props) {
+function TeacherFormModal(props) {
   const [saveLoading, setSaveLoading] = useState(false);
 
   const doSubmit = async (_, data) => {
     try {
       setSaveLoading(true);
-      await TeacherService.invite(data);
+      await TeacherService.create(data);
 
       const { rows } = await TeacherService.fetchTeachers(
         {
@@ -70,7 +70,7 @@ function TeacherNewFormModal(props) {
         </MDBox>
       </DialogTitle>
       <DialogContent>
-        <TeacherNewForm
+        <TeacherForm
           saveLoading={saveLoading}
           onSubmit={doSubmit}
           onCancel={doClose}
@@ -83,4 +83,4 @@ function TeacherNewFormModal(props) {
   );
 }
 
-export default TeacherNewFormModal;
+export default TeacherFormModal;

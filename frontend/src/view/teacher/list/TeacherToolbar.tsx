@@ -1,7 +1,6 @@
-import { Button, Tooltip } from '@mui/material';
+import { Tooltip } from '@mui/material';
 import DescriptionIcon from '@mui/icons-material/Description';
 import EmailIcon from '@mui/icons-material/Email';
-import HistoryIcon from '@mui/icons-material/History';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { i18n } from 'src/i18n';
 import actions from 'src/modules/teacher/list/teacherListActions';
@@ -137,7 +136,7 @@ function TeacherToolbar(props) {
           startIcon={<EmailIcon />}
           size="small"
         >
-          {i18n('teacher.invite')}
+          {i18n('teacher.create')}
         </MDButton>
       )}
 

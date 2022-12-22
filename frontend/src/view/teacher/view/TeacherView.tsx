@@ -1,17 +1,25 @@
-import { Grid } from '@mui/material';
+import {
+  Grid,
+  Card,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+} from '@mui/material';
 import { i18n } from 'src/i18n';
 import { selectMuiSettings } from 'src/modules/mui/muiSelectors';
-import CustomViewItem from 'src/view/shared/view/CustomViewItem';
 import LogoViewItem from 'src/view/shared/view/LogoViewItem';
-import MDBadgeDot from 'src/mui/components/MDBadgeDot';
 import MDBox from 'src/mui/components/MDBox';
-import Roles from 'src/security/roles';
 import Spinner from 'src/view/shared/Spinner';
 import TextViewItem from 'src/view/shared/view/TextViewItem';
-import TeacherStatusView from 'src/view/teacher/view/TeacherStatusView';
+import moment from 'moment';
+import { DEFAULT_MOMENT_FORMAT_DATE_ONLY } from 'src/config/common';
+import MDTypography from 'src/mui/components/MDTypography';
+import lessonEnumerators from 'src/modules/lesson/lessonEnumerators';
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 function TeacherView(props) {
-  const { teacher, loading } = props;
+  const { teacher, lessons, loading } = props;
   const { sidenavColor } = selectMuiSettings();
 
   if (loading || !teacher) {
@@ -20,73 +28,133 @@ function TeacherView(props) {
 
   return (
     <Grid container spacing={1.6} mb={4.8}>
-      <Grid item xs={12} md={3} xl={3}>
-        <MDBox
-          display="flex"
-          justifyContent="center"
-          px={2.4}
-        >
-          <LogoViewItem
-            label={i18n('teacher.fields.avatars')}
-            value={teacher.avatars}
-          />
-        </MDBox>
+      <Grid item md={4} xs={12}>
+        <Card>
+          <MDBox p={2.4}>
+            <Grid container spacing={1.6}>
+              <Grid item xs={12}>
+                <MDBox
+                  display="flex"
+                  justifyContent="center"
+                  p={3}
+                >
+                  <LogoViewItem
+                    value={teacher.avatars}
+                    hiddenLabel
+                  />
+                </MDBox>
+              </Grid>
+            </Grid>
+          </MDBox>
+        </Card>
       </Grid>
-      <Grid
-        item
-        container
-        xs={12}
-        md={6}
-        xl={6}
-        spacing={1.6}
-      >
-        <Grid item xs={12}>
-          <TextViewItem
-            label={i18n('teacher.fields.email')}
-            value={teacher.email}
-          />
-        </Grid>
-        <Grid container item spacing={1.6}>
-          <Grid item xs={12} md={6} xl={6}>
-            <TextViewItem
-              label={i18n('teacher.fields.firstName')}
-              value={teacher.firstName}
-            />
+      <Grid item md={8} xs={12}>
+        <Grid container spacing={1.6}>
+          <Grid item md={12}>
+            <Card>
+              <MDBox p={2.4}>
+                <Grid container spacing={1.6}>
+                  <Grid item md={4} xs={12}>
+                    <TextViewItem
+                      label={i18n('teacher.fields.name')}
+                      value={teacher.fullName}
+                    />
+                  </Grid>
+                  <Grid item md={4} xs={12}>
+                    <TextViewItem
+                      label={i18n('teacher.fields.email')}
+                      value={teacher.email}
+                    />
+                  </Grid>
+                  <Grid item md={4} xs={12}>
+                    <TextViewItem
+                      label={i18n(
+                        'teacher.fields.birthday',
+                      )}
+                      value={moment(
+                        teacher.birthday,
+                      ).format(
+                        DEFAULT_MOMENT_FORMAT_DATE_ONLY,
+                      )}
+                    />
+                  </Grid>
+                  <Grid item md={4} xs={12}>
+                    <TextViewItem
+                      label={i18n('teacher.fields.RFC')}
+                      value={teacher.RFC}
+                    />
+                  </Grid>
+                  <Grid item md={4} xs={12}>
+                    <TextViewItem
+                      label={i18n('teacher.fields.CURP')}
+                      value={teacher.CURP}
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextViewItem
+                      label={i18n('teacher.fields.comment')}
+                      value={teacher.comment}
+                    />
+                  </Grid>
+                </Grid>
+              </MDBox>
+            </Card>
           </Grid>
-          <Grid item xs={12} md={6} xl={6}>
-            <TextViewItem
-              label={i18n('teacher.fields.lastName')}
-              value={teacher.lastName}
-            />
+          <Grid item md={12}>
+            <Card>
+              <MDBox p={2.4}>
+                <MDBox p={2.4}>
+                  <MDTypography variant="h4">
+                    {i18n('teacher.fields.schedules')}
+                  </MDTypography>
+                </MDBox>
+                {lessons.map((lesson, index) => (
+                  <Accordion key={index}>
+                    <AccordionSummary
+                      expandIcon={<ExpandMoreIcon />}
+                    >
+                      <MDTypography>
+                        {lesson.class}
+                      </MDTypography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                      {lesson.lessons.map((l, i) => (
+                        <Grid
+                          container
+                          spacing={1.6}
+                          key={i}
+                        >
+                          <Grid item md={2} xs={12}>
+                            <CheckCircleIcon
+                              fontSize="large"
+                              color="success"
+                            />
+                          </Grid>
+                          <Grid item md={6} xs={12}>
+                            <MDTypography>
+                              {lessonEnumerators.day[l.day]}
+                            </MDTypography>
+                          </Grid>
+                          <Grid item md={4} xs={12}>
+                            <MDTypography>
+                              {moment(l.time).format('LT') +
+                                ' ~ ' +
+                                moment(l.time)
+                                  .add(
+                                    l.class.duration,
+                                    'minutes',
+                                  )
+                                  .format('LT')}
+                            </MDTypography>
+                          </Grid>
+                        </Grid>
+                      ))}
+                    </AccordionDetails>
+                  </Accordion>
+                ))}
+              </MDBox>
+            </Card>
           </Grid>
-        </Grid>
-        <Grid item xs={12}>
-          <TextViewItem
-            label={i18n('teacher.fields.phoneNumber')}
-            value={teacher.phoneNumber}
-            prefix={'+'}
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <CustomViewItem
-            label={i18n('teacher.fields.roles')}
-            value={teacher.roles}
-            render={(value) =>
-              value.map((roleId) => (
-                <MDBadgeDot
-                  key={roleId}
-                  width="max-content"
-                  badgeContent={Roles.labelOf(roleId)}
-                  color={sidenavColor}
-                  variant="contained"
-                  size="md"
-                />
-              ))
-            }
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <TeacherStatusView value={teacher.status} />
         </Grid>
       </Grid>
     </Grid>

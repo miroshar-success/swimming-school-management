@@ -27,19 +27,21 @@ import SelectFormItem from 'src/view/shared/form/items/SelectFormItem';
 import selectors from 'src/modules/teacher/list/teacherListSelectors';
 import UndoIcon from '@mui/icons-material/Undo';
 import yupFilterSchemas from 'src/modules/shared/yup/yupFilterSchemas';
+import teacherEnumerators from 'src/modules/teacher/teacherEnumerators';
+import DatePickerFormItem from 'src/view/shared/form/items/DatePickerFormItem';
 
 const schema = yup.object().shape({
-  fullName: yupFilterSchemas.string(
-    i18n('teacher.fields.fullName'),
+  firstName: yupFilterSchemas.string(
+    i18n('teacher.fields.firstName'),
+  ),
+  lastName: yupFilterSchemas.string(
+    i18n('teacher.fields.lastName'),
+  ),
+  phoneNumber: yupFilterSchemas.string(
+    i18n('teacher.fields.phoneNumber'),
   ),
   email: yupFilterSchemas.email(
     i18n('teacher.fields.email'),
-  ),
-  role: yupFilterSchemas.enumerator(
-    i18n('teacher.fields.role'),
-  ),
-  status: yupFilterSchemas.enumerator(
-    i18n('teacher.fields.status'),
   ),
 });
 
@@ -52,22 +54,17 @@ const previewRenders = {
     label: i18n('teacher.fields.email'),
     render: filterRenders.generic(),
   },
-  role: {
-    label: i18n('teacher.fields.role'),
-    render: (value) =>
-      value ? i18n(`roles.${value}.label`) : null,
-  },
-  status: {
-    label: i18n('teacher.fields.status'),
-    render: filterRenders.enumerator('teacher.status'),
+  phoneNumber: {
+    label: i18n('teacher.fields.phoneNumber'),
+    render: filterRenders.generic(),
   },
 };
 
 const emptyValues = {
   fullName: '',
   email: '',
-  role: '',
-  status: '',
+  phoneNumber: '',
+  status: 'active',
 };
 
 function TeacherFilter(props) {
@@ -149,17 +146,26 @@ function TeacherFilter(props) {
               onSubmit={form.handleSubmit(onSubmit)}
             >
               <Grid container spacing={1.6}>
-                <Grid item lg={6} xs={12}>
+                <Grid item lg={4} md={6} xs={12}>
+                  <InputFormItem
+                    name={'fullName'}
+                    label={i18n('teacher.fields.fullName')}
+                    variant="standard"
+                  />
+                </Grid>
+                <Grid item lg={4} md={6} xs={12}>
                   <InputFormItem
                     name={'email'}
                     label={i18n('teacher.fields.email')}
                     variant="standard"
                   />
                 </Grid>
-                <Grid item lg={6} xs={12}>
+                <Grid item lg={4} md={6} xs={12}>
                   <InputFormItem
-                    name={'fullName'}
-                    label={i18n('teacher.fields.fullName')}
+                    name={'phoneNumber'}
+                    label={i18n(
+                      'teacher.fields.phoneNumber',
+                    )}
                     variant="standard"
                   />
                 </Grid>

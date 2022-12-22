@@ -250,8 +250,8 @@ const en = {
       title: 'Edit Teacher',
     },
     new: {
-      title: 'Invite Teacher(s)',
-      titleModal: 'Invite Teacher',
+      title: 'Create Teacher(s)',
+      titleModal: 'Create Teacher',
       emailsHint:
         'Separate multiple email addresses using the comma character.',
     },

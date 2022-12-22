@@ -7,6 +7,11 @@ const selectTeacher = createSelector(
   (raw) => raw.teacher,
 );
 
+const selectLessons = createSelector(
+  [selectRaw],
+  (raw) => raw.lessons,
+);
+
 const selectLoading = createSelector([selectRaw], (raw) =>
   Boolean(raw.loading),
 );
@@ -14,6 +19,7 @@ const selectLoading = createSelector([selectRaw], (raw) =>
 const teacherViewSelectors = {
   selectLoading,
   selectTeacher,
+  selectLessons,
   selectRaw,
 };
 
