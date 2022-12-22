@@ -31,9 +31,6 @@ import teacherEnumerators from 'src/modules/teacher/teacherEnumerators';
 import DatePickerFormItem from 'src/view/shared/form/items/DatePickerFormItem';
 
 const schema = yup.object().shape({
-  teacherNumber: yupFilterSchemas.integer(
-    i18n('teacher.fields.teacherNumber'),
-  ),
   firstName: yupFilterSchemas.string(
     i18n('teacher.fields.firstName'),
   ),
@@ -43,20 +40,12 @@ const schema = yup.object().shape({
   phoneNumber: yupFilterSchemas.string(
     i18n('teacher.fields.phoneNumber'),
   ),
-  bloodType: yupFilterSchemas.string(
-    i18n('teacher.fields.bloodType'),
-  ),
-  sex: yupFilterSchemas.string(i18n('teacher.fields.sex')),
   email: yupFilterSchemas.email(
     i18n('teacher.fields.email'),
   ),
 });
 
 const previewRenders = {
-  teacherNumber: {
-    label: i18n('teacher.fields.teacherNumber'),
-    render: filterRenders.decimal(),
-  },
   fullName: {
     label: i18n('teacher.fields.fullName'),
     render: filterRenders.generic(),
@@ -69,22 +58,11 @@ const previewRenders = {
     label: i18n('teacher.fields.phoneNumber'),
     render: filterRenders.generic(),
   },
-  sex: {
-    label: i18n('teacher.fields.sex'),
-    render: filterRenders.generic(),
-  },
-  bloodType: {
-    label: i18n('teacher.fields.bloodType'),
-    render: filterRenders.generic(),
-  },
 };
 
 const emptyValues = {
-  teacherNumber: null,
   fullName: '',
   email: '',
-  sex: '',
-  bloodType: '',
   phoneNumber: '',
   status: 'active',
 };
@@ -170,10 +148,8 @@ function TeacherFilter(props) {
               <Grid container spacing={1.6}>
                 <Grid item lg={4} md={6} xs={12}>
                   <InputFormItem
-                    name={'teacherNumber'}
-                    label={i18n(
-                      'teacher.fields.teacherNumber',
-                    )}
+                    name={'fullName'}
+                    label={i18n('teacher.fields.fullName')}
                     variant="standard"
                   />
                 </Grid>
@@ -181,41 +157,6 @@ function TeacherFilter(props) {
                   <InputFormItem
                     name={'email'}
                     label={i18n('teacher.fields.email')}
-                    variant="standard"
-                  />
-                </Grid>
-                <Grid item lg={4} md={6} xs={12}>
-                  <InputFormItem
-                    name={'fullName'}
-                    label={i18n('teacher.fields.fullName')}
-                    variant="standard"
-                  />
-                </Grid>
-                <Grid item lg={4} md={6} xs={12}>
-                  <SelectFormItem
-                    name={'sex'}
-                    label={i18n('teacher.fields.sex')}
-                    options={teacherEnumerators.sex.map(
-                      (value) => ({
-                        value,
-                        label: value,
-                      }),
-                    )}
-                    mode="signle"
-                    variant="standard"
-                  />
-                </Grid>
-                <Grid item lg={4} md={6} xs={12}>
-                  <SelectFormItem
-                    name={'bloodType'}
-                    label={i18n('teacher.fields.bloodType')}
-                    options={teacherEnumerators.bloodType.map(
-                      (value) => ({
-                        value,
-                        label: value,
-                      }),
-                    )}
-                    mode="single"
                     variant="standard"
                   />
                 </Grid>
