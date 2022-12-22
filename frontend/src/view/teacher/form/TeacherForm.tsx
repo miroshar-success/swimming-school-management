@@ -1,4 +1,3 @@
-import { Grid } from '@mui/material';
 import { i18n } from 'src/i18n';
 import { selectMuiSettings } from 'src/modules/mui/muiSelectors';
 import { useDispatch } from 'react-redux';
@@ -11,17 +10,11 @@ import formActions from 'src/modules/form/formActions';
 import FormWrapper, {
   FormButtons,
 } from 'src/view/shared/styles/FormWrapper';
-import InputFormItem from 'src/view/shared/form/items/InputFormItem';
 import MDButton from 'src/mui/components/MDButton';
 import SaveIcon from '@mui/icons-material/Save';
-import SelectFormItem from 'src/view/shared/form/items/SelectFormItem';
 import TeacherFormLayout from 'src/view/teacher/form/TeacherFormLayout';
-import TagsFormItem from 'src/view/shared/form/items/TagsFormItem';
 import UndoIcon from '@mui/icons-material/Undo';
-import teacherEnumerators from 'src/modules/teacher/teacherEnumerators';
 import yupFormSchemas from 'src/modules/shared/yup/yupFormSchemas';
-import moment from 'moment';
-import { date } from 'yup/lib/locale';
 import MDBox from 'src/mui/components/MDBox';
 import MDTypography from 'src/mui/components/MDTypography';
 

@@ -5,10 +5,8 @@ import MDTypography from 'src/mui/components/MDTypography';
 import Storage from 'src/security/storage';
 import TextAreaFormItem from 'src/view/shared/form/items/TextAreaFormItem';
 import ImagesFormItem from 'src/view/shared/form/items/ImagesFormItem';
-import SelectFormItem from 'src/view/shared/form/items/SelectFormItem';
 import InputFormItem from 'src/view/shared/form/items/InputFormItem';
 import DatePickerFormItem from 'src/view/shared/form/items/DatePickerFormItem';
-import teacherEnumerators from 'src/modules/teacher/teacherEnumerators';
 
 function TeacherFormLayout(props) {
   return (
