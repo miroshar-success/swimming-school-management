@@ -19,24 +19,11 @@ function TeacherStatusView(props) {
     );
   }
 
-  if (value === 'empty-permissions') {
-    return (
-      <MDBadge
-        variant="contained"
-        color="error"
-        badgeContent={i18n(
-          'teacher.status.empty-permissions',
-        )}
-        container
-      />
-    );
-  }
-
   return (
     <MDBadge
       variant="contained"
       color="warning"
-      badgeContent={i18n('teacher.status.invited')}
+      badgeContent={i18n('teacher.status.preRegistration')}
       container
     />
   );

@@ -9,8 +9,8 @@ import TeacherToolbar from 'src/view/teacher/list/TeacherToolbar';
 function TeacherPage() {
   return (
     <>
-      <Card>
-        <MDBox pt={2.4} px={2.4}>
+      <Card sx={{ px: '20px' }}>
+        <MDBox pt={2.4}>
           <MDBox
             display="flex"
             justifyContent="space-between"

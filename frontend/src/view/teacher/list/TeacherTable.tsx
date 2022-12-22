@@ -12,11 +12,9 @@ import DataTableHeadCell from 'src/mui/shared/Tables/DataTable/DataTableHeadCell
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import IconButton from '@mui/material/IconButton';
-import MDBadgeDot from 'src/mui/components/MDBadgeDot';
 import MDBox from 'src/mui/components/MDBox';
 import MDTypography from 'src/mui/components/MDTypography';
 import Pagination from 'src/view/shared/table/Pagination';
-import Roles from 'src/security/roles';
 import SearchIcon from '@mui/icons-material/Search';
 import selectors from 'src/modules/teacher/list/teacherListSelectors';
 import Spinner from 'src/view/shared/Spinner';
@@ -25,7 +23,8 @@ import TableBody from '@mui/material/TableBody';
 import TableRow from '@mui/material/TableRow';
 import Tooltip from '@mui/material/Tooltip';
 import teacherSelectors from 'src/modules/teacher/teacherSelectors';
-import TeacherStatusView from 'src/view/teacher/view/TeacherStatusView';
+import moment from 'moment';
+import { DEFAULT_MOMENT_FORMAT_DATE_ONLY } from 'src/config/common';
 
 function TeacherTable() {
   const dispatch = useDispatch();
@@ -45,6 +44,8 @@ function TeacherTable() {
   const isAllSelected = useSelector(
     selectors.selectIsAllSelected,
   );
+
+  console.log(rows);
   const hasPermissionToEdit = useSelector(
     teacherSelectors.selectPermissionToEdit,
   );
@@ -85,6 +86,7 @@ function TeacherTable() {
 
   const { sidenavColor } = selectMuiSettings();
 
+  console.log(rows);
   return (
     <>
       <TableContainer sx={{ boxShadow: 'none' }}>
@@ -112,6 +114,18 @@ function TeacherTable() {
                 {i18n('teacher.fields.avatars')}
               </DataTableHeadCell>
               <DataTableHeadCell
+                onClick={() =>
+                  doChangeSort('teacherNumber')
+                }
+                sorted={
+                  sorter.field === 'teacherNumber'
+                    ? sorter.order
+                    : 'none'
+                }
+              >
+                {i18n('teacher.fields.Number')}
+              </DataTableHeadCell>
+              <DataTableHeadCell
                 onClick={() => doChangeSort('email')}
                 sorted={
                   sorter.field === 'email'
@@ -132,10 +146,46 @@ function TeacherTable() {
                 {i18n('teacher.fields.fullName')}
               </DataTableHeadCell>
               <DataTableHeadCell sorted={false}>
-                {i18n('teacher.fields.roles')}
+                {i18n('teacher.fields.sex')}
               </DataTableHeadCell>
               <DataTableHeadCell sorted={false}>
-                {i18n('teacher.fields.status')}
+                {i18n('teacher.fields.bloodType')}
+              </DataTableHeadCell>
+              <DataTableHeadCell sorted={false}>
+                {i18n('teacher.fields.birthday')}
+              </DataTableHeadCell>
+              <DataTableHeadCell sorted={false}>
+                {i18n('teacher.fields.address')}
+              </DataTableHeadCell>
+              <DataTableHeadCell sorted={false}>
+                {i18n('teacher.fields.phoneNumber')}
+              </DataTableHeadCell>
+              <DataTableHeadCell sorted={false}>
+                {i18n('teacher.fields.RFC')}
+              </DataTableHeadCell>
+              <DataTableHeadCell sorted={false}>
+                {i18n('teacher.fields.CURP')}
+              </DataTableHeadCell>
+              <DataTableHeadCell sorted={false}>
+                {i18n('teacher.fields.guardianFullName')}
+              </DataTableHeadCell>
+              <DataTableHeadCell sorted={false}>
+                {i18n('teacher.fields.guardianPhoneNumber')}
+              </DataTableHeadCell>
+              <DataTableHeadCell
+                sorted={false}
+                sx={{
+                  width: '200px',
+                }}
+              >
+                {i18n(
+                  'teacher.fields.healthInsuranceCompany',
+                )}
+              </DataTableHeadCell>
+              <DataTableHeadCell sorted={false}>
+                {i18n(
+                  'teacher.fields.healthInsuranceNumber',
+                )}
               </DataTableHeadCell>
             </TableRow>
           </MDBox>
@@ -243,24 +293,54 @@ function TeacherTable() {
                     />
                   </DataTableBodyCell>
                   <DataTableBodyCell>
+                    {row.teacherNumber}
+                  </DataTableBodyCell>
+                  <DataTableBodyCell>
                     {row.email}
                   </DataTableBodyCell>
                   <DataTableBodyCell>
                     {row.fullName}
                   </DataTableBodyCell>
                   <DataTableBodyCell>
-                    {row.roles.map((roleId) => (
-                      <MDBadgeDot
-                        key={roleId}
-                        width="max-content"
-                        badgeContent={Roles.labelOf(roleId)}
-                        color={sidenavColor}
-                        variant="contained"
-                      />
-                    ))}
+                    {row.sex}
                   </DataTableBodyCell>
                   <DataTableBodyCell>
-                    <TeacherStatusView value={row.status} />
+                    {row.bloodType}
+                  </DataTableBodyCell>
+                  <DataTableBodyCell>
+                    {moment(row.birthday).format(
+                      DEFAULT_MOMENT_FORMAT_DATE_ONLY,
+                    )}
+                  </DataTableBodyCell>
+                  <DataTableBodyCell>
+                    {row.street +
+                      ', ' +
+                      row.cologne +
+                      ', ' +
+                      row.city +
+                      ', ' +
+                      row.postalCode}
+                  </DataTableBodyCell>
+                  <DataTableBodyCell>
+                    {row.phoneNumber}
+                  </DataTableBodyCell>
+                  <DataTableBodyCell>
+                    {row.RFC}
+                  </DataTableBodyCell>
+                  <DataTableBodyCell>
+                    {row.CURP}
+                  </DataTableBodyCell>
+                  <DataTableBodyCell>
+                    {row.guardianFullName}
+                  </DataTableBodyCell>
+                  <DataTableBodyCell>
+                    {row.guardianPhoneNumber}
+                  </DataTableBodyCell>
+                  <DataTableBodyCell>
+                    {row.healthInsuranceCompany}
+                  </DataTableBodyCell>
+                  <DataTableBodyCell>
+                    {row.healthInsuranceNumber}
                   </DataTableBodyCell>
                 </TableRow>
               ))}

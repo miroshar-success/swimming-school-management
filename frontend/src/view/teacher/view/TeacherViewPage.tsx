@@ -1,4 +1,3 @@
-import { Card } from '@mui/material';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useRouteMatch } from 'react-router-dom';
@@ -23,25 +22,20 @@ function TeacherViewPage(props) {
 
   return (
     <>
-      <Card>
-        <MDBox px={2.4} pt={2.4}>
-          <MDBox
-            pb={2.4}
-            display="flex"
-            justifyContent="space-between"
-            alignItems="flex-start"
-          >
-            <MDTypography variant="h3" mb={2.4}>
-              {i18n('teacher.view.title')}
-            </MDTypography>
-            <TeacherViewToolbar match={match} />
-          </MDBox>
-          <TeacherView
-            loading={loading}
-            teacher={teacher}
-          />
+      <MDBox px={2.4} pt={2.4}>
+        <MDBox
+          pb={2.4}
+          display="flex"
+          justifyContent="space-between"
+          alignItems="flex-start"
+        >
+          <MDTypography variant="h3" mb={2.4}>
+            {i18n('teacher.view.title')}
+          </MDTypography>
+          <TeacherViewToolbar match={match} />
         </MDBox>
-      </Card>
+        <TeacherView loading={loading} teacher={teacher} />
+      </MDBox>
     </>
   );
 }

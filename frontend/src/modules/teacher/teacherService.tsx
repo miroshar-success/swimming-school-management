@@ -34,7 +34,7 @@ export default class TeacherService {
     return response.data;
   }
 
-  static async invite(data) {
+  static async create(data) {
     const body = {
       data,
     };
@@ -42,7 +42,7 @@ export default class TeacherService {
     const tenantId = AuthCurrentTenant.get();
 
     const response = await authAxios.post(
-      `/tenant/${tenantId}/userInvite`,
+      `/tenant/${tenantId}/userCreate`,
       body,
     );
 

@@ -272,7 +272,7 @@ const privateRoutes = [
     collapseName: 'teacher-page',
     parent: '/teacher',
     loader: () =>
-      import('src/view/teacher/new/TeacherNewPage'),
+      import('src/view/teacher/form/TeacherFormPage'),
     permissionRequired: permissions.teacherCreate,
     exact: true,
   },
@@ -283,7 +283,7 @@ const privateRoutes = [
     collapseName: 'teacher-page',
     parent: '/teacher',
     loader: () =>
-      import('src/view/teacher/edit/TeacherEditPage'),
+      import('src/view/teacher/form/TeacherFormPage'),
     permissionRequired: permissions.teacherEdit,
     exact: true,
   },

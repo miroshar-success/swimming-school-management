@@ -5,6 +5,7 @@ import { getHistory } from 'src/modules/store';
 import { i18n } from 'src/i18n';
 import authSelectors from 'src/modules/auth/authSelectors';
 import authActions from 'src/modules/auth/authActions';
+import registrationService from 'src/modules/registration/registrationService';
 
 const prefix = 'TEACHER_FORM';
 
@@ -55,7 +56,7 @@ const teacherFormActions = {
         type: teacherFormActions.ADD_STARTED,
       });
 
-      await TeacherService.invite(values);
+      await TeacherService.create(values);
 
       dispatch({
         type: teacherFormActions.ADD_SUCCESS,

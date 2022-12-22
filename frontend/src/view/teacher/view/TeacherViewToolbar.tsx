@@ -4,11 +4,8 @@ import { i18n } from 'src/i18n';
 import ToolbarWrapper from 'src/view/shared/styles/ToolbarWrapper';
 import { useSelector } from 'react-redux';
 import teacherSelectors from 'src/modules/teacher/teacherSelectors';
-import selectors from 'src/modules/teacher/view/teacherViewSelectors';
-import { Button } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
-import HistoryIcon from '@mui/icons-material/History';
-import VisibilityIcon from '@mui/icons-material/Visibility';
+import KeyboardBackspaceIcon from '@mui/icons-material/KeyboardBackspace';
 import MDButton from 'src/mui/components/MDButton';
 import { selectMuiSettings } from 'src/modules/mui/muiSelectors';
 
@@ -16,7 +13,6 @@ function TeacherViewToolbar(props) {
   const { sidenavColor } = selectMuiSettings();
   const { match } = props;
 
-  const teacher = useSelector(selectors.selectTeacher);
   const hasPermissionToEdit = useSelector(
     teacherSelectors.selectPermissionToEdit,
   );
@@ -38,6 +34,17 @@ function TeacherViewToolbar(props) {
           {i18n('common.edit')}
         </MDButton>
       )}
+      <MDButton
+        component={Link}
+        to={`/teacher`}
+        variant="gradient"
+        color={sidenavColor}
+        type="button"
+        startIcon={<KeyboardBackspaceIcon />}
+        size="small"
+      >
+        {i18n('common.back')}
+      </MDButton>
     </ToolbarWrapper>
   );
 }
