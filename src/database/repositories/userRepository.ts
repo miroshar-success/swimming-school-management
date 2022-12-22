@@ -11,6 +11,10 @@ import MongooseRepository from './mongooseRepository';
 import MuiRepository from './muiRepository';
 import SettingsRepository from './settingsRepository';
 import User from '../models/user';
+import Lesson from '../models/lesson';
+import moment from 'moment';
+import 'core-js/actual/array/group-by';
+
 export default class UserRepository {
   static async create(data, options: IRepositoryOptions) {
     const currentUser =
@@ -846,6 +850,80 @@ export default class UserRepository {
     );
 
     return record;
+  }
+
+  static async findTeacherById(
+    id,
+    options: IRepositoryOptions,
+    metaOnly = false,
+  ) {
+    let user =
+      await MongooseRepository.wrapWithSessionIfExists(
+        User(options.database)
+          .findById(id)
+          .populate('avatars')
+          .populate('tenants.tenant'),
+        options,
+      );
+
+    let lessons =
+      await MongooseRepository.wrapWithSessionIfExists(
+        Lesson(options.database)
+          .find({ teacher: id })
+          .populate('class'),
+        options,
+      );
+
+    if (lessons.length !== 0) {
+      let groupByClass = lessons.groupBy((lesson) => {
+        return lesson.class.name;
+      });
+
+      groupByClass = Object.entries(groupByClass);
+
+      console.log(groupByClass);
+
+      lessons = [];
+
+      groupByClass.map((lesson) => {
+        lesson[1].sort((a, b) => {
+          let am = moment(a.time).minutes();
+          let bm = moment(b.time).minutes();
+          let ah = moment(a.time).hours();
+          let bh = moment(b.time).hours();
+          let ad = a.day * 24 * 60 + ah * 60 + am;
+          let bd = b.day * 24 * 60 + bh * 60 + bm;
+          return ad - bd;
+        });
+        lessons.push({
+          class: lesson[0],
+          lessons: lesson[1],
+        });
+      });
+    }
+
+    if (!user) {
+      throw new Error404();
+    }
+
+    const currentTenant =
+      MongooseRepository.getCurrentTenant(options);
+
+    if (!options || !options.bypassPermissionValidation) {
+      if (!isUserInTenant(user, currentTenant.id)) {
+        throw new Error404();
+      }
+
+      user = this._mapUserForTenant(user, currentTenant);
+    }
+
+    user = await this._fillRelationsAndFileDownloadUrls(
+      user,
+      options,
+      metaOnly,
+    );
+
+    return { user, lessons };
   }
 
   static async findPassword(

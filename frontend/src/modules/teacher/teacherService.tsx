@@ -52,7 +52,7 @@ export default class TeacherService {
   static async find(id) {
     const tenantId = AuthCurrentTenant.get();
     const response = await authAxios.get(
-      `/tenant/${tenantId}/user/${id}`,
+      `/tenant/${tenantId}/teacher/${id}`,
     );
     return response.data;
   }

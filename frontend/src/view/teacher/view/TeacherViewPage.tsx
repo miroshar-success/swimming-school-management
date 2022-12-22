@@ -15,6 +15,7 @@ function TeacherViewPage(props) {
 
   const loading = useSelector(selectors.selectLoading);
   const teacher = useSelector(selectors.selectTeacher);
+  const lessons = useSelector(selectors.selectLessons);
 
   useEffect(() => {
     dispatch(actions.doFind(match.params.id));
@@ -34,7 +35,11 @@ function TeacherViewPage(props) {
           </MDTypography>
           <TeacherViewToolbar match={match} />
         </MDBox>
-        <TeacherView loading={loading} teacher={teacher} />
+        <TeacherView
+          loading={loading}
+          teacher={teacher}
+          lessons={lessons}
+        />
       </MDBox>
     </>
   );

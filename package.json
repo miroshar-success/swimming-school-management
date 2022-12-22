@@ -29,6 +29,7 @@
     "capitalize": "^2.0.4",
     "cli-highlight": "^2.1.11",
     "copyfiles": "^2.4.1",
+    "core-js": "^3.26.1",
     "cors": "2.8.5",
     "dotenv": "16.0.1",
     "express": "4.18.1",
