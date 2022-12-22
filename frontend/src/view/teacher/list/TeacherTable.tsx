@@ -114,16 +114,14 @@ function TeacherTable() {
                 {i18n('teacher.fields.avatars')}
               </DataTableHeadCell>
               <DataTableHeadCell
-                onClick={() =>
-                  doChangeSort('teacherNumber')
-                }
+                onClick={() => doChangeSort('fullName')}
                 sorted={
-                  sorter.field === 'teacherNumber'
+                  sorter.field === 'fullName'
                     ? sorter.order
                     : 'none'
                 }
               >
-                {i18n('teacher.fields.Number')}
+                {i18n('teacher.fields.fullName')}
               </DataTableHeadCell>
               <DataTableHeadCell
                 onClick={() => doChangeSort('email')}
@@ -135,27 +133,8 @@ function TeacherTable() {
               >
                 {i18n('teacher.fields.email')}
               </DataTableHeadCell>
-              <DataTableHeadCell
-                onClick={() => doChangeSort('fullName')}
-                sorted={
-                  sorter.field === 'fullName'
-                    ? sorter.order
-                    : 'none'
-                }
-              >
-                {i18n('teacher.fields.fullName')}
-              </DataTableHeadCell>
-              <DataTableHeadCell sorted={false}>
-                {i18n('teacher.fields.sex')}
-              </DataTableHeadCell>
-              <DataTableHeadCell sorted={false}>
-                {i18n('teacher.fields.bloodType')}
-              </DataTableHeadCell>
               <DataTableHeadCell sorted={false}>
                 {i18n('teacher.fields.birthday')}
-              </DataTableHeadCell>
-              <DataTableHeadCell sorted={false}>
-                {i18n('teacher.fields.address')}
               </DataTableHeadCell>
               <DataTableHeadCell sorted={false}>
                 {i18n('teacher.fields.phoneNumber')}
@@ -165,27 +144,6 @@ function TeacherTable() {
               </DataTableHeadCell>
               <DataTableHeadCell sorted={false}>
                 {i18n('teacher.fields.CURP')}
-              </DataTableHeadCell>
-              <DataTableHeadCell sorted={false}>
-                {i18n('teacher.fields.guardianFullName')}
-              </DataTableHeadCell>
-              <DataTableHeadCell sorted={false}>
-                {i18n('teacher.fields.guardianPhoneNumber')}
-              </DataTableHeadCell>
-              <DataTableHeadCell
-                sorted={false}
-                sx={{
-                  width: '200px',
-                }}
-              >
-                {i18n(
-                  'teacher.fields.healthInsuranceCompany',
-                )}
-              </DataTableHeadCell>
-              <DataTableHeadCell sorted={false}>
-                {i18n(
-                  'teacher.fields.healthInsuranceNumber',
-                )}
               </DataTableHeadCell>
             </TableRow>
           </MDBox>
@@ -293,33 +251,15 @@ function TeacherTable() {
                     />
                   </DataTableBodyCell>
                   <DataTableBodyCell>
-                    {row.teacherNumber}
+                    {row.fullName}
                   </DataTableBodyCell>
                   <DataTableBodyCell>
                     {row.email}
                   </DataTableBodyCell>
                   <DataTableBodyCell>
-                    {row.fullName}
-                  </DataTableBodyCell>
-                  <DataTableBodyCell>
-                    {row.sex}
-                  </DataTableBodyCell>
-                  <DataTableBodyCell>
-                    {row.bloodType}
-                  </DataTableBodyCell>
-                  <DataTableBodyCell>
                     {moment(row.birthday).format(
                       DEFAULT_MOMENT_FORMAT_DATE_ONLY,
                     )}
-                  </DataTableBodyCell>
-                  <DataTableBodyCell>
-                    {row.street +
-                      ', ' +
-                      row.cologne +
-                      ', ' +
-                      row.city +
-                      ', ' +
-                      row.postalCode}
                   </DataTableBodyCell>
                   <DataTableBodyCell>
                     {row.phoneNumber}
@@ -329,18 +269,6 @@ function TeacherTable() {
                   </DataTableBodyCell>
                   <DataTableBodyCell>
                     {row.CURP}
-                  </DataTableBodyCell>
-                  <DataTableBodyCell>
-                    {row.guardianFullName}
-                  </DataTableBodyCell>
-                  <DataTableBodyCell>
-                    {row.guardianPhoneNumber}
-                  </DataTableBodyCell>
-                  <DataTableBodyCell>
-                    {row.healthInsuranceCompany}
-                  </DataTableBodyCell>
-                  <DataTableBodyCell>
-                    {row.healthInsuranceNumber}
                   </DataTableBodyCell>
                 </TableRow>
               ))}
