@@ -26,13 +26,6 @@ import MDBox from 'src/mui/components/MDBox';
 import MDTypography from 'src/mui/components/MDTypography';
 
 const schema = yup.object().shape({
-  teacherNumber: yupFormSchemas.integer(
-    i18n('teacher.fields.teacherNumber'),
-    {
-      required: true,
-      max: 1000,
-    },
-  ),
   firstName: yupFormSchemas.string(
     i18n('teacher.fields.firstName'),
     {
@@ -55,27 +48,6 @@ const schema = yup.object().shape({
       max: 24,
     },
   ),
-  street: yupFormSchemas.string(
-    i18n('teacher.fields.street'),
-    {
-      required: true,
-    },
-  ),
-  postalCode: yupFormSchemas.string(
-    i18n('teacher.fields.postalCode'),
-    {
-      required: true,
-    },
-  ),
-  cologne: yupFormSchemas.string(
-    i18n('teacher.fields.cologne'),
-    {
-      required: true,
-    },
-  ),
-  city: yupFormSchemas.string(i18n('teacher.fields.city'), {
-    required: true,
-  }),
   RFC: yupFormSchemas.string(i18n('teacher.fields.RFC'), {
     required: true,
     max: 50,
@@ -84,37 +56,11 @@ const schema = yup.object().shape({
     required: true,
     max: 50,
   }),
-  bloodType: yupFormSchemas.string(
-    i18n('teacher.fields.bloodType'),
-    {
-      required: true,
-      max: 2,
-    },
-  ),
-  sex: yupFormSchemas.string(i18n('teacher.fields.sex'), {
-    required: true,
-    max: 10,
-  }),
   birthday: yupFormSchemas.date(
     i18n('teacher.fields.birthday'),
     {
       required: true,
     },
-  ),
-  guardianPhoneNumber: yupFormSchemas.string(
-    i18n('teacher.fields.guardianPhoneNumber'),
-    {
-      matches: /^[0-9]/,
-    },
-  ),
-  guardianFullName: yupFormSchemas.string(
-    i18n('teacher.fields.guardianFullName'),
-  ),
-  healthInsuranceCompany: yupFormSchemas.string(
-    i18n('teacher.fields.healthInsuranceCompany'),
-  ),
-  healthInsuranceNumber: yupFormSchemas.string(
-    i18n('teacher.fields.healthInsuranceNumber'),
   ),
   comment: yupFormSchemas.string(
     i18n('teacher.fields.comment'),
@@ -148,24 +94,12 @@ function TeacherForm(props) {
     const teacher = props.teacher || {};
 
     return {
-      teacherNumber: teacher.teacherNumber,
       firstName: teacher.firstName,
       lastName: teacher.lastName,
       phoneNumber: teacher.phoneNumber,
-      street: teacher.street,
-      postalCode: teacher.postalCode,
-      cologne: teacher.cologne,
-      city: teacher.city,
       RFC: teacher.RFC,
       CURP: teacher.CURP,
-      bloodType: teacher.bloodType,
-      sex: teacher.sex,
       birthday: teacher.birthday,
-      guardianFullName: teacher.guardianFullName,
-      guardianPhoneNumber: teacher.guardianPhoneNumber,
-      healthInsuranceCompany:
-        teacher.healthInsuranceCompany,
-      healthInsuranceNumber: teacher.healthInsuranceNumber,
       comment: teacher.comment,
       avatars: teacher.avatars || [],
       email: teacher.email,
