@@ -13,7 +13,7 @@ const TenantUserSchema = new Schema(
     status: {
       type: String,
       required: true,
-      enum: ['active', 'invited'],
+      enum: ['active', 'invited', 'pre-registered'],
     },
   },
   { timestamps: true },

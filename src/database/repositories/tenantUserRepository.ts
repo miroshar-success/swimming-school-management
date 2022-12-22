@@ -290,6 +290,10 @@ function selectStatus(oldStatus, newRoles) {
     return oldStatus;
   }
 
+  if (newRoles[0] === 'student') {
+    return 'pre-registered';
+  }
+
   if (!newRoles.length) {
     return 'empty-permissions';
   }
