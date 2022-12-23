@@ -4,8 +4,6 @@ import CreationInfo from 'src/view/shared/view/CreationInfo';
 import React from 'react';
 import Spinner from 'src/view/shared/Spinner';
 import TextViewItem from 'src/view/shared/view/TextViewItem';
-import ClassCategoryViewItem from 'src/view/classCategory/view/ClassCategoryViewItem';
-import PoolViewItem from 'src/view/pool/view/PoolViewItem';
 
 function ClassView(props) {
   const renderView = () => {
@@ -13,32 +11,32 @@ function ClassView(props) {
 
     return (
       <Grid spacing={1.6} container>
-        <Grid xs={12} item>
+        <Grid md={5} xs={12} item>
           <TextViewItem
             label={i18n('class.fields.name')}
             value={record.name}
           />
         </Grid>
-        <Grid xs={12} item>
-          <ClassCategoryViewItem
+        <Grid md={5} xs={12} item>
+          <TextViewItem
             label={i18n('class.fields.category')}
-            value={record.category}
+            value={record.category.name}
           />
         </Grid>
-        <Grid xs={12} item>
-          <PoolViewItem
+        <Grid md={5} xs={12} item>
+          <TextViewItem
             label={i18n('class.fields.pool')}
-            value={record.pool}
+            value={record.pool.name}
           />
         </Grid>
-        <Grid xs={12} item>
+        <Grid md={5} xs={12} item>
           <TextViewItem
             label={i18n('class.fields.duration')}
             value={record.duration}
           />
         </Grid>
         <Grid xs={12} item></Grid>
-        <Grid xs={12} item>
+        <Grid xs={10} item>
           <CreationInfo {...props} />
         </Grid>
       </Grid>
