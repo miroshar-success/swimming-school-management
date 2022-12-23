@@ -37,13 +37,7 @@ const schema = yup.object().shape({
   lastName: yupFilterSchemas.string(
     i18n('registration.fields.lastName'),
   ),
-  sex: yupFilterSchemas.string(
-    i18n('registration.fields.class'),
-  ),
-  birthday: yupFilterSchemas.date(
-    i18n('registration.fields.createdAt'),
-  ),
-  comment: yupFilterSchemas.string(
+  status: yupFilterSchemas.string(
     i18n('registration.fields.status'),
   ),
 });
@@ -57,10 +51,6 @@ const previewRenders = {
     label: i18n('registration.fields.class'),
     render: filterRenders.generic(),
   },
-  createdAt: {
-    label: i18n('registration.fields.createdAt'),
-    render: filterRenders.date(),
-  },
   status: {
     label: i18n('registration.fields.status'),
     render: filterRenders.enumerator('registration.status'),
@@ -70,7 +60,6 @@ const previewRenders = {
 const emptyValues = {
   fullName: '',
   class: '',
-  createdAt: '',
   status: '',
 };
 
@@ -158,24 +147,6 @@ function RegistrationFilter(props) {
                     name={'fullName'}
                     label={i18n(
                       'registration.fields.fullName',
-                    )}
-                    variant="standard"
-                  />
-                </Grid>
-                <Grid item md={6} xs={12}>
-                  <InputFormItem
-                    name={'class'}
-                    label={i18n(
-                      'registration.fields.class',
-                    )}
-                    variant="standard"
-                  />
-                </Grid>
-                <Grid item md={6} xs={12}>
-                  <DatePickerFormItem
-                    name={'createdAt'}
-                    label={i18n(
-                      'registration.fields.createdAt',
                     )}
                     variant="standard"
                   />

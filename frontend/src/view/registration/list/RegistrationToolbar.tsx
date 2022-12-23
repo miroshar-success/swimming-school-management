@@ -132,7 +132,7 @@ function RegistrationToolbar(props) {
     <ToolbarWrapper>
       {renderDestroyButton()}
 
-      {renderExportButton()}
+      {/*{renderExportButton()}*/}
 
       {destroyAllConfirmVisible && (
         <ConfirmModal

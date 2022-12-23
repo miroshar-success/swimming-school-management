@@ -29,7 +29,7 @@ export default class PaymentService {
       );
 
       await TenantUserRepository.updateStatus(
-        this.options.database,
+        this.options.currentTenant.id,
         id,
         'active',
         {
