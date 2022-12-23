@@ -9,7 +9,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import destroyActions from 'src/modules/class/destroy/classDestroyActions';
 import destroySelectors from 'src/modules/class/destroy/classDestroySelectors';
 import EditIcon from '@mui/icons-material/Edit';
-import HistoryIcon from '@mui/icons-material/History';
 import MDButton from 'src/mui/components/MDButton';
 import classSelectors from 'src/modules/class/classSelectors';
 import ToolbarWrapper from 'src/view/shared/styles/ToolbarWrapper';

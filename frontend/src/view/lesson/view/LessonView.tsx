@@ -15,9 +15,9 @@ function LessonView(props) {
     return (
       <Grid spacing={1.6} container>
         <Grid md={6} xs={12} item>
-          <ClassViewItem
+          <TextViewItem
             label={i18n('lesson.fields.class')}
-            value={record.class}
+            value={record.class.name}
           />
         </Grid>
         <Grid md={6} xs={12} item>
