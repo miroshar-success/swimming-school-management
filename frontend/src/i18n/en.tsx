@@ -398,7 +398,7 @@ const en = {
     menu: 'Students',
     doAddSuccess: 'Student(s) successfully saved',
     doUpdateSuccess: 'Student successfully saved',
-    exporterFileName: 'users_export',
+    exporterFileName: 'students_export',
     doDestroySuccess: 'Student successfully deleted',
     doDestroyAllSelectedSuccess:
       'Students successfully deleted',
