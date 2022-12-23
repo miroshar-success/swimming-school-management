@@ -74,14 +74,17 @@ export default class PaymentService {
     }
   }
 
-  async expiredFindAll() {
+  async expiredFindAll(args) {
     const session = await MongooseRepository.createSession(
       this.options.database,
     );
 
     try {
       const students = await UserRepository.findAndCountAll(
-        { filter: null },
+        {
+          ...args,
+          filter: { ...args.filter, status: 'active' },
+        },
         'student',
         {
           ...this.options,

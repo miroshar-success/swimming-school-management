@@ -11,7 +11,7 @@ export default async (req, res, next) => {
 
     const payload = await new PaymentService(
       req,
-    ).expiredFindAll();
+    ).expiredFindAll(req.query);
 
     await ApiResponseHandler.success(req, res, payload);
   } catch (error) {
