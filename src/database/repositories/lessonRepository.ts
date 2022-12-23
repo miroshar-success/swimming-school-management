@@ -297,6 +297,7 @@ class LessonRepository {
           await this._mapRelationshipsAndFillDownloadUrl(
             row,
             options,
+            false,
           ),
       ),
     );
@@ -390,6 +391,12 @@ class LessonRepository {
     output.createdBy =
       await UserRepository.cleanupForRelationships(
         output.createdBy,
+        options,
+      );
+
+    output.teacher =
+      await UserRepository.cleanupForRelationships(
+        output.teacher,
         options,
       );
 
