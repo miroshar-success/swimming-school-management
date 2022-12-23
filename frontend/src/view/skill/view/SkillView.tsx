@@ -4,8 +4,8 @@ import CreationInfo from 'src/view/shared/view/CreationInfo';
 import React from 'react';
 import Spinner from 'src/view/shared/Spinner';
 import TextViewItem from 'src/view/shared/view/TextViewItem';
-import GradeViewItem from 'src/view/grade/view/GradeViewItem';
 import ImagesViewItem from 'src/view/shared/view/ImagesViewItem';
+import MDBox from 'src/mui/components/MDBox';
 
 function SkillView(props) {
   const renderView = () => {
@@ -13,19 +13,23 @@ function SkillView(props) {
 
     return (
       <Grid spacing={1.6} container>
-        <Grid xs={12} item>
-          <TextViewItem
-            label={i18n('skill.fields.name')}
-            value={record.name}
-          />
+        <Grid item md={6} xs={12}>
+          <Grid container spacing={1.6}>
+            <Grid xs={12} item>
+              <TextViewItem
+                label={i18n('skill.fields.name')}
+                value={record.name}
+              />
+            </Grid>
+            <Grid xs={12} item>
+              <TextViewItem
+                label={i18n('skill.fields.grade')}
+                value={record.grade.name}
+              />
+            </Grid>
+          </Grid>
         </Grid>
-        <Grid xs={12} item>
-          <GradeViewItem
-            label={i18n('skill.fields.grade')}
-            value={record.grade}
-          />
-        </Grid>
-        <Grid xs={12} item>
+        <Grid item md={6} xs={12}>
           <ImagesViewItem
             label={i18n('skill.fields.icon')}
             value={record.icon}

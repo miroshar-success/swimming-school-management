@@ -193,10 +193,8 @@ class SkillRepository {
             _id: id,
             tenant: currentTenant.id,
           })
-          .populate({
-            path: 'createdBy',
-            populate: ['avatars'].join(' '),
-          }),
+          .populate('grade')
+          .populate('icon'),
         options,
       );
 

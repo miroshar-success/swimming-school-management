@@ -33,7 +33,7 @@ const schema = yup.object().shape({
       required: true,
     },
   ),
-  icon: yupFormSchemas.files(i18n('skill.fields.icon'), {
+  icon: yupFormSchemas.images(i18n('skill.fields.icon'), {
     max: 1,
   }),
 });
@@ -58,6 +58,7 @@ function SkillForm(props) {
   });
 
   const onSubmit = (values) => {
+    console.log(values);
     props.onSubmit(props.record?.id, values);
   };
 
