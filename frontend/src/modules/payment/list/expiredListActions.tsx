@@ -64,7 +64,12 @@ const expiredListActions = {
 
       const filter = selectors.selectFilter(getState());
       const response =
-        await PaymentService.fetchExpiredList();
+        await PaymentService.fetchExpiredList(
+          { ...filter, export: 1 },
+          selectors.selectOrderBy(getState()),
+          null,
+          null,
+        );
 
       new Exporter(
         exporterFields,
@@ -123,7 +128,12 @@ const expiredListActions = {
         });
 
         const response =
-          await PaymentService.fetchExpiredList();
+          await PaymentService.fetchExpiredList(
+            filter,
+            selectors.selectOrderBy(getState()),
+            selectors.selectLimit(getState()),
+            selectors.selectOffset(getState()),
+          );
 
         dispatch({
           type: expiredListActions.FETCH_SUCCESS,
