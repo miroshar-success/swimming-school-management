@@ -25,6 +25,7 @@ import Tooltip from '@mui/material/Tooltip';
 import studentSelectors from 'src/modules/student/studentSelectors';
 import moment from 'moment';
 import { DEFAULT_MOMENT_FORMAT_DATE_ONLY } from 'src/config/common';
+import StudentStatusView from 'src/view/student/view/StudentStatusView';
 
 function StudentTable() {
   const dispatch = useDispatch();
@@ -155,37 +156,10 @@ function StudentTable() {
                 {i18n('student.fields.birthday')}
               </DataTableHeadCell>
               <DataTableHeadCell sorted={false}>
-                {i18n('student.fields.address')}
-              </DataTableHeadCell>
-              <DataTableHeadCell sorted={false}>
                 {i18n('student.fields.phoneNumber')}
               </DataTableHeadCell>
               <DataTableHeadCell sorted={false}>
-                {i18n('student.fields.RFC')}
-              </DataTableHeadCell>
-              <DataTableHeadCell sorted={false}>
-                {i18n('student.fields.CURP')}
-              </DataTableHeadCell>
-              <DataTableHeadCell sorted={false}>
-                {i18n('student.fields.guardianFullName')}
-              </DataTableHeadCell>
-              <DataTableHeadCell sorted={false}>
-                {i18n('student.fields.guardianPhoneNumber')}
-              </DataTableHeadCell>
-              <DataTableHeadCell
-                sorted={false}
-                sx={{
-                  width: '200px',
-                }}
-              >
-                {i18n(
-                  'student.fields.healthInsuranceCompany',
-                )}
-              </DataTableHeadCell>
-              <DataTableHeadCell sorted={false}>
-                {i18n(
-                  'student.fields.healthInsuranceNumber',
-                )}
+                {i18n('student.fields.status')}
               </DataTableHeadCell>
             </TableRow>
           </MDBox>
@@ -313,34 +287,10 @@ function StudentTable() {
                     )}
                   </DataTableBodyCell>
                   <DataTableBodyCell>
-                    {row.street +
-                      ', ' +
-                      row.cologne +
-                      ', ' +
-                      row.city +
-                      ', ' +
-                      row.postalCode}
-                  </DataTableBodyCell>
-                  <DataTableBodyCell>
                     {row.phoneNumber}
                   </DataTableBodyCell>
                   <DataTableBodyCell>
-                    {row.RFC}
-                  </DataTableBodyCell>
-                  <DataTableBodyCell>
-                    {row.CURP}
-                  </DataTableBodyCell>
-                  <DataTableBodyCell>
-                    {row.guardianFullName}
-                  </DataTableBodyCell>
-                  <DataTableBodyCell>
-                    {row.guardianPhoneNumber}
-                  </DataTableBodyCell>
-                  <DataTableBodyCell>
-                    {row.healthInsuranceCompany}
-                  </DataTableBodyCell>
-                  <DataTableBodyCell>
-                    {row.healthInsuranceNumber}
+                    <StudentStatusView value={row.status} />
                   </DataTableBodyCell>
                 </TableRow>
               ))}

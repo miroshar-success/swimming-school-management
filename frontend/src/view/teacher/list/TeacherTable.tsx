@@ -25,6 +25,7 @@ import Tooltip from '@mui/material/Tooltip';
 import teacherSelectors from 'src/modules/teacher/teacherSelectors';
 import moment from 'moment';
 import { DEFAULT_MOMENT_FORMAT_DATE_ONLY } from 'src/config/common';
+import TeacherStatusView from 'src/view/teacher/view/TeacherStatusView';
 
 function TeacherTable() {
   const dispatch = useDispatch();
@@ -144,6 +145,9 @@ function TeacherTable() {
               </DataTableHeadCell>
               <DataTableHeadCell sorted={false}>
                 {i18n('teacher.fields.CURP')}
+              </DataTableHeadCell>
+              <DataTableHeadCell sorted={false}>
+                {i18n('teacher.fields.status')}
               </DataTableHeadCell>
             </TableRow>
           </MDBox>
@@ -269,6 +273,9 @@ function TeacherTable() {
                   </DataTableBodyCell>
                   <DataTableBodyCell>
                     {row.CURP}
+                  </DataTableBodyCell>
+                  <DataTableBodyCell>
+                    <TeacherStatusView value={row.status} />
                   </DataTableBodyCell>
                 </TableRow>
               ))}

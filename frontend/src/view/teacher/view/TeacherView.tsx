@@ -53,6 +53,11 @@ function TeacherView(props) {
           <Grid item md={12}>
             <Card>
               <MDBox p={2.4}>
+                <MDBox p={2.4}>
+                  <MDTypography variant="h4">
+                    {i18n('teacher.fields.general')}
+                  </MDTypography>
+                </MDBox>
                 <Grid container spacing={1.6}>
                   <Grid item md={4} xs={12}>
                     <TextViewItem
