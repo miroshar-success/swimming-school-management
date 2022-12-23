@@ -64,7 +64,7 @@ const emptyValues = {
   fullName: '',
   email: '',
   phoneNumber: '',
-  status: 'active',
+  status: '',
 };
 
 function TeacherFilter(props) {

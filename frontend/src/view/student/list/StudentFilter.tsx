@@ -86,7 +86,7 @@ const emptyValues = {
   sex: '',
   bloodType: '',
   phoneNumber: '',
-  status: 'active',
+  status: '',
 };
 
 function StudentFilter(props) {

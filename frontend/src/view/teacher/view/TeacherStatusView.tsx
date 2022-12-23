@@ -23,7 +23,7 @@ function TeacherStatusView(props) {
     <MDBadge
       variant="contained"
       color="warning"
-      badgeContent={i18n('teacher.status.preRegistration')}
+      badgeContent={i18n('teacher.status.invited')}
       container
     />
   );
