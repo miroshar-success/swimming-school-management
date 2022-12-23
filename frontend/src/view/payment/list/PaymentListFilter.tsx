@@ -26,22 +26,35 @@ import SearchIcon from '@mui/icons-material/Search';
 import selectors from 'src/modules/student/list/studentListSelectors';
 import UndoIcon from '@mui/icons-material/Undo';
 import yupFilterSchemas from 'src/modules/shared/yup/yupFilterSchemas';
+import SelectFormItem from 'src/view/shared/form/items/SelectFormItem';
+import studentEnumerators from 'src/modules/student/studentEnumerators';
 
 const schema = yup.object().shape({
-  name: yupFilterSchemas.string(
-    i18n('payment.fields.name'),
+  studentNumber: yupFilterSchemas.integer(
+    i18n('student.fields.studentNumber'),
+  ),
+  firstName: yupFilterSchemas.string(
+    i18n('student.fields.firstName'),
+  ),
+  lastName: yupFilterSchemas.string(
+    i18n('student.fields.lastName'),
   ),
 });
 
 const previewRenders = {
-  name: {
-    label: i18n('payment.fields.name'),
+  studentNumber: {
+    label: i18n('student.fields.studentNumber'),
+    render: filterRenders.decimal(),
+  },
+  fullName: {
+    label: i18n('student.fields.fullName'),
     render: filterRenders.generic(),
   },
 };
 
 const emptyValues = {
-  name: '',
+  studentNumber: '',
+  fullName: '',
 };
 
 function PaymentListFilter(props) {
@@ -123,10 +136,19 @@ function PaymentListFilter(props) {
               onSubmit={form.handleSubmit(onSubmit)}
             >
               <Grid container spacing={1.6}>
-                <Grid item lg={6} md={8} xs={12}>
+                <Grid item md={6} xs={12}>
                   <InputFormItem
-                    name={'name'}
-                    label={i18n('payment.fields.name')}
+                    name={'studentNumber'}
+                    label={i18n(
+                      'student.fields.studentNumber',
+                    )}
+                    variant="standard"
+                  />
+                </Grid>
+                <Grid item md={6} xs={12}>
+                  <InputFormItem
+                    name={'fullName'}
+                    label={i18n('student.fields.fullName')}
                     variant="standard"
                   />
                 </Grid>

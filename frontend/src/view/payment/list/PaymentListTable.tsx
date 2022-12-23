@@ -78,6 +78,9 @@ function PaymentListTable(props) {
               <DataTableHeadCell sorted={false}>
                 {i18n('student.fields.avatars')}
               </DataTableHeadCell>
+              <DataTableHeadCell sorted={false}>
+                {i18n('student.fields.studentNumber')}
+              </DataTableHeadCell>
               <DataTableHeadCell
                 onClick={() => doChangeSort('fullName')}
                 sorted={
@@ -157,6 +160,9 @@ function PaymentListTable(props) {
                         height: 32,
                       }}
                     />
+                  </DataTableBodyCell>
+                  <DataTableBodyCell>
+                    {row.studentNumber}
                   </DataTableBodyCell>
                   <DataTableBodyCell>
                     {row.fullName}
