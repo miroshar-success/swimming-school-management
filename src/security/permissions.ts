@@ -619,6 +619,64 @@ class Permissions {
           plans.enterprise,
         ],
       },
+
+      documentImport: {
+        id: 'documentImport',
+        allowedRoles: [roles.admin, roles.manager],
+        allowedPlans: [
+          plans.free,
+          plans.growth,
+          plans.enterprise,
+        ],
+      },
+      documentCreate: {
+        id: 'documentCreate',
+        allowedRoles: [roles.admin, roles.manager],
+        allowedPlans: [
+          plans.free,
+          plans.growth,
+          plans.enterprise,
+        ],
+        allowedStorage: [storage.documentAttachment],
+      },
+      documentEdit: {
+        id: 'documentEdit',
+        allowedRoles: [roles.admin, roles.manager],
+        allowedPlans: [
+          plans.free,
+          plans.growth,
+          plans.enterprise,
+        ],
+        allowedStorage: [storage.documentAttachment],
+      },
+      documentDestroy: {
+        id: 'documentDestroy',
+        allowedRoles: [roles.admin, roles.manager],
+        allowedPlans: [
+          plans.free,
+          plans.growth,
+          plans.enterprise,
+        ],
+        allowedStorage: [storage.documentAttachment],
+      },
+      documentRead: {
+        id: 'documentRead',
+        allowedRoles: [roles.admin, roles.manager],
+        allowedPlans: [
+          plans.free,
+          plans.growth,
+          plans.enterprise,
+        ],
+      },
+      documentAutocomplete: {
+        id: 'documentAutocomplete',
+        allowedRoles: [roles.admin, roles.manager],
+        allowedPlans: [
+          plans.free,
+          plans.growth,
+          plans.enterprise,
+        ],
+      },
     };
   }
 
