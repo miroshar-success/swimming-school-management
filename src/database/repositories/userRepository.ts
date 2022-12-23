@@ -419,8 +419,6 @@ export default class UserRepository {
 
     let criteriaAnd: any = [];
 
-    console.log(filter);
-
     if (role === 'admin') {
       criteriaAnd.push({
         tenants: {
