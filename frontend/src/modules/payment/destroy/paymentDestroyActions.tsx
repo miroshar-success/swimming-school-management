@@ -3,6 +3,7 @@ import Errors from 'src/modules/shared/error/errors';
 import { i18n } from 'src/i18n';
 import { getHistory } from 'src/modules/store';
 import Message from 'src/view/shared/message';
+import studentListActions from 'src/modules/student/list/studentListActions';
 
 const prefix = 'PAYMENT_DESTROY';
 
@@ -29,7 +30,7 @@ const paymentDestroyActions = {
 
       Message.success(i18n('payment.destroy.success'));
 
-      getHistory().push('/payment-history');
+      dispatch(studentListActions.doFetchCurrentFilter());
     } catch (error) {
       Errors.handle(error);
 

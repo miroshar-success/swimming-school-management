@@ -110,13 +110,13 @@ function PaymentHistoryListTable(props) {
               >
                 {i18n('student.fields.fullName')}
               </DataTableHeadCell>
-              <DataTableHeadCell>
+              <DataTableHeadCell sorted={false}>
                 {i18n('payment.fields.month')}
               </DataTableHeadCell>
-              <DataTableHeadCell>
+              <DataTableHeadCell sorted={false}>
                 {i18n('payment.fields.createdAt')}
               </DataTableHeadCell>
-              <DataTableHeadCell>
+              <DataTableHeadCell sorted={false}>
                 {i18n('payment.fields.total')}
               </DataTableHeadCell>
             </TableRow>
