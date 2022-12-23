@@ -96,6 +96,7 @@ require('./payment').default(routes);
 require('./paymentCategory').default(routes);
 require('./paymentMethod').default(routes);
 require('./registration').default(routes);
+require('./document').default(routes);
 
 // Loads the Tenant if the :tenantId param is passed
 routes.param('tenantId', tenantMiddleware);

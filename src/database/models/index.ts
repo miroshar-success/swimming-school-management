@@ -13,6 +13,7 @@ const models = [
   require('./paymentMethod').default,
   require('./pool').default,
   require('./skill').default,
+  require('./document').default,
 ];
 
 export default function init(database) {
