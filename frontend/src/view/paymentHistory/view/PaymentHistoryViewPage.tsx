@@ -32,7 +32,7 @@ function PaymentHistoryViewPage(props) {
             alignItems="flex-start"
           >
             <MDTypography variant="h3" mb={2.4}>
-              {i18n('student.view.title')}
+              {i18n('paymentHistory.view.title')}
             </MDTypography>
             <PaymentHistoryViewToolbar match={match} />
           </MDBox>

@@ -19,7 +19,7 @@ function PaymentHistoryListPage(props) {
             pb={2.4}
           >
             <MDTypography variant="h3">
-              {i18n('payment.list.title')}
+              {i18n('paymentHistory.list.title')}
             </MDTypography>
             <PaymentHistoryListToolbar />
           </MDBox>
