@@ -22,7 +22,7 @@ import yupFormSchemas from 'src/modules/shared/yup/yupFormSchemas';
 
 const schema = yup.object().shape({
   name: yupFormSchemas.string(
-    i18n('entities.document.fields.name'),
+    i18n('document.fields.name'),
     {
       required: true,
       min: 1,
@@ -30,7 +30,7 @@ const schema = yup.object().shape({
     },
   ),
   description: yupFormSchemas.string(
-    i18n('entities.document.fields.description'),
+    i18n('document.fields.description'),
     {
       required: true,
       min: 1,
@@ -38,14 +38,14 @@ const schema = yup.object().shape({
     },
   ),
   attachment: yupFormSchemas.files(
-    i18n('entities.document.fields.attachment'),
+    i18n('document.fields.attachment'),
     {
       required: true,
       max: 1,
     },
   ),
   tags: yupFormSchemas.relationToMany(
-    i18n('entities.product.fields.tags'),
+    i18n('product.fields.tags'),
     {},
   ),
 });
@@ -167,7 +167,7 @@ function DocumentForm(props) {
               alignItems="center"
             >
               <MDTypography variant="h4">
-                {i18n('entities.document.edit.title')}
+                {i18n('document.edit.title')}
               </MDTypography>
               {makeFormButtons(true)}
             </MDBox>

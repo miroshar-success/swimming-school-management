@@ -18,22 +18,6 @@ export default class DocumentService {
     return response.data;
   }
 
-  static async tags(id, data) {
-    const body = {
-      id,
-      data,
-    };
-
-    const tenantId = AuthCurrentTenant.get();
-
-    const response = await authAxios.put(
-      `/tenant/${tenantId}/document/${id}/tags`,
-      body,
-    );
-
-    return response.data;
-  }
-
   static async destroyAll(ids) {
     const params = {
       ids,

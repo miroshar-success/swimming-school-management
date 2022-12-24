@@ -20,7 +20,7 @@ function EditDocumentLayout(props) {
               alignItems="center"
             >
               <MDTypography variant="h5">
-                {i18n('entities.document.info')}
+                {i18n('document.info')}
               </MDTypography>
             </MDBox>
           </Grid>
@@ -29,9 +29,7 @@ function EditDocumentLayout(props) {
               <Grid item xs={12}>
                 <InputFormItem
                   name="name"
-                  label={i18n(
-                    'entities.document.fields.name',
-                  )}
+                  label={i18n('document.fields.name')}
                   variant="standard"
                   required={true}
                   autoFocus
@@ -41,7 +39,7 @@ function EditDocumentLayout(props) {
                 <TextAreaFormItem
                   name="description"
                   label={i18n(
-                    'entities.document.fields.description',
+                    'document.fields.description',
                   )}
                   variant="standard"
                   required={true}
@@ -50,9 +48,7 @@ function EditDocumentLayout(props) {
               <Grid item xs={12}>
                 <FilesFormItem
                   name="attachment"
-                  label={i18n(
-                    'entities.document.fields.attachment',
-                  )}
+                  label={i18n('document.fields.attachment')}
                   required={true}
                   storage={
                     Storage.values.documentAttachment

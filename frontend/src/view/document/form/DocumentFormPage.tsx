@@ -23,8 +23,8 @@ function DocumentFormPage(props) {
 
   const isEditing = Boolean(match.params.id);
   const title = isEditing
-    ? i18n('entities.document.edit.title')
-    : i18n('entities.document.new.title');
+    ? i18n('document.edit.title')
+    : i18n('document.new.title');
 
   useEffect(() => {
     dispatch(actions.doInit(match.params.id));

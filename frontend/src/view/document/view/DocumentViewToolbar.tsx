@@ -4,13 +4,11 @@ import { selectMuiSettings } from 'src/modules/mui/muiSelectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import auditLogSelectors from 'src/modules/auditLog/auditLogSelectors';
 import ConfirmModal from 'src/view/shared/modals/ConfirmModal';
 import DeleteIcon from '@mui/icons-material/Delete';
 import destroyActions from 'src/modules/document/destroy/documentDestroyActions';
 import destroySelectors from 'src/modules/document/destroy/documentDestroySelectors';
 import EditIcon from '@mui/icons-material/Edit';
-import HistoryIcon from '@mui/icons-material/History';
 import MDButton from 'src/mui/components/MDButton';
 import documentSelectors from 'src/modules/document/documentSelectors';
 import ToolbarWrapper from 'src/view/shared/styles/ToolbarWrapper';
@@ -23,10 +21,6 @@ function DocumentViewToolbar(props) {
   const dispatch = useDispatch();
 
   const id = props.match.params.id;
-
-  const hasPermissionToAuditLogs = useSelector(
-    auditLogSelectors.selectPermissionToRead,
-  );
   const hasPermissionToEdit = useSelector(
     documentSelectors.selectPermissionToEdit,
   );
@@ -77,21 +71,6 @@ function DocumentViewToolbar(props) {
           size="small"
         >
           {i18n('common.destroy')}
-        </MDButton>
-      )}
-
-      {hasPermissionToAuditLogs && (
-        <MDButton
-          variant="outlined"
-          color={sidenavColor}
-          component={Link}
-          to={`/audit-logs?entityId=${encodeURIComponent(
-            id,
-          )}`}
-          startIcon={<HistoryIcon />}
-          size="small"
-        >
-          {i18n('auditLog.menu')}
         </MDButton>
       )}
 

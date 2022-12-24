@@ -18,7 +18,7 @@ function DocumentListPage(props) {
             pb={2.4}
           >
             <MDTypography variant="h3">
-              {i18n('entities.document.list.title')}
+              {i18n('document.list.title')}
             </MDTypography>
             <DocumentListToolbar />
           </MDBox>

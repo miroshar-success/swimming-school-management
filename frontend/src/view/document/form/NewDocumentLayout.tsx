@@ -14,13 +14,13 @@ function NewDocumentLayout(props) {
       <Grid spacing={1.6} container>
         <Grid item xs={12}>
           <GradientTitle>
-            {title ?? i18n('entities.document.new.title')}
+            {title ?? i18n('document.new.title')}
           </GradientTitle>
         </Grid>
         <Grid item xs={12}>
           <InputFormItem
             name="name"
-            label={i18n('entities.document.fields.name')}
+            label={i18n('document.fields.name')}
             variant="standard"
             required={true}
             autoFocus
@@ -29,9 +29,7 @@ function NewDocumentLayout(props) {
         <Grid item xs={12}>
           <TextAreaFormItem
             name="description"
-            label={i18n(
-              'entities.document.fields.description',
-            )}
+            label={i18n('document.fields.description')}
             variant="standard"
             required={true}
           />
@@ -39,9 +37,7 @@ function NewDocumentLayout(props) {
         <Grid item xs={12}>
           <FilesFormItem
             name="attachment"
-            label={i18n(
-              'entities.document.fields.attachment',
-            )}
+            label={i18n('document.fields.attachment')}
             required={true}
             storage={Storage.values.documentAttachment}
             max={1}

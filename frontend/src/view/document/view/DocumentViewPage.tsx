@@ -32,7 +32,7 @@ function DocumentPage() {
               alignItems="flex-start"
             >
               <MDTypography variant="h4">
-                {i18n('entities.document.view.title')}
+                {i18n('document.view.title')}
               </MDTypography>
               <DocumentViewToolbar match={match} />
             </MDBox>

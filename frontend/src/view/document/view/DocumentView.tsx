@@ -24,18 +24,14 @@ function DocumentView(props) {
             </Grid>
             <Grid xs={12} item>
               <TextViewItem
-                label={i18n(
-                  'entities.document.fields.description',
-                )}
+                label={i18n('document.fields.description')}
                 value={record.description}
                 multiline
               />
             </Grid>
             <Grid xs={12} item>
               <TextViewItem
-                label={i18n(
-                  'entities.document.fields.lastUpdated',
-                )}
+                label={i18n('document.fields.lastUpdated')}
                 value={
                   record.lastUpdated
                     ? moment(record.lastUpdated).format(
@@ -47,9 +43,7 @@ function DocumentView(props) {
             </Grid>
             <Grid xs={12} item>
               <FilesViewItem
-                label={i18n(
-                  'entities.document.fields.attachment',
-                )}
+                label={i18n('document.fields.attachment')}
                 value={record.attachment}
               />
             </Grid>

@@ -29,13 +29,13 @@ import yupFilterSchemas from 'src/modules/shared/yup/yupFilterSchemas';
 
 const schema = yup.object().shape({
   name: yupFilterSchemas.string(
-    i18n('entities.document.fields.name'),
+    i18n('document.fields.name'),
   ),
   lastUpdatedRange: yupFilterSchemas.dateRange(
-    i18n('entities.document.fields.lastUpdatedRange'),
+    i18n('document.fields.lastUpdatedRange'),
   ),
   description: yupFilterSchemas.string(
-    i18n('entities.document.fields.description'),
+    i18n('document.fields.description'),
   ),
 });
 
@@ -47,17 +47,15 @@ const emptyValues = {
 
 const previewRenders = {
   name: {
-    label: i18n('entities.document.fields.name'),
+    label: i18n('document.fields.name'),
     render: filterRenders.generic(),
   },
   lastUpdatedRange: {
-    label: i18n(
-      'entities.document.fields.lastUpdatedRange',
-    ),
+    label: i18n('document.fields.lastUpdatedRange'),
     render: filterRenders.dateRange(),
   },
   description: {
-    label: i18n('entities.document.fields.description'),
+    label: i18n('document.fields.description'),
     render: filterRenders.generic(),
   },
 };
@@ -138,9 +136,7 @@ function DocumentListFilter(props) {
                 <Grid item lg={6} xs={12}>
                   <InputFormItem
                     name="name"
-                    label={i18n(
-                      'entities.document.fields.name',
-                    )}
+                    label={i18n('document.fields.name')}
                     variant="standard"
                   />
                 </Grid>
@@ -148,7 +144,7 @@ function DocumentListFilter(props) {
                   <DatePickerRangeFormItem
                     name="lastUpdatedRange"
                     label={i18n(
-                      'entities.document.fields.lastUpdatedRange',
+                      'document.fields.lastUpdatedRange',
                     )}
                     variant="standard"
                   />
@@ -157,7 +153,7 @@ function DocumentListFilter(props) {
                   <InputFormItem
                     name="description"
                     label={i18n(
-                      'entities.document.fields.description',
+                      'document.fields.description',
                     )}
                     variant="standard"
                   />
