@@ -6,12 +6,12 @@ import DocumentService from '../../services/documentService';
 export default async (req, res, next) => {
   try {
     new PermissionChecker(req).validateHas(
-      Permissions.values.documentAutocomplete,
+      Permissions.values.documentCreate,
     );
 
-    const payload = await new DocumentService(
-      req,
-    ).findAllAutocomplete(req.query.query, req.query.limit);
+    const payload = await new DocumentService(req).create(
+      req.body.data,
+    );
 
     await ApiResponseHandler.success(req, res, payload);
   } catch (error) {

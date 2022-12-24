@@ -1,24 +1,20 @@
-import { Button, Tooltip } from '@mui/material';
-import AddIcon from '@mui/icons-material/Add';
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
-import DeleteIcon from '@mui/icons-material/Delete';
-import DescriptionIcon from '@mui/icons-material/Description';
-import HistoryIcon from '@mui/icons-material/History';
 import { i18n } from 'src/i18n';
-import gradeSelectors from 'src/modules/grade/gradeSelectors';
-import destroyActions from 'src/modules/grade/destroy/gradeDestroyActions';
-import destroySelectors from 'src/modules/grade/destroy/gradeDestroySelectors';
-import actions from 'src/modules/grade/list/gradeListActions';
-import selectors from 'src/modules/grade/list/gradeListSelectors';
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import ConfirmModal from 'src/view/shared/modals/ConfirmModal';
-import ToolbarWrapper from 'src/view/shared/styles/ToolbarWrapper';
-import MDButton from 'src/mui/components/MDButton';
 import { selectMuiSettings } from 'src/modules/mui/muiSelectors';
+import { Tooltip } from '@mui/material';
+import { useSelector, useDispatch } from 'react-redux';
+import { useState } from 'react';
+import AddIcon from '@mui/icons-material/Add';
+import ConfirmModal from 'src/view/shared/modals/ConfirmModal';
+import DeleteIcon from '@mui/icons-material/Delete';
+import destroyActions from 'src/modules/document/destroy/documentDestroyActions';
+import destroySelectors from 'src/modules/document/destroy/documentDestroySelectors';
+import MDButton from 'src/mui/components/MDButton';
+import documentSelectors from 'src/modules/document/documentSelectors';
+import selectors from 'src/modules/document/list/documentListSelectors';
+import ToolbarWrapper from 'src/view/shared/styles/ToolbarWrapper';
 
-function GradeToolbar(props) {
+function DocumentToolbar(props) {
   const { sidenavColor } = selectMuiSettings();
   const [
     destroyAllConfirmVisible,
@@ -34,11 +30,12 @@ function GradeToolbar(props) {
   const destroyLoading = useSelector(
     destroySelectors.selectLoading,
   );
+
   const hasPermissionToDestroy = useSelector(
-    gradeSelectors.selectPermissionToDestroy,
+    documentSelectors.selectPermissionToDestroy,
   );
   const hasPermissionToCreate = useSelector(
-    gradeSelectors.selectPermissionToCreate,
+    documentSelectors.selectPermissionToCreate,
   );
 
   const doOpenDestroyAllConfirmModal = () => {
@@ -97,7 +94,7 @@ function GradeToolbar(props) {
           variant="gradient"
           color={sidenavColor}
           component={Link}
-          to="/grade/new"
+          to="/document/new"
           startIcon={<AddIcon />}
           size="small"
         >
@@ -120,4 +117,4 @@ function GradeToolbar(props) {
   );
 }
 
-export default GradeToolbar;
+export default DocumentToolbar;

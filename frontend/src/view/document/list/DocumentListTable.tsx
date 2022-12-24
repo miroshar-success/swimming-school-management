@@ -1,32 +1,35 @@
+import { DEFAULT_MOMENT_FORMAT } from 'src/config/common';
+import { Grid, TableContainer } from '@mui/material';
 import { i18n } from 'src/i18n';
 import { Link } from 'react-router-dom';
 import { selectMuiSettings } from 'src/modules/mui/muiSelectors';
-import { TableContainer, Tooltip } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-import actions from 'src/modules/grade/list/gradeListActions';
+import actions from 'src/modules/document/list/documentListActions';
+import authSelectors from 'src/modules/auth/authSelectors';
 import Checkbox from '@mui/material/Checkbox';
 import ConfirmModal from 'src/view/shared/modals/ConfirmModal';
 import DataTableBodyCell from 'src/mui/shared/Tables/DataTable/DataTableBodyCell';
 import DataTableHeadCell from 'src/mui/shared/Tables/DataTable/DataTableHeadCell';
 import DeleteIcon from '@mui/icons-material/Delete';
-import destroyActions from 'src/modules/grade/destroy/gradeDestroyActions';
-import destroySelectors from 'src/modules/grade/destroy/gradeDestroySelectors';
+import destroyActions from 'src/modules/document/destroy/documentDestroyActions';
+import destroySelectors from 'src/modules/document/destroy/documentDestroySelectors';
 import EditIcon from '@mui/icons-material/Edit';
 import IconButton from '@mui/material/IconButton';
 import MDBox from 'src/mui/components/MDBox';
-
 import MDTypography from 'src/mui/components/MDTypography';
-import gradeSelectors from 'src/modules/grade/gradeSelectors';
+import moment from 'moment';
 import Pagination from 'src/view/shared/table/Pagination';
+import documentSelectors from 'src/modules/document/documentSelectors';
 import SearchIcon from '@mui/icons-material/Search';
-import selectors from 'src/modules/grade/list/gradeListSelectors';
+import selectors from 'src/modules/document/list/documentListSelectors';
 import Spinner from 'src/view/shared/Spinner';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableRow from '@mui/material/TableRow';
+import Tooltip from '@mui/material/Tooltip';
 
-function GradeListTable(props) {
+function DocumentListTable(props) {
   const { sidenavColor } = selectMuiSettings();
   const [recordIdToDestroy, setRecordIdToDestroy] =
     useState(null);
@@ -52,11 +55,14 @@ function GradeListTable(props) {
   const isAllSelected = useSelector(
     selectors.selectIsAllSelected,
   );
+  const currentTenant = useSelector(
+    authSelectors.selectCurrentTenant,
+  );
   const hasPermissionToEdit = useSelector(
-    gradeSelectors.selectPermissionToEdit,
+    documentSelectors.selectPermissionToEdit,
   );
   const hasPermissionToDestroy = useSelector(
-    gradeSelectors.selectPermissionToDestroy,
+    documentSelectors.selectPermissionToDestroy,
   );
 
   const doOpenDestroyConfirmModal = (id) => {
@@ -130,7 +136,17 @@ function GradeListTable(props) {
                     : 'none'
                 }
               >
-                {i18n('grade.fields.name')}
+                {i18n('document.fields.name')}
+              </DataTableHeadCell>
+              <DataTableHeadCell
+                onClick={() => doChangeSort('lastUpdated')}
+                sorted={
+                  sorter.field === 'lastUpdated'
+                    ? sorter.order
+                    : 'none'
+                }
+              >
+                {i18n('document.fields.lastUpdated')}
               </DataTableHeadCell>
             </TableRow>
           </MDBox>
@@ -173,60 +189,69 @@ function GradeListTable(props) {
                     />
                   </DataTableBodyCell>
                   <DataTableBodyCell>
-                    <MDBox
-                      display="flex"
-                      justifyContent="flex-end"
-                    >
-                      <Tooltip
-                        disableInteractive
-                        title={i18n('common.view')}
+                    {row.tenant === currentTenant.id && (
+                      <MDBox
+                        display="flex"
+                        justifyContent="flex-end"
                       >
-                        <IconButton
-                          size="small"
-                          component={Link}
-                          color={sidenavColor}
-                          to={`/grade/${row.id}`}
-                        >
-                          <SearchIcon />
-                        </IconButton>
-                      </Tooltip>
-                      {hasPermissionToEdit && (
                         <Tooltip
                           disableInteractive
-                          title={i18n('common.edit')}
+                          title={i18n('common.view')}
                         >
                           <IconButton
                             size="small"
-                            color={sidenavColor}
                             component={Link}
-                            to={`/grade/${row.id}/edit`}
-                          >
-                            <EditIcon />
-                          </IconButton>
-                        </Tooltip>
-                      )}
-                      {hasPermissionToDestroy && (
-                        <Tooltip
-                          disableInteractive
-                          title={i18n('common.destroy')}
-                        >
-                          <IconButton
-                            size="small"
                             color={sidenavColor}
-                            onClick={() =>
-                              doOpenDestroyConfirmModal(
-                                row.id,
-                              )
-                            }
+                            to={`/document/${row.id}`}
                           >
-                            <DeleteIcon />
+                            <SearchIcon />
                           </IconButton>
                         </Tooltip>
-                      )}
-                    </MDBox>
+                        {hasPermissionToEdit && (
+                          <Tooltip
+                            disableInteractive
+                            title={i18n('common.edit')}
+                          >
+                            <IconButton
+                              size="small"
+                              color={sidenavColor}
+                              component={Link}
+                              to={`/document/${row.id}/edit`}
+                            >
+                              <EditIcon />
+                            </IconButton>
+                          </Tooltip>
+                        )}
+                        {hasPermissionToDestroy && (
+                          <Tooltip
+                            disableInteractive
+                            title={i18n('common.destroy')}
+                          >
+                            <IconButton
+                              size="small"
+                              color={sidenavColor}
+                              onClick={() =>
+                                doOpenDestroyConfirmModal(
+                                  row.id,
+                                )
+                              }
+                            >
+                              <DeleteIcon />
+                            </IconButton>
+                          </Tooltip>
+                        )}
+                      </MDBox>
+                    )}
                   </DataTableBodyCell>
                   <DataTableBodyCell>
                     {row.name}
+                  </DataTableBodyCell>
+                  <DataTableBodyCell>
+                    {row.lastUpdated
+                      ? moment(row.lastUpdated).format(
+                          DEFAULT_MOMENT_FORMAT,
+                        )
+                      : null}
                   </DataTableBodyCell>
                 </TableRow>
               ))}
@@ -255,4 +280,4 @@ function GradeListTable(props) {
   );
 }
 
-export default GradeListTable;
+export default DocumentListTable;

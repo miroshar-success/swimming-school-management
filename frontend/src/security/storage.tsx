@@ -36,6 +36,12 @@ export default class Storage {
         bypassWritingPermissions: true,
         publicRead: true,
       },
+      documentAttachment: {
+        id: 'documentAttachment',
+        folder: 'tenant/:tenantId/document/attachment',
+        maxSizeInBytes: 100 * 1024 * 1024,
+        publicRead: true,
+      },
     };
   }
 }
