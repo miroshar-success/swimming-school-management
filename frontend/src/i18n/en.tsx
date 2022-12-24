@@ -227,6 +227,9 @@ const en = {
       newPassword: 'New Password',
       newPasswordConfirmation: 'New Password Confirmation',
       rememberMe: 'Remember me',
+      birthday: 'Birthday',
+      RFC: 'RFC',
+      CURP: 'CURP',
     },
     status: {
       active: 'Active',
@@ -245,7 +248,7 @@ const en = {
     exporterFileName: 'teachers_export',
     doDestroySuccess: 'Teacher successfully deleted',
     doDestroyAllSelectedSuccess:
-      'Users successfully deleted',
+      'Teachers successfully deleted',
     edit: {
       title: 'Edit Teacher',
     },
@@ -261,7 +264,7 @@ const en = {
     },
     importer: {
       title: 'Import Teachers',
-      fileName: 'teachers_import_template',
+      fileName: 'teachers_import_data',
       hint: 'Files/Images columns must be the URLs of the files separated by space. Relationships must be the ID of the referenced records separated by space. Roles must be the role ids separated by space.',
     },
     errors: {
@@ -358,6 +361,7 @@ const en = {
       diseaseAllergyCondition:
         'Do you have any diseases or Allergy? If you have, please simply describe.',
       address: 'Address',
+      street: 'Street',
       postalCode: 'Postal Code',
       cologne: 'Cologne',
       city: 'City',
@@ -384,6 +388,11 @@ const en = {
       schedules: 'Schedules',
       paymentList: 'Payment History',
       attendance: 'Attendance',
+      attendanceHistory: 'Attendance History',
+      class: 'Class',
+      comment: 'comment',
+      registrationDate: 'Registration Date',
+      nextPaymentDate: 'Next Payment Date',
     },
     status: {
       active: 'Active',
@@ -417,7 +426,7 @@ const en = {
     },
     importer: {
       title: 'Import Students',
-      fileName: 'users_import_template',
+      fileName: 'users_import_data',
       hint: 'Files/Images columns must be the URLs of the files separated by space. Relationships must be the ID of the referenced records separated by space. Roles must be the role ids separated by space.',
     },
     errors: {
@@ -430,10 +439,6 @@ const en = {
 
   school: {
     menu: 'My School',
-  },
-
-  document: {
-    menu: 'Documents',
   },
 
   tenant: {

@@ -406,7 +406,7 @@ function StudentView(props) {
                     >
                       <MDTypography>
                         {i18n(
-                          'student.fields.paymentHistory',
+                          'payment.fields.paymentHistory',
                         )}
                       </MDTypography>
                     </MDBox>
@@ -421,40 +421,40 @@ function StudentView(props) {
                                 sorted={false}
                               >
                                 {i18n(
-                                  'student.fields.paymentCategory',
+                                  'payment.fields.paymentCategory',
                                 )}
                               </DataTableHeadCell>
                               <DataTableHeadCell
                                 sorted={false}
                               >
                                 {i18n(
-                                  'student.fields.paymentMethod',
+                                  'payment.fields.paymentMethod',
                                 )}
                               </DataTableHeadCell>
                               <DataTableHeadCell
                                 sorted={false}
                               >
                                 {i18n(
-                                  'student.fields.paymentDate',
+                                  'payment.fields.paymentDate',
                                 )}
                               </DataTableHeadCell>
                               <DataTableHeadCell
                                 sorted={false}
                               >
                                 {i18n(
-                                  'student.fields.subTotal',
+                                  'payment.fields.subTotal',
                                 )}
                               </DataTableHeadCell>
                               <DataTableHeadCell
                                 sorted={false}
                               >
-                                {i18n('student.fields.VAT')}
+                                {i18n('payment.fields.VAT')}
                               </DataTableHeadCell>
                               <DataTableHeadCell
                                 sorted={false}
                               >
                                 {i18n(
-                                  'student.fields.total',
+                                  'payment.fields.total',
                                 )}
                               </DataTableHeadCell>
                             </TableRow>
