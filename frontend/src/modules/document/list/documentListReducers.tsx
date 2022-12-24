@@ -1,6 +1,6 @@
 import actions from 'src/modules/document/list/documentListActions';
 
-const INITIAL_PAGE_SIZE = 12;
+const INITIAL_PAGE_SIZE = 10;
 
 const initialData = {
   rows: [] as Array<any>,

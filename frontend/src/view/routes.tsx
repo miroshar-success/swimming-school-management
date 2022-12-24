@@ -170,14 +170,47 @@ const privateRoutes = [
 
   {
     path: '/document',
-    collapseName: 'settings',
     i18n: 'document.menu',
+    collapseName: 'settings',
     parent: '/settings-breadcrumb',
-    //loader: () =>
-    //  import('src/view/document/DocumentFormPage'),
-    permissionRequired: permissions.settingsEdit,
+    loader: () =>
+      import('src/view/document/list/DocumentListPage'),
+    permissionRequired: permissions.documentRead,
+    exact: true,
   },
 
+  {
+    path: '/document/new',
+    i18n: 'document.new.title',
+    collapseName: 'document',
+    parent: '/document',
+    loader: () =>
+      import('src/view/document/form/DocumentFormPage'),
+    permissionRequired: permissions.documentCreate,
+    exact: true,
+  },
+
+  {
+    path: '/document/:id/edit',
+    i18n: 'document.edit.title',
+    collapseName: 'document',
+    parent: '/document',
+    loader: () =>
+      import('src/view/document/form/DocumentFormPage'),
+    permissionRequired: permissions.documentEdit,
+    exact: true,
+  },
+
+  {
+    path: '/document/:id',
+    i18n: 'document.view.title',
+    collapseName: 'document',
+    parent: '/document',
+    loader: () =>
+      import('src/view/document/view/DocumentViewPage'),
+    permissionRequired: permissions.documentRead,
+    exact: true,
+  },
   {
     path: '/student-breadcrumb',
     collapseName: 'student',
