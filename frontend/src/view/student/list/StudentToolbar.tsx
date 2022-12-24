@@ -136,7 +136,7 @@ function StudentToolbar(props) {
           startIcon={<EmailIcon />}
           size="small"
         >
-          {i18n('student.create')}
+          {i18n('common.new')}
         </MDButton>
       )}
 

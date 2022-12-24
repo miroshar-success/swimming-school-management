@@ -44,10 +44,6 @@ const schema = yup.object().shape({
       max: 1,
     },
   ),
-  tags: yupFormSchemas.relationToMany(
-    i18n('product.fields.tags'),
-    {},
-  ),
 });
 
 function DocumentForm(props) {
@@ -60,7 +56,6 @@ function DocumentForm(props) {
       name: record.name,
       description: record.description,
       attachment: record.attachment || [],
-      tags: record.tags || [],
     };
   });
 
