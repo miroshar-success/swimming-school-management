@@ -24,13 +24,13 @@ import Storage from 'src/security/storage';
 
 const schema = yup.object().shape({
   class: yupFormSchemas.relationToOne(
-    i18n('registration.fields.class'),
+    i18n('user.fields.class'),
     {
       required: true,
     },
   ),
   lessons: yupFormSchemas.relationToMany(
-    i18n('registration.fields.lesson'),
+    i18n('user.fields.lessons'),
     {
       required: true,
     },
@@ -92,7 +92,7 @@ function RegistrationForm(props) {
             <Grid item lg={6} md={8} sm={12} xs={12}>
               <LessonAutocompleteFormItem
                 name="lessons"
-                label={i18n('registration.fields.lesson')}
+                label={i18n('registration.fields.lessons')}
                 classId={classId}
                 required={true}
                 showCreate={true}

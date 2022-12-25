@@ -186,6 +186,7 @@ const en = {
       attendance: 'Attendance',
       attendanceHistory: 'Attendance History',
       class: 'Class',
+      lessons: 'Lessons',
       registrationDate: 'Registration Date',
       nextPaymentDate: 'Next Payment Date',
     },
@@ -277,6 +278,54 @@ const en = {
     },
   },
 
+  student: {
+    subtitle: {
+      profileData: 'Profile',
+      otherData: 'Other Information',
+      address: 'Address',
+    },
+    registration: {
+      menu: 'Registration',
+      title: 'Registration',
+    },
+    validations: {
+      // eslint-disable-next-line
+      email: 'Email ${value} is invalid',
+    },
+    title: 'Students',
+    menu: 'Students',
+    doAddSuccess: 'Student(s) successfully saved',
+    doUpdateSuccess: 'Student successfully saved',
+    exporterFileName: 'students_export',
+    doDestroySuccess: 'Student successfully deleted',
+    doDestroyAllSelectedSuccess:
+      'Students successfully deleted',
+    edit: {
+      title: 'Edit Student',
+    },
+    new: {
+      title: 'Add Student(s)',
+      titleModal: 'Add Student',
+      emailsHint:
+        'Separate multiple email addresses using the comma character.',
+    },
+    view: {
+      title: 'View Student',
+      activity: 'Activity',
+    },
+    importer: {
+      title: 'Import Students',
+      fileName: 'users_import_data',
+      hint: 'Files/Images columns must be the URLs of the files separated by space. Relationships must be the ID of the referenced records separated by space. Roles must be the role ids separated by space.',
+    },
+    errors: {
+      userAlreadyExists:
+        'Student with this email already exists',
+      userNotFound: 'Student not found',
+      revokingOwnPermission: `You can't revoke your own admin permission`,
+    },
+  },
+
   payment: {
     doAddSuccess: 'Payment(s) successfully saved',
     doDestroySuccess: 'Payment successfully deleted',
@@ -346,6 +395,13 @@ const en = {
     },
   },
 
+  registration: {
+    doRegisterSuccess: 'Lesson(s) successfully registered',
+    menu: 'Registration',
+    title: 'Registration',
+    registerLessons: 'Register Lessons',
+  },
+
   class: {
     menu: 'Classes',
     category: {
@@ -374,54 +430,6 @@ const en = {
     menu: 'Properties',
     pool: {
       menu: 'Pools',
-    },
-  },
-
-  student: {
-    subtitle: {
-      profileData: 'Profile',
-      otherData: 'Other Information',
-      address: 'Address',
-    },
-    registration: {
-      menu: 'Registration',
-      title: 'Registration',
-    },
-    validations: {
-      // eslint-disable-next-line
-      email: 'Email ${value} is invalid',
-    },
-    title: 'Students',
-    menu: 'Students',
-    doAddSuccess: 'Student(s) successfully saved',
-    doUpdateSuccess: 'Student successfully saved',
-    exporterFileName: 'students_export',
-    doDestroySuccess: 'Student successfully deleted',
-    doDestroyAllSelectedSuccess:
-      'Students successfully deleted',
-    edit: {
-      title: 'Edit Student',
-    },
-    new: {
-      title: 'Add Student(s)',
-      titleModal: 'Add Student',
-      emailsHint:
-        'Separate multiple email addresses using the comma character.',
-    },
-    view: {
-      title: 'View Student',
-      activity: 'Activity',
-    },
-    importer: {
-      title: 'Import Students',
-      fileName: 'users_import_data',
-      hint: 'Files/Images columns must be the URLs of the files separated by space. Relationships must be the ID of the referenced records separated by space. Roles must be the role ids separated by space.',
-    },
-    errors: {
-      userAlreadyExists:
-        'Student with this email already exists',
-      userNotFound: 'Student not found',
-      revokingOwnPermission: `You can't revoke your own admin permission`,
     },
   },
 

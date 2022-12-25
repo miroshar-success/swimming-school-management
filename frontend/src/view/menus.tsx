@@ -25,7 +25,7 @@ const menus = [
     collapse: [
       {
         path: '/registration',
-        name: i18n('student.registration.menu'),
+        name: i18n('registration.menu'),
         icon: <Icon>group_add</Icon>,
         permissionRequired: permissions.studentEdit,
       },

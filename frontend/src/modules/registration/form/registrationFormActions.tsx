@@ -27,7 +27,7 @@ const registrationFormActions = {
         });
 
         Message.success(
-          i18n('registration.doUpdateSuccess'),
+          i18n('registration.doRegisterSuccess'),
         );
 
         getHistory().push('/registration');

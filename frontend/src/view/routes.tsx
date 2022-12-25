@@ -267,7 +267,7 @@ const privateRoutes = [
 
   {
     path: '/registration',
-    i18n: 'registration.list.title',
+    i18n: 'registration.title',
     collapseName: 'student',
     parent: '/student-breadcrumb',
     loader: () =>
@@ -278,7 +278,7 @@ const privateRoutes = [
 
   {
     path: '/registration/:id',
-    i18n: 'registration.assignment',
+    i18n: 'registration.registerLessons',
     collapseNmae: 'student',
     parent: '/registration',
     loader: () =>
