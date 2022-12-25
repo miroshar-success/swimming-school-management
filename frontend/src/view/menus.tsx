@@ -197,7 +197,7 @@ const profileRoutes = [
 
 const tenantRoutes = [
   {
-    name: i18n('tenant.list.title'),
+    name: i18n('tenant.title'),
     path: '/tenant',
     icon: <Icon>school</Icon>,
   },

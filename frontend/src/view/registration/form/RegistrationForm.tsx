@@ -81,7 +81,7 @@ function RegistrationForm(props) {
             <Grid item lg={6} md={8} sm={12} xs={12}>
               <ClassAutocompleteFormItem
                 name="class"
-                label={i18n('registration.fields.class')}
+                label={i18n('user.fields.class')}
                 required={true}
                 variant="standard"
                 onChange={onChange}
@@ -92,7 +92,7 @@ function RegistrationForm(props) {
             <Grid item lg={6} md={8} sm={12} xs={12}>
               <LessonAutocompleteFormItem
                 name="lessons"
-                label={i18n('registration.fields.lessons')}
+                label={i18n('user.fields.lessons')}
                 classId={classId}
                 required={true}
                 showCreate={true}

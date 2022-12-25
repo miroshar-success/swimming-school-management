@@ -19,7 +19,7 @@ function ClassCategoryListPage(props) {
             pb={2.4}
           >
             <MDTypography variant="h3">
-              {i18n('classCategory.list.title')}
+              {i18n('classCategory.title')}
             </MDTypography>
             <ClassCategoryListToolbar />
           </MDBox>

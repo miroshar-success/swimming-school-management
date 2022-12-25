@@ -50,7 +50,7 @@ function PaymentMethodFormModal(props) {
           justifyContent="space-between"
         >
           <MDTypography>
-            {i18n('paymentMethod.new.title')}
+            {i18n('payment.method.new.title')}
           </MDTypography>
           <IconButton
             color="secondary"

@@ -50,7 +50,7 @@ function PaymentCategoryFormModal(props) {
           justifyContent="space-between"
         >
           <MDTypography>
-            {i18n('paymentCategory.new.title')}
+            {i18n('payment.category.new.title')}
           </MDTypography>
           <IconButton
             color="secondary"

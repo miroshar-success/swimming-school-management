@@ -117,7 +117,7 @@ function PaymentHistoryListTable(props) {
                 {i18n('common.createdAt')}
               </DataTableHeadCell>
               <DataTableHeadCell sorted={false}>
-                {i18n('payment.fields.total')}
+                {i18n('payment.fields.cost')}
               </DataTableHeadCell>
             </TableRow>
           </MDBox>

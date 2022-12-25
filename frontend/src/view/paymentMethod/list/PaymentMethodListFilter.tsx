@@ -31,13 +31,13 @@ import DatePickerFormItem from 'src/view/shared/form/items/DatePickerFormItem';
 
 const schema = yup.object().shape({
   name: yupFilterSchemas.string(
-    i18n('paymentMethod.fields.name'),
+    i18n('payment.method.fields.name'),
   ),
 });
 
 const previewRenders = {
   name: {
-    label: i18n('paymentMethod.fields.name'),
+    label: i18n('payment.method.fields.name'),
     render: filterRenders.generic(),
   },
 };
@@ -129,7 +129,7 @@ function PaymentMethodListFilter(props) {
                   <InputFormItem
                     name={'name'}
                     label={i18n(
-                      'paymentMethod.fields.name',
+                      'payment.method.fields.name',
                     )}
                     variant="standard"
                   />

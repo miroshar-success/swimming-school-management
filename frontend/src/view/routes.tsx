@@ -57,7 +57,7 @@ const privateRoutes = [
   {
     path: '/tenant',
     collapseName: 'my-profile',
-    i18n: 'tenant.list.title',
+    i18n: 'tenant.title',
     parent: '/person-name-breadcrumb',
     loader: () =>
       import('src/view/tenant/list/TenantListPage'),
@@ -531,7 +531,7 @@ const privateRoutes = [
 
   {
     path: '/class',
-    i18n: 'class.list.title',
+    i18n: 'class.title',
     collapse: 'class',
     parent: '/class-breadcrumb',
     loader: () =>
@@ -575,7 +575,7 @@ const privateRoutes = [
 
   {
     path: '/lesson',
-    i18n: 'lesson.list.title',
+    i18n: 'lesson.title',
     collapse: 'class',
     parent: '/class-breadcrumb',
     loader: () =>
@@ -619,7 +619,7 @@ const privateRoutes = [
 
   {
     path: '/class-category',
-    i18n: 'class.category.list.title',
+    i18n: 'class.category.title',
     collapse: 'class',
     parent: '/class-breadcrumb',
     loader: () =>
@@ -681,7 +681,7 @@ const privateRoutes = [
 
   {
     path: '/grade',
-    i18n: 'grade.list.title',
+    i18n: 'grade.title',
     collapse: 'grade',
     parent: '/grade-breadcrumb',
     loader: () =>
@@ -725,7 +725,7 @@ const privateRoutes = [
 
   {
     path: '/skill',
-    i18n: 'skill.list.title',
+    i18n: 'skill.title',
     collapse: 'grade',
     parent: '/grade-breadcrumb',
     loader: () =>
@@ -769,7 +769,7 @@ const privateRoutes = [
 
   {
     path: '/attendance',
-    i18n: 'attendance.list.title',
+    i18n: 'attendance.title',
     collapse: 'attendance',
     parent: '/',
     loader: () =>

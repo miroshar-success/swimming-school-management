@@ -60,7 +60,7 @@ const paymentMethodFormActions = {
         type: paymentMethodFormActions.CREATE_SUCCESS,
       });
 
-      Message.success(i18n('paymentMethod.create.success'));
+      Message.success(i18n('payment.method.doAddSuccess'));
 
       getHistory().push('/payment-method');
     } catch (error) {
@@ -84,7 +84,9 @@ const paymentMethodFormActions = {
         type: paymentMethodFormActions.UPDATE_SUCCESS,
       });
 
-      Message.success(i18n('paymentMethod.update.success'));
+      Message.success(
+        i18n('payment.method.doUpdateSuccess'),
+      );
 
       getHistory().push('/payment-method');
     } catch (error) {

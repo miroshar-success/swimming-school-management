@@ -29,7 +29,7 @@ const paymentMethodDestroyActions = {
       });
 
       Message.success(
-        i18n('paymentMethod.destroy.success'),
+        i18n('payment.method.doDestroySuccess'),
       );
 
       dispatch(listActions.doFetchCurrentFilter());
@@ -64,7 +64,7 @@ const paymentMethodDestroyActions = {
       }
 
       Message.success(
-        i18n('paymentMethod.destroyAll.success'),
+        i18n('payment.method.doDestroyAllSelectedSuccess'),
       );
 
       getHistory().push('/payment-method');

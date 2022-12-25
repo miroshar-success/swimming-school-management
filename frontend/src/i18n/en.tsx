@@ -375,6 +375,14 @@ const en = {
       },
       view: {
         title: 'View Payment Category'
+      },
+      doDestroySuccess: 'Payment Category successfully deleted',
+      doAddSuccess: 'Payment Category(s) successfully saved',
+      doUpdateSuccess: 'Payment Category successfully saved',
+      doDestroyAllSelectedSuccess:
+        'Payment Categories successfully deleted',
+      fields: {
+        name: 'Payment Category Title'
       }
     },
     method: {
@@ -388,6 +396,14 @@ const en = {
       },
       view: {
         title: 'View Payment Method',
+      },
+      doDestroySuccess: 'Payment Method successfully deleted',
+      doAddSuccess: 'Payment Method(s) successfully saved',
+      doUpdateSuccess: 'Payment Method successfully saved',
+      doDestroyAllSelectedSuccess:
+        'Payment Methods successfully deleted',
+      fields: {
+        name: 'Payment Method Title'
       }
     },
     add: {
@@ -441,10 +457,7 @@ const en = {
     name: 'tenant',
     label: 'Schools',
     menu: 'Schools',
-    list: {
-      menu: 'Schools',
-      title: 'Schools',
-    },
+    title: 'Schools',
     create: {
       button: 'Create School',
       success: 'School successfully saved',

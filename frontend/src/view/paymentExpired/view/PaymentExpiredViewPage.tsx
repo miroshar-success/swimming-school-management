@@ -32,7 +32,7 @@ function PaymentExpiredViewPage(props) {
             alignItems="flex-start"
           >
             <MDTypography variant="h3" mb={2.4}>
-              {i18n('paymentExpired.view.title')}
+              {i18n('payment.expired.view.title')}
             </MDTypography>
             <PaymentExpiredViewToolbar match={match} />
           </MDBox>

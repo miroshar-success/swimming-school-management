@@ -19,7 +19,7 @@ function PoolListPage(props) {
             pb={2.4}
           >
             <MDTypography variant="h3">
-              {i18n('pool.list.title')}
+              {i18n('pool.title')}
             </MDTypography>
             <PoolListToolbar />
           </MDBox>

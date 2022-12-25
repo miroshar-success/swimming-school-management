@@ -20,7 +20,7 @@ import InputFormItem from 'src/view/shared/form/items/InputFormItem';
 
 const schema = yup.object().shape({
   name: yupFormSchemas.string(
-    i18n('paymentCategory.fields.name'),
+    i18n('payment.category.fields.name'),
     {
       required: true,
       max: 1000,
@@ -67,7 +67,7 @@ function PaymentCategoryForm(props) {
             <Grid item lg={7} md={8} sm={12} xs={12}>
               <InputFormItem
                 name="name"
-                label={i18n('paymentCategory.fields.name')}
+                label={i18n('payment.category.fields.name')}
                 required={true}
                 variant="standard"
                 fullWidth

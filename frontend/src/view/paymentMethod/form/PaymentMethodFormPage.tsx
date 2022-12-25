@@ -29,8 +29,8 @@ function PaymentMethodFormPage(props) {
 
   const isEditing = Boolean(match.params.id);
   const title = isEditing
-    ? i18n('paymentMethod.edit.title')
-    : i18n('paymentMethod.new.title');
+    ? i18n('payment.method.edit.title')
+    : i18n('payment.method.new.title');
 
   useEffect(() => {
     dispatch(actions.doInit(match.params.id));

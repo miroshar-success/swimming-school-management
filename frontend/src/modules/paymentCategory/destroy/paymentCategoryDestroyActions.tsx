@@ -29,7 +29,7 @@ const paymentCategoryDestroyActions = {
       });
 
       Message.success(
-        i18n('paymentCategory.destroy.success'),
+        i18n('payment.category.doDestroySuccess'),
       );
 
       dispatch(listActions.doFetchCurrentFilter());
@@ -64,7 +64,9 @@ const paymentCategoryDestroyActions = {
       }
 
       Message.success(
-        i18n('paymentCategory.destroyAll.success'),
+        i18n(
+          'payment.category.doDestroyAllSelectedSuccess',
+        ),
       );
 
       getHistory().push('/payment-category');

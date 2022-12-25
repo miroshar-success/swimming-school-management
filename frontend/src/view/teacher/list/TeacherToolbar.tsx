@@ -1,6 +1,6 @@
 import { Tooltip } from '@mui/material';
 import DescriptionIcon from '@mui/icons-material/Description';
-import EmailIcon from '@mui/icons-material/Email';
+import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { i18n } from 'src/i18n';
 import actions from 'src/modules/teacher/list/teacherListActions';
@@ -133,10 +133,10 @@ function TeacherToolbar(props) {
           color={sidenavColor}
           component={Link}
           to="/teacher/new"
-          startIcon={<EmailIcon />}
+          startIcon={<AddIcon />}
           size="small"
         >
-          {i18n('teacher.create')}
+          {i18n('common.new')}
         </MDButton>
       )}
 

@@ -133,7 +133,7 @@ function PaymentCategoryListTable(props) {
                     : 'none'
                 }
               >
-                {i18n('paymentCategory.fields.name')}
+                {i18n('payment.category.fields.name')}
               </DataTableHeadCell>
             </TableRow>
           </MDBox>
