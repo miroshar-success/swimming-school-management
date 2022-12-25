@@ -69,7 +69,7 @@ function PaymentExpiredListTable(props) {
                     : 'none'
                 }
               >
-                {i18n('student.fields.studentNumber')}
+                {i18n('user.fields.studentNumber')}
               </DataTableHeadCell>
               <DataTableHeadCell
                 onClick={() => doChangeSort('fullName')}
@@ -79,7 +79,7 @@ function PaymentExpiredListTable(props) {
                     : 'none'
                 }
               >
-                {i18n('student.fields.fullName')}
+                {i18n('user.fields.fullName')}
               </DataTableHeadCell>
               <DataTableHeadCell>
                 {i18n('payment.fields.month')}

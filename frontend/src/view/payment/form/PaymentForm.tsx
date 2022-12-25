@@ -155,7 +155,7 @@ function PaymentForm(props) {
                         <MDBox px={4}>
                           <LogoViewItem
                             label={i18n(
-                              'student.fields.avatars',
+                              'user.fields.avatars',
                             )}
                             value={props.record.avatars}
                           />
@@ -166,7 +166,7 @@ function PaymentForm(props) {
                           <Grid item xs={12}>
                             <TextViewItem
                               label={i18n(
-                                'student.fields.name',
+                                'user.fields.name',
                               )}
                               value={props.record.fullName}
                             />
@@ -174,7 +174,7 @@ function PaymentForm(props) {
                           <Grid item xs={12}>
                             <TextViewItem
                               label={i18n(
-                                'student.fields.class',
+                                'user.fields.class',
                               )}
                               value={
                                 props.record.lessons[0]

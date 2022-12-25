@@ -29,23 +29,23 @@ import yupFilterSchemas from 'src/modules/shared/yup/yupFilterSchemas';
 
 const schema = yup.object().shape({
   studentNumber: yupFilterSchemas.integer(
-    i18n('student.fields.studentNumber'),
+    i18n('user.fields.studentNumber'),
   ),
   firstName: yupFilterSchemas.string(
-    i18n('student.fields.firstName'),
+    i18n('user.fields.firstName'),
   ),
   lastName: yupFilterSchemas.string(
-    i18n('student.fields.lastName'),
+    i18n('user.fields.lastName'),
   ),
 });
 
 const previewRenders = {
   studentNumber: {
-    label: i18n('student.fields.studentNumber'),
+    label: i18n('user.fields.studentNumber'),
     render: filterRenders.decimal(),
   },
   fullName: {
-    label: i18n('student.fields.fullName'),
+    label: i18n('user.fields.fullName'),
     render: filterRenders.generic(),
   },
 };
@@ -138,7 +138,7 @@ function PaymentExpiredListFilter(props) {
                   <InputFormItem
                     name={'studentNumber'}
                     label={i18n(
-                      'student.fields.studentNumber',
+                      'user.fields.studentNumber',
                     )}
                     variant="standard"
                   />
@@ -146,7 +146,7 @@ function PaymentExpiredListFilter(props) {
                 <Grid item md={6} xs={12}>
                   <InputFormItem
                     name={'fullName'}
-                    label={i18n('student.fields.fullName')}
+                    label={i18n('user.fields.fullName')}
                     variant="standard"
                   />
                 </Grid>

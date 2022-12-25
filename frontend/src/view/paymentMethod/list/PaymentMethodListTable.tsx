@@ -133,7 +133,7 @@ function PaymentMethodListTable(props) {
                     : 'none'
                 }
               >
-                {i18n('paymentMethod.fields.name')}
+                {i18n('payment.method.fields.name')}
               </DataTableHeadCell>
             </TableRow>
           </MDBox>

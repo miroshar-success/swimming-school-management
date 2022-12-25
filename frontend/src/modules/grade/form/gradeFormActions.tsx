@@ -60,7 +60,7 @@ const gradeFormActions = {
         type: gradeFormActions.CREATE_SUCCESS,
       });
 
-      Message.success(i18n('grade.create.success'));
+      Message.success(i18n('grade.doAddSuccess'));
 
       getHistory().push('/grade');
     } catch (error) {
@@ -84,7 +84,7 @@ const gradeFormActions = {
         type: gradeFormActions.UPDATE_SUCCESS,
       });
 
-      Message.success(i18n('grade.update.success'));
+      Message.success(i18n('grade.doUpdateSuccess'));
 
       getHistory().push('/grade');
     } catch (error) {

@@ -61,7 +61,7 @@ const adminFormActions = {
         type: adminFormActions.ADD_SUCCESS,
       });
 
-      Message.success(i18n('admin.doAddSuccess'));
+      Message.success(i18n('user.doAddSuccess'));
 
       getHistory().push('/admin');
     } catch (error) {
@@ -93,7 +93,7 @@ const adminFormActions = {
         await dispatch(authActions.doRefreshCurrentUser());
       }
 
-      Message.success(i18n('admin.doUpdateSuccess'));
+      Message.success(i18n('user.doUpdateSuccess'));
 
       getHistory().push('/admin');
     } catch (error) {

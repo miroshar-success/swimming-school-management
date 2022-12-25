@@ -28,7 +28,7 @@ const paymentDestroyActions = {
         type: paymentDestroyActions.DESTROY_SUCCESS,
       });
 
-      Message.success(i18n('payment.destroy.success'));
+      Message.success(i18n('payment.doDestroySuccess'));
 
       dispatch(studentListActions.doFetchCurrentFilter());
     } catch (error) {
@@ -53,7 +53,9 @@ const paymentDestroyActions = {
           type: paymentDestroyActions.DESTROY_ALL_SUCCESS,
         });
 
-        Message.success(i18n('payment.destroyAll.success'));
+        Message.success(
+          i18n('payment.doDestroyAllSelectedSuccess'),
+        );
 
         getHistory().push('/payment-history');
       } catch (error) {

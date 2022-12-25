@@ -27,28 +27,28 @@ import MDTypography from 'src/mui/components/MDTypography';
 
 const schema = yup.object().shape({
   studentNumber: yupFormSchemas.integer(
-    i18n('student.fields.studentNumber'),
+    i18n('user.fields.studentNumber'),
     {
       required: true,
       max: 1000,
     },
   ),
   firstName: yupFormSchemas.string(
-    i18n('student.fields.firstName'),
+    i18n('user.fields.firstName'),
     {
       required: true,
       max: 80,
     },
   ),
   lastName: yupFormSchemas.string(
-    i18n('student.fields.lastName'),
+    i18n('user.fields.lastName'),
     {
       required: true,
       max: 175,
     },
   ),
   phoneNumber: yupFormSchemas.string(
-    i18n('student.fields.phoneNumber'),
+    i18n('user.fields.phoneNumber'),
     {
       required: true,
       matches: /^[0-9]/,
@@ -56,84 +56,81 @@ const schema = yup.object().shape({
     },
   ),
   street: yupFormSchemas.string(
-    i18n('student.fields.street'),
+    i18n('user.fields.street'),
     {
       required: true,
     },
   ),
   postalCode: yupFormSchemas.string(
-    i18n('student.fields.postalCode'),
+    i18n('user.fields.postalCode'),
     {
       required: true,
     },
   ),
   cologne: yupFormSchemas.string(
-    i18n('student.fields.cologne'),
+    i18n('user.fields.cologne'),
     {
       required: true,
     },
   ),
-  city: yupFormSchemas.string(i18n('student.fields.city'), {
+  city: yupFormSchemas.string(i18n('user.fields.city'), {
     required: true,
   }),
-  RFC: yupFormSchemas.string(i18n('student.fields.RFC'), {
+  RFC: yupFormSchemas.string(i18n('user.fields.RFC'), {
     required: true,
     max: 50,
   }),
-  CURP: yupFormSchemas.string(i18n('student.fields.CURP'), {
+  CURP: yupFormSchemas.string(i18n('user.fields.CURP'), {
     required: true,
     max: 50,
   }),
   bloodType: yupFormSchemas.string(
-    i18n('student.fields.bloodType'),
+    i18n('user.fields.bloodType'),
     {
       required: true,
       max: 2,
     },
   ),
-  sex: yupFormSchemas.string(i18n('student.fields.sex'), {
+  sex: yupFormSchemas.string(i18n('user.fields.sex'), {
     required: true,
     max: 10,
   }),
   birthday: yupFormSchemas.date(
-    i18n('student.fields.birthday'),
+    i18n('user.fields.birthday'),
     {
       required: true,
     },
   ),
   guardianPhoneNumber: yupFormSchemas.string(
-    i18n('student.fields.guardianPhoneNumber'),
+    i18n('user.fields.guardianPhoneNumber'),
     {
       matches: /^[0-9]/,
     },
   ),
   guardianFullName: yupFormSchemas.string(
-    i18n('student.fields.guardianFullName'),
+    i18n('user.fields.guardianFullName'),
   ),
   healthInsuranceCompany: yupFormSchemas.string(
-    i18n('student.fields.healthInsuranceCompany'),
+    i18n('user.fields.healthInsuranceCompany'),
   ),
   healthInsuranceNumber: yupFormSchemas.string(
-    i18n('student.fields.healthInsuranceNumber'),
+    i18n('user.fields.healthInsuranceNumber'),
   ),
   comment: yupFormSchemas.string(
-    i18n('student.fields.comment'),
+    i18n('user.fields.comment'),
   ),
   avatars: yupFormSchemas.images(
-    i18n('student.fields.avatars'),
+    i18n('user.fields.avatars'),
     {
       required: true,
       max: 1,
     },
   ),
-  email: yupFormSchemas.email(
-    i18n('student.fields.email'),
-    {
-      required: true,
-    },
-  ),
+  email: yupFormSchemas.email(i18n('user.fields.email'), {
+    required: true,
+  }),
   password: yupFormSchemas.string(
-    i18n('student.fields.email'),
+    i18n('user.fields.email'),
     {
       required: true,
     },

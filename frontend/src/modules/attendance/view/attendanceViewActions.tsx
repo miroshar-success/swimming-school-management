@@ -48,7 +48,7 @@ const attendanceViewActions = {
         type: attendanceViewActions.CREATE_SUCCESS,
       });
 
-      Message.success(i18n('attendance.create.success'));
+      Message.success(i18n('attendance.doAddSuccess'));
     } catch (error) {
       Errors.handle(error);
 

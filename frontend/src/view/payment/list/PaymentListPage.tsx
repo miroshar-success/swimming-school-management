@@ -19,7 +19,7 @@ function PaymentListPage(props) {
             pb={2.4}
           >
             <MDTypography variant="h3">
-              {i18n('payment.list.title')}
+              {i18n('payment.title')}
             </MDTypography>
             <PaymentListToolbar />
           </MDBox>

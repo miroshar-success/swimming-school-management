@@ -28,7 +28,7 @@ const poolDestroyActions = {
         type: poolDestroyActions.DESTROY_SUCCESS,
       });
 
-      Message.success(i18n('pool.destroy.success'));
+      Message.success(i18n('pool.doDestroySuccess'));
 
       dispatch(listActions.doFetchCurrentFilter());
 
@@ -61,7 +61,9 @@ const poolDestroyActions = {
         dispatch(listActions.doFetchCurrentFilter());
       }
 
-      Message.success(i18n('pool.destroyAll.success'));
+      Message.success(
+        i18n('pool.doDestroyAllSelectedSuccess'),
+      );
 
       getHistory().push('/pool');
     } catch (error) {

@@ -32,7 +32,7 @@ function AdminViewPage(props) {
             alignItems="flex-start"
           >
             <MDTypography variant="h3" mb={2.4}>
-              {i18n('admin.view.title')}
+              {i18n('user.view.title')}
             </MDTypography>
             <AdminViewToolbar match={match} />
           </MDBox>

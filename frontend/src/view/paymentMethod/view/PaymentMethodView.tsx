@@ -13,7 +13,7 @@ function PaymentMethodView(props) {
       <Grid spacing={1.6} container>
         <Grid xs={12} item>
           <TextViewItem
-            label={i18n('paymentMethod.fields.name')}
+            label={i18n('payment.method.fields.name')}
             value={record.name}
           />
         </Grid>

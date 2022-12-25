@@ -27,7 +27,7 @@ function AdminView(props) {
           px={2.4}
         >
           <LogoViewItem
-            label={i18n('admin.fields.avatars')}
+            label={i18n('user.fields.avatars')}
             value={admin.avatars}
           />
         </MDBox>
@@ -42,34 +42,34 @@ function AdminView(props) {
       >
         <Grid item xs={12}>
           <TextViewItem
-            label={i18n('admin.fields.email')}
+            label={i18n('user.fields.email')}
             value={admin.email}
           />
         </Grid>
         <Grid container item spacing={1.6}>
           <Grid item xs={12} md={6} xl={6}>
             <TextViewItem
-              label={i18n('admin.fields.firstName')}
+              label={i18n('user.fields.firstName')}
               value={admin.firstName}
             />
           </Grid>
           <Grid item xs={12} md={6} xl={6}>
             <TextViewItem
-              label={i18n('admin.fields.lastName')}
+              label={i18n('user.fields.lastName')}
               value={admin.lastName}
             />
           </Grid>
         </Grid>
         <Grid item xs={12}>
           <TextViewItem
-            label={i18n('admin.fields.phoneNumber')}
+            label={i18n('user.fields.phoneNumber')}
             value={admin.phoneNumber}
             prefix={'+'}
           />
         </Grid>
         <Grid item xs={12}>
           <CustomViewItem
-            label={i18n('admin.fields.roles')}
+            label={i18n('user.fields.roles')}
             value={admin.roles}
             render={(value) =>
               value.map((roleId) => (

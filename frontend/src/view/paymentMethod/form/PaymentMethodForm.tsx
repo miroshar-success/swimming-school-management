@@ -19,14 +19,11 @@ import formActions from 'src/modules/form/formActions';
 import InputFormItem from 'src/view/shared/form/items/InputFormItem';
 
 const schema = yup.object().shape({
-  name: yupFormSchemas.string(
-    i18n('paymentMethod.fields.name'),
-    {
-      required: true,
-      max: 1000,
-      min: 1,
-    },
-  ),
+  name: yupFormSchemas.string(i18n('user.fields.name'), {
+    required: true,
+    max: 1000,
+    min: 1,
+  }),
 });
 
 function PaymentMethodForm(props) {
@@ -67,7 +64,7 @@ function PaymentMethodForm(props) {
             <Grid item lg={7} md={8} sm={12} xs={12}>
               <InputFormItem
                 name="name"
-                label={i18n('paymentMethod.fields.name')}
+                label={i18n('user.fields.name')}
                 required={true}
                 variant="standard"
                 fullWidth

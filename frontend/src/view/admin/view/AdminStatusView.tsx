@@ -13,7 +13,7 @@ function AdminStatusView(props) {
       <MDBadge
         variant="contained"
         color="success"
-        badgeContent={i18n('admin.status.active')}
+        badgeContent={i18n('user.status.active')}
         container
       />
     );
@@ -24,9 +24,7 @@ function AdminStatusView(props) {
       <MDBadge
         variant="contained"
         color="error"
-        badgeContent={i18n(
-          'admin.status.empty-permissions',
-        )}
+        badgeContent={i18n('user.status.empty-permissions')}
         container
       />
     );
@@ -36,7 +34,7 @@ function AdminStatusView(props) {
     <MDBadge
       variant="contained"
       color="warning"
-      badgeContent={i18n('admin.status.invited')}
+      badgeContent={i18n('user.status.invited')}
       container
     />
   );

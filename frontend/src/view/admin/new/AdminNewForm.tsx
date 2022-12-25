@@ -21,9 +21,9 @@ import adminEnumerators from 'src/modules/admin/adminEnumerators';
 import yupFormSchemas from 'src/modules/shared/yup/yupFormSchemas';
 
 const singleSchema = yup.object().shape({
-  email: yupFormSchemas.email(i18n('admin.fields.email')),
+  email: yupFormSchemas.email(i18n('user.fields.email')),
   roles: yupFormSchemas.stringArray(
-    i18n('admin.fields.roles'),
+    i18n('user.fields.roles'),
     { required: true, min: 1 },
   ),
 });
@@ -31,22 +31,22 @@ const singleSchema = yup.object().shape({
 const multipleSchema = yup.object().shape({
   emails: yup
     .array()
-    .label(i18n('admin.fields.emails'))
+    .label(i18n('user.fields.emails'))
     .of(
       yup
         .string()
         .transform((cv, ov) => {
           return ov === '' ? null : cv;
         })
-        .email(i18n('admin.validations.email'))
-        .label(i18n('admin.fields.email'))
+        .email(i18n('user.validations.email'))
+        .label(i18n('user.fields.email'))
         .max(255)
         .required(),
     )
     .required()
     .min(1),
   roles: yupFormSchemas.stringArray(
-    i18n('admin.fields.roles'),
+    i18n('user.fields.roles'),
     { required: true, min: 1 },
   ),
 });
@@ -99,7 +99,7 @@ function AdminNewForm(props) {
               {single ? (
                 <InputFormItem
                   name="email"
-                  label={i18n('admin.fields.email')}
+                  label={i18n('user.fields.email')}
                   required={true}
                   variant="standard"
                   autoFocus
@@ -108,9 +108,9 @@ function AdminNewForm(props) {
               ) : (
                 <TagsFormItem
                   name="emails"
-                  label={i18n('admin.fields.emails')}
+                  label={i18n('user.fields.emails')}
                   notFoundContent={i18n(
-                    'admin.new.emailsHint',
+                    'user.new.emailsHint',
                   )}
                   variant="standard"
                   required={true}
@@ -122,7 +122,7 @@ function AdminNewForm(props) {
             <Grid item lg={7} md={8} sm={12} xs={12}>
               <SelectFormItem
                 name="roles"
-                label={i18n('admin.fields.roles')}
+                label={i18n('user.fields.roles')}
                 required={true}
                 options={adminEnumerators.roles.map(
                   (value) => ({

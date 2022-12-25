@@ -58,7 +58,7 @@ function AdminNewFormModal(props) {
           justifyContent="space-between"
         >
           <MDTypography>
-            {i18n('admin.new.titleModal')}
+            {i18n('user.new.titleModal')}
           </MDTypography>
           <IconButton
             color="secondary"

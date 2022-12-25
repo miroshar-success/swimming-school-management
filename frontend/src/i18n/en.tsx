@@ -138,11 +138,12 @@ const en = {
     },
   },
 
-  admin: {
+  user: {
     fields: {
       id: 'Id',
       avatars: 'Avatar',
       email: 'Email',
+      name: 'Name',
       emails: 'Email(s)',
       fullName: 'Name',
       firstName: 'First Name',
@@ -160,11 +161,41 @@ const en = {
       newPassword: 'New Password',
       newPasswordConfirmation: 'New Password Confirmation',
       rememberMe: 'Remember me',
+      birthday: 'Birthday',
+      RFC: 'RFC',
+      CURP: 'CURP',
+      comment: 'Comment',
+      studentNumber: 'Student Number',
+      Number: 'Number',
+      guardianFullName: `Guardian's Full Name`,
+      guardianPhoneNumber: `Guardian's Phone Number`,
+      bloodType: 'Blood Type',
+      sex: 'Gender',
+      healthInsuranceCompany:
+        'Health Insurance Company Name',
+      healthInsuranceNumber: 'Health Insurance Number',
+      diseaseAllergyCondition:
+        'Do you have any diseases or Allergy? If you have, please simply describe.',
+      address: 'Address',
+      street: 'Street',
+      postalCode: 'Postal Code',
+      cologne: 'Cologne',
+      city: 'City',
+      generalInfo: 'General Information',
+      schedules: 'Schedules',
+      paymentList: 'Payment History',
+      attendance: 'Attendance',
+      attendanceHistory: 'Attendance History',
+      class: 'Class',
+      lessons: 'Lessons',
+      registrationDate: 'Registration Date',
+      nextPaymentDate: 'Next Payment Date',
     },
     status: {
       active: 'Active',
       invited: 'Invited',
       'empty-permissions': 'Waiting for Permissions',
+      preRegistration: 'Pre-registration',
     },
     invite: 'Invite',
     validations: {
@@ -206,42 +237,15 @@ const en = {
   },
 
   teacher: {
-    fields: {
-      id: 'Id',
-      avatars: 'Avatar',
-      email: 'Email',
-      emails: 'Email(s)',
-      fullName: 'Name',
-      firstName: 'First Name',
-      lastName: 'Last Name',
-      status: 'Status',
-      phoneNumber: 'Phone Number',
-      role: 'Role',
-      createdAt: 'Created at',
-      updatedAt: 'Updated at',
-      roleUser: 'Role/User',
-      roles: 'Roles',
-      createdAtRange: 'Created at',
-      password: 'Password',
-      oldPassword: 'Old Password',
-      newPassword: 'New Password',
-      newPasswordConfirmation: 'New Password Confirmation',
-      rememberMe: 'Remember me',
-      birthday: 'Birthday',
-      RFC: 'RFC',
-      CURP: 'CURP',
-    },
-    status: {
-      active: 'Active',
-      invited: 'Invited',
-      'empty-permissions': 'Waiting for Permissions',
-    },
-    invite: 'Invite',
     validations: {
       // eslint-disable-next-line
       email: 'Email ${value} is invalid',
     },
     title: 'Teachers',
+    subTitle: {
+      generalInfo: 'General Information',
+      schedules: 'Schedules',
+    },
     menu: 'Teachers',
     doAddSuccess: 'Teacher(s) successfully saved',
     doUpdateSuccess: 'Teacher successfully saved',
@@ -253,8 +257,8 @@ const en = {
       title: 'Edit Teacher',
     },
     new: {
-      title: 'Create Teacher(s)',
-      titleModal: 'Create Teacher',
+      title: 'Add Teacher',
+      titleModal: 'Add Teacher',
       emailsHint:
         'Separate multiple email addresses using the comma character.',
     },
@@ -275,65 +279,6 @@ const en = {
     },
   },
 
-  payment: {
-    menu: 'Payments',
-    history: {
-      menu: 'History',
-    },
-    expired: {
-      menu: 'Expired',
-    },
-    category: {
-      menu: 'Categories',
-      list: {
-        title: 'Categories',
-      },
-      new: {
-        title: 'Create Category',
-      },
-      edit: {
-        title: 'Edit Category',
-      },
-    },
-    method: {
-      menu: 'Payment Methods',
-    },
-    add: {
-      title: 'Add Payment',
-    },
-  },
-
-  class: {
-    menu: 'Classes',
-    category: {
-      menu: 'Categories',
-    },
-  },
-
-  attendance: {
-    menu: 'Attendance',
-    class: {
-      menu: 'Classes',
-    },
-    history: {
-      menu: 'History',
-    },
-  },
-
-  grade: {
-    menu: 'Grades',
-    level: {
-      menu: 'Levels',
-    },
-  },
-
-  property: {
-    menu: 'Properties',
-    pool: {
-      menu: 'Pools',
-    },
-  },
-
   student: {
     subtitle: {
       profileData: 'Profile',
@@ -344,61 +289,6 @@ const en = {
       menu: 'Registration',
       title: 'Registration',
     },
-    fields: {
-      id: 'Id',
-      studentNumber: 'Student Number',
-      Number: 'Number',
-      guardianFullName: `Guardian's Full Name`,
-      guardianPhoneNumber: `Guardian's Phone Number`,
-      RFC: 'RFC',
-      CURP: 'CURP',
-      bloodType: 'Blood Type',
-      sex: 'Gender',
-      birthday: 'Birthday',
-      healthInsuranceCompany:
-        'Health Insurance Company Name',
-      healthInsuranceNumber: 'Health Insurance Number',
-      diseaseAllergyCondition:
-        'Do you have any diseases or Allergy? If you have, please simply describe.',
-      address: 'Address',
-      street: 'Street',
-      postalCode: 'Postal Code',
-      cologne: 'Cologne',
-      city: 'City',
-      avatars: 'Avatar',
-      email: 'Email',
-      emails: 'Email(s)',
-      fullName: 'Name',
-      firstName: 'First Name',
-      lastName: 'Last Name',
-      status: 'Status',
-      phoneNumber: 'Phone Number',
-      role: 'Role',
-      createdAt: 'Created at',
-      updatedAt: 'Updated at',
-      roleUser: 'Role/User',
-      roles: 'Roles',
-      createdAtRange: 'Created at',
-      password: 'Password',
-      oldPassword: 'Old Password',
-      newPassword: 'New Password',
-      newPasswordConfirmation: 'New Password Confirmation',
-      rememberMe: 'Remember me',
-      generalInfo: 'General Information',
-      schedules: 'Schedules',
-      paymentList: 'Payment History',
-      attendance: 'Attendance',
-      attendanceHistory: 'Attendance History',
-      class: 'Class',
-      comment: 'comment',
-      registrationDate: 'Registration Date',
-      nextPaymentDate: 'Next Payment Date',
-    },
-    status: {
-      active: 'Active',
-      preRegistration: 'Pre-registration',
-    },
-    invite: 'Invite',
     validations: {
       // eslint-disable-next-line
       email: 'Email ${value} is invalid',
@@ -415,8 +305,8 @@ const en = {
       title: 'Edit Student',
     },
     new: {
-      title: 'Create Student',
-      titleModal: 'Create Student',
+      title: 'Add Student',
+      titleModal: 'Add Student',
       emailsHint:
         'Separate multiple email addresses using the comma character.',
     },
@@ -437,6 +327,296 @@ const en = {
     },
   },
 
+  payment: {
+    doAddSuccess: 'Payment(s) successfully saved',
+    doUpdateSuccess: 'Payment successfully saved',
+    doDestroySuccess: 'Payment successfully deleted',
+    doDestroyAllSelectedSuccess:
+      'Payments successfully deleted',
+    menu: 'Payments',
+    title: 'Payments',
+    fields: {
+      id: 'Id',
+      month: 'Month',
+      year: 'Year',
+      expiredDate: 'Expired Date',
+      cost: 'Total',
+      category: 'Payment Category',
+      price: 'Price',
+      quantity: 'Quantity',
+      VAT: 'VAT',
+      paymentMethod: 'Payment Method',
+      paymentCategory: 'Payment Category',
+      lessonsNumber: 'Number of Lessons',
+      lastPayment: 'Last Payment',
+      paymentDate: 'Payment Date',
+      amount: 'SubTotal',
+    },
+    history: {
+      menu: 'Payment History',
+      title: 'Payment History',
+      view: {
+        title: 'View Payment History',
+      }
+    },
+    expired: {
+      menu: 'Expired Payments',
+      title: 'Expired Payments',
+      view: {
+        title: 'View Expired Payment',
+      },
+    },
+    category: {
+      menu: 'Payment Categories',
+      title: 'Payment Categories',
+      new: {
+        title: 'Add Payment Category',
+      },
+      edit: {
+        title: 'Edit Payment Category',
+      },
+      view: {
+        title: 'View Payment Category'
+      },
+      doDestroySuccess: 'Payment Category successfully deleted',
+      doAddSuccess: 'Payment Category(s) successfully saved',
+      doUpdateSuccess: 'Payment Category successfully saved',
+      doDestroyAllSelectedSuccess:
+        'Payment Categories successfully deleted',
+      fields: {
+        name: 'Payment Category Title'
+      }
+    },
+    method: {
+      menu: 'Payment Methods',
+      title: 'Payment Methods',
+      new: {
+        title: 'Add Payment Method',
+      },
+      edit: {
+        title: 'Edit Payment Method',
+      },
+      view: {
+        title: 'View Payment Method',
+      },
+      doDestroySuccess: 'Payment Method successfully deleted',
+      doAddSuccess: 'Payment Method(s) successfully saved',
+      doUpdateSuccess: 'Payment Method successfully saved',
+      doDestroyAllSelectedSuccess:
+        'Payment Methods successfully deleted',
+      fields: {
+        name: 'Payment Method Title'
+      }
+    },
+    add: {
+      title: 'Add Payment',
+    },
+  },
+
+  registration: {
+    doRegisterSuccess: 'Lesson(s) successfully registered',
+    menu: 'Registration',
+    title: 'Registration',
+    registerLessons: 'Register Lessons',
+  },
+
+  class: {
+    doAddSuccess: 'Class(s) successfully saved',
+    doUpdateSuccess: 'Class successfully saved',
+    doDestroySuccess: 'Class successfully deleted',
+    doDestroyAllSelectedSuccess:
+      'Classes successfully deleted',
+    menu: 'Classes',
+    title: 'Classes',
+    fields: {
+      name: 'Class Name',
+      category: 'Category',
+      pool: 'Pool',
+      duration: 'Duration',
+      grade: 'Grade',
+    },
+    new: {
+      title: 'Add Class',
+    },
+    edit: {
+      title: 'Edit Class',
+    },
+    view: {
+      title: 'View Class',
+    },
+  },
+
+  classCategory: {
+    doAddSuccess: 'Class Category(s) successfully saved',
+    doUpdateSuccess: 'Class Category successfully saved',
+    doDestroySuccess: 'Class Category successfully deleted',
+    doDestroyAllSelectedSuccess:
+      'Class Categories successfully deleted',
+    menu: 'Classe Categories',
+    title: 'Classe Categories',
+    fields: {
+      name: 'Class Category Name',
+      comment: 'Comment',
+    },
+    new: {
+      title: 'Add Class Category',
+    },
+    edit: {
+      title: 'Edit Class Category',
+    },
+    view: {
+      title: 'View Class Category',
+    },
+  },
+
+  lesson: {
+    doAddSuccess: 'Lesson(s) successfully saved',
+    doUpdateSuccess: 'Lesson successfully saved',
+    doDestroySuccess: 'Lesson successfully deleted',
+    doDestroyAllSelectedSuccess:
+      'Lessons successfully deleted',
+    menu: 'Lessons',
+    title: 'Lessons',
+    fields: {
+      class: 'Class',
+      day: 'Day',
+      time: 'Time',
+      teacher: 'Teacher',
+    },
+    new: {
+      title: 'Add Lesson',
+    },
+    edit: {
+      title: 'Edit Lesson',
+    },
+    view: {
+      title: 'View Lesson',
+    },
+  },
+
+  attendance: {
+    doAddSuccess: 'Attendance(s) successfully saved',
+    title: 'Attendance',
+    menu: 'Attendance',
+    class: {
+      menu: 'Classes',
+    },
+    history: {
+      menu: 'History',
+    },
+    view: {
+      title: 'View Attendance',
+      note: 'Please check attended students',
+    },
+    subTitle: {
+      inProgress: 'In Progress',
+      upcoming: 'Upcoming',
+      finished: 'Finished',
+      seeAll: 'See All',
+    }
+  },
+
+  pool: {
+    doAddSuccess: 'Swimming Pool(s) successfully saved',
+    doUpdateSuccess: 'Swimming Pool successfully saved',
+    doDestroySuccess: 'Swimming Pool successfully deleted',
+    doDestroyAllSelectedSuccess:
+      'Swimming Pools successfully deleted',
+    menu: 'Swimming Pools',
+    title: 'Swimming Pools',
+    fields: {
+      name: 'Name',
+    },
+    new: {
+      title: 'Add Swimming Pool',
+    },
+    edit: {
+      title: 'Edit Swimming Pool',
+    },
+    view: {
+      title: 'View Swimming Pool',
+    },
+  },
+
+  document: {
+    doAddSuccess: 'Document(s) successfully saved',
+    doUpdateSuccess: 'Document successfully saved',
+    doDestroySuccess: 'Document successfully deleted',
+    doDestroyAllSelectedSuccess:
+      'Documents successfully deleted',
+    menu: 'Documents',
+    title: 'Documents',
+    fields: {
+      name: 'Name',
+      description: 'Description',
+      attachment: 'Attachment',
+      lastUpdatedRange: 'Last Updated Date Range',
+      lastUpdated: 'Last Updated Date'
+    },
+    new: {
+      title: 'Add Document',
+    },
+    edit: {
+      title: 'Edit Document',
+    },
+    view: {
+      title: 'View Document',
+    },
+  },
+
+  grade: {
+    doAddSuccess: 'Grade(s) successfully saved',
+    doUpdateSuccess: 'Grade successfully saved',
+    doDestroySuccess: 'Grade successfully deleted',
+    doDestroyAllSelectedSuccess:
+      'Grades successfully deleted',
+    menu: 'Grades',
+    title: 'Grades',
+    fields: {
+      name: 'Name',
+    },
+    new: {
+      title: 'Add Grade',
+    },
+    edit: {
+      title: 'Edit Grade',
+    },
+    view: {
+      title: 'View Grade',
+    },
+  },
+
+  skill: {
+    doAddSuccess: 'Skill(s) successfully saved',
+    doUpdateSuccess: 'Skill successfully saved',
+    doDestroySuccess: 'Skill successfully deleted',
+    doDestroyAllSelectedSuccess:
+      'Skills successfully deleted',
+    menu: 'Skills',
+    title: 'Skills',
+    fields: {
+      name: 'Name',
+      grade: 'Grade',
+      icon: 'Icon',
+    },
+    new: {
+      title: 'Add Skill',
+    },
+    edit: {
+      title: 'Edit Skill',
+    },
+    view: {
+      title: 'View Skill',
+    },
+  },
+
+  property: {
+    menu: 'Properties',
+    pool: {
+      menu: 'Pools',
+    },
+  },
+
   school: {
     menu: 'My School',
   },
@@ -445,10 +625,7 @@ const en = {
     name: 'tenant',
     label: 'Schools',
     menu: 'Schools',
-    list: {
-      menu: 'Schools',
-      title: 'Schools',
-    },
+    title: 'Schools',
     create: {
       button: 'Create School',
       success: 'School successfully saved',
@@ -543,7 +720,7 @@ const en = {
   },
   settings: {
     title: 'Settings',
-    tenant: 'Tenant',
+    tenant: 'School',
     menu: 'Settings',
     save: {
       success:

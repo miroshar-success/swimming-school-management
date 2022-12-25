@@ -60,7 +60,7 @@ const lessonFormActions = {
         type: lessonFormActions.CREATE_SUCCESS,
       });
 
-      Message.success(i18n('lesson.create.success'));
+      Message.success(i18n('lesson.doAddSuccess'));
 
       getHistory().push('/lesson');
     } catch (error) {
@@ -84,7 +84,7 @@ const lessonFormActions = {
         type: lessonFormActions.UPDATE_SUCCESS,
       });
 
-      Message.success(i18n('lesson.update.success'));
+      Message.success(i18n('lesson.doUpdateSuccess'));
 
       getHistory().push('/lesson');
     } catch (error) {

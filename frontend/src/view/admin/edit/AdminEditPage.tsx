@@ -46,7 +46,7 @@ function AdminEditPage(props) {
             alignItems="flex-start"
           >
             <MDTypography variant="h3">
-              {i18n('admin.edit.title')}
+              {i18n('user.edit.title')}
             </MDTypography>
           </MDBox>
           {initLoading && <Spinner />}

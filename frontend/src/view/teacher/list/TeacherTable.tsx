@@ -112,7 +112,7 @@ function TeacherTable() {
                 {' '}
               </DataTableHeadCell>
               <DataTableHeadCell sorted={false}>
-                {i18n('teacher.fields.avatars')}
+                {i18n('user.fields.avatars')}
               </DataTableHeadCell>
               <DataTableHeadCell
                 onClick={() => doChangeSort('fullName')}
@@ -122,7 +122,7 @@ function TeacherTable() {
                     : 'none'
                 }
               >
-                {i18n('teacher.fields.fullName')}
+                {i18n('user.fields.fullName')}
               </DataTableHeadCell>
               <DataTableHeadCell
                 onClick={() => doChangeSort('email')}
@@ -132,22 +132,22 @@ function TeacherTable() {
                     : 'none'
                 }
               >
-                {i18n('teacher.fields.email')}
+                {i18n('user.fields.email')}
               </DataTableHeadCell>
               <DataTableHeadCell sorted={false}>
-                {i18n('teacher.fields.birthday')}
+                {i18n('user.fields.birthday')}
               </DataTableHeadCell>
               <DataTableHeadCell sorted={false}>
-                {i18n('teacher.fields.phoneNumber')}
+                {i18n('user.fields.phoneNumber')}
               </DataTableHeadCell>
               <DataTableHeadCell sorted={false}>
-                {i18n('teacher.fields.RFC')}
+                {i18n('user.fields.RFC')}
               </DataTableHeadCell>
               <DataTableHeadCell sorted={false}>
-                {i18n('teacher.fields.CURP')}
+                {i18n('user.fields.CURP')}
               </DataTableHeadCell>
               <DataTableHeadCell sorted={false}>
-                {i18n('teacher.fields.status')}
+                {i18n('user.fields.status')}
               </DataTableHeadCell>
             </TableRow>
           </MDBox>

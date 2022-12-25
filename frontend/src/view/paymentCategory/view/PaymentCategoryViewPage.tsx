@@ -34,7 +34,7 @@ function PaymentCategoryPage() {
             alignItems="flex-start"
           >
             <MDTypography variant="h3" mb={2.4}>
-              {i18n('paymentCategory.view.title')}
+              {i18n('payment.category.view.title')}
             </MDTypography>
             <PaymentCategoryViewToolbar match={match} />
           </MDBox>

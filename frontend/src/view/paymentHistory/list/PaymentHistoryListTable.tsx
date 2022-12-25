@@ -98,7 +98,7 @@ function PaymentHistoryListTable(props) {
                     : 'none'
                 }
               >
-                {i18n('student.fields.studentNumber')}
+                {i18n('user.fields.studentNumber')}
               </DataTableHeadCell>
               <DataTableHeadCell
                 onClick={() => doChangeSort('fullName')}
@@ -108,16 +108,16 @@ function PaymentHistoryListTable(props) {
                     : 'none'
                 }
               >
-                {i18n('student.fields.fullName')}
+                {i18n('user.fields.fullName')}
               </DataTableHeadCell>
               <DataTableHeadCell sorted={false}>
                 {i18n('payment.fields.month')}
               </DataTableHeadCell>
               <DataTableHeadCell sorted={false}>
-                {i18n('payment.fields.createdAt')}
+                {i18n('common.createdAt')}
               </DataTableHeadCell>
               <DataTableHeadCell sorted={false}>
-                {i18n('payment.fields.total')}
+                {i18n('payment.fields.cost')}
               </DataTableHeadCell>
             </TableRow>
           </MDBox>

@@ -29,7 +29,7 @@ const classCategoryDestroyActions = {
       });
 
       Message.success(
-        i18n('classCategory.destroy.success'),
+        i18n('classCategory.doDestroySuccess'),
       );
 
       dispatch(listActions.doFetchCurrentFilter());
@@ -64,7 +64,7 @@ const classCategoryDestroyActions = {
       }
 
       Message.success(
-        i18n('classCategory.destroyAll.success'),
+        i18n('classCategory.doDestroyAllSelectedSuccess'),
       );
 
       getHistory().push('/class-category');

@@ -19,7 +19,7 @@ function TenantListPage(props) {
             pb={2.4}
           >
             <MDTypography variant="h3">
-              {i18n('tenant.list.title')}
+              {i18n('tenant.title')}
             </MDTypography>
             <TenantListToolbar />
           </MDBox>

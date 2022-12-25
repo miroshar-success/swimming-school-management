@@ -28,7 +28,7 @@ const classDestroyActions = {
         type: classDestroyActions.DESTROY_SUCCESS,
       });
 
-      Message.success(i18n('class.destroy.success'));
+      Message.success(i18n('class.doDestroySuccess'));
 
       dispatch(listActions.doFetchCurrentFilter());
 
@@ -61,7 +61,9 @@ const classDestroyActions = {
         dispatch(listActions.doFetchCurrentFilter());
       }
 
-      Message.success(i18n('class.destroyAll.success'));
+      Message.success(
+        i18n('class.doDestroyAllSelectedSuccess'),
+      );
 
       getHistory().push('/class');
     } catch (error) {

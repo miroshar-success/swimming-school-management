@@ -92,7 +92,7 @@ function AttendanceListPage(props) {
                 }}
               >
                 <MDTypography variant="h4">
-                  In progress
+                  {i18n('attendance.subTitle.inProgress')}
                 </MDTypography>
               </ToggleButton>
               <ToggleButton
@@ -105,7 +105,7 @@ function AttendanceListPage(props) {
                 value="finished"
               >
                 <MDTypography variant="h4">
-                  Finished
+                  {i18n('attendance.subTitle.finished')}
                 </MDTypography>
               </ToggleButton>
               <ToggleButton
@@ -118,7 +118,7 @@ function AttendanceListPage(props) {
                 value="upcoming"
               >
                 <MDTypography variant="h4">
-                  Upcoming
+                  {i18n('attendance.subTitle.upcoming')}
                 </MDTypography>
               </ToggleButton>
               <ToggleButton
@@ -131,7 +131,7 @@ function AttendanceListPage(props) {
                 value="all"
               >
                 <MDTypography variant="h4">
-                  See all
+                  {i18n('attendance.subTitle.seeAll')}
                 </MDTypography>
               </ToggleButton>
             </ToggleButtonGroup>

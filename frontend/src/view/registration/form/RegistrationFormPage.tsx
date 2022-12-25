@@ -54,7 +54,7 @@ function RegistrationFormPage(props) {
             alignItems="flex-start"
           >
             <MDTypography variant="h3">
-              {i18n('registration.assignment')}
+              {i18n('registration.registerLessons')}
             </MDTypography>
           </MDBox>
           {initLoading && <Spinner />}

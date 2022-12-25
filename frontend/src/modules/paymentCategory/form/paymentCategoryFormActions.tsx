@@ -61,7 +61,7 @@ const paymentCategoryFormActions = {
       });
 
       Message.success(
-        i18n('paymentCategory.create.success'),
+        i18n('payment.category.doAddSuccess'),
       );
 
       getHistory().push('/payment-category');
@@ -87,7 +87,7 @@ const paymentCategoryFormActions = {
       });
 
       Message.success(
-        i18n('paymentCategory.update.success'),
+        i18n('payment.category.doUpdateSuccess'),
       );
 
       getHistory().push('/payment-category');

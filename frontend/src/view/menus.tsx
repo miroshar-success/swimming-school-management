@@ -25,7 +25,7 @@ const menus = [
     collapse: [
       {
         path: '/registration',
-        name: i18n('student.registration.menu'),
+        name: i18n('registration.menu'),
         icon: <Icon>group_add</Icon>,
         permissionRequired: permissions.studentEdit,
       },
@@ -104,7 +104,7 @@ const menus = [
       },
       {
         path: '/class-category',
-        name: i18n('class.category.menu'),
+        name: i18n('classCategory.menu'),
         icon: <Icon>interests</Icon>,
         permissionRequired: permissions.classRead,
       },
@@ -197,7 +197,7 @@ const profileRoutes = [
 
 const tenantRoutes = [
   {
-    name: i18n('tenant.list.title'),
+    name: i18n('tenant.title'),
     path: '/tenant',
     icon: <Icon>school</Icon>,
   },
@@ -206,7 +206,7 @@ const tenantRoutes = [
 const adminRoutes = [
   {
     path: '/admin',
-    name: i18n('admin.menu'),
+    name: i18n('user.menu'),
     permissionRequired: permissions.adminRead,
     icon: <Icon>person</Icon>,
   },

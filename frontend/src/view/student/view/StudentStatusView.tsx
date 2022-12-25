@@ -13,7 +13,7 @@ function StudentStatusView(props) {
       <MDBadge
         variant="contained"
         color="success"
-        badgeContent={i18n('student.status.active')}
+        badgeContent={i18n('user.status.active')}
         container
       />
     );
@@ -23,7 +23,7 @@ function StudentStatusView(props) {
     <MDBadge
       variant="contained"
       color="warning"
-      badgeContent={i18n('student.status.preRegistration')}
+      badgeContent={i18n('user.status.preRegistration')}
       container
     />
   );

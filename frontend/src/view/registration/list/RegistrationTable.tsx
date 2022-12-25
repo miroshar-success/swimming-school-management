@@ -115,7 +115,7 @@ function RegistrationTable() {
                 {' '}
               </DataTableHeadCell>
               <DataTableHeadCell sorted={false}>
-                {i18n('registration.fields.avatars')}
+                {i18n('user.fields.avatars')}
               </DataTableHeadCell>
               <DataTableHeadCell
                 onClick={() => doChangeSort('fullName')}
@@ -125,16 +125,16 @@ function RegistrationTable() {
                     : 'none'
                 }
               >
-                {i18n('registration.fields.fullName')}
+                {i18n('user.fields.fullName')}
               </DataTableHeadCell>
               <DataTableHeadCell sorted={false}>
-                {i18n('registration.fields.class')}
+                {i18n('user.fields.class')}
               </DataTableHeadCell>
               <DataTableHeadCell sorted={false}>
-                {i18n('registration.fields.createdAt')}
+                {i18n('user.fields.createdAt')}
               </DataTableHeadCell>
               <DataTableHeadCell sorted={false}>
-                {i18n('registration.fields.status')}
+                {i18n('user.fields.status')}
               </DataTableHeadCell>
             </TableRow>
           </MDBox>

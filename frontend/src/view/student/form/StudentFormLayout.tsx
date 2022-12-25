@@ -38,7 +38,7 @@ function StudentFormLayout(props) {
                   <Grid item md={4} xs={12}>
                     <ImagesFormItem
                       name="avatars"
-                      label={i18n('student.fields.avatars')}
+                      label={i18n('user.fields.avatars')}
                       storage={
                         Storage.values.userAvatarsProfiles
                       }
@@ -51,7 +51,7 @@ function StudentFormLayout(props) {
                         <InputFormItem
                           name="studentNumber"
                           label={i18n(
-                            'student.fields.studentNumber',
+                            'user.fields.studentNumber',
                           )}
                           variant="standard"
                           required={true}
@@ -62,7 +62,7 @@ function StudentFormLayout(props) {
                         <InputFormItem
                           name="phoneNumber"
                           label={i18n(
-                            'student.fields.phoneNumber',
+                            'user.fields.phoneNumber',
                           )}
                           variant="standard"
                           required={true}
@@ -72,7 +72,7 @@ function StudentFormLayout(props) {
                         <InputFormItem
                           name="firstName"
                           label={i18n(
-                            'student.fields.firstName',
+                            'user.fields.firstName',
                           )}
                           variant="standard"
                           required={true}
@@ -82,7 +82,7 @@ function StudentFormLayout(props) {
                         <InputFormItem
                           name="lastName"
                           label={i18n(
-                            'student.fields.lastName',
+                            'user.fields.lastName',
                           )}
                           variant="standard"
                           required={true}
@@ -92,7 +92,7 @@ function StudentFormLayout(props) {
                         <InputFormItem
                           name="guardianFullName"
                           label={i18n(
-                            'student.fields.guardianFullName',
+                            'user.fields.guardianFullName',
                           )}
                           required={false}
                           variant="standard"
@@ -102,7 +102,7 @@ function StudentFormLayout(props) {
                         <InputFormItem
                           name="guardianPhoneNumber"
                           label={i18n(
-                            'student.fields.guardianPhoneNumber',
+                            'user.fields.guardianPhoneNumber',
                           )}
                           required={false}
                           variant="standard"
@@ -111,9 +111,7 @@ function StudentFormLayout(props) {
                       <Grid item md={6} xs={12}>
                         <InputFormItem
                           name="email"
-                          label={i18n(
-                            'student.fields.email',
-                          )}
+                          label={i18n('user.fields.email')}
                           required={true}
                           variant="standard"
                         />
@@ -122,7 +120,7 @@ function StudentFormLayout(props) {
                         <InputFormItem
                           name="password"
                           label={i18n(
-                            'student.fields.password',
+                            'user.fields.password',
                           )}
                           required={true}
                           variant="standard"
@@ -162,7 +160,7 @@ function StudentFormLayout(props) {
                   <Grid item md={6} xs={12}>
                     <InputFormItem
                       name="RFC"
-                      label={i18n('student.fields.RFC')}
+                      label={i18n('user.fields.RFC')}
                       variant="standard"
                       required={true}
                     />
@@ -170,7 +168,7 @@ function StudentFormLayout(props) {
                   <Grid item md={6} xs={12}>
                     <InputFormItem
                       name="CURP"
-                      label={i18n('student.fields.CURP')}
+                      label={i18n('user.fields.CURP')}
                       variant="standard"
                       required={true}
                     />
@@ -178,9 +176,7 @@ function StudentFormLayout(props) {
                   <Grid item md={6} xs={12}>
                     <SelectFormItem
                       name="bloodType"
-                      label={i18n(
-                        'student.fields.bloodType',
-                      )}
+                      label={i18n('user.fields.bloodType')}
                       options={studentEnumerators.bloodType.map(
                         (value) => ({
                           value,
@@ -195,7 +191,7 @@ function StudentFormLayout(props) {
                   <Grid item md={6} xs={12}>
                     <SelectFormItem
                       name="sex"
-                      label={i18n('student.fields.sex')}
+                      label={i18n('user.fields.sex')}
                       options={studentEnumerators.sex.map(
                         (value) => ({
                           value,
@@ -210,9 +206,7 @@ function StudentFormLayout(props) {
                   <Grid item md={6} xs={12}>
                     <DatePickerFormItem
                       name="birthday"
-                      label={i18n(
-                        'student.fields.birthday',
-                      )}
+                      label={i18n('user.fields.birthday')}
                       required={true}
                       variant="standard"
                     />
@@ -222,7 +216,7 @@ function StudentFormLayout(props) {
                     <InputFormItem
                       name="healthInsuranceCompany"
                       label={i18n(
-                        'student.fields.healthInsuranceCompany',
+                        'user.fields.healthInsuranceCompany',
                       )}
                       required={false}
                       variant="standard"
@@ -232,7 +226,7 @@ function StudentFormLayout(props) {
                     <InputFormItem
                       name="healthInsuranceNumber"
                       label={i18n(
-                        'student.fields.healthInsuranceNumber',
+                        'user.fields.healthInsuranceNumber',
                       )}
                       required={false}
                       variant="standard"
@@ -242,7 +236,7 @@ function StudentFormLayout(props) {
                     <TextAreaFormItem
                       name="comment"
                       label={i18n(
-                        'student.fields.diseaseAllergyCondition',
+                        'user.fields.diseaseAllergyCondition',
                       )}
                       required={false}
                       variant="standard"
@@ -279,7 +273,7 @@ function StudentFormLayout(props) {
                   <Grid item xs={12}>
                     <InputFormItem
                       name="street"
-                      label={i18n('student.fields.address')}
+                      label={i18n('user.fields.address')}
                       variant="standard"
                       required={true}
                     />
@@ -287,9 +281,7 @@ function StudentFormLayout(props) {
                   <Grid item xs={12}>
                     <InputFormItem
                       name="postalCode"
-                      label={i18n(
-                        'student.fields.postalCode',
-                      )}
+                      label={i18n('user.fields.postalCode')}
                       variant="standard"
                       required={true}
                     />
@@ -297,7 +289,7 @@ function StudentFormLayout(props) {
                   <Grid item xs={12}>
                     <InputFormItem
                       name="cologne"
-                      label={i18n('student.fields.cologne')}
+                      label={i18n('user.fields.cologne')}
                       variant="standard"
                       required={true}
                     />
@@ -305,7 +297,7 @@ function StudentFormLayout(props) {
                   <Grid item xs={12}>
                     <InputFormItem
                       name="city"
-                      label={i18n('student.fields.city')}
+                      label={i18n('user.fields.city')}
                       variant="standard"
                       required={true}
                     />

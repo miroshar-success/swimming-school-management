@@ -21,7 +21,7 @@ import yupFormSchemas from 'src/modules/shared/yup/yupFormSchemas';
 
 const schema = yup.object().shape({
   roles: yupFormSchemas.stringArray(
-    i18n('admin.fields.roles'),
+    i18n('user.fields.roles'),
   ),
 });
 
@@ -63,7 +63,7 @@ function AdminEditForm(props) {
               <TextField
                 id="email"
                 name="email"
-                label={i18n('admin.fields.email')}
+                label={i18n('user.fields.email')}
                 value={props.admin.email}
                 fullWidth
                 margin="normal"
@@ -80,7 +80,7 @@ function AdminEditForm(props) {
             <Grid item lg={7} md={8} sm={12} xs={12}>
               <SelectFormItem
                 name="roles"
-                label={i18n('admin.fields.roles')}
+                label={i18n('user.fields.roles')}
                 options={adminEnumerators.roles.map(
                   (value) => ({
                     value,

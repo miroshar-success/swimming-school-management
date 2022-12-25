@@ -19,7 +19,7 @@ function GradeListPage(props) {
             pb={2.4}
           >
             <MDTypography variant="h3">
-              {i18n('grade.list.title')}
+              {i18n('grade.title')}
             </MDTypography>
             <GradeListToolbar />
           </MDBox>

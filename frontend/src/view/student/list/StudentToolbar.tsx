@@ -1,6 +1,6 @@
 import { Tooltip } from '@mui/material';
 import DescriptionIcon from '@mui/icons-material/Description';
-import EmailIcon from '@mui/icons-material/Email';
+import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { i18n } from 'src/i18n';
 import actions from 'src/modules/student/list/studentListActions';
@@ -133,7 +133,7 @@ function StudentToolbar(props) {
           color={sidenavColor}
           component={Link}
           to="/student/new"
-          startIcon={<EmailIcon />}
+          startIcon={<AddIcon />}
           size="small"
         >
           {i18n('common.new')}
