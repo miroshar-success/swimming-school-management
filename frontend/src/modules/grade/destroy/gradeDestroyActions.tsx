@@ -28,7 +28,7 @@ const gradeDestroyActions = {
         type: gradeDestroyActions.DESTROY_SUCCESS,
       });
 
-      Message.success(i18n('grade.destroy.success'));
+      Message.success(i18n('grade.doDestroySuccess'));
 
       dispatch(listActions.doFetchCurrentFilter());
 
@@ -61,7 +61,9 @@ const gradeDestroyActions = {
         dispatch(listActions.doFetchCurrentFilter());
       }
 
-      Message.success(i18n('grade.destroyAll.success'));
+      Message.success(
+        i18n('grade.doDestroyAllSelectedSuccess'),
+      );
 
       getHistory().push('/grade');
     } catch (error) {

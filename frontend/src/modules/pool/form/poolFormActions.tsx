@@ -60,7 +60,7 @@ const poolFormActions = {
         type: poolFormActions.CREATE_SUCCESS,
       });
 
-      Message.success(i18n('pool.create.success'));
+      Message.success(i18n('pool.doAddSuccess'));
 
       getHistory().push('/pool');
     } catch (error) {
@@ -84,7 +84,7 @@ const poolFormActions = {
         type: poolFormActions.UPDATE_SUCCESS,
       });
 
-      Message.success(i18n('pool.update.success'));
+      Message.success(i18n('pool.doUpdateSuccess'));
 
       getHistory().push('/pool');
     } catch (error) {

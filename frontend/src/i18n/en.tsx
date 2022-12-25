@@ -481,7 +481,6 @@ const en = {
       day: 'Day',
       time: 'Time',
       teacher: 'Teacher',
-
     },
     new: {
       title: 'Add Lesson',
@@ -495,6 +494,8 @@ const en = {
   },
 
   attendance: {
+    doAddSuccess: 'Attendance(s) successfully saved',
+    title: 'Attendance',
     menu: 'Attendance',
     class: {
       menu: 'Classes',
@@ -502,12 +503,78 @@ const en = {
     history: {
       menu: 'History',
     },
+    view: {
+      title: 'View Attendance',
+      note: 'Please check attended students',
+    }
+  },
+
+  pool: {
+    doAddSuccess: 'Swimming Pool(s) successfully saved',
+    doUpdateSuccess: 'Swimming Pool successfully saved',
+    doDestroySuccess: 'Swimming Pool successfully deleted',
+    doDestroyAllSelectedSuccess:
+      'Swimming Pools successfully deleted',
+    menu: 'Swimming Pools',
+    title: 'Swimming Pools',
+    fields: {
+      name: 'Name',
+    },
+    new: {
+      title: 'Add Swimming Pool',
+    },
+    edit: {
+      title: 'Edit Swimming Pool',
+    },
+    view: {
+      title: 'View Swimming Pool',
+    },
+  },
+
+  document: {
+    doAddSuccess: 'Document(s) successfully saved',
+    doUpdateSuccess: 'Document successfully saved',
+    doDestroySuccess: 'Document successfully deleted',
+    doDestroyAllSelectedSuccess:
+      'Documents successfully deleted',
+    menu: 'Documents',
+    title: 'Documents',
+    fields: {
+      name: 'Name',
+      description: 'Description',
+      attachment: 'Attachment',
+      lastUpdatedRange: 'Last Updated Range',
+    },
+    new: {
+      title: 'Add Document',
+    },
+    edit: {
+      title: 'Edit Document',
+    },
+    view: {
+      title: 'View Document',
+    },
   },
 
   grade: {
+    doAddSuccess: 'Grade(s) successfully saved',
+    doUpdateSuccess: 'Grade successfully saved',
+    doDestroySuccess: 'Grade successfully deleted',
+    doDestroyAllSelectedSuccess:
+      'Grades successfully deleted',
     menu: 'Grades',
-    level: {
-      menu: 'Levels',
+    title: 'Grades',
+    fields: {
+      name: 'Name',
+    },
+    new: {
+      title: 'Add Grade',
+    },
+    edit: {
+      title: 'Edit Grade',
+    },
+    view: {
+      title: 'View Grade',
     },
   },
 
