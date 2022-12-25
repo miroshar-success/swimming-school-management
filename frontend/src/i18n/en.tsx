@@ -143,6 +143,7 @@ const en = {
       id: 'Id',
       avatars: 'Avatar',
       email: 'Email',
+      name: 'Name',
       emails: 'Email(s)',
       fullName: 'Name',
       firstName: 'First Name',
@@ -256,7 +257,7 @@ const en = {
       title: 'Edit Teacher',
     },
     new: {
-      title: 'Add Teacher(s)',
+      title: 'Add Teacher',
       titleModal: 'Add Teacher',
       emailsHint:
         'Separate multiple email addresses using the comma character.',
@@ -304,7 +305,7 @@ const en = {
       title: 'Edit Student',
     },
     new: {
-      title: 'Add Student(s)',
+      title: 'Add Student',
       titleModal: 'Add Student',
       emailsHint:
         'Separate multiple email addresses using the comma character.',
@@ -506,6 +507,12 @@ const en = {
     view: {
       title: 'View Attendance',
       note: 'Please check attended students',
+    },
+    subTitle: {
+      inProgress: 'In Progress',
+      upcoming: 'Upcoming',
+      finished: 'Finished',
+      seeAll: 'See All',
     }
   },
 
@@ -543,7 +550,8 @@ const en = {
       name: 'Name',
       description: 'Description',
       attachment: 'Attachment',
-      lastUpdatedRange: 'Last Updated Range',
+      lastUpdatedRange: 'Last Updated Date Range',
+      lastUpdated: 'Last Updated Date'
     },
     new: {
       title: 'Add Document',
