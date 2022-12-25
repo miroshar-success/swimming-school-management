@@ -8,11 +8,11 @@ export default [
   },
   {
     name: 'studentNumber',
-    label: i18n('payment.fields.studentNumber'),
+    label: i18n('student.fields.studentNumber'),
   },
   {
     name: 'fullName',
-    label: i18n('payment.fields.fullName'),
+    label: i18n('student.fields.fullName'),
   },
   {
     name: 'month',

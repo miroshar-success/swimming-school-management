@@ -55,7 +55,7 @@ function TeacherView(props) {
               <MDBox p={2.4}>
                 <MDBox p={2.4}>
                   <MDTypography variant="h4">
-                    {i18n('teacher.fields.general')}
+                    {i18n('teacher.subTitle.generalInfo')}
                   </MDTypography>
                 </MDBox>
                 <Grid container spacing={1.6}>
@@ -110,7 +110,7 @@ function TeacherView(props) {
               <MDBox p={2.4}>
                 <MDBox p={2.4}>
                   <MDTypography variant="h4">
-                    {i18n('teacher.fields.schedules')}
+                    {i18n('teacher.subTitle.schedules')}
                   </MDTypography>
                 </MDBox>
                 {lessons.map((lesson, index) => (

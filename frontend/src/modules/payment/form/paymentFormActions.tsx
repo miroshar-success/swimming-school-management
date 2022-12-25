@@ -50,7 +50,7 @@ const paymentFormActions = {
         type: paymentFormActions.CREATE_SUCCESS,
       });
 
-      Message.success(i18n('payment.create.success'));
+      Message.success(i18n('payment.doAddSuccess'));
 
       getHistory().push('/payment');
     } catch (error) {

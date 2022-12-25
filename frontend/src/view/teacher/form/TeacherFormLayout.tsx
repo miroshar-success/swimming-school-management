@@ -102,9 +102,7 @@ function TeacherFormLayout(props) {
                   <Grid item xs={12}>
                     <TextAreaFormItem
                       name="comment"
-                      label={i18n(
-                        'teacher.fields.diseaseAllergyCondition',
-                      )}
+                      label={i18n('teacher.fields.comment')}
                       required={false}
                       variant="standard"
                     />

@@ -405,9 +405,7 @@ function StudentView(props) {
                       }}
                     >
                       <MDTypography>
-                        {i18n(
-                          'payment.fields.paymentHistory',
-                        )}
+                        {i18n('payment.history.title')}
                       </MDTypography>
                     </MDBox>
                     <MDBox pt={2}>
@@ -442,7 +440,7 @@ function StudentView(props) {
                                 sorted={false}
                               >
                                 {i18n(
-                                  'payment.fields.subTotal',
+                                  'payment.fields.amount',
                                 )}
                               </DataTableHeadCell>
                               <DataTableHeadCell
@@ -454,7 +452,7 @@ function StudentView(props) {
                                 sorted={false}
                               >
                                 {i18n(
-                                  'payment.fields.total',
+                                  'payment.fields.cost',
                                 )}
                               </DataTableHeadCell>
                             </TableRow>

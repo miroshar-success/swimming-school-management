@@ -114,7 +114,7 @@ function PaymentHistoryListTable(props) {
                 {i18n('payment.fields.month')}
               </DataTableHeadCell>
               <DataTableHeadCell sorted={false}>
-                {i18n('payment.fields.createdAt')}
+                {i18n('common.createdAt')}
               </DataTableHeadCell>
               <DataTableHeadCell sorted={false}>
                 {i18n('payment.fields.total')}

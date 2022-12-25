@@ -99,7 +99,7 @@ function PaymentHistoryView(props) {
         </Grid>
         <Grid item xs={12} md={4}>
           <TextViewItem
-            label={i18n('payment.fields.total')}
+            label={i18n('payment.fields.cost')}
             value={payment.cost}
           />
         </Grid>

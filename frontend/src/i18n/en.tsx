@@ -230,6 +230,7 @@ const en = {
       birthday: 'Birthday',
       RFC: 'RFC',
       CURP: 'CURP',
+      comment: 'Comment',
     },
     status: {
       active: 'Active',
@@ -242,6 +243,10 @@ const en = {
       email: 'Email ${value} is invalid',
     },
     title: 'Teachers',
+    subTitle: {
+      generalInfo: 'General Information',
+      schedules: 'Schedules',
+    },
     menu: 'Teachers',
     doAddSuccess: 'Teacher(s) successfully saved',
     doUpdateSuccess: 'Teacher successfully saved',
@@ -276,27 +281,68 @@ const en = {
   },
 
   payment: {
+    doAddSuccess: 'Payment(s) successfully saved',
+    doDestroySuccess: 'Payment successfully deleted',
+    doDestroyAllSelectedSuccess:
+      'Payments successfully deleted',
     menu: 'Payments',
+    title: 'Payments',
+    fields: {
+      id: 'Id',
+      month: 'Month',
+      year: 'Year',
+      expiredDate: 'Expired Date',
+      cost: 'Total',
+      category: 'Payment Category',
+      price: 'Price',
+      quantity: 'Quantity',
+      VAT: 'VAT',
+      paymentMethod: 'Payment Method',
+      paymentCategory: 'Payment Category',
+      lessonsNumber: 'Number of Lessons',
+      lastPayment: 'Last Payment',
+      paymentDate: 'Payment Date',
+      amount: 'SubTotal',
+    },
     history: {
-      menu: 'History',
+      menu: 'Payment History',
+      title: 'Payment History',
+      view: {
+        title: 'View Payment History',
+      }
     },
     expired: {
-      menu: 'Expired',
+      menu: 'Expired Payments',
+      title: 'Expired Payments',
+      view: {
+        title: 'View Expired Payment',
+      },
     },
     category: {
-      menu: 'Categories',
-      list: {
-        title: 'Categories',
-      },
+      menu: 'Payment Categories',
+      title: 'Payment Categories',
       new: {
-        title: 'Create Category',
+        title: 'Add Payment Category',
       },
       edit: {
-        title: 'Edit Category',
+        title: 'Edit Payment Category',
       },
+      view: {
+        title: 'View Payment Category'
+      }
     },
     method: {
       menu: 'Payment Methods',
+      title: 'Payment Methods',
+      new: {
+        title: 'Add Payment Method',
+      },
+      edit: {
+        title: 'Edit Payment Method',
+      },
+      view: {
+        title: 'View Payment Method',
+      }
     },
     add: {
       title: 'Add Payment',
@@ -543,7 +589,7 @@ const en = {
   },
   settings: {
     title: 'Settings',
-    tenant: 'Tenant',
+    tenant: 'School',
     menu: 'Settings',
     save: {
       success:

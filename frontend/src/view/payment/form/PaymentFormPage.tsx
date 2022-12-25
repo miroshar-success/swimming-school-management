@@ -45,7 +45,7 @@ function PaymentFormPage(props) {
             alignItems="flex-start"
           >
             <MDTypography variant="h3">
-              {i18n('payment.title.create')}
+              {i18n('payment.add.title')}
             </MDTypography>
           </MDBox>
           {initLoading && <Spinner />}

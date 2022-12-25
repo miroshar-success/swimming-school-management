@@ -355,7 +355,7 @@ const privateRoutes = [
 
   {
     path: '/payment/:id/create',
-    i18n: 'payment.create.title',
+    i18n: 'payment.add.title',
     collapse: 'payment',
     parent: '/payment',
     loader: () =>
@@ -391,7 +391,7 @@ const privateRoutes = [
 
   {
     path: '/payment-expired',
-    i18n: 'payment.expired.list.title',
+    i18n: 'payment.expired.title',
     collapse: 'payment',
     parent: '/payment-breadcrumb',
     loader: () =>
@@ -417,7 +417,7 @@ const privateRoutes = [
 
   {
     path: '/payment-category',
-    i18n: 'payment.category.list.title',
+    i18n: 'payment.category.title',
     collapse: 'payment',
     parent: '/payment-breadcrumb',
     loader: () =>
@@ -469,7 +469,7 @@ const privateRoutes = [
 
   {
     path: '/payment-method',
-    i18n: 'payment.method.list.title',
+    i18n: 'payment.method.title',
     collapse: 'payment',
     parent: '/payment-breadcrumb',
     loader: () =>

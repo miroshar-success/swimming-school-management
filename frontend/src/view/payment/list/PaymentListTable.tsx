@@ -95,7 +95,7 @@ function PaymentListTable(props) {
                 {i18n('student.fields.class')}
               </DataTableHeadCell>
               <DataTableHeadCell>
-                {i18n('payment.fields.createdAt')}
+                {i18n('common.createdAt')}
               </DataTableHeadCell>
             </TableRow>
           </MDBox>
