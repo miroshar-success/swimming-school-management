@@ -60,7 +60,7 @@ const classCategoryFormActions = {
         type: classCategoryFormActions.CREATE_SUCCESS,
       });
 
-      Message.success(i18n('classCategory.create.success'));
+      Message.success(i18n('classCategory.doAddSuccess'));
 
       getHistory().push('/class-category');
     } catch (error) {
@@ -84,7 +84,9 @@ const classCategoryFormActions = {
         type: classCategoryFormActions.UPDATE_SUCCESS,
       });
 
-      Message.success(i18n('classCategory.update.success'));
+      Message.success(
+        i18n('classCategory.doUpdateSuccess'),
+      );
 
       getHistory().push('/class-category');
     } catch (error) {

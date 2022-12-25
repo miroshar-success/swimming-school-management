@@ -619,7 +619,7 @@ const privateRoutes = [
 
   {
     path: '/class-category',
-    i18n: 'class.category.title',
+    i18n: 'classCategory.title',
     collapse: 'class',
     parent: '/class-breadcrumb',
     loader: () =>
@@ -632,7 +632,7 @@ const privateRoutes = [
 
   {
     path: '/class-category/new',
-    i18n: 'class.category.new.title',
+    i18n: 'classCategory.new.title',
     collapse: 'class',
     parent: '/class-category',
     loader: () =>
@@ -645,7 +645,7 @@ const privateRoutes = [
 
   {
     path: '/class-category/:id/edit',
-    i18n: 'class.category.edit.title',
+    i18n: 'classCategory.edit.title',
     collapse: 'class',
     parent: '/class-category',
     loader: () =>
@@ -658,7 +658,7 @@ const privateRoutes = [
 
   {
     path: '/class-category/:id',
-    i18n: 'class.category.view.title',
+    i18n: 'classCategory.view.title',
     collapse: 'class',
     parent: '/class-category',
     loader: () =>

@@ -104,7 +104,7 @@ const menus = [
       },
       {
         path: '/class-category',
-        name: i18n('class.category.menu'),
+        name: i18n('classCategory.menu'),
         icon: <Icon>interests</Icon>,
         permissionRequired: permissions.classRead,
       },

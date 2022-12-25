@@ -328,6 +328,7 @@ const en = {
 
   payment: {
     doAddSuccess: 'Payment(s) successfully saved',
+    doUpdateSuccess: 'Payment successfully saved',
     doDestroySuccess: 'Payment successfully deleted',
     doDestroyAllSelectedSuccess:
       'Payments successfully deleted',
@@ -419,9 +420,77 @@ const en = {
   },
 
   class: {
+    doAddSuccess: 'Class(s) successfully saved',
+    doUpdateSuccess: 'Class successfully saved',
+    doDestroySuccess: 'Class successfully deleted',
+    doDestroyAllSelectedSuccess:
+      'Classes successfully deleted',
     menu: 'Classes',
-    category: {
-      menu: 'Categories',
+    title: 'Classes',
+    fields: {
+      name: 'Class Name',
+      category: 'Category',
+      pool: 'Pool',
+      duration: 'Duration',
+      grade: 'Grade',
+    },
+    new: {
+      title: 'Add Class',
+    },
+    edit: {
+      title: 'Edit Class',
+    },
+    view: {
+      title: 'View Class',
+    },
+  },
+
+  classCategory: {
+    doAddSuccess: 'Class Category(s) successfully saved',
+    doUpdateSuccess: 'Class Category successfully saved',
+    doDestroySuccess: 'Class Category successfully deleted',
+    doDestroyAllSelectedSuccess:
+      'Class Categories successfully deleted',
+    menu: 'Classe Categories',
+    title: 'Classe Categories',
+    fields: {
+      name: 'Class Category Name',
+      comment: 'Comment',
+    },
+    new: {
+      title: 'Add Class Category',
+    },
+    edit: {
+      title: 'Edit Class Category',
+    },
+    view: {
+      title: 'View Class Category',
+    },
+  },
+
+  lesson: {
+    doAddSuccess: 'Lesson(s) successfully saved',
+    doUpdateSuccess: 'Lesson successfully saved',
+    doDestroySuccess: 'Lesson successfully deleted',
+    doDestroyAllSelectedSuccess:
+      'Lessons successfully deleted',
+    menu: 'Lessons',
+    title: 'Lessons',
+    fields: {
+      class: 'Class',
+      day: 'Day',
+      time: 'Time',
+      teacher: 'Teacher',
+
+    },
+    new: {
+      title: 'Add Lesson',
+    },
+    edit: {
+      title: 'Edit Lesson',
+    },
+    view: {
+      title: 'View Lesson',
     },
   },
 

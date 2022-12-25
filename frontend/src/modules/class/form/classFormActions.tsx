@@ -60,7 +60,7 @@ const classFormActions = {
         type: classFormActions.CREATE_SUCCESS,
       });
 
-      Message.success(i18n('class.create.success'));
+      Message.success(i18n('class.doAddSuccess'));
 
       getHistory().push('/class');
     } catch (error) {
@@ -84,7 +84,7 @@ const classFormActions = {
         type: classFormActions.UPDATE_SUCCESS,
       });
 
-      Message.success(i18n('class.update.success'));
+      Message.success(i18n('class.doUpdateSuccess'));
 
       getHistory().push('/class');
     } catch (error) {
