@@ -60,7 +60,7 @@ const skillFormActions = {
         type: skillFormActions.CREATE_SUCCESS,
       });
 
-      Message.success(i18n('skill.create.success'));
+      Message.success(i18n('skill.doAddSuccess'));
 
       getHistory().push('/skill');
     } catch (error) {
@@ -84,7 +84,7 @@ const skillFormActions = {
         type: skillFormActions.UPDATE_SUCCESS,
       });
 
-      Message.success(i18n('skill.update.success'));
+      Message.success(i18n('skill.doUpdateSuccess'));
 
       getHistory().push('/skill');
     } catch (error) {

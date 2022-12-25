@@ -28,7 +28,7 @@ const skillDestroyActions = {
         type: skillDestroyActions.DESTROY_SUCCESS,
       });
 
-      Message.success(i18n('skill.destroy.success'));
+      Message.success(i18n('skill.doDestroySuccess'));
 
       dispatch(listActions.doFetchCurrentFilter());
 
@@ -61,7 +61,9 @@ const skillDestroyActions = {
         dispatch(listActions.doFetchCurrentFilter());
       }
 
-      Message.success(i18n('skill.destroyAll.success'));
+      Message.success(
+        i18n('skill.doDestroyAllSelectedSuccess'),
+      );
 
       getHistory().push('/skill');
     } catch (error) {

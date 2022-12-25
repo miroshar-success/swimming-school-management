@@ -578,6 +578,30 @@ const en = {
     },
   },
 
+  skill: {
+    doAddSuccess: 'Skill(s) successfully saved',
+    doUpdateSuccess: 'Skill successfully saved',
+    doDestroySuccess: 'Skill successfully deleted',
+    doDestroyAllSelectedSuccess:
+      'Skills successfully deleted',
+    menu: 'Skills',
+    title: 'Skills',
+    fields: {
+      name: 'Name',
+      grade: 'Grade',
+      icon: 'Icon',
+    },
+    new: {
+      title: 'Add Skill',
+    },
+    edit: {
+      title: 'Edit Skill',
+    },
+    view: {
+      title: 'View Skill',
+    },
+  },
+
   property: {
     menu: 'Properties',
     pool: {
