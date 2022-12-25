@@ -99,7 +99,7 @@ const privateRoutes = [
 
   {
     path: '/admin',
-    i18n: 'admin.menu',
+    i18n: 'user.menu',
     collapseName: 'my-profile',
     parent: '/person-name-breadcrumb',
     loader: () => import('src/view/admin/list/AdminPage'),
@@ -109,7 +109,7 @@ const privateRoutes = [
 
   {
     path: '/admin/new',
-    i18n: 'admin.new.title',
+    i18n: 'user.new.title',
     collapseName: 'my-profile',
     parent: '/admin',
     loader: () => import('src/view/admin/new/AdminNewPage'),
@@ -119,7 +119,7 @@ const privateRoutes = [
 
   {
     path: '/admin/:id/edit',
-    i18n: 'admin.edit.title',
+    i18n: 'user.edit.title',
     collapseName: 'my-profile',
     parent: '/admin',
     loader: () =>
@@ -130,7 +130,7 @@ const privateRoutes = [
 
   {
     path: '/admin/:id',
-    i18n: 'admin.view.title',
+    i18n: 'user.view.title',
     collapseName: 'my-profile',
     parent: '/admin',
     loader: () =>

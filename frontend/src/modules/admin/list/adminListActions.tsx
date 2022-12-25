@@ -80,7 +80,7 @@ const adminListActions = {
 
       new Exporter(
         exporterFields,
-        i18n('admin.exporterFileName'),
+        i18n('user.exporterFileName'),
       ).transformAndExportAsExcelFile(response.rows);
 
       dispatch({
@@ -169,7 +169,7 @@ const adminListActions = {
         type: adminListActions.DESTROY_SUCCESS,
       });
 
-      Message.success(i18n('admin.doDestroySuccess'));
+      Message.success(i18n('user.doDestroySuccess'));
 
       dispatch(adminListActions.doFetchCurrentFilter());
     } catch (error) {
@@ -203,7 +203,7 @@ const adminListActions = {
         });
 
         Message.success(
-          i18n('admin.doDestroyAllSelectedSuccess'),
+          i18n('user.doDestroyAllSelectedSuccess'),
         );
 
         dispatch(adminListActions.doFetchCurrentFilter());

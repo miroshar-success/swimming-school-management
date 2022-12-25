@@ -109,7 +109,7 @@ function AdminTable() {
                 {' '}
               </DataTableHeadCell>
               <DataTableHeadCell sorted={false}>
-                {i18n('admin.fields.avatars')}
+                {i18n('user.fields.avatars')}
               </DataTableHeadCell>
               <DataTableHeadCell
                 onClick={() => doChangeSort('email')}
@@ -119,7 +119,7 @@ function AdminTable() {
                     : 'none'
                 }
               >
-                {i18n('admin.fields.email')}
+                {i18n('user.fields.email')}
               </DataTableHeadCell>
               <DataTableHeadCell
                 onClick={() => doChangeSort('fullName')}
@@ -129,13 +129,13 @@ function AdminTable() {
                     : 'none'
                 }
               >
-                {i18n('admin.fields.fullName')}
+                {i18n('user.fields.fullName')}
               </DataTableHeadCell>
               <DataTableHeadCell sorted={false}>
-                {i18n('admin.fields.roles')}
+                {i18n('user.fields.roles')}
               </DataTableHeadCell>
               <DataTableHeadCell sorted={false}>
-                {i18n('admin.fields.status')}
+                {i18n('user.fields.status')}
               </DataTableHeadCell>
             </TableRow>
           </MDBox>

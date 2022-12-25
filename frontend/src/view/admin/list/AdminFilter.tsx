@@ -31,34 +31,34 @@ import yupFilterSchemas from 'src/modules/shared/yup/yupFilterSchemas';
 
 const schema = yup.object().shape({
   fullName: yupFilterSchemas.string(
-    i18n('admin.fields.fullName'),
+    i18n('user.fields.fullName'),
   ),
-  email: yupFilterSchemas.email(i18n('admin.fields.email')),
+  email: yupFilterSchemas.email(i18n('user.fields.email')),
   role: yupFilterSchemas.enumerator(
-    i18n('admin.fields.role'),
+    i18n('user.fields.role'),
   ),
   status: yupFilterSchemas.enumerator(
-    i18n('admin.fields.status'),
+    i18n('user.fields.status'),
   ),
 });
 
 const previewRenders = {
   fullName: {
-    label: i18n('admin.fields.fullName'),
+    label: i18n('user.fields.fullName'),
     render: filterRenders.generic(),
   },
   email: {
-    label: i18n('admin.fields.email'),
+    label: i18n('user.fields.email'),
     render: filterRenders.generic(),
   },
   role: {
-    label: i18n('admin.fields.role'),
+    label: i18n('user.fields.role'),
     render: (value) =>
       value ? i18n(`roles.${value}.label`) : null,
   },
   status: {
-    label: i18n('admin.fields.status'),
-    render: filterRenders.enumerator('admin.status'),
+    label: i18n('user.fields.status'),
+    render: filterRenders.enumerator('user.status'),
   },
 };
 
@@ -151,21 +151,21 @@ function AdminFilter(props) {
                 <Grid item lg={6} xs={12}>
                   <InputFormItem
                     name={'email'}
-                    label={i18n('admin.fields.email')}
+                    label={i18n('user.fields.email')}
                     variant="standard"
                   />
                 </Grid>
                 <Grid item lg={6} xs={12}>
                   <InputFormItem
                     name={'fullName'}
-                    label={i18n('admin.fields.fullName')}
+                    label={i18n('user.fields.fullName')}
                     variant="standard"
                   />
                 </Grid>
                 <Grid item lg={6} xs={12}>
                   <SelectFormItem
                     name={'role'}
-                    label={i18n('admin.fields.role')}
+                    label={i18n('user.fields.role')}
                     options={adminEnumerators.roles.map(
                       (value) => ({
                         value,
@@ -178,7 +178,7 @@ function AdminFilter(props) {
                 <Grid item lg={6} xs={12}>
                   <SelectFormItem
                     name={'status'}
-                    label={i18n('admin.fields.status')}
+                    label={i18n('user.fields.status')}
                     options={adminEnumerators.status.map(
                       (value) => ({
                         value,

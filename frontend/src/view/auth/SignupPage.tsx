@@ -25,7 +25,7 @@ const schema = yup.object().shape({
     required: true,
   }),
   password: yupFormSchemas.string(
-    i18n('admin.fields.password'),
+    i18n('user.fields.password'),
     {
       required: true,
     },

@@ -35,7 +35,7 @@ function PaymentHistoryView(props) {
           px={2.4}
         >
           <LogoViewItem
-            label={i18n('student.fields.avatars')}
+            label={i18n('user.fields.avatars')}
             value={student.avatars}
           />
         </MDBox>
@@ -44,13 +44,13 @@ function PaymentHistoryView(props) {
         <Grid container item spacing={1.6}>
           <Grid item xs={12} md={6}>
             <TextViewItem
-              label={i18n('student.fields.studentNumber')}
+              label={i18n('user.fields.studentNumber')}
               value={student.studentNumber}
             />
           </Grid>
           <Grid item xs={12} md={6}>
             <TextViewItem
-              label={i18n('student.fields.fullName')}
+              label={i18n('user.fields.fullName')}
               value={student.fullName}
             />
           </Grid>

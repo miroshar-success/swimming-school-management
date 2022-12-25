@@ -18,7 +18,7 @@ function AdminPage() {
             pb={2.4}
           >
             <MDTypography variant="h3">
-              {i18n('admin.title')}
+              {i18n('user.title')}
             </MDTypography>
             <AdminToolbar />
           </MDBox>

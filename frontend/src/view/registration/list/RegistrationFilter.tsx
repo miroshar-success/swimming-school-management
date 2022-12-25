@@ -32,23 +32,23 @@ import DatePickerFormItem from 'src/view/shared/form/items/DatePickerFormItem';
 
 const schema = yup.object().shape({
   firstName: yupFilterSchemas.string(
-    i18n('student.fields.firstName'),
+    i18n('user.fields.firstName'),
   ),
   lastName: yupFilterSchemas.string(
-    i18n('student.fields.lastName'),
+    i18n('user.fields.lastName'),
   ),
   status: yupFilterSchemas.string(
-    i18n('student.fields.status'),
+    i18n('user.fields.status'),
   ),
 });
 
 const previewRenders = {
   fullName: {
-    label: i18n('student.fields.fullName'),
+    label: i18n('user.fields.fullName'),
     render: filterRenders.generic(),
   },
   status: {
-    label: i18n('student.fields.status'),
+    label: i18n('user.fields.status'),
     render: filterRenders.enumerator('student.status'),
   },
 };
@@ -140,14 +140,14 @@ function RegistrationFilter(props) {
                 <Grid item md={6} xs={12}>
                   <InputFormItem
                     name={'fullName'}
-                    label={i18n('student.fields.fullName')}
+                    label={i18n('user.fields.fullName')}
                     variant="standard"
                   />
                 </Grid>
                 <Grid item md={6} xs={12}>
                   <SelectFormItem
                     name={'status'}
-                    label={i18n('student.fields.status')}
+                    label={i18n('user.fields.status')}
                     options={studentEnumerators.status.map(
                       (value) => ({
                         value,

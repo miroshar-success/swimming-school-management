@@ -32,49 +32,47 @@ import DatePickerFormItem from 'src/view/shared/form/items/DatePickerFormItem';
 
 const schema = yup.object().shape({
   studentNumber: yupFilterSchemas.integer(
-    i18n('student.fields.studentNumber'),
+    i18n('user.fields.studentNumber'),
   ),
   firstName: yupFilterSchemas.string(
-    i18n('student.fields.firstName'),
+    i18n('user.fields.firstName'),
   ),
   lastName: yupFilterSchemas.string(
-    i18n('student.fields.lastName'),
+    i18n('user.fields.lastName'),
   ),
   phoneNumber: yupFilterSchemas.string(
-    i18n('student.fields.phoneNumber'),
+    i18n('user.fields.phoneNumber'),
   ),
   bloodType: yupFilterSchemas.string(
-    i18n('student.fields.bloodType'),
+    i18n('user.fields.bloodType'),
   ),
-  sex: yupFilterSchemas.string(i18n('student.fields.sex')),
-  email: yupFilterSchemas.email(
-    i18n('student.fields.email'),
-  ),
+  sex: yupFilterSchemas.string(i18n('user.fields.sex')),
+  email: yupFilterSchemas.email(i18n('user.fields.email')),
 });
 
 const previewRenders = {
   studentNumber: {
-    label: i18n('student.fields.studentNumber'),
+    label: i18n('user.fields.studentNumber'),
     render: filterRenders.decimal(),
   },
   fullName: {
-    label: i18n('student.fields.fullName'),
+    label: i18n('user.fields.fullName'),
     render: filterRenders.generic(),
   },
   email: {
-    label: i18n('student.fields.email'),
+    label: i18n('user.fields.email'),
     render: filterRenders.generic(),
   },
   phoneNumber: {
-    label: i18n('student.fields.phoneNumber'),
+    label: i18n('user.fields.phoneNumber'),
     render: filterRenders.generic(),
   },
   sex: {
-    label: i18n('student.fields.sex'),
+    label: i18n('user.fields.sex'),
     render: filterRenders.generic(),
   },
   bloodType: {
-    label: i18n('student.fields.bloodType'),
+    label: i18n('user.fields.bloodType'),
     render: filterRenders.generic(),
   },
 };
@@ -172,7 +170,7 @@ function StudentFilter(props) {
                   <InputFormItem
                     name={'studentNumber'}
                     label={i18n(
-                      'student.fields.studentNumber',
+                      'user.fields.studentNumber',
                     )}
                     variant="standard"
                   />
@@ -180,21 +178,21 @@ function StudentFilter(props) {
                 <Grid item lg={4} md={6} xs={12}>
                   <InputFormItem
                     name={'email'}
-                    label={i18n('student.fields.email')}
+                    label={i18n('user.fields.email')}
                     variant="standard"
                   />
                 </Grid>
                 <Grid item lg={4} md={6} xs={12}>
                   <InputFormItem
                     name={'fullName'}
-                    label={i18n('student.fields.fullName')}
+                    label={i18n('user.fields.fullName')}
                     variant="standard"
                   />
                 </Grid>
                 <Grid item lg={4} md={6} xs={12}>
                   <SelectFormItem
                     name={'sex'}
-                    label={i18n('student.fields.sex')}
+                    label={i18n('user.fields.sex')}
                     options={studentEnumerators.sex.map(
                       (value) => ({
                         value,
@@ -208,7 +206,7 @@ function StudentFilter(props) {
                 <Grid item lg={4} md={6} xs={12}>
                   <SelectFormItem
                     name={'bloodType'}
-                    label={i18n('student.fields.bloodType')}
+                    label={i18n('user.fields.bloodType')}
                     options={studentEnumerators.bloodType.map(
                       (value) => ({
                         value,
@@ -222,9 +220,7 @@ function StudentFilter(props) {
                 <Grid item lg={4} md={6} xs={12}>
                   <InputFormItem
                     name={'phoneNumber'}
-                    label={i18n(
-                      'student.fields.phoneNumber',
-                    )}
+                    label={i18n('user.fields.phoneNumber')}
                     variant="standard"
                   />
                 </Grid>

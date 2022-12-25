@@ -61,21 +61,19 @@ function TeacherView(props) {
                 <Grid container spacing={1.6}>
                   <Grid item md={4} xs={12}>
                     <TextViewItem
-                      label={i18n('teacher.fields.name')}
+                      label={i18n('user.fields.name')}
                       value={teacher.fullName}
                     />
                   </Grid>
                   <Grid item md={4} xs={12}>
                     <TextViewItem
-                      label={i18n('teacher.fields.email')}
+                      label={i18n('user.fields.email')}
                       value={teacher.email}
                     />
                   </Grid>
                   <Grid item md={4} xs={12}>
                     <TextViewItem
-                      label={i18n(
-                        'teacher.fields.birthday',
-                      )}
+                      label={i18n('user.fields.birthday')}
                       value={moment(
                         teacher.birthday,
                       ).format(
@@ -85,19 +83,19 @@ function TeacherView(props) {
                   </Grid>
                   <Grid item md={4} xs={12}>
                     <TextViewItem
-                      label={i18n('teacher.fields.RFC')}
+                      label={i18n('user.fields.RFC')}
                       value={teacher.RFC}
                     />
                   </Grid>
                   <Grid item md={4} xs={12}>
                     <TextViewItem
-                      label={i18n('teacher.fields.CURP')}
+                      label={i18n('user.fields.CURP')}
                       value={teacher.CURP}
                     />
                   </Grid>
                   <Grid item xs={12}>
                     <TextViewItem
-                      label={i18n('teacher.fields.comment')}
+                      label={i18n('user.fields.comment')}
                       value={teacher.comment}
                     />
                   </Grid>

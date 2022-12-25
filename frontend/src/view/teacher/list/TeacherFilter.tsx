@@ -32,30 +32,28 @@ import DatePickerFormItem from 'src/view/shared/form/items/DatePickerFormItem';
 
 const schema = yup.object().shape({
   firstName: yupFilterSchemas.string(
-    i18n('teacher.fields.firstName'),
+    i18n('user.fields.firstName'),
   ),
   lastName: yupFilterSchemas.string(
-    i18n('teacher.fields.lastName'),
+    i18n('user.fields.lastName'),
   ),
   phoneNumber: yupFilterSchemas.string(
-    i18n('teacher.fields.phoneNumber'),
+    i18n('user.fields.phoneNumber'),
   ),
-  email: yupFilterSchemas.email(
-    i18n('teacher.fields.email'),
-  ),
+  email: yupFilterSchemas.email(i18n('user.fields.email')),
 });
 
 const previewRenders = {
   fullName: {
-    label: i18n('teacher.fields.fullName'),
+    label: i18n('user.fields.fullName'),
     render: filterRenders.generic(),
   },
   email: {
-    label: i18n('teacher.fields.email'),
+    label: i18n('user.fields.email'),
     render: filterRenders.generic(),
   },
   phoneNumber: {
-    label: i18n('teacher.fields.phoneNumber'),
+    label: i18n('user.fields.phoneNumber'),
     render: filterRenders.generic(),
   },
 };
@@ -149,23 +147,21 @@ function TeacherFilter(props) {
                 <Grid item lg={4} md={6} xs={12}>
                   <InputFormItem
                     name={'fullName'}
-                    label={i18n('teacher.fields.fullName')}
+                    label={i18n('user.fields.fullName')}
                     variant="standard"
                   />
                 </Grid>
                 <Grid item lg={4} md={6} xs={12}>
                   <InputFormItem
                     name={'email'}
-                    label={i18n('teacher.fields.email')}
+                    label={i18n('user.fields.email')}
                     variant="standard"
                   />
                 </Grid>
                 <Grid item lg={4} md={6} xs={12}>
                   <InputFormItem
                     name={'phoneNumber'}
-                    label={i18n(
-                      'teacher.fields.phoneNumber',
-                    )}
+                    label={i18n('user.fields.phoneNumber')}
                     variant="standard"
                   />
                 </Grid>

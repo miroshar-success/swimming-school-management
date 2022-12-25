@@ -139,7 +139,7 @@ function AdminToolbar(props) {
           startIcon={<EmailIcon />}
           size="small"
         >
-          {i18n('admin.invite')}
+          {i18n('user.invite')}
         </MDButton>
       )}
 

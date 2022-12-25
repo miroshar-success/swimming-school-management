@@ -206,7 +206,7 @@ const tenantRoutes = [
 const adminRoutes = [
   {
     path: '/admin',
-    name: i18n('admin.menu'),
+    name: i18n('user.menu'),
     permissionRequired: permissions.adminRead,
     icon: <Icon>person</Icon>,
   },

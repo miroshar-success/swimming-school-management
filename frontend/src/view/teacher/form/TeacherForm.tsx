@@ -20,59 +20,56 @@ import MDTypography from 'src/mui/components/MDTypography';
 
 const schema = yup.object().shape({
   firstName: yupFormSchemas.string(
-    i18n('teacher.fields.firstName'),
+    i18n('user.fields.firstName'),
     {
       required: true,
       max: 80,
     },
   ),
   lastName: yupFormSchemas.string(
-    i18n('teacher.fields.lastName'),
+    i18n('user.fields.lastName'),
     {
       required: true,
       max: 175,
     },
   ),
   phoneNumber: yupFormSchemas.string(
-    i18n('teacher.fields.phoneNumber'),
+    i18n('user.fields.phoneNumber'),
     {
       required: true,
       matches: /^[0-9]/,
       max: 24,
     },
   ),
-  RFC: yupFormSchemas.string(i18n('teacher.fields.RFC'), {
+  RFC: yupFormSchemas.string(i18n('user.fields.RFC'), {
     required: true,
     max: 50,
   }),
-  CURP: yupFormSchemas.string(i18n('teacher.fields.CURP'), {
+  CURP: yupFormSchemas.string(i18n('user.fields.CURP'), {
     required: true,
     max: 50,
   }),
   birthday: yupFormSchemas.date(
-    i18n('teacher.fields.birthday'),
+    i18n('user.fields.birthday'),
     {
       required: true,
     },
   ),
   comment: yupFormSchemas.string(
-    i18n('teacher.fields.comment'),
+    i18n('user.fields.comment'),
   ),
   avatars: yupFormSchemas.images(
-    i18n('teacher.fields.avatars'),
+    i18n('user.fields.avatars'),
     {
       required: true,
       max: 1,
     },
   ),
-  email: yupFormSchemas.email(
-    i18n('teacher.fields.email'),
-    {
-      required: true,
-    },
-  ),
+  email: yupFormSchemas.email(i18n('user.fields.email'), {
+    required: true,
+  }),
   password: yupFormSchemas.string(
-    i18n('teacher.fields.email'),
+    i18n('user.fields.email'),
     {
       required: true,
     },

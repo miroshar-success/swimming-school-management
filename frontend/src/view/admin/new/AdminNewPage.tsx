@@ -38,7 +38,7 @@ function AdminNewPage(props) {
             alignItems="flex-start"
           >
             <MDTypography variant="h3">
-              {i18n('admin.new.title')}
+              {i18n('user.new.title')}
             </MDTypography>
           </MDBox>
           <AdminNewForm

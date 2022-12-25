@@ -34,7 +34,7 @@ function TeacherFormLayout(props) {
               <Grid item md={4} xs={12}>
                 <ImagesFormItem
                   name="avatars"
-                  label={i18n('teacher.fields.avatars')}
+                  label={i18n('user.fields.avatars')}
                   storage={
                     Storage.values.userAvatarsProfiles
                   }
@@ -46,9 +46,7 @@ function TeacherFormLayout(props) {
                   <Grid item md={6} xs={12}>
                     <InputFormItem
                       name="firstName"
-                      label={i18n(
-                        'teacher.fields.firstName',
-                      )}
+                      label={i18n('user.fields.firstName')}
                       variant="standard"
                       required={true}
                     />
@@ -56,9 +54,7 @@ function TeacherFormLayout(props) {
                   <Grid item md={6} xs={12}>
                     <InputFormItem
                       name="lastName"
-                      label={i18n(
-                        'teacher.fields.lastName',
-                      )}
+                      label={i18n('user.fields.lastName')}
                       variant="standard"
                       required={true}
                     />
@@ -66,9 +62,7 @@ function TeacherFormLayout(props) {
                   <Grid item md={6} xs={12}>
                     <DatePickerFormItem
                       name="birthday"
-                      label={i18n(
-                        'teacher.fields.birthday',
-                      )}
+                      label={i18n('user.fields.birthday')}
                       required={true}
                       variant="standard"
                     />
@@ -77,7 +71,7 @@ function TeacherFormLayout(props) {
                     <InputFormItem
                       name="phoneNumber"
                       label={i18n(
-                        'teacher.fields.phoneNumber',
+                        'user.fields.phoneNumber',
                       )}
                       variant="standard"
                       required={true}
@@ -86,7 +80,7 @@ function TeacherFormLayout(props) {
                   <Grid item md={6} xs={12}>
                     <InputFormItem
                       name="RFC"
-                      label={i18n('teacher.fields.RFC')}
+                      label={i18n('user.fields.RFC')}
                       variant="standard"
                       required={true}
                     />
@@ -94,7 +88,7 @@ function TeacherFormLayout(props) {
                   <Grid item md={6} xs={12}>
                     <InputFormItem
                       name="CURP"
-                      label={i18n('teacher.fields.CURP')}
+                      label={i18n('user.fields.CURP')}
                       variant="standard"
                       required={true}
                     />
@@ -102,7 +96,7 @@ function TeacherFormLayout(props) {
                   <Grid item xs={12}>
                     <TextAreaFormItem
                       name="comment"
-                      label={i18n('teacher.fields.comment')}
+                      label={i18n('user.fields.comment')}
                       required={false}
                       variant="standard"
                     />
@@ -110,7 +104,7 @@ function TeacherFormLayout(props) {
                   <Grid item md={6} xs={12}>
                     <InputFormItem
                       name="email"
-                      label={i18n('teacher.fields.email')}
+                      label={i18n('user.fields.email')}
                       required={true}
                       variant="standard"
                     />
@@ -118,9 +112,7 @@ function TeacherFormLayout(props) {
                   <Grid item md={6} xs={12}>
                     <InputFormItem
                       name="password"
-                      label={i18n(
-                        'teacher.fields.password',
-                      )}
+                      label={i18n('user.fields.password')}
                       required={true}
                       variant="standard"
                       type="password"

@@ -112,7 +112,7 @@ function StudentTable() {
                 {' '}
               </DataTableHeadCell>
               <DataTableHeadCell sorted={false}>
-                {i18n('student.fields.avatars')}
+                {i18n('user.fields.avatars')}
               </DataTableHeadCell>
               <DataTableHeadCell
                 onClick={() =>
@@ -124,7 +124,7 @@ function StudentTable() {
                     : 'none'
                 }
               >
-                {i18n('student.fields.Number')}
+                {i18n('user.fields.Number')}
               </DataTableHeadCell>
               <DataTableHeadCell
                 onClick={() => doChangeSort('email')}
@@ -134,7 +134,7 @@ function StudentTable() {
                     : 'none'
                 }
               >
-                {i18n('student.fields.email')}
+                {i18n('user.fields.email')}
               </DataTableHeadCell>
               <DataTableHeadCell
                 onClick={() => doChangeSort('fullName')}
@@ -144,22 +144,22 @@ function StudentTable() {
                     : 'none'
                 }
               >
-                {i18n('student.fields.fullName')}
+                {i18n('user.fields.fullName')}
               </DataTableHeadCell>
               <DataTableHeadCell sorted={false}>
-                {i18n('student.fields.sex')}
+                {i18n('user.fields.sex')}
               </DataTableHeadCell>
               <DataTableHeadCell sorted={false}>
-                {i18n('student.fields.bloodType')}
+                {i18n('user.fields.bloodType')}
               </DataTableHeadCell>
               <DataTableHeadCell sorted={false}>
-                {i18n('student.fields.birthday')}
+                {i18n('user.fields.birthday')}
               </DataTableHeadCell>
               <DataTableHeadCell sorted={false}>
-                {i18n('student.fields.phoneNumber')}
+                {i18n('user.fields.phoneNumber')}
               </DataTableHeadCell>
               <DataTableHeadCell sorted={false}>
-                {i18n('student.fields.status')}
+                {i18n('user.fields.status')}
               </DataTableHeadCell>
             </TableRow>
           </MDBox>
