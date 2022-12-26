@@ -244,6 +244,7 @@ const en = {
     title: 'Teachers',
     subTitle: {
       generalInfo: 'General Information',
+      profileData: 'Profile Data',
       schedules: 'Schedules',
     },
     menu: 'Teachers',

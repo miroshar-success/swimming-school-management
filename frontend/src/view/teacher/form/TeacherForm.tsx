@@ -79,6 +79,7 @@ const schema = yup.object().shape({
 function TeacherForm(props) {
   const { sidenavColor } = selectMuiSettings();
   const dispatch = useDispatch();
+  console.log(props.teacher);
 
   const [initialValues] = useState(() => {
     const teacher = props.teacher || {};
