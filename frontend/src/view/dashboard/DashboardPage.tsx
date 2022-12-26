@@ -1,21 +1,16 @@
-import { useSelector } from 'react-redux';
-import authSelectors from 'src/modules/auth/authSelectors';
 import Grid from '@mui/material/Grid';
-import PermissionChecker from 'src/modules/auth/permissionChecker';
+import LessonsOnCalendar from 'src/view/widgets/LessonsOnCalendar';
 
 function DashboardPage(props) {
-  const currentTenant = useSelector(
-    authSelectors.selectCurrentTenant,
+  return (
+    <>
+      <Grid container spacing={1.6}>
+        <Grid item xs={12}>
+          <LessonsOnCalendar />
+        </Grid>
+      </Grid>
+    </>
   );
-  const currentUser = useSelector(
-    authSelectors.selectCurrentUser,
-  );
-
-  const permissionChecker = new PermissionChecker(
-    currentTenant,
-    currentUser,
-  );
-  return <></>;
 }
 
 export default DashboardPage;
