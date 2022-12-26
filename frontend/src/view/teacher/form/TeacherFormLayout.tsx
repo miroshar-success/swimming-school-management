@@ -20,7 +20,7 @@ function TeacherFormLayout(props) {
               alignItems="center"
             >
               <MDTypography variant="h5">
-                {i18n('teacher.subtitle.profileData')}
+                {i18n('teacher.subTitle.profileData')}
               </MDTypography>
               <MDTypography
                 variant="button"

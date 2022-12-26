@@ -18,7 +18,7 @@ export default (state = initialData, { type, payload }) => {
   if (type === actions.INIT_SUCCESS) {
     return {
       ...state,
-      teacher: payload,
+      teacher: payload.user,
       initLoading: false,
     };
   }
