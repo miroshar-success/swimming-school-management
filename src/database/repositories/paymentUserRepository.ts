@@ -1,6 +1,7 @@
 import MongooseRepository from './mongooseRepository';
 import AuditLogRepository from './auditLogRepository';
 import User from '../models/user';
+import Payment from '../models/payment';
 import { IRepositoryOptions } from './IRepositoryOptions';
 
 export default class PaymentUserRepository {
@@ -53,6 +54,20 @@ export default class PaymentUserRepository {
           },
         },
       },
+      options,
+    );
+
+    const currentTenant =
+      MongooseRepository.getCurrentTenant(options);
+
+    await Payment(options.database).create(
+      [
+        {
+          ...payment,
+          tenant: currentTenant,
+          student: userId,
+        },
+      ],
       options,
     );
   }

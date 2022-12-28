@@ -22,35 +22,35 @@ import CalendarRoot from 'src/mui/shared/Calendar/CalendarRoot';
 
 import { i18n } from 'src/i18n';
 import { selectMuiSettings } from 'src/modules/mui/muiSelectors';
-import actions from 'src/modules/widget/tasksOnCalendar/tasksOnCalendarActions';
-import TaskViewModal from 'src/view/widgets/TasksOnCalendar/TaskViewModal';
-import RecurringTaskModal from 'src/view/widgets/TasksOnCalendar/RecurringTaskModal';
-import taskSelectors from 'src/modules/task/taskSelectors';
-import tasksOnCalendarSelectors from 'src/modules/widget/tasksOnCalendar/tasksOnCalendarSelectors';
-import TaskFormModal from 'src/view/widgets/TasksOnCalendar/TaskFormModal';
+import actions from 'src/modules/widget/lessonsOnCalendar/lessonsOnCalendarActions';
+import LessonViewModal from 'src/view/widgets/LessonsOnCalendar/LessonViewModal';
+import RecurringLessonModal from 'src/view/widgets/LessonsOnCalendar/RecurringLessonModal';
+import lessonSelectors from 'src/modules/lesson/lessonSelectors';
+import lessonsOnCalendarSelectors from 'src/modules/widget/lessonsOnCalendar/lessonsOnCalendarSelectors';
+import LessonFormModal from 'src/view/widgets/LessonsOnCalendar/LessonFormModal';
 import Message from 'src/view/shared/message';
-import upcomingTasksActions from 'src/modules/widget/upcomingTasks/upcomingTasksActions';
+import upcomingLessonsActions from 'src/modules/widget/upcomingLessons/upcomingLessonsActions';
 import Spinner from 'src/view/shared/Spinner';
 
-interface TasksOnCalendarProps {
+interface LessonsOnCalendarProps {
   title?: string;
   date?: string;
 }
 
-function TasksOnCalendar({
+function LessonsOnCalendar({
   title,
   date,
-}: TasksOnCalendarProps): JSX.Element {
+}: LessonsOnCalendarProps): JSX.Element {
   const dispatch = useDispatch();
 
   const { miniSidenav, darkMode } = selectMuiSettings();
 
   const editable = useSelector(
-    taskSelectors.selectPermissionToEdit,
+    lessonSelectors.selectPermissionToEdit,
   );
 
   const isLoading = useSelector(
-    tasksOnCalendarSelectors.selectLoading,
+    lessonsOnCalendarSelectors.selectLoading,
   );
 
   const calendarRef: any = React.useRef();
@@ -70,9 +70,9 @@ function TasksOnCalendar({
         $('.fc-event:not(.event-success)', dateInfo.dayEl)
           .length === 0
       ) {
-        doOpenTaskFormModal(null, dateInfo.date);
+        doOpenLessonFormModal(null, dateInfo.date);
       } else {
-        doOpenRecurringTaskModal(dateInfo.date);
+        doOpenRecurringLessonModal(dateInfo.date);
       }
       calendarRef.current.getApi().select(dateInfo.date);
     }
@@ -93,79 +93,83 @@ function TasksOnCalendar({
   };
 
   const handleEventClick = (eventInfo) => {
-    doOpenTaskViewModal(eventInfo.event.id);
+    doOpenLessonViewModal(eventInfo.event.id);
   };
 
   const handleEventDrop = (eventDropInfo) => {
     dispatch(actions.doMove(eventDropInfo, calendarRef));
   };
 
-  const [taskViewModalVisible, setTaskViewModalVisible] =
-    useState(false);
-  const [taskId4View, setTaskId4View] = useState(null);
-
-  const doCloseTaskViewModal = () => {
-    setTaskViewModalVisible(false);
-  };
-
-  const doOpenTaskViewModal = (id) => {
-    setTaskId4View(id);
-    setTaskViewModalVisible(true);
-  };
-
-  const doTaskFormModal = () => {
-    setTaskFormFromRecurringTaskId(taskId4View);
-    setNewTaskDueDate(null);
-    setTaskFormModalVisible(true);
-  };
-
   const [
-    recurringTaskModalVisible,
-    setRecurringTaskModalVisible,
+    lessonViewModalVisible,
+    setLessonViewModalVisible,
   ] = useState(false);
-  const [recurringTaskDate, setRecurringTaskDate] =
+  const [lessonId4View, setLessonId4View] = useState(null);
+
+  const doCloseLessonViewModal = () => {
+    setLessonViewModalVisible(false);
+  };
+
+  const doOpenLessonViewModal = (id) => {
+    setLessonId4View(id);
+    setLessonViewModalVisible(true);
+  };
+
+  const doLessonFormModal = () => {
+    setLessonFormFromRecurringLessonId(lessonId4View);
+    setNewLessonDueDate(null);
+    setLessonFormModalVisible(true);
+  };
+
+  const [
+    recurringLessonModalVisible,
+    setRecurringLessonModalVisible,
+  ] = useState(false);
+  const [recurringLessonDate, setRecurringLessonDate] =
     useState(null);
 
-  const doCloseRecurringTaskModal = () => {
-    setRecurringTaskModalVisible(false);
+  const doCloseRecurringLessonModal = () => {
+    setRecurringLessonModalVisible(false);
   };
 
-  const doOpenRecurringTaskModal = (date) => {
-    setRecurringTaskDate(date);
-    setRecurringTaskModalVisible(true);
+  const doOpenRecurringLessonModal = (date) => {
+    setRecurringLessonDate(date);
+    setRecurringLessonModalVisible(true);
   };
 
-  const [taskFormModalVisible, setTaskFormModalVisible] =
-    useState(false);
-  const [newTaskDueDate, setNewTaskDueDate] =
+  const [
+    lessonFormModalVisible,
+    setLessonFormModalVisible,
+  ] = useState(false);
+  const [newLessonDueDate, setNewLessonDueDate] =
     useState(null);
   const [
-    taskFormFromRecurringTaskId,
-    setTaskFormFromRecurringTaskId,
+    lessonFormFromRecurringLessonId,
+    setLessonFormFromRecurringLessonId,
   ] = useState(null);
 
-  const doCloseTaskFormModal = () => {
-    setTaskFormModalVisible(false);
+  const doCloseLessonFormModal = () => {
+    setLessonFormModalVisible(false);
   };
 
-  const doOpenTaskFormModal = (id, dueDate = null) => {
-    setTaskFormFromRecurringTaskId(id);
-    setNewTaskDueDate(dueDate);
-    setTaskFormModalVisible(true);
+  const doOpenLessonFormModal = (id, dueDate = null) => {
+    setLessonFormFromRecurringLessonId(id);
+    setNewLessonDueDate(dueDate);
+    setLessonFormModalVisible(true);
   };
 
-  const doSuccessOnEditTaskFormModal = () => {
-    Message.success(i18n('entities.task.update.success'));
-    doCloseTaskFormModal();
-    dispatch(upcomingTasksActions.doRefresh());
+  const doSuccessOnEditLessonFormModal = () => {
+    Message.success(i18n('entities.lesson.update.success'));
+    doCloseLessonFormModal();
+    dispatch(upcomingLessonsActions.doRefresh());
     calendarRef.current.getApi().refetchEvents();
   };
 
-  const doSuccessOnNewTaskFormModal = () => {
-    Message.success(i18n('entities.task.create.success'));
-    doCloseTaskFormModal();
-    doCloseRecurringTaskModal();
-    dispatch(upcomingTasksActions.doRefresh());
+  const doSuccessOnNewLessonFormModal = () => {
+    Message.success(i18n('entities.lesson.create.success'));
+    doCloseLessonFormModal();
+    doCloseRecurringLessonModal();
+    dispatch(upcomingLessonsActions.doRefresh());
     calendarRef.current.getApi().refetchEvents();
   };
 
@@ -270,35 +274,35 @@ function TasksOnCalendar({
           )}
         </MDBox>
       </Card>
-      {taskViewModalVisible && (
-        <TaskViewModal
-          id={taskId4View}
-          onClose={doCloseTaskViewModal}
-          onEdit={doTaskFormModal}
-          onSuccess={doSuccessOnEditTaskFormModal}
+      {lessonViewModalVisible && (
+        <LessonViewModal
+          id={lessonId4View}
+          onClose={doCloseLessonViewModal}
+          onEdit={doLessonFormModal}
+          onSuccess={doSuccessOnEditLessonFormModal}
         />
       )}
-      {editable && recurringTaskModalVisible && (
-        <RecurringTaskModal
-          date={recurringTaskDate}
-          onOpenTaskFormModal={doOpenTaskFormModal}
-          onClose={doCloseRecurringTaskModal}
+      {editable && recurringLessonModalVisible && (
+        <RecurringLessonModal
+          date={recurringLessonDate}
+          onOpenLessonFormModal={doOpenLessonFormModal}
+          onClose={doCloseRecurringLessonModal}
         />
       )}
-      {editable && taskFormModalVisible && (
-        <TaskFormModal
-          id={taskFormFromRecurringTaskId}
-          dueDate={newTaskDueDate}
-          onClose={doCloseTaskFormModal}
-          onSuccess={doSuccessOnNewTaskFormModal}
+      {editable && lessonFormModalVisible && (
+        <LessonFormModal
+          id={lessonFormFromRecurringLessonId}
+          dueDate={newLessonDueDate}
+          onClose={doCloseLessonFormModal}
+          onSuccess={doSuccessOnNewLessonFormModal}
         />
       )}
     </>
   );
 }
 
-TasksOnCalendar.defaultProps = {
-  title: i18n('widgets.tasksOnCalendar.title'),
+LessonsOnCalendar.defaultProps = {
+  title: i18n('widgets.lessonsOnCalendar.title'),
 };
 
-export default TasksOnCalendar;
+export default LessonsOnCalendar;
