@@ -94,7 +94,12 @@ export default (database) => {
         },
       ],
       attendances: [AttendanceSchema],
-      payments: [PaymentSchema],
+      payments: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: 'payment',
+        },
+      ],
       jwtTokenInvalidBefore: { type: Date },
       createdBy: {
         type: Schema.Types.ObjectId,
