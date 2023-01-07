@@ -1,7 +1,7 @@
 import Error400 from '../errors/Error400';
 import MongooseRepository from '../database/repositories/mongooseRepository';
 import { IServiceOptions } from './IServiceOptions';
-import PaymentUserRepository from '../database/repositories/paymentUserRepository';
+import PaymentRepository from '../database/repositories/paymentRepository';
 import UserRepository from '../database/repositories/userRepository';
 import TenantUserRepository from '../database/repositories/tenantUserRepository';
 import { AnyARecord } from 'dns';
@@ -19,7 +19,7 @@ export default class PaymentService {
     );
 
     try {
-      const record = await PaymentUserRepository.create(
+      const record = await PaymentRepository.create(
         id,
         data,
         {
@@ -54,14 +54,14 @@ export default class PaymentService {
     }
   }
 
-  async destroyAll(userId, paymentIds) {
+  async destroyAll(paymentIds) {
     const session = await MongooseRepository.createSession(
       this.options.database,
     );
 
     try {
       for (const id of paymentIds) {
-        await PaymentUserRepository.destroy(id, userId, {
+        await PaymentRepository.destroy(id, {
           ...this.options,
           session,
         });
@@ -150,6 +150,6 @@ export default class PaymentService {
   }
 
   async findById(id) {
-    return PaymentUserRepository.findById(id, this.options);
+    return PaymentRepository.findById(id, this.options);
   }
 }

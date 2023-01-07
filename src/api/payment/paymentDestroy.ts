@@ -10,7 +10,6 @@ export default async (req, res, next) => {
     );
 
     await new PaymentService(req).destroyAll(
-      req.query.userId,
       req.query.paymentIds,
     );
 

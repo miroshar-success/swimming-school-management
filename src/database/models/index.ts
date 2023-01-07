@@ -11,6 +11,7 @@ const models = [
   require('./lesson').default,
   require('./paymentCategory').default,
   require('./paymentMethod').default,
+  require('./payment').default,
   require('./pool').default,
   require('./skill').default,
   require('./document').default,

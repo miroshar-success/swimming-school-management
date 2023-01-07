@@ -18,9 +18,8 @@ export default class PaymentService {
     return response.data;
   }
 
-  static async destroyAll(userId, paymentIds) {
+  static async destroyAll(paymentIds) {
     const params = {
-      userId,
       paymentIds,
     };
 

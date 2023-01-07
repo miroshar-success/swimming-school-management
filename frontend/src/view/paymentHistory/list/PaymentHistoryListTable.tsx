@@ -36,8 +36,6 @@ function PaymentHistoryListTable(props) {
   const { sidenavColor } = selectMuiSettings();
 
   const dispatch = useDispatch();
-  const [recordUserIdToDestroy, setRecordUserIdToDestroy] =
-    useState(null);
   const [
     recordPaymentIdToDestroy,
     setRecordPaymentIdToDestroy,
@@ -73,10 +71,9 @@ function PaymentHistoryListTable(props) {
     dispatch(studentActions.doChangePagination(pagination));
   };
 
-  const doDestroy = (userId, paymentId) => {
-    setRecordUserIdToDestroy(null);
+  const doDestroy = (paymentId) => {
     setRecordPaymentIdToDestroy(null);
-    dispatch(actions.doDestroy(userId, paymentId));
+    dispatch(actions.doDestroy(paymentId));
   };
 
   return (
@@ -174,9 +171,6 @@ function PaymentHistoryListTable(props) {
                             <IconButton
                               size="small"
                               onClick={() => {
-                                setRecordUserIdToDestroy(
-                                  row.id,
-                                );
                                 setRecordPaymentIdToDestroy(
                                   payment.id,
                                 );
@@ -225,17 +219,13 @@ function PaymentHistoryListTable(props) {
         showTotalEntries
       />
 
-      {recordUserIdToDestroy && recordPaymentIdToDestroy && (
+      {recordPaymentIdToDestroy && (
         <ConfirmModal
           title={i18n('common.areYouSure')}
           onConfirm={() =>
-            doDestroy(
-              recordUserIdToDestroy,
-              recordPaymentIdToDestroy,
-            )
+            doDestroy(recordPaymentIdToDestroy)
           }
           onClose={() => {
-            setRecordUserIdToDestroy(null);
             setRecordPaymentIdToDestroy(null);
           }}
           okText={i18n('common.yes')}

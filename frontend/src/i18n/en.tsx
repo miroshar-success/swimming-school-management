@@ -358,7 +358,7 @@ const en = {
       title: 'Payment History',
       view: {
         title: 'View Payment History',
-      }
+      },
     },
     expired: {
       menu: 'Expired Payments',
@@ -377,16 +377,19 @@ const en = {
         title: 'Edit Payment Category',
       },
       view: {
-        title: 'View Payment Category'
+        title: 'View Payment Category',
       },
-      doDestroySuccess: 'Payment Category successfully deleted',
-      doAddSuccess: 'Payment Category(s) successfully saved',
-      doUpdateSuccess: 'Payment Category successfully saved',
+      doDestroySuccess:
+        'Payment Category successfully deleted',
+      doAddSuccess:
+        'Payment Category(s) successfully saved',
+      doUpdateSuccess:
+        'Payment Category successfully saved',
       doDestroyAllSelectedSuccess:
         'Payment Categories successfully deleted',
       fields: {
-        name: 'Payment Category Title'
-      }
+        name: 'Payment Category Title',
+      },
     },
     method: {
       menu: 'Payment Methods',
@@ -400,14 +403,15 @@ const en = {
       view: {
         title: 'View Payment Method',
       },
-      doDestroySuccess: 'Payment Method successfully deleted',
+      doDestroySuccess:
+        'Payment Method successfully deleted',
       doAddSuccess: 'Payment Method(s) successfully saved',
       doUpdateSuccess: 'Payment Method successfully saved',
       doDestroyAllSelectedSuccess:
         'Payment Methods successfully deleted',
       fields: {
-        name: 'Payment Method Title'
-      }
+        name: 'Payment Method Title',
+      },
     },
     add: {
       title: 'Add Payment',
@@ -493,6 +497,29 @@ const en = {
     view: {
       title: 'View Lesson',
     },
+    update: {
+      success: 'Lesson successfully updated',
+    },
+    create: {
+      success: 'Lesson successfully created',
+    },
+  },
+
+  widgets: {
+    lessonsOnCalendar: {
+      modals: {
+        new: {
+          title: 'Add Lesson',
+        },
+        edit: {
+          title: 'Edit Lesson',
+        },
+        recurring: {
+          title: 'Recurring Lesson',
+        },
+      },
+      title: 'Calendar',
+    },
   },
 
   attendance: {
@@ -514,7 +541,7 @@ const en = {
       upcoming: 'Upcoming',
       finished: 'Finished',
       seeAll: 'See All',
-    }
+    },
   },
 
   pool: {
@@ -552,7 +579,7 @@ const en = {
       description: 'Description',
       attachment: 'Attachment',
       lastUpdatedRange: 'Last Updated Date Range',
-      lastUpdated: 'Last Updated Date'
+      lastUpdated: 'Last Updated Date',
     },
     new: {
       title: 'Add Document',

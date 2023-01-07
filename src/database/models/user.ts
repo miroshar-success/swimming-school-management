@@ -1,7 +1,6 @@
 import mongoose from 'mongoose';
 import TenantUserSchema from './schemas/tenantUserSchema';
 import AttendanceSchema from './schemas/AttendanceSchema';
-import PaymentSchema from './schemas/PaymentSchema';
 const Schema = mongoose.Schema;
 
 export default (database) => {
@@ -94,7 +93,12 @@ export default (database) => {
         },
       ],
       attendances: [AttendanceSchema],
-      payments: [PaymentSchema],
+      payments: [
+        {
+          type: Schema.Types.ObjectId,
+          ref: 'payment',
+        },
+      ],
       jwtTokenInvalidBefore: { type: Date },
       createdBy: {
         type: Schema.Types.ObjectId,
