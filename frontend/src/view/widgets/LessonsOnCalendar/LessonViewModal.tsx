@@ -10,25 +10,25 @@ import GradientTitle from 'src/view/shared/components/GradientTitle';
 import MDBox from 'src/mui/components/MDBox';
 import MDButton from 'src/mui/components/MDButton';
 import ReactDOM from 'react-dom';
-import selectors from 'src/modules/taskInstance/view/taskInstanceViewSelectors';
-import taskInstanceViewActions from 'src/modules/taskInstance/view/taskInstanceViewActions';
-import taskSelectors from 'src/modules/task/taskSelectors';
-import TaskView from 'src/view/task/view/TaskView';
+import selectors from 'src/modules/lesson/view/lessonViewSelectors';
+import lessonViewActions from 'src/modules/lesson/view/lessonViewActions';
+import lessonSelectors from 'src/modules/lesson/lessonSelectors';
+import LessonView from 'src/view/lesson/view/LessonView';
 
-function TaskViewModal(props) {
+function LessonViewModal(props) {
   const dispatch = useDispatch();
 
   const { sidenavColor } = selectMuiSettings();
 
   const editable = useSelector(
-    taskSelectors.selectPermissionToEdit,
+    lessonSelectors.selectPermissionToEdit,
   );
 
   const loading = useSelector(selectors.selectLoading);
   const record = useSelector(selectors.selectRecord);
 
   useEffect(() => {
-    dispatch(taskInstanceViewActions.doFind(props.id));
+    dispatch(lessonViewActions.doFind(props.id));
   }, [dispatch, props.id]);
 
   const doClose = () => {
@@ -49,9 +49,9 @@ function TaskViewModal(props) {
     >
       <DialogContent>
         <GradientTitle>
-          {i18n('entities.task.view.title')}
+          {i18n('lesson.view.title')}
         </GradientTitle>
-        <TaskView
+        <LessonView
           loading={loading}
           record={record}
           isInstance={true}
@@ -70,7 +70,7 @@ function TaskViewModal(props) {
                 onClick={doEdit}
                 startIcon={<EditIcon />}
               >
-                {i18n('entities.task.edit.title')}
+                {i18n('lesson.edit.title')}
               </MDButton>
               <MDButton
                 variant="outlined"
@@ -89,4 +89,4 @@ function TaskViewModal(props) {
   );
 }
 
-export default TaskViewModal;
+export default LessonViewModal;

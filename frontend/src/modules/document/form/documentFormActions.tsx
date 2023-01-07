@@ -60,9 +60,7 @@ const documentFormActions = {
         type: documentFormActions.CREATE_SUCCESS,
       });
 
-      Message.success(
-        i18n('entities.document.create.success'),
-      );
+      Message.success(i18n('document.create.success'));
 
       getHistory().push('/document');
     } catch (error) {
@@ -86,9 +84,7 @@ const documentFormActions = {
         type: documentFormActions.UPDATE_SUCCESS,
       });
 
-      Message.success(
-        i18n('entities.document.update.success'),
-      );
+      Message.success(i18n('document.update.success'));
 
       getHistory().push('/document');
     } catch (error) {

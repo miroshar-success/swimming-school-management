@@ -29,7 +29,6 @@ import lessonSelectors from 'src/modules/lesson/lessonSelectors';
 import lessonsOnCalendarSelectors from 'src/modules/widget/lessonsOnCalendar/lessonsOnCalendarSelectors';
 import LessonFormModal from 'src/view/widgets/LessonsOnCalendar/LessonFormModal';
 import Message from 'src/view/shared/message';
-import upcomingLessonsActions from 'src/modules/widget/upcomingLessons/upcomingLessonsActions';
 import Spinner from 'src/view/shared/Spinner';
 
 interface LessonsOnCalendarProps {
@@ -96,10 +95,6 @@ function LessonsOnCalendar({
     doOpenLessonViewModal(eventInfo.event.id);
   };
 
-  const handleEventDrop = (eventDropInfo) => {
-    dispatch(actions.doMove(eventDropInfo, calendarRef));
-  };
-
   const [
     lessonViewModalVisible,
     setLessonViewModalVisible,
@@ -159,17 +154,15 @@ function LessonsOnCalendar({
   };
 
   const doSuccessOnEditLessonFormModal = () => {
-    Message.success(i18n('entities.lesson.update.success'));
+    Message.success(i18n('lesson.update.success'));
     doCloseLessonFormModal();
-    dispatch(upcomingLessonsActions.doRefresh());
     calendarRef.current.getApi().refetchEvents();
   };
 
   const doSuccessOnNewLessonFormModal = () => {
-    Message.success(i18n('entities.lesson.create.success'));
+    Message.success(i18n('lesson.create.success'));
     doCloseLessonFormModal();
     doCloseRecurringLessonModal();
-    dispatch(upcomingLessonsActions.doRefresh());
     calendarRef.current.getApi().refetchEvents();
   };
 
@@ -224,7 +217,6 @@ function LessonsOnCalendar({
                   dateClick={handleDateClick}
                   events={handleEvents}
                   eventClick={handleEventClick}
-                  eventDrop={handleEventDrop}
                   eventContent={(
                     eventInfo: EventContentArg,
                   ) => {
@@ -232,20 +224,14 @@ function LessonsOnCalendar({
                       calendarRef.current.getApi().view
                         .type;
                     if (viewType === 'listWeek') {
-                      return `${eventInfo.event.extendedProps.title} ${eventInfo.event.extendedProps.repeat}`;
+                      return `${eventInfo.event.extendedProps.class?.name}`;
                     }
                     return (
                       <div className="fc-event-main-frame">
                         <div className="fc-event-title-container">
                           <div className="fc-event-title fc-sticky">
                             <span>
-                              {`${eventInfo.event.extendedProps.title} `}
-                            </span>
-                            <span>
-                              {
-                                eventInfo.event
-                                  .extendedProps.repeat
-                              }
+                              {`${eventInfo.event.extendedProps.class?.name} `}
                             </span>
                           </div>
                         </div>

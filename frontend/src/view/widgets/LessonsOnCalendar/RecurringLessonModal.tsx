@@ -16,7 +16,7 @@ import { i18n } from 'src/i18n';
 import { selectMuiSettings } from 'src/modules/mui/muiSelectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import actions from 'src/modules/widget/tasksOnCalendar/tasksOnCalendarActions';
+import actions from 'src/modules/widget/lessonsOnCalendar/lessonsOnCalendarActions';
 import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
 import MDBox from 'src/mui/components/MDBox';
@@ -24,19 +24,19 @@ import MDButton from 'src/mui/components/MDButton';
 import MDTypography from 'src/mui/components/MDTypography';
 import moment from 'moment';
 import ReactDOM from 'react-dom';
-import selectors from 'src/modules/widget/tasksOnCalendar/tasksOnCalendarSelectors';
+import selectors from 'src/modules/widget/lessonsOnCalendar/lessonsOnCalendarSelectors';
 import Spinner from 'src/view/shared/Spinner';
-import taskListEnumerators from 'src/modules/taskList/taskListEnumerators';
 import timelineItem from 'src/mui/shared/Timeline/TimelineItem/styles';
+import lessonEnumerators from 'src/modules/lesson/lessonEnumerators';
 
-function RecurringTaskModal(props) {
+function RecurringLessonModal(props) {
   const dispatch = useDispatch();
 
   const [dispatched, setDispatched] = useState(false);
   const { darkMode, sidenavColor } = selectMuiSettings();
 
   const isLoading = useSelector(selectors.selectLoading);
-  const tasks = useSelector(selectors.selectTasks);
+  const lessons = useSelector(selectors.selectLessons);
   const totalPages = useSelector(
     selectors.selectTotalPages,
   );
@@ -52,8 +52,8 @@ function RecurringTaskModal(props) {
     return props.onClose();
   };
 
-  const doRecurringTask = (id) => {
-    props.onOpenTaskFormModal(id, props.date);
+  const doRecurringLesson = (id) => {
+    props.onOpenLessonFormModal(id, props.date);
   };
 
   useEffect(() => {
@@ -63,18 +63,11 @@ function RecurringTaskModal(props) {
   }, [dispatch, props.date]);
 
   useEffect(() => {
-    if (dispatched && !isLoading && tasks.length === 0) {
+    if (dispatched && !isLoading && lessons.length === 0) {
       doClose();
-      doRecurringTask(null);
+      doRecurringLesson(null);
     }
-  }, [dispatch, tasks]);
-
-  const colorFn = (taskdisplaycolor) =>
-    taskListEnumerators.taskdisplaycolorColor[
-      taskListEnumerators.taskdisplaycolor.indexOf(
-        taskdisplaycolor,
-      )
-    ];
+  }, [dispatch, lessons]);
 
   return ReactDOM.createPortal(
     <Dialog
@@ -90,7 +83,7 @@ function RecurringTaskModal(props) {
         >
           <MDTypography>
             {i18n(
-              'widgets.tasksOnCalendar.modals.recurring.title',
+              'widgets.lessonsOnCalendar.modals.recurring.title',
               moment(props.date).format('dddd, LL'),
             )}
           </MDTypography>
@@ -104,7 +97,7 @@ function RecurringTaskModal(props) {
         </MDBox>
       </DialogTitle>
       <DialogContent sx={{ pb: 0 }}>
-        {!isLoading && tasks.length === 0 && (
+        {!isLoading && lessons.length === 0 && (
           <Grid item xs={12}>
             <MDTypography
               variant="button"
@@ -114,10 +107,10 @@ function RecurringTaskModal(props) {
             </MDTypography>
           </Grid>
         )}
-        {tasks.map((task, i, a) => (
+        {lessons.map((lesson, i, a) => (
           <MDBox
-            key={task._id}
-            onClick={() => doRecurringTask(task._id)}
+            key={lesson._id}
+            onClick={() => doRecurringLesson(lesson._id)}
             position="relative"
             p={0.8}
             mb={i + 1 === a.length ? 0 : 0.8}
@@ -135,9 +128,6 @@ function RecurringTaskModal(props) {
               display="flex"
               justifyContent="center"
               alignItems="center"
-              bgColor={colorFn(
-                task.taskList[0].taskdisplaycolor,
-              )}
               color="white"
               width="1.6rem"
               height="1.6rem"
@@ -153,7 +143,7 @@ function RecurringTaskModal(props) {
                   size.sm,
               }}
             >
-              <Icon fontSize="inherit">task</Icon>
+              <Icon fontSize="inherit">lesson</Icon>
             </MDBox>
             <MDBox ml={4.6} lineHeight={0} maxWidth="24rem">
               <MDTypography
@@ -168,14 +158,14 @@ function RecurringTaskModal(props) {
                   whiteSpace: 'nowrap',
                 }}
               >
-                {task.title}
+                {lesson.class?.name}
               </MDTypography>
               <MDBox
                 mt={0.4}
                 display="flex"
                 justifyContent="flex-start"
               >
-                {task.owner && (
+                {lesson.teacher && (
                   <MDTypography
                     variant="caption"
                     fontWeight="bold"
@@ -183,7 +173,9 @@ function RecurringTaskModal(props) {
                     textTransform="capitalize"
                     mr={0.8}
                   >
-                    {getUserNameOrEmailPrefix(task.owner)}
+                    {getUserNameOrEmailPrefix(
+                      lesson.teacher,
+                    )}
                   </MDTypography>
                 )}
                 <MDTypography
@@ -193,7 +185,7 @@ function RecurringTaskModal(props) {
                   mr={0.8}
                 >
                   {getAbsoluteDateTimeByHour(
-                    moment(task.dueDate)
+                    moment(lesson.time)
                       .year(selectedDate.year())
                       .month(selectedDate.month())
                       .date(selectedDate.date()),
@@ -204,7 +196,7 @@ function RecurringTaskModal(props) {
                   color={darkMode ? 'secondary' : 'text'}
                   fontWeight="regular"
                 >
-                  {task.repeat}
+                  {lessonEnumerators.day[lesson.day]}
                 </MDTypography>
               </MDBox>
             </MDBox>
@@ -226,10 +218,10 @@ function RecurringTaskModal(props) {
         <MDButton
           variant="gradient"
           color={sidenavColor}
-          onClick={() => doRecurringTask(null)}
+          onClick={() => doRecurringLesson(null)}
           startIcon={<AddIcon />}
         >
-          {i18n('entities.task.new.title')}
+          {i18n('lesson.new.title')}
         </MDButton>
       </DialogActions>
     </Dialog>,
@@ -237,4 +229,4 @@ function RecurringTaskModal(props) {
   );
 }
 
-export default RecurringTaskModal;
+export default RecurringLessonModal;

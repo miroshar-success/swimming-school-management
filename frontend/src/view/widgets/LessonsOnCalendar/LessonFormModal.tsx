@@ -6,14 +6,15 @@ import { useEffect, useState } from 'react';
 import Errors from 'src/modules/shared/error/errors';
 import moment from 'moment';
 import ReactDOM from 'react-dom';
-import selectors from 'src/modules/taskInstance/form/taskInstanceFormSelectors';
+import selectors from 'src/modules/lesson/form/lessonFormSelectors';
 import Spinner from 'src/view/shared/Spinner';
-import TaskForm from 'src/view/task/form/TaskForm';
-import taskInstanceFormActions from 'src/modules/taskInstance/form/taskInstanceFormActions';
-import TaskInstanceService from 'src/modules/taskInstance/taskInstanceService';
-import TaskService from 'src/modules/task/taskService';
+import LessonForm from 'src/view/lesson/form/LessonForm';
+import lessonFormActions from 'src/modules/lesson/form/lessonFormActions';
+import LessonService from 'src/modules/lesson/lessonService';
+import MDBox from 'src/mui/components/MDBox';
+import MDTypography from 'src/mui/components/MDTypography';
 
-function TaskFormModal(props) {
+function LessonFormModal(props) {
   const dispatch = useDispatch();
   const [saveLoading, setSaveLoading] = useState(false);
   const [dispatched, setDispatched] = useState(false);
@@ -25,7 +26,7 @@ function TaskFormModal(props) {
       ? 'recurring'
       : 'new';
   const title = i18n(
-    `widgets.tasksOnCalendar.modals.${mode}.title`,
+    `widgets.lessonsOnCalendar.modals.${mode}.title`,
     dueDate.format('dddd, LL'),
   );
 
@@ -54,14 +55,14 @@ function TaskFormModal(props) {
     try {
       setSaveLoading(true);
       if (mode === 'edit') {
-        await TaskInstanceService.update(props.id, data);
+        await LessonService.update(props.id, data);
       } else if (mode === 'recurring') {
-        await TaskInstanceService.create({
+        await LessonService.create({
           ...data,
-          task: record.task?._id ?? null,
+          lesson: record.lesson?._id ?? null,
         });
       } else {
-        await TaskService.create(data);
+        await LessonService.create(data);
       }
       setSaveLoading(false);
       props.onSuccess();
@@ -77,7 +78,7 @@ function TaskFormModal(props) {
   };
 
   useEffect(() => {
-    dispatch(taskInstanceFormActions.doInit(props.id));
+    dispatch(lessonFormActions.doInit(props.id));
     setDispatched(true);
   }, [dispatch, props.id]);
 
@@ -89,27 +90,39 @@ function TaskFormModal(props) {
       fullWidth={true}
     >
       <DialogContent>
-        {initLoading && <Spinner />}
-        {dispatched && !initLoading && (
-          <TaskForm
-            saveLoading={saveLoading}
-            initLoading={initLoading}
-            isEditing={mode === 'edit'}
-            record={{
-              ...record,
-              ...resetInfos,
-            }}
-            hiddenImpossibleFields={mode !== 'edit'}
-            onSubmit={doSubmit}
-            onCancel={doClose}
-            title={title}
-            modal
-          />
-        )}
+        <MDBox>
+          <MDBox
+            pb={2.4}
+            display="flex"
+            justifyContent="space-between"
+            alignItems="flex-start"
+          >
+            <MDTypography variant="h3">
+              {title}
+            </MDTypography>
+          </MDBox>
+          {initLoading && <Spinner />}
+          {dispatched && !initLoading && (
+            <LessonForm
+              saveLoading={saveLoading}
+              initLoading={initLoading}
+              isEditing={mode === 'edit'}
+              record={{
+                ...record,
+                ...resetInfos,
+              }}
+              hiddenImpossibleFields={mode !== 'edit'}
+              onSubmit={doSubmit}
+              onCancel={doClose}
+              title={title}
+              modal
+            />
+          )}
+        </MDBox>
       </DialogContent>
     </Dialog>,
     (document as any).getElementById('modal-root'),
   );
 }
 
-export default TaskFormModal;
+export default LessonFormModal;

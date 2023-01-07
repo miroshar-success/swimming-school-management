@@ -399,9 +399,14 @@ export default class UserRepository {
         .populate('tenants.tenant')
         .populate({
           path: 'payments',
-          populate: {
-            path: ['category', 'paymentMethod'],
-          },
+          populate: [
+            {
+              path: 'category',
+            },
+            {
+              path: 'paymentMethod',
+            },
+          ],
         })
         .populate({
           path: 'lessons',
@@ -583,9 +588,14 @@ export default class UserRepository {
           .populate('tenants.tenant')
           .populate({
             path: 'payments',
-            populate: {
-              path: ['category', 'paymentMethod'],
-            },
+            populate: [
+              {
+                path: 'category',
+              },
+              {
+                path: 'paymentMethod',
+              },
+            ],
           })
           .populate({
             path: 'lessons',
@@ -704,9 +714,14 @@ export default class UserRepository {
           .populate('tenants.tenant')
           .populate({
             path: 'payments',
-            populate: {
-              path: ['category', 'paymentMethod'],
-            },
+            populate: [
+              {
+                path: 'category',
+              },
+              {
+                path: 'paymentMethod',
+              },
+            ],
           })
           .populate({
             path: 'lessons',
@@ -818,9 +833,14 @@ export default class UserRepository {
           .populate('tenants.tenant')
           .populate({
             path: 'payments',
-            populate: {
-              path: ['category', 'paymentMethod'],
-            },
+            populate: [
+              {
+                path: 'category',
+              },
+              {
+                path: 'paymentMethod',
+              },
+            ],
           })
           .populate({
             path: 'attendances.lesson',

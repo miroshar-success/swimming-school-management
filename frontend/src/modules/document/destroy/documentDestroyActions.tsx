@@ -28,9 +28,7 @@ const documentDestroyActions = {
         type: documentDestroyActions.DESTROY_SUCCESS,
       });
 
-      Message.success(
-        i18n('entities.document.destroy.success'),
-      );
+      Message.success(i18n('document.destroy.success'));
 
       dispatch(listActions.doFetchCurrentFilter());
 
@@ -63,9 +61,7 @@ const documentDestroyActions = {
         dispatch(listActions.doFetchCurrentFilter());
       }
 
-      Message.success(
-        i18n('entities.document.destroyAll.success'),
-      );
+      Message.success(i18n('document.destroyAll.success'));
 
       getHistory().push('/document');
     } catch (error) {
