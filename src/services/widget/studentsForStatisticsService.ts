@@ -86,4 +86,28 @@ export default class StudentsForStatisticsService {
 
     return total;
   }
+
+  async maxAttendanceDay() {
+    const result = await UserRepository.findAndCountAll(
+      {
+        filter: {},
+      },
+      'student',
+      this.options,
+    );
+
+    const students = result.rows;
+
+    let total = [0, 0, 0, 0, 0, 0, 0];
+
+    for (let i = 0; i < students.length; i++) {
+      for (let j = 0; j < students[i].lessons.length; j++) {
+        total[students[i].lessons[j].day]++;
+      }
+    }
+
+    const day = Math.max(...total);
+
+    return { day, number: total[day] };
+  }
 }

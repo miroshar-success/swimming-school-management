@@ -46,4 +46,10 @@ export default (app) => {
     require('./studentsForStatistics/totalStudentsByAge')
       .default,
   );
+
+  app.get(
+    `${prefix}/students-for-statistics/maxAttendanceDay`,
+    require('./studentsForStatistics/maxAttendanceDay')
+      .default,
+  );
 };
