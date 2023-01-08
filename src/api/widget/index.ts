@@ -17,4 +17,22 @@ export default (app) => {
     require('./paymentsForStatistics/totalPaymentPerMonth')
       .default,
   );
+
+  app.get(
+    `${prefix}/payments-for-statistics/totalPaidStudents`,
+    require('./paymentsForStatistics/totalPaidStudentsPerMonth')
+      .default,
+  );
+
+  app.get(
+    `${prefix}/students-for-statistics/totalNewStudents`,
+    require('./studentsForStatistics/totalNewStudentsPerMonth')
+      .default,
+  );
+
+  app.get(
+    `${prefix}/students-for-statistics/countMaleAndFemale`,
+    require('./studentsForStatistics/countMaleAndFemale')
+      .default,
+  );
 };

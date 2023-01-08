@@ -11,7 +11,7 @@ export default async (req, res, next) => {
 
     const payload = await new StudentsForStatisticsService(
       req,
-    ).totalNewStudentPerMonth();
+    ).totalNewStudentsPerMonth();
 
     await ApiResponseHandler.success(req, res, payload);
   } catch (error) {

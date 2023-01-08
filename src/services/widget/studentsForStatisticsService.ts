@@ -9,7 +9,7 @@ export default class StudentsForStatisticsService {
     this.options = options;
   }
 
-  async totalNewStudentPerMonth() {
+  async totalNewStudentsPerMonth() {
     const result = await UserRepository.findAndCountAll(
       {
         filter: {
@@ -32,5 +32,32 @@ export default class StudentsForStatisticsService {
     }
 
     return total;
+  }
+
+  async countMaleAndFemale() {
+    const male = await UserRepository.findAndCountAll(
+      {
+        filter: {
+          sex: 'male',
+        },
+      },
+      'student',
+      this.options,
+    );
+
+    const female = await UserRepository.findAndCountAll(
+      {
+        filter: {
+          sex: 'female',
+        },
+      },
+      'student',
+      this.options,
+    );
+
+    return {
+      countMale: male.count,
+      countFemale: female.count,
+    };
   }
 }
