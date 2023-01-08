@@ -11,4 +11,10 @@ export default (app) => {
     `${prefix}/lessons-on-calendar/more`,
     require('./lessonsOnCalendar/moreLessons').default,
   );
+
+  app.get(
+    `${prefix}/payments-for-statistics/totalPayments`,
+    require('./paymentsForStatistics/totalPaymentPerMonth')
+      .default,
+  );
 };
