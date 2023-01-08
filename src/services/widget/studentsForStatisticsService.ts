@@ -110,4 +110,52 @@ export default class StudentsForStatisticsService {
 
     return { day, number: total[day] };
   }
+
+  async totalStudents() {
+    const result = await UserRepository.findAndCountAll(
+      {
+        filter: {},
+      },
+      'student',
+      this.options,
+    );
+
+    return result.count;
+  }
+
+  async totalTeachers() {
+    const result = await UserRepository.findAndCountAll(
+      {
+        filter: {},
+      },
+      'teacher',
+      this.options,
+    );
+
+    return result.count;
+  }
+
+  async totalManagers() {
+    const result = await UserRepository.findAndCountAll(
+      {
+        filter: {},
+      },
+      'admin',
+      this.options,
+    );
+
+    return result.count;
+  }
+
+  async totalUsers() {
+    const result = await UserRepository.findAndCountAll(
+      {
+        filter: {},
+      },
+      'all',
+      this.options,
+    );
+
+    return result.count;
+  }
 }

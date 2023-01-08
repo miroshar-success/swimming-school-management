@@ -52,4 +52,27 @@ export default (app) => {
     require('./studentsForStatistics/maxAttendanceDay')
       .default,
   );
+
+  app.get(
+    `${prefix}/students-for-statistics/totalStudents`,
+    require('./studentsForStatistics/totalStudents')
+      .default,
+  );
+
+  app.get(
+    `${prefix}/students-for-statistics/totalTeachers`,
+    require('./studentsForStatistics/totalTeachers')
+      .default,
+  );
+
+  app.get(
+    `${prefix}/students-for-statistics/totalManagers`,
+    require('./studentsForStatistics/totalManagers')
+      .default,
+  );
+
+  app.get(
+    `${prefix}/students-for-statistics/totalUsers`,
+    require('./studentsForStatistics/totalUsers').default,
+  );
 };
