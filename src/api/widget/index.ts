@@ -25,6 +25,11 @@ export default (app) => {
   );
 
   app.get(
+    `${prefix}/payments-for-statistics/incomeToday`,
+    require('./paymentsForStatistics/incomeToday').default,
+  );
+
+  app.get(
     `${prefix}/students-for-statistics/totalNewStudents`,
     require('./studentsForStatistics/totalNewStudentsPerMonth')
       .default,
@@ -33,6 +38,12 @@ export default (app) => {
   app.get(
     `${prefix}/students-for-statistics/countMaleAndFemale`,
     require('./studentsForStatistics/countMaleAndFemale')
+      .default,
+  );
+
+  app.get(
+    `${prefix}/students-for-statistics/totalStudentsByAge`,
+    require('./studentsForStatistics/totalStudentsByAge')
       .default,
   );
 };

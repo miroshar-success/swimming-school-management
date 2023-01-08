@@ -70,4 +70,28 @@ export default class PaymentsForStatisticsService {
 
     return total;
   }
+
+  async incomeToday() {
+    const result = await PaymentRepository.findAndCountAll(
+      {
+        filter: {
+          createdAtRange: [
+            moment().set({ hour: 0, minute: 0, second: 0 }),
+            moment(),
+          ],
+        },
+      },
+      this.options,
+    );
+
+    const payments = result.rows;
+
+    let total = 0;
+
+    for (let i = 0; i < payments.length; i++) {
+      total += payments[i].cost;
+    }
+
+    return total;
+  }
 }
