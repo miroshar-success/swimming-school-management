@@ -13,11 +13,10 @@ export default class StudentsForStatisticsService {
     const result = await UserRepository.findAndCountAll(
       {
         filter: {
-          createdAt: {
-            $gte: moment(
-              `${moment().year()}-01-01 00:00:00`,
-            ),
-          },
+          createdAtRange: [
+            moment(`${moment().year()}-01-01 00:00:00`),
+            moment(),
+          ],
         },
       },
       'student',
