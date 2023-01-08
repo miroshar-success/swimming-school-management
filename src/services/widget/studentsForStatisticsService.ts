@@ -60,4 +60,30 @@ export default class StudentsForStatisticsService {
       countFemale: female.count,
     };
   }
+
+  async totalStudentsByAge() {
+    const result = await UserRepository.findAndCountAll(
+      {
+        filter: {},
+      },
+      'student',
+      this.options,
+    );
+
+    const students = result.rows;
+
+    let total = [0, 0, 0, 0, 0, 0, 0, 0];
+
+    for (let i = 0; i < students.length; i++) {
+      total[
+        Math.floor(
+          (moment().year() -
+            moment(students[i].birthday).year()) /
+            10,
+        )
+      ]++;
+    }
+
+    return total;
+  }
 }
