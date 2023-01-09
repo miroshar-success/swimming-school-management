@@ -1,29 +1,27 @@
-import actions from 'src/modules/widget/totalPaymentPerMonth/totalPaymentPerMonthActions';
+import actions from 'src/modules/widget/maxAttendanceDay/maxAttendanceDayActions';
 
 const initialData = {
   loading: false,
-  total: [],
-  income: '',
+  day: {},
 };
 
 export default (state = initialData, { type, payload }) => {
-  if (type === actions.LOADING_STARTED) {
+  if (type === actions.GET_STARTED) {
     return {
       ...state,
       loading: true,
     };
   }
 
-  if (type === actions.LOADING_SUCCESS) {
+  if (type === actions.GET_SUCCESS) {
     return {
       ...state,
       loading: false,
-      total: payload.total,
-      income: payload.income,
+      day: payload,
     };
   }
 
-  if (type === actions.LOADING_ERROR) {
+  if (type === actions.GET_ERROR) {
     return {
       ...state,
       loading: false,

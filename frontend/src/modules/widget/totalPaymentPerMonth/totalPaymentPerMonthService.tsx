@@ -11,4 +11,14 @@ export default class TotalPaymentPerMonthService {
 
     return response.data;
   }
+
+  static async incomeToday() {
+    const tenantId = AuthCurrentTenant.get();
+
+    const response = await authAxios.get(
+      `/tenant/${tenantId}/widget/payments-for-statistics/incomeToday`,
+    );
+
+    return response.data;
+  }
 }

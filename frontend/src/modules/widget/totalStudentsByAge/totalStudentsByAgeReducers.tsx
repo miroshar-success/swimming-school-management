@@ -1,9 +1,8 @@
-import actions from 'src/modules/widget/totalPaymentPerMonth/totalPaymentPerMonthActions';
+import actions from 'src/modules/widget/totalStudentsByAge/totalStudentsByAgeActions';
 
 const initialData = {
   loading: false,
   total: [],
-  income: '',
 };
 
 export default (state = initialData, { type, payload }) => {
@@ -18,8 +17,7 @@ export default (state = initialData, { type, payload }) => {
     return {
       ...state,
       loading: false,
-      total: payload.total,
-      income: payload.income,
+      total: payload,
     };
   }
 

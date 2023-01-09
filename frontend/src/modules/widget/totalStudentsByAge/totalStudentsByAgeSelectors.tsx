@@ -1,7 +1,7 @@
 import { createSelector } from 'reselect';
 
 const selectRaw = (state) =>
-  state.widget.totalPaymentPerMonth;
+  state.widget.totalStudentsByAge;
 
 const selectLoading = createSelector([selectRaw], (raw) =>
   Boolean(raw.loading),
@@ -12,16 +12,10 @@ const selectTotal = createSelector(
   (raw) => raw.total,
 );
 
-const selectIncome = createSelector(
-  [selectRaw],
-  (raw) => raw.income,
-);
-
-const totalPaymentPerMonthSelectors = {
+const totalStudentsByAgeSelectors = {
   selectRaw,
   selectLoading,
   selectTotal,
-  selectIncome,
 };
 
-export default totalPaymentPerMonthSelectors;
+export default totalStudentsByAgeSelectors;
