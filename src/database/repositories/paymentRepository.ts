@@ -4,6 +4,8 @@ import User from '../models/user';
 import Payment from '../models/payment';
 import { IRepositoryOptions } from './IRepositoryOptions';
 import Error404 from '../../errors/Error404';
+import MongooseQueryUtils from '../utils/mongooseQueryUtils';
+import UserRepository from './userRepository';
 
 export default class PaymentRepository {
   static async findById(id, options: IRepositoryOptions) {
@@ -94,5 +96,125 @@ export default class PaymentRepository {
     await Payment(options.database).deleteOne({
       _id: paymentId,
     });
+  }
+
+  static async findAndCountAll(
+    { filter, limit = 0, offset = 0, orderBy = '' },
+    options: IRepositoryOptions,
+  ) {
+    const currentTenant =
+      MongooseRepository.getCurrentTenant(options);
+
+    let criteriaAnd: any = [];
+
+    criteriaAnd.push({
+      tenant: currentTenant.id,
+    });
+
+    if (filter) {
+      if (filter.id) {
+        criteriaAnd.push({
+          ['_id']: MongooseQueryUtils.uuid(filter.id),
+        });
+      }
+
+      if (filter.year) {
+        criteriaAnd.push({
+          year: {
+            $eq: filter.year,
+          },
+        });
+      }
+
+      if (filter.createdAtRange) {
+        const [start, end] = filter.createdAtRange;
+
+        if (
+          start !== undefined &&
+          start !== null &&
+          start !== ''
+        ) {
+          criteriaAnd.push({
+            ['createdAt']: {
+              $gte: start,
+            },
+          });
+        }
+
+        if (
+          end !== undefined &&
+          end !== null &&
+          end !== ''
+        ) {
+          criteriaAnd.push({
+            ['createdAt']: {
+              $lte: end,
+            },
+          });
+        }
+      }
+    }
+
+    const sort = MongooseQueryUtils.sort(
+      orderBy || 'createdAt_DESC',
+    );
+
+    const skip = Number(offset || 0) || undefined;
+    const limitEscaped = Number(limit || 0) || undefined;
+    const criteria = criteriaAnd.length
+      ? { $and: criteriaAnd }
+      : null;
+
+    let rows = await Payment(options.database)
+      .find(criteria)
+      .skip(skip)
+      .limit(limitEscaped)
+      .sort(sort)
+      .populate('tenant')
+      .populate('category')
+      .populate('paymentMethod');
+
+    const count = await Payment(
+      options.database,
+    ).countDocuments(criteria);
+
+    rows = await Promise.all(
+      rows.map(
+        async (row) =>
+          await this._mapRelationshipsAndFillDownloadUrl(
+            row,
+            options,
+            false,
+          ),
+      ),
+    );
+
+    return { rows, count };
+  }
+
+  static async _mapRelationshipsAndFillDownloadUrl(
+    record,
+    options: IRepositoryOptions,
+    metaOnly = true,
+  ) {
+    if (!record) {
+      return null;
+    }
+
+    const output = record.toObject
+      ? record.toObject()
+      : record;
+
+    if (metaOnly) {
+      return output;
+    }
+
+    /*output.createdBy =
+      await UserRepository.cleanupForRelationships(
+        output.createdBy,
+        options,
+      );*/
+
+    return output;
   }
 }

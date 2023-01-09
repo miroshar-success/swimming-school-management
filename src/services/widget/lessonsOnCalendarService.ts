@@ -2,13 +2,6 @@ import { IServiceOptions } from '../IServiceOptions';
 import LessonRepository from '../../database/repositories/lessonRepository';
 import MongooseRepository from '../../database/repositories/mongooseRepository';
 import moment from 'moment';
-import MongooseQueryUtils from '../../database/utils/mongooseQueryUtils';
-
-const sleep = (milliseconds) => {
-  return new Promise((resolve) =>
-    setTimeout(resolve, milliseconds),
-  );
-};
 
 export default class LessonsOnCalendarService {
   options: IServiceOptions;
