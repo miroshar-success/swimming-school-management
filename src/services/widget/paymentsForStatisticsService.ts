@@ -86,12 +86,12 @@ export default class PaymentsForStatisticsService {
 
     const payments = result.rows;
 
-    let total = 0;
+    let income = 0;
 
     for (let i = 0; i < payments.length; i++) {
-      total += payments[i].cost;
+      income += payments[i].cost;
     }
 
-    return total;
+    return { income };
   }
 }

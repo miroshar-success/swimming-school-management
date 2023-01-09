@@ -24,9 +24,12 @@ const totalPaymentPerMonthActions = {
       const total =
         await TotalPaymentPerMonthService.list();
 
+      const income =
+        await TotalPaymentPerMonthService.incomeToday();
+
       dispatch({
         type: totalPaymentPerMonthActions.LOADING_SUCCESS,
-        payload: total,
+        payload: { total, income: income.income },
       });
     } catch (error) {
       Errors.handle(error);

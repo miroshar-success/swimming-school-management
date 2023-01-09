@@ -12,10 +12,16 @@ const selectTotal = createSelector(
   (raw) => raw.total,
 );
 
+const selectIncome = createSelector(
+  [selectRaw],
+  (raw) => raw.income,
+);
+
 const totalPaymentPerMonthSelectors = {
   selectRaw,
   selectLoading,
   selectTotal,
+  selectIncome,
 };
 
 export default totalPaymentPerMonthSelectors;

@@ -120,7 +120,7 @@ export default class StudentsForStatisticsService {
       this.options,
     );
 
-    return result.count;
+    return { total: result.count };
   }
 
   async totalTeachers() {
@@ -132,7 +132,7 @@ export default class StudentsForStatisticsService {
       this.options,
     );
 
-    return result.count;
+    return { total: result.count };
   }
 
   async totalManagers() {
@@ -144,7 +144,7 @@ export default class StudentsForStatisticsService {
       this.options,
     );
 
-    return result.count;
+    return { total: result.count };
   }
 
   async totalUsers() {
@@ -156,6 +156,6 @@ export default class StudentsForStatisticsService {
       this.options,
     );
 
-    return result.count;
+    return { total: result.count };
   }
 }
