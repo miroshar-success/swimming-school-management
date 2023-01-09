@@ -2,6 +2,7 @@ import Grid from '@mui/material/Grid';
 import LessonsOnCalendar from 'src/view/widgets/LessonsOnCalendar';
 import TotalPaymentPerMonth from 'src/view/widgets/TotalPaymentPerMonth';
 import TotalPaidStudentsPerMonth from 'src/view/widgets/TotalPaidStudentsPerMonth';
+import TotalNewStudentsPerMonth from 'src/view/widgets/TotalNewStudentsPerMonth';
 
 function DashboardPage(props) {
   return (
@@ -12,6 +13,9 @@ function DashboardPage(props) {
         </Grid>
         <Grid item md={4} xs={12}>
           <TotalPaidStudentsPerMonth />
+        </Grid>
+        <Grid item md={4} xs={12}>
+          <TotalNewStudentsPerMonth />
         </Grid>
         <Grid item xs={12}>
           <LessonsOnCalendar />

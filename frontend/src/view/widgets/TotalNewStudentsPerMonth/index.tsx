@@ -4,17 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import Card from '@mui/material/Card';
 
 import MDBox from 'src/mui/components/MDBox';
-import MDTypography from 'src/mui/components/MDTypography';
-import ReportsBarChart from 'src/mui/shared/Charts/BarCharts/ReportsBarChart';
+import ReportsLineChart from 'src/mui/shared/Charts/LineCharts/ReportsLineChart';
 
 import { i18n } from 'src/i18n';
-import { selectMuiSettings } from 'src/modules/mui/muiSelectors';
-import actions from 'src/modules/widget/totalPaymentPerMonth/totalPaymentPerMonthActions';
-import totalPaymentPerMonthSelectors from 'src/modules/widget/totalPaymentPerMonth/totalPaymentPerMonthSelectors';
-import Spinner from 'src/view/shared/Spinner';
-import totalPaymentPerMonthEnumerators from 'src/modules/widget/totalPaymentPerMonth/totalPaymentPerMonthEnumerators';
+import actions from 'src/modules/widget/totalNewStudentsPerMonth/totalNewStudentsPerMonthActions';
+import totalNewStudentsPerMonthSelectors from 'src/modules/widget/totalNewStudentsPerMonth/totalNewStudentsPerMonthSelectors';
+import totalNewStudentsPerMonthEnumerators from 'src/modules/widget/totalNewStudentsPerMonth/totalNewStudentsPerMonthEnumerators';
 
-interface TotalPaymentPerMonthProps {
+interface TotalNewStudentsPerMonthProps {
   title?: string;
   description?: string;
   color?:
@@ -29,20 +26,20 @@ interface TotalPaymentPerMonthProps {
   label?: string;
 }
 
-function TotalPaymentPerMonth({
+function TotalNewStudentsPerMonth({
   title,
   description,
   color,
   date,
-}: TotalPaymentPerMonthProps): JSX.Element {
+}: TotalNewStudentsPerMonthProps): JSX.Element {
   const dispatch = useDispatch();
 
   const isLoading = useSelector(
-    totalPaymentPerMonthSelectors.selectLoading,
+    totalNewStudentsPerMonthSelectors.selectLoading,
   );
 
   const total = useSelector(
-    totalPaymentPerMonthSelectors.selectTotal,
+    totalNewStudentsPerMonthSelectors.selectTotal,
   );
 
   useEffect(() => {
@@ -56,17 +53,17 @@ function TotalPaymentPerMonth({
       <Card sx={{ height: '100%' }}>
         <MDBox height="100%">
           {!isLoading && (
-            <ReportsBarChart
+            <ReportsLineChart
               color={color}
               title={title}
               description={description}
               date={date}
               chart={{
                 labels:
-                  totalPaymentPerMonthEnumerators.months,
+                  totalNewStudentsPerMonthEnumerators.months,
                 datasets: {
                   label: i18n(
-                    'widgets.totalPaymentPerMonth.label',
+                    'widgets.totalNewStudentsPerMonth.label',
                   ),
                   data: total,
                 },
@@ -79,13 +76,13 @@ function TotalPaymentPerMonth({
   );
 }
 
-TotalPaymentPerMonth.defaultProps = {
-  title: i18n('widgets.totalPaymentPerMonth.title'),
+TotalNewStudentsPerMonth.defaultProps = {
+  title: i18n('widgets.totalNewStudentsPerMonth.title'),
   description: i18n(
-    'widgets.totalPaymentPerMonth.description',
+    'widgets.totalNewStudentsPerMonth.description',
   ),
-  color: 'success',
-  date: i18n('widgets.totalPaymentPerMonth.date'),
+  color: 'dark',
+  date: i18n('widgets.totalNewStudentsPerMonth.date'),
 };
 
-export default TotalPaymentPerMonth;
+export default TotalNewStudentsPerMonth;
