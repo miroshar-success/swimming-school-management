@@ -9,12 +9,12 @@ import ReportsBarChart from 'src/mui/shared/Charts/BarCharts/ReportsBarChart';
 
 import { i18n } from 'src/i18n';
 import { selectMuiSettings } from 'src/modules/mui/muiSelectors';
-import actions from 'src/modules/widget/totalPaymentPerMonth/totalPaymentPerMonthActions';
-import totalPaymentPerMonthSelectors from 'src/modules/widget/totalPaymentPerMonth/totalPaymentPerMonthSelectors';
+import actions from 'src/modules/widget/totalPaidStudentsPerMonth/totalPaidStudentsPerMonthActions';
+import totalPaidStudentsPerMonthSelectors from 'src/modules/widget/totalPaidStudentsPerMonth/totalPaidStudentsPerMonthSelectors';
 import Spinner from 'src/view/shared/Spinner';
-import totalPaymentPerMonthEnumerators from 'src/modules/widget/totalPaymentPerMonth/totalPaymentPerMonthEnumerators';
+import totalPaidStudentsPerMonthEnumerators from 'src/modules/widget/totalPaidStudentsPerMonth/totalPaidStudentsPerMonthEnumerators';
 
-interface TotalPaymentPerMonthProps {
+interface TotalPaidStudentsPerMonthProps {
   title?: string;
   description?: string;
   color?:
@@ -29,20 +29,20 @@ interface TotalPaymentPerMonthProps {
   label?: string;
 }
 
-function TotalPaymentPerMonth({
+function TotalPaidStudentsPerMonth({
   title,
   description,
   color,
   date,
-}: TotalPaymentPerMonthProps): JSX.Element {
+}: TotalPaidStudentsPerMonthProps): JSX.Element {
   const dispatch = useDispatch();
 
   const isLoading = useSelector(
-    totalPaymentPerMonthSelectors.selectLoading,
+    totalPaidStudentsPerMonthSelectors.selectLoading,
   );
 
   const total = useSelector(
-    totalPaymentPerMonthSelectors.selectTotal,
+    totalPaidStudentsPerMonthSelectors.selectTotal,
   );
 
   useEffect(() => {
@@ -62,10 +62,10 @@ function TotalPaymentPerMonth({
             date={date}
             chart={{
               labels:
-                totalPaymentPerMonthEnumerators.months,
+                totalPaidStudentsPerMonthEnumerators.months,
               datasets: {
                 label: i18n(
-                  'widgets.totalPaymentPerMonth.label',
+                  'widgets.totalPaidStudentsPerMonth.label',
                 ),
                 data: total,
               },
@@ -91,13 +91,13 @@ function TotalPaymentPerMonth({
   );
 }
 
-TotalPaymentPerMonth.defaultProps = {
-  title: i18n('widgets.totalPaymentPerMonth.title'),
+TotalPaidStudentsPerMonth.defaultProps = {
+  title: i18n('widgets.totalPaidStudentsPerMonth.title'),
   description: i18n(
-    'widgets.totalPaymentPerMonth.description',
+    'widgets.totalPaidStudentsPerMonth.description',
   ),
-  color: 'success',
-  date: i18n('widgets.totalPaymentPerMonth.date'),
+  color: 'info',
+  date: i18n('widgets.totalPaidStudentsPerMonth.date'),
 };
 
-export default TotalPaymentPerMonth;
+export default TotalPaidStudentsPerMonth;
