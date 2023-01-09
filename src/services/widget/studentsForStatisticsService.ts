@@ -106,9 +106,11 @@ export default class StudentsForStatisticsService {
       }
     }
 
-    const day = Math.max(...total);
+    const number = Math.max(...total);
 
-    return { day, number: total[day] };
+    const day = total.indexOf(number);
+
+    return { day, number };
   }
 
   async totalStudents() {

@@ -6,6 +6,7 @@ import TotalNewStudentsPerMonth from 'src/view/widgets/TotalNewStudentsPerMonth'
 import TotalStudentsByAge from 'src/view/widgets/TotalStudentsByAge';
 import TotalStudents from 'src/view/widgets/TotalStudents';
 import TotalTeachers from 'src/view/widgets/TotalTeachers';
+import MaxAttendanceDay from 'src/view/widgets/MaxAttendanceDay';
 
 function DashboardPage(props) {
   return (
@@ -16,6 +17,9 @@ function DashboardPage(props) {
         </Grid>
         <Grid item md={3} xs={12}>
           <TotalStudents />
+        </Grid>
+        <Grid item md={3} xs={12}>
+          <MaxAttendanceDay />
         </Grid>
         <Grid item xs={12}>
           <TotalPaymentPerMonth />

@@ -24,6 +24,7 @@ interface Props {
   count: string | number;
   icon: ReactNode;
   updated?: string;
+  label?: string;
   [key: string]: any;
 }
 
@@ -32,6 +33,7 @@ function ComplexStatisticsCard({
   title,
   count,
   updated,
+  label,
   icon,
 }: Props): JSX.Element {
   return (
@@ -67,7 +69,22 @@ function ComplexStatisticsCard({
           >
             {title}
           </MDTypography>
-          <MDTypography variant="h4">{count}</MDTypography>
+          <MDBox
+            display="flex"
+            textAlign="right"
+            justifyContent="end"
+            alignItems="center"
+            pr={1}
+          >
+            <MDTypography variant="h4">
+              {count}
+            </MDTypography>
+            {label && (
+              <MDTypography variant="h6" mt={1}>
+                &nbsp;&nbsp;{label}
+              </MDTypography>
+            )}
+          </MDBox>
         </MDBox>
       </MDBox>
       <Divider />

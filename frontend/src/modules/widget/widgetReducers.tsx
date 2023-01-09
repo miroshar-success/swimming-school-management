@@ -5,6 +5,7 @@ import totalPaidStudentsPerMonth from 'src/modules/widget/totalPaidStudentsPerMo
 import totalNewStudentsPerMonth from 'src/modules/widget/totalNewStudentsPerMonth/totalNewStudentsPerMonthReducers';
 import totalStudentsByAge from 'src/modules/widget/totalStudentsByAge/totalStudentsByAgeReducers';
 import totalUsers from 'src/modules/widget/totalUsers/totalUsersReducers';
+import maxAttendanceDay from 'src/modules/widget/maxAttendanceDay/maxAttendanceDayReducers';
 
 export default combineReducers({
   lessonsOnCalendar,
@@ -13,4 +14,5 @@ export default combineReducers({
   totalNewStudentsPerMonth,
   totalStudentsByAge,
   totalUsers,
+  maxAttendanceDay,
 });
