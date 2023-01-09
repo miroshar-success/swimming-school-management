@@ -4,14 +4,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import Card from '@mui/material/Card';
 
 import MDBox from 'src/mui/components/MDBox';
-import ReportsBarChart from 'src/mui/shared/Charts/BarCharts/ReportsBarChart';
+import ReportsLineChart from 'src/mui/shared/Charts/LineCharts/ReportsLineChart';
 
 import { i18n } from 'src/i18n';
-import actions from 'src/modules/widget/totalNewStudentsPerMonth/totalNewStudentsPerMonthActions';
-import totalNewStudentsPerMonthSelectors from 'src/modules/widget/totalNewStudentsPerMonth/totalNewStudentsPerMonthSelectors';
-import totalNewStudentsPerMonthEnumerators from 'src/modules/widget/totalNewStudentsPerMonth/totalNewStudentsPerMonthEnumerators';
+import actions from 'src/modules/widget/totalStudentsByAge/totalStudentsByAgeActions';
+import totalStudentsByAgeSelectors from 'src/modules/widget/totalStudentsByAge/totalStudentsByAgeSelectors';
+import totalStudentsByAgeEnumerators from 'src/modules/widget/totalStudentsByAge/totalStudentsByAgeEnumerators';
 
-interface TotalNewStudentsPerMonthProps {
+interface TotalStudentsByAgeProps {
   title?: string;
   description?: string;
   color?:
@@ -26,20 +26,20 @@ interface TotalNewStudentsPerMonthProps {
   label?: string;
 }
 
-function TotalNewStudentsPerMonth({
+function TotalStudentsByAge({
   title,
   description,
   color,
   date,
-}: TotalNewStudentsPerMonthProps): JSX.Element {
+}: TotalStudentsByAgeProps): JSX.Element {
   const dispatch = useDispatch();
 
   const isLoading = useSelector(
-    totalNewStudentsPerMonthSelectors.selectLoading,
+    totalStudentsByAgeSelectors.selectLoading,
   );
 
   const total = useSelector(
-    totalNewStudentsPerMonthSelectors.selectTotal,
+    totalStudentsByAgeSelectors.selectTotal,
   );
 
   useEffect(() => {
@@ -53,17 +53,16 @@ function TotalNewStudentsPerMonth({
       <Card sx={{ height: '100%' }}>
         <MDBox height="100%">
           {!isLoading && (
-            <ReportsBarChart
+            <ReportsLineChart
               color={color}
               title={title}
               description={description}
               date={date}
               chart={{
-                labels:
-                  totalNewStudentsPerMonthEnumerators.months,
+                labels: totalStudentsByAgeEnumerators.ages,
                 datasets: {
                   label: i18n(
-                    'widgets.totalNewStudentsPerMonth.label',
+                    'widgets.totalStudentsByAge.label',
                   ),
                   data: total,
                 },
@@ -76,13 +75,13 @@ function TotalNewStudentsPerMonth({
   );
 }
 
-TotalNewStudentsPerMonth.defaultProps = {
-  title: i18n('widgets.totalNewStudentsPerMonth.title'),
+TotalStudentsByAge.defaultProps = {
+  title: i18n('widgets.totalStudentsByAge.title'),
   description: i18n(
-    'widgets.totalNewStudentsPerMonth.description',
+    'widgets.totalStudentsByAge.description',
   ),
-  color: 'primary',
-  date: i18n('widgets.totalNewStudentsPerMonth.date'),
+  color: 'dark',
+  date: i18n('widgets.totalStudentsByAge.date'),
 };
 
-export default TotalNewStudentsPerMonth;
+export default TotalStudentsByAge;
