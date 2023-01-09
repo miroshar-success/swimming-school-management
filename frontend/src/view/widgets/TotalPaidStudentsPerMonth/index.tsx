@@ -55,35 +55,23 @@ function TotalPaidStudentsPerMonth({
     <>
       <Card sx={{ height: '100%' }}>
         <MDBox height="100%">
-          <ReportsBarChart
-            color={color}
-            title={title}
-            description={description}
-            date={date}
-            chart={{
-              labels:
-                totalPaidStudentsPerMonthEnumerators.months,
-              datasets: {
-                label: i18n(
-                  'widgets.totalPaidStudentsPerMonth.label',
-                ),
-                data: total,
-              },
-            }}
-          />
-          {isLoading && (
-            <MDBox
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-              position="absolute"
-              width="100%"
-              height="100%"
-              top="0"
-              zIndex={2}
-            >
-              <Spinner size={100} />
-            </MDBox>
+          {!isLoading && (
+            <ReportsBarChart
+              color={color}
+              title={title}
+              description={description}
+              date={date}
+              chart={{
+                labels:
+                  totalPaidStudentsPerMonthEnumerators.months,
+                datasets: {
+                  label: i18n(
+                    'widgets.totalPaidStudentsPerMonth.label',
+                  ),
+                  data: total,
+                },
+              }}
+            />
           )}
         </MDBox>
       </Card>
