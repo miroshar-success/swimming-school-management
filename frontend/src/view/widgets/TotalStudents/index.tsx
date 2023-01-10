@@ -43,7 +43,7 @@ function TotalStudents({
 
   return (
     <>
-      <MDBox height="100%">
+      <MDBox height="100%" mt={2}>
         {!isLoading && (
           <ComplexStatisticsCard
             title={title}

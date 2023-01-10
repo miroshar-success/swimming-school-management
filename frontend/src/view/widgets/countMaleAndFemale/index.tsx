@@ -44,7 +44,7 @@ function CountMaleAndFemale({
 
   return (
     <>
-      <MDBox height="100%">
+      <MDBox height="100%" mt={2}>
         {!isLoading && (
           <ComplexStatisticsCardForGender
             title={title}
