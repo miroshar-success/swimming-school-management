@@ -38,7 +38,7 @@ function VerifyEmailPage() {
 
   const doSignout = async () => {
     await dispatch(actions.doSignout());
-    getHistory().push('/admin/');
+    getHistory().push('/admin');
   };
 
   return (

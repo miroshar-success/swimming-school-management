@@ -2,10 +2,10 @@ import PermissionChecker from 'src/modules/auth/permissionChecker';
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 
-function EmptyTenantRoute({
+function FrontEndRoute({
   component: Component,
-  currentUser,
   currentTenant,
+  currentUser,
   ...rest
 }) {
   return (
@@ -17,18 +17,8 @@ function EmptyTenantRoute({
           currentUser,
         );
 
-        if (!permissionChecker.isAuthenticated) {
-          return (
-            <Redirect
-              to={{
-                pathname: '/admin/auth/signin',
-              }}
-            />
-          );
-        }
-
-        if (!permissionChecker.isEmptyTenant) {
-          return <Redirect to="/admin" />;
+        if (permissionChecker.isAuthenticated) {
+          return <Redirect to="/dashboard" />;
         }
 
         return <Component {...props} />;
@@ -37,4 +27,4 @@ function EmptyTenantRoute({
   );
 }
 
-export default EmptyTenantRoute;
+export default FrontEndRoute;

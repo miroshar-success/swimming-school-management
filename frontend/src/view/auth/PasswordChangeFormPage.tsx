@@ -46,7 +46,7 @@ function PasswordChangeFormPage(props) {
             </MDTypography>
           </MDBox>
           <PasswordChangeForm
-            onCancel={() => getHistory().push('/admin/')}
+            onCancel={() => getHistory().push('/admin')}
           />
         </Card>
       </MDBox>

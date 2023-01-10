@@ -28,7 +28,7 @@ function EmptyPermissionsRoute({
         }
 
         if (!permissionChecker.isEmptyPermissions) {
-          return <Redirect to="/admin/" />;
+          return <Redirect to="/admin" />;
         }
 
         return <Component {...props} />;

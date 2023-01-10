@@ -145,7 +145,7 @@ function PaymentExpiredListTable(props) {
                     {row.fullName}
                   </DataTableBodyCell>
                   <DataTableBodyCell>
-                    {row.month + 1 + '/admin/' + row.year}
+                    {row.month + 1 + '/admin' + row.year}
                   </DataTableBodyCell>
                   <DataTableBodyCell>
                     {row.expiredDate + ' days'}

@@ -10,6 +10,7 @@ import ProgressBar from 'src/view/shared/ProgressBar';
 import routes from 'src/view/routes';
 import EmptyTenantRoute from 'src/view/shared/routes/EmptyTenantRoute';
 import EmptyPermissionsRoute from 'src/view/shared/routes/EmptyPermissionsRoute';
+import FrontEndRoute from 'src/view/shared/routes/FrontEndRoute';
 
 // for MUI 2 Dashboard
 import muiSelectors from 'src/modules/mui/muiSelectors';
@@ -51,6 +52,19 @@ function RoutesComponent(props) {
     <Switch>
       {routes.publicRoutes.map((route) => (
         <PublicRoute
+          key={route.path}
+          exact
+          path={route.path}
+          currentUser={currentUser}
+          currentTenant={currentTenant}
+          component={CustomLoadable({
+            loader: route.loader,
+          })}
+        />
+      ))}
+
+      {routes.frontEndRoutes.map((route) => (
+        <FrontEndRoute
           key={route.path}
           exact
           path={route.path}

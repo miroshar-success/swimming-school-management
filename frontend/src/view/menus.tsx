@@ -2,15 +2,12 @@ import Permissions from 'src/security/permissions';
 import { i18n } from 'src/i18n';
 import config from 'src/config';
 import { Icon } from '@mui/material';
-import StorefrontIcon from '@mui/icons-material/Storefront';
 
 const permissions = Permissions.values;
 
-const visibleExtraMenus = false;
-
 const menus = [
   {
-    path: '/admin/',
+    path: '/admin',
     exact: true,
     icon: <Icon>dashboard</Icon>,
     name: i18n('dashboard.menu'),

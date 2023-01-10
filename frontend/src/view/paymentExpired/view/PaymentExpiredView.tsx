@@ -83,7 +83,7 @@ function PaymentExpiredView(props) {
                   <DataTableBodyCell>
                     {payment.month +
                       1 +
-                      '/admin/' +
+                      '/admin' +
                       payment.year}
                   </DataTableBodyCell>
                   <DataTableBodyCell>

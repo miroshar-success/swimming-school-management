@@ -4,7 +4,7 @@ const permissions = Permissions.values;
 
 const privateRoutes = [
   {
-    path: '/admin/',
+    path: '/admin',
     i18n: 'dashboard.menu',
     loader: () =>
       import('src/view/dashboard/DashboardPage'),
@@ -16,7 +16,7 @@ const privateRoutes = [
     path: '/admin/report',
     collapseName: 'reports',
     i18n: 'collapses.reports.menu',
-    parent: '/admin/',
+    parent: '/admin',
     redirect: '/admin/report/tasks-by-month',
     permissionRequired: null,
     virtual: true,
@@ -27,7 +27,7 @@ const privateRoutes = [
     collapseName: 'my-profile',
     // labelCode: '{USER_TEXT}',
     i18n: 'roles.admin.label',
-    parent: '/admin/',
+    parent: '/admin',
     redirect: '/admin/profile',
     permissionRequired: null,
     virtual: true,
@@ -143,7 +143,7 @@ const privateRoutes = [
     path: '/admin/settings-breadcrumb',
     collapseName: 'settings',
     i18n: 'settings.title',
-    parent: '/admin/',
+    parent: '/admin',
     redirect: '/admin/settings',
     permissionRequired: null,
     virtual: true,
@@ -215,7 +215,7 @@ const privateRoutes = [
     path: '/admin/student-breadcrumb',
     collapseName: 'student',
     i18n: 'student.menu',
-    parent: '/admin/',
+    parent: '/admin',
     redirect: '/admin/student',
     permissionRequired: null,
     virtual: true,
@@ -292,7 +292,7 @@ const privateRoutes = [
     path: '/admin/teacher',
     i18n: 'teacher.menu',
     collapseName: 'teacher-page',
-    parent: '/admin/',
+    parent: '/admin',
     loader: () =>
       import('src/view/teacher/list/TeacherPage'),
     permissionRequired: permissions.teacherRead,
@@ -336,7 +336,7 @@ const privateRoutes = [
     path: '/admin/payment-breadcrumb',
     i18n: 'payment.menu',
     collapse: 'payment',
-    parent: '/admin/',
+    parent: '/admin',
     redirect: '/admin/payment',
     permissionRequired: permissions.paymentRead,
     virtual: true,
@@ -523,7 +523,7 @@ const privateRoutes = [
     path: '/admin/class-breadcrumb',
     i18n: 'class.menu',
     collapse: 'class',
-    parent: '/admin/',
+    parent: '/admin',
     redirect: '/admin/class',
     permissionRequired: null,
     virtual: true,
@@ -673,7 +673,7 @@ const privateRoutes = [
     path: '/admin/grade-breadcrumb',
     i18n: 'grade.menu',
     collapse: 'grade',
-    parent: '/admin/',
+    parent: '/admin',
     redirect: '/admin/grade',
     permissionRequired: null,
     virtual: true,
@@ -771,7 +771,7 @@ const privateRoutes = [
     path: '/admin/attendance',
     i18n: 'attendance.title',
     collapse: 'attendance',
-    parent: '/admin/',
+    parent: '/admin',
     loader: () =>
       import('src/view/attendance/list/AttendanceListPage'),
     permissionRequired: permissions.attendanceRead,
@@ -793,7 +793,7 @@ const privateRoutes = [
     path: '/admin/properties-breadcrumb',
     collapseName: 'properties',
     i18n: 'properties.menu',
-    parent: '/admin/',
+    parent: '/admin',
     redirect: '/admin/pool',
     permissionRequired: null,
     virtual: true,
@@ -909,6 +909,13 @@ const simpleRoutes = [
   },
 ].filter(Boolean);
 
+const frontEndRoutes = [
+  {
+    path: '/',
+    loader: () => import('src/view/home/homepage'),
+  },
+].filter(Boolean);
+
 export default {
   privateRoutes,
   publicRoutes,
@@ -916,6 +923,7 @@ export default {
   emptyPermissionsRoutes,
   emailUnverifiedRoutes,
   simpleRoutes,
+  frontEndRoutes,
 };
 
 export function findRoute(url = null, routes = []) {
@@ -954,7 +962,7 @@ export function matchedRoutes(
 
     if (found) {
       routes.push(found);
-      if (found.parent && found.parent !== '/admin/') {
+      if (found.parent && found.parent !== '/admin') {
         return searchRouteStack(found.parent, exactOnly);
       }
     }

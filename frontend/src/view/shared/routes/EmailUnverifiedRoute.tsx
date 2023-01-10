@@ -28,7 +28,7 @@ function EmailUnverifiedRoute({
         }
 
         if (permissionChecker.isEmailVerified) {
-          return <Redirect to="/admin/" />;
+          return <Redirect to="/admin" />;
         }
 
         return <Component {...props} />;

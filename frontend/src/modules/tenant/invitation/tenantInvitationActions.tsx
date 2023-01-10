@@ -64,7 +64,7 @@ const tenantInvitationActions = {
         });
       } catch (error) {
         if (Errors.errorCode(error) === 404) {
-          getHistory().push('/admin/');
+          getHistory().push('/admin');
           return;
         }
 
@@ -81,7 +81,7 @@ const tenantInvitationActions = {
         dispatch({
           type: tenantInvitationActions.ACCEPT_FROM_AUTH_ERROR,
         });
-        getHistory().push('/admin/');
+        getHistory().push('/admin');
       }
     },
 
