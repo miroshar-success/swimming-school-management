@@ -8,6 +8,7 @@ import Icon from '@mui/material/Icon';
 // Material Dashboard 2 PRO React TS components
 import MDBox from 'src/mui/components/MDBox';
 import MDTypography from 'src/mui/components/MDTypography';
+import { i18n } from 'src/i18n';
 
 // Declaring props types for CompleStatisticsCard
 interface Props {
@@ -21,19 +22,17 @@ interface Props {
     | 'light'
     | 'dark';
   title: string;
-  count: string | number;
+  countMale: string | number;
+  countFemale: string | number;
   icon: ReactNode;
-  updated?: string;
-  label?: string;
   [key: string]: any;
 }
 
-function ComplexStatisticsCard({
+function ComplexStatisticsCardForGender({
   color,
   title,
-  count,
-  updated,
-  label,
+  countMale,
+  countFemale,
   icon,
 }: Props): JSX.Element {
   return (
@@ -75,38 +74,40 @@ function ComplexStatisticsCard({
             justifyContent="end"
             alignItems="center"
             pr={1}
+            pt={1}
           >
             <MDTypography variant="h4">
-              {count}
+              {i18n('widgets.countMaleAndFemale.male')}
             </MDTypography>
-            {label && (
-              <MDTypography variant="h6" mt={1}>
-                &nbsp;&nbsp;&nbsp;{label}
-              </MDTypography>
-            )}
+            <MDTypography variant="h5" mt={0.5}>
+              &nbsp;&nbsp;&nbsp;{countMale}
+            </MDTypography>
+          </MDBox>
+          <MDBox
+            display="flex"
+            textAlign="right"
+            justifyContent="end"
+            alignItems="center"
+            pr={1}
+            pt={1}
+            pb={2}
+          >
+            <MDTypography variant="h4">
+              {i18n('widgets.countMaleAndFemale.female')}
+            </MDTypography>
+            <MDTypography variant="h5" mt={0.5}>
+              &nbsp;&nbsp;&nbsp;{countFemale}
+            </MDTypography>
           </MDBox>
         </MDBox>
-      </MDBox>
-      <Divider />
-      <MDBox pb={1.6} px={1.6}>
-        <MDTypography
-          component="p"
-          variant="h6"
-          color="text"
-          display="flex"
-          fontWeight="light"
-        >
-          {updated}
-        </MDTypography>
       </MDBox>
     </Card>
   );
 }
 
 // Declaring defualt props for ComplexStatisticsCard
-ComplexStatisticsCard.defaultProps = {
+ComplexStatisticsCardForGender.defaultProps = {
   color: 'info',
-  updated: 'just updated',
 };
 
-export default ComplexStatisticsCard;
+export default ComplexStatisticsCardForGender;

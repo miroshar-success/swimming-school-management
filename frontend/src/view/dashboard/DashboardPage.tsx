@@ -7,19 +7,23 @@ import TotalStudentsByAge from 'src/view/widgets/TotalStudentsByAge';
 import TotalStudents from 'src/view/widgets/TotalStudents';
 import TotalTeachers from 'src/view/widgets/TotalTeachers';
 import MaxAttendanceDay from 'src/view/widgets/MaxAttendanceDay';
+import CountMaleAndFemale from 'src/view/widgets/countMaleAndFemale';
 
 function DashboardPage(props) {
   return (
     <>
       <Grid container spacing={2.4}>
         <Grid item md={3} xs={12}>
-          <TotalTeachers />
-        </Grid>
-        <Grid item md={3} xs={12}>
           <TotalStudents />
         </Grid>
         <Grid item md={3} xs={12}>
+          <TotalTeachers />
+        </Grid>
+        <Grid item md={3} xs={12}>
           <MaxAttendanceDay />
+        </Grid>
+        <Grid item md={3} xs={12}>
+          <CountMaleAndFemale />
         </Grid>
         <Grid item xs={12}>
           <TotalPaymentPerMonth />
