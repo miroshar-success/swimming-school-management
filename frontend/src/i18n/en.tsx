@@ -536,6 +536,7 @@ const en = {
     },
     totalPaymentPerMonth: {
       title: 'Monthly Payments',
+      label: 'amount of payments',
     },
     incomeToday: {
       title: `Earning`,
@@ -545,17 +546,20 @@ const en = {
       description:
         'This shows number of students who paid for each month',
       date: 'just updated',
+      label: 'number of paid students',
     },
     totalNewStudentsPerMonth: {
       title: 'New Students',
       description:
         'This shows number of students who were registered for each month',
       date: 'just updated',
+      label: 'number of registered students',
     },
     totalStudentsByAge: {
       title: 'Students By Ages',
       description: `This shows number of students by each age's range`,
       date: 'just updated',
+      label: 'number of students',
     },
   },
 

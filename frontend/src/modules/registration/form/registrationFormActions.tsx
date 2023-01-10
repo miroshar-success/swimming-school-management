@@ -30,7 +30,7 @@ const registrationFormActions = {
           i18n('registration.doRegisterSuccess'),
         );
 
-        getHistory().push('/registration');
+        getHistory().push('/admin/registration');
       } catch (error) {
         Errors.handle(error);
 

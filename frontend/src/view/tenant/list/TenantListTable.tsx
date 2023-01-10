@@ -250,7 +250,7 @@ function TenantListTable() {
                               size="small"
                               color={sidenavColor}
                               component={Link}
-                              to={`/tenant/${row.id}/edit`}
+                              to={`/admin/tenant/${row.id}/edit`}
                             >
                               <EditIcon />
                             </IconButton>

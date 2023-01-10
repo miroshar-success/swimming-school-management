@@ -56,7 +56,7 @@ const paymentDestroyActions = {
         i18n('payment.doDestroyAllSelectedSuccess'),
       );
 
-      getHistory().push('/payment-history');
+      getHistory().push('/admin/payment-history');
     } catch (error) {
       Errors.handle(error);
 

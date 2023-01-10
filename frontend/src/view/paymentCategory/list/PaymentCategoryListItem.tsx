@@ -31,7 +31,7 @@ function PaymentCategoryListItem(props) {
         <div key={record.id}>
           <MaterialLink
             component={Link}
-            to={`/payment-category/${record.id}`}
+            to={`/admin/payment-category/${record.id}`}
           >
             {record.name}
           </MaterialLink>

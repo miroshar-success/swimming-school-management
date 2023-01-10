@@ -28,7 +28,7 @@ const documentViewActions = {
         type: documentViewActions.FIND_ERROR,
       });
 
-      getHistory().push('/document');
+      getHistory().push('/admin/document');
     }
   },
 };

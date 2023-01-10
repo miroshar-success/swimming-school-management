@@ -19,7 +19,9 @@ const Error404Page = () => {
   return (
     <>
       <BasicLayout
-        image={backgroundImageUrl || '/images/404.svg'}
+        image={
+          backgroundImageUrl || '/admin/images/404.svg'
+        }
       >
         <Card>
           <MDBox
@@ -54,7 +56,7 @@ const Error404Page = () => {
             </MDTypography>
             <MDButton
               component={Link}
-              to="/"
+              to="/admin/"
               variant="gradient"
               color={sidenavColor}
               type="button"

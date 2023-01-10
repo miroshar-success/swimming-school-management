@@ -34,7 +34,7 @@ const paymentFormActions = {
         type: paymentFormActions.INIT_ERROR,
       });
 
-      getHistory().push('/payment');
+      getHistory().push('/admin/payment');
     }
   },
 
@@ -52,7 +52,7 @@ const paymentFormActions = {
 
       Message.success(i18n('payment.doAddSuccess'));
 
-      getHistory().push('/payment');
+      getHistory().push('/admin/payment');
     } catch (error) {
       Errors.handle(error);
 

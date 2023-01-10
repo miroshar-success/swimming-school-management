@@ -72,7 +72,7 @@ function Menu({ ...rest }: Props): JSX.Element {
   const currentRoute = findRoute(pathname, currentRoutes);
   const collapseName =
     (currentRoute && currentRoute.collapseName) || false;
-  const items = pathname.split('/').slice(1);
+  const items = pathname.split('/admin/').slice(1);
   const itemParentName = items[1];
   const itemName = items[items.length - 1];
 
@@ -486,7 +486,7 @@ function Menu({ ...rest }: Props): JSX.Element {
             </MDBox>
             <MDBox
               component={NavLink}
-              to="/"
+              to="/admin/"
               display="flex"
               alignItems="center"
             >

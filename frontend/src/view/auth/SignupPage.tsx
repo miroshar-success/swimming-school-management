@@ -125,7 +125,7 @@ function SignupPage(): JSX.Element {
                 <MDTypography variant="button" color="text">
                   <MDTypography
                     component={Link}
-                    to="/auth/signin"
+                    to="/admin/auth/signin"
                     variant="button"
                     color="info"
                     fontWeight="medium"

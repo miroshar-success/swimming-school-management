@@ -101,7 +101,7 @@ function ClassToolbar(props) {
           variant="gradient"
           color={sidenavColor}
           component={Link}
-          to="/class/new"
+          to="/admin/class/new"
           startIcon={<AddIcon />}
           size="small"
         >

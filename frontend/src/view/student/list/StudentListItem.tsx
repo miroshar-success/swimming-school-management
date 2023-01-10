@@ -39,7 +39,7 @@ function StudentListItem(props) {
           <MaterialLink
             display="flex"
             component={Link}
-            to={`/student/${record.id}`}
+            to={`/admin/student/${record.id}`}
             textTransform="capitalize"
             alignItems="center"
           >

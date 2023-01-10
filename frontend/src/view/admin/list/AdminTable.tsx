@@ -189,7 +189,7 @@ function AdminTable() {
                         <IconButton
                           size="small"
                           component={Link}
-                          to={`/admin/${row.id}`}
+                          to={`/admin/admin/${row.id}`}
                           color={sidenavColor}
                         >
                           <SearchIcon />
@@ -203,7 +203,7 @@ function AdminTable() {
                           <IconButton
                             size="small"
                             component={Link}
-                            to={`/admin/${row.id}/edit`}
+                            to={`/admin/admin/${row.id}/edit`}
                             color={sidenavColor}
                           >
                             <EditIcon />

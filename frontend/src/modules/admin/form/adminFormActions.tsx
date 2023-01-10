@@ -45,7 +45,7 @@ const adminFormActions = {
         type: adminFormActions.INIT_ERROR,
       });
 
-      getHistory().push('/admin');
+      getHistory().push('/admin/admin');
     }
   },
 
@@ -63,7 +63,7 @@ const adminFormActions = {
 
       Message.success(i18n('user.doAddSuccess'));
 
-      getHistory().push('/admin');
+      getHistory().push('/admin/admin');
     } catch (error) {
       Errors.handle(error);
 
@@ -95,7 +95,7 @@ const adminFormActions = {
 
       Message.success(i18n('user.doUpdateSuccess'));
 
-      getHistory().push('/admin');
+      getHistory().push('/admin/admin');
     } catch (error) {
       Errors.handle(error);
 

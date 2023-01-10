@@ -46,7 +46,7 @@ const studentFormActions = {
         type: studentFormActions.INIT_ERROR,
       });
 
-      getHistory().push('/student');
+      getHistory().push('/admin/student');
     }
   },
 
@@ -64,7 +64,7 @@ const studentFormActions = {
 
       Message.success(i18n('student.doAddSuccess'));
 
-      getHistory().push('/student');
+      getHistory().push('/admin/student');
     } catch (error) {
       Errors.handle(error);
 
@@ -96,7 +96,7 @@ const studentFormActions = {
 
       Message.success(i18n('student.doUpdateSuccess'));
 
-      getHistory().push('/student');
+      getHistory().push('/admin/student');
     } catch (error) {
       Errors.handle(error);
 

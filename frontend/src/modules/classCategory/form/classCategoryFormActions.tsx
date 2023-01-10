@@ -44,7 +44,7 @@ const classCategoryFormActions = {
         type: classCategoryFormActions.INIT_ERROR,
       });
 
-      getHistory().push('/class-category');
+      getHistory().push('/admin/class-category');
     }
   },
 
@@ -62,7 +62,7 @@ const classCategoryFormActions = {
 
       Message.success(i18n('classCategory.doAddSuccess'));
 
-      getHistory().push('/class-category');
+      getHistory().push('/admin/class-category');
     } catch (error) {
       Errors.handle(error);
 
@@ -88,7 +88,7 @@ const classCategoryFormActions = {
         i18n('classCategory.doUpdateSuccess'),
       );
 
-      getHistory().push('/class-category');
+      getHistory().push('/admin/class-category');
     } catch (error) {
       Errors.handle(error);
 

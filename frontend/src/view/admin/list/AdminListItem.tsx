@@ -39,7 +39,7 @@ function AdminListItem(props) {
           <MaterialLink
             display="flex"
             component={Link}
-            to={`/admin/${record.id}`}
+            to={`/admin/admin/${record.id}`}
             textTransform="capitalize"
             alignItems="center"
           >

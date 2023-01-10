@@ -24,7 +24,7 @@ function StudentViewToolbar(props) {
       {hasPermissionToEdit && (
         <MDButton
           component={Link}
-          to={`/student/${id}/edit`}
+          to={`/admin/student/${id}/edit`}
           variant="gradient"
           color={sidenavColor}
           type="button"
@@ -36,7 +36,7 @@ function StudentViewToolbar(props) {
       )}
       <MDButton
         component={Link}
-        to={`/student`}
+        to={`/admin/student`}
         variant="gradient"
         color={sidenavColor}
         type="button"

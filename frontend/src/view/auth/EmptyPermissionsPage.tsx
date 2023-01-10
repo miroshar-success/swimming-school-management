@@ -25,7 +25,8 @@ function EmptyPermissionsPage(props) {
   return (
     <CoverLayout
       image={
-        backgroundImageUrl || '/images/emptyPermissions.jpg'
+        backgroundImageUrl ||
+        '/admin/images/emptyPermissions.jpg'
       }
     >
       <Card>

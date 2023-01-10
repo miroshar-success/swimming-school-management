@@ -16,7 +16,7 @@ function PaymentHistoryViewToolbar(props) {
     <ToolbarWrapper>
       <MDButton
         component={Link}
-        to={`/payment-history`}
+        to={`/admin/payment-history`}
         variant="gradient"
         color={sidenavColor}
         type="button"

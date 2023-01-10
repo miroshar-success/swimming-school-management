@@ -50,7 +50,7 @@ function LessonViewToolbar(props) {
       {hasPermissionToEdit && (
         <MDButton
           component={Link}
-          to={`/lesson/${id}/edit`}
+          to={`/admin/lesson/${id}/edit`}
           variant="gradient"
           color={sidenavColor}
           type="button"
@@ -79,7 +79,7 @@ function LessonViewToolbar(props) {
         variant="outlined"
         color={sidenavColor}
         component={Link}
-        to={'/lesson'}
+        to={'/admin/lesson'}
         startIcon={<ArrowBackIcon />}
         size="small"
       >

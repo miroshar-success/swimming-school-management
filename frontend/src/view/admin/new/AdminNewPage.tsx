@@ -44,7 +44,9 @@ function AdminNewPage(props) {
           <AdminNewForm
             saveLoading={saveLoading}
             onSubmit={doSubmit}
-            onCancel={() => getHistory().push('/admin')}
+            onCancel={() =>
+              getHistory().push('/admin/admin')
+            }
           />
         </MDBox>
       </Card>

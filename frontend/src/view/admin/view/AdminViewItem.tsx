@@ -76,7 +76,7 @@ function AdminViewItem(props) {
         <MDBox key={record.id}>
           <MaterialLink
             component={Link}
-            to={`/admin/${record.id}`}
+            to={`/admin/admin/${record.id}`}
           >
             {renderAdmin(record)}
           </MaterialLink>

@@ -31,7 +31,7 @@ function GradeListItem(props) {
         <div key={record.id}>
           <MaterialLink
             component={Link}
-            to={`/grade/${record.id}`}
+            to={`/admin/grade/${record.id}`}
           >
             {record.name}
           </MaterialLink>

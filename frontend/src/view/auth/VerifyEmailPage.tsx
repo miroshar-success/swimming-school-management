@@ -38,13 +38,14 @@ function VerifyEmailPage() {
 
   const doSignout = async () => {
     await dispatch(actions.doSignout());
-    getHistory().push('/');
+    getHistory().push('/admin/');
   };
 
   return (
     <CoverLayout
       image={
-        backgroundImageUrl || '/images/emailUnverified.jpg'
+        backgroundImageUrl ||
+        '/admin/images/emailUnverified.jpg'
       }
     >
       <Card>
@@ -96,7 +97,7 @@ function VerifyEmailPage() {
             {!loading && !errorMessage && !signedIn && (
               <MDButton
                 component={Link}
-                to="/auth/signin"
+                to="/admin/auth/signin"
                 variant="gradient"
                 color="info"
                 type="button"

@@ -210,7 +210,7 @@ function LessonListTable(props) {
                           size="small"
                           component={Link}
                           color={sidenavColor}
-                          to={`/lesson/${row.id}`}
+                          to={`/admin/lesson/${row.id}`}
                         >
                           <SearchIcon />
                         </IconButton>
@@ -224,7 +224,7 @@ function LessonListTable(props) {
                             size="small"
                             color={sidenavColor}
                             component={Link}
-                            to={`/lesson/${row.id}/edit`}
+                            to={`/admin/lesson/${row.id}/edit`}
                           >
                             <EditIcon />
                           </IconButton>

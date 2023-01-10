@@ -135,7 +135,7 @@ function AdminToolbar(props) {
           variant="contained"
           color={sidenavColor}
           component={Link}
-          to="/admin/new"
+          to="/admin/admin/new"
           startIcon={<EmailIcon />}
           size="small"
         >

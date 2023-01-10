@@ -76,7 +76,7 @@ function StudentViewItem(props) {
         <MDBox key={record.id}>
           <MaterialLink
             component={Link}
-            to={`/student/${record.id}`}
+            to={`/admin/student/${record.id}`}
           >
             {renderStudent(record)}
           </MaterialLink>

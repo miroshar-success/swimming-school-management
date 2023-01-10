@@ -31,7 +31,7 @@ function PoolListItem(props) {
         <div key={record.id}>
           <MaterialLink
             component={Link}
-            to={`/pool/${record.id}`}
+            to={`/admin/pool/${record.id}`}
           >
             {record.name}
           </MaterialLink>

@@ -15,7 +15,7 @@ function TenantToolbar(props) {
         variant="gradient"
         color={sidenavColor}
         component={Link}
-        to="/tenant/new"
+        to="/admin/tenant/new"
         startIcon={<AddIcon />}
         size="small"
       >

@@ -44,7 +44,7 @@ const documentFormActions = {
         type: documentFormActions.INIT_ERROR,
       });
 
-      getHistory().push('/document');
+      getHistory().push('/admin/document');
     }
   },
 
@@ -62,7 +62,7 @@ const documentFormActions = {
 
       Message.success(i18n('document.create.success'));
 
-      getHistory().push('/document');
+      getHistory().push('/admin/document');
     } catch (error) {
       Errors.handle(error);
 
@@ -86,7 +86,7 @@ const documentFormActions = {
 
       Message.success(i18n('document.update.success'));
 
-      getHistory().push('/document');
+      getHistory().push('/admin/document');
     } catch (error) {
       Errors.handle(error);
 

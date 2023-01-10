@@ -50,7 +50,7 @@ function PaymentMethodViewToolbar(props) {
       {hasPermissionToEdit && (
         <MDButton
           component={Link}
-          to={`/payment-method/${id}/edit`}
+          to={`/admin/payment-method/${id}/edit`}
           variant="gradient"
           color={sidenavColor}
           type="button"
@@ -79,7 +79,7 @@ function PaymentMethodViewToolbar(props) {
         variant="outlined"
         color={sidenavColor}
         component={Link}
-        to={'/payment-method'}
+        to={'/admin/payment-method'}
         startIcon={<ArrowBackIcon />}
         size="small"
       >

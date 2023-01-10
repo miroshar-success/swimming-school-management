@@ -32,7 +32,7 @@ const classDestroyActions = {
 
       dispatch(listActions.doFetchCurrentFilter());
 
-      getHistory().push('/class');
+      getHistory().push('/admin/class');
     } catch (error) {
       Errors.handle(error);
 
@@ -65,7 +65,7 @@ const classDestroyActions = {
         i18n('class.doDestroyAllSelectedSuccess'),
       );
 
-      getHistory().push('/class');
+      getHistory().push('/admin/class');
     } catch (error) {
       Errors.handle(error);
 

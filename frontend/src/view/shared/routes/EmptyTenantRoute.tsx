@@ -21,14 +21,14 @@ function EmptyTenantRoute({
           return (
             <Redirect
               to={{
-                pathname: '/auth/signin',
+                pathname: '/admin/auth/signin',
               }}
             />
           );
         }
 
         if (!permissionChecker.isEmptyTenant) {
-          return <Redirect to="/" />;
+          return <Redirect to="/admin/" />;
         }
 
         return <Component {...props} />;

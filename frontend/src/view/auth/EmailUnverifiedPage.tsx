@@ -35,7 +35,8 @@ function EmailUnverifiedPage() {
   return (
     <CoverLayout
       image={
-        backgroundImageUrl || '/images/emailUnverified.jpg'
+        backgroundImageUrl ||
+        '/admin/images/emailUnverified.jpg'
       }
     >
       <Card>

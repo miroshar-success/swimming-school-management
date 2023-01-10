@@ -66,7 +66,7 @@ function RegistrationFormPage(props) {
               student={student}
               onSubmit={doSubmit}
               onCancel={() =>
-                getHistory().push('/registration')
+                getHistory().push('/admin/registration')
               }
             />
           )}

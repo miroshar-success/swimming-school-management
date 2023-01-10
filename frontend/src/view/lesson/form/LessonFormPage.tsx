@@ -68,7 +68,9 @@ function LessonFormPage(props) {
               record={record}
               isEditing={isEditing}
               onSubmit={doSubmit}
-              onCancel={() => getHistory().push('/lesson')}
+              onCancel={() =>
+                getHistory().push('/admin/lesson')
+              }
             />
           )}
         </MDBox>

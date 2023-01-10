@@ -50,7 +50,7 @@ function PoolViewToolbar(props) {
       {hasPermissionToEdit && (
         <MDButton
           component={Link}
-          to={`/pool/${id}/edit`}
+          to={`/admin/pool/${id}/edit`}
           variant="gradient"
           color={sidenavColor}
           type="button"
@@ -79,7 +79,7 @@ function PoolViewToolbar(props) {
         variant="outlined"
         color={sidenavColor}
         component={Link}
-        to={'/pool'}
+        to={'/admin/pool'}
         startIcon={<ArrowBackIcon />}
         size="small"
       >

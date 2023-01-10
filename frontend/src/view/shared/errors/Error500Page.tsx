@@ -19,7 +19,9 @@ const Error500Page = () => {
   return (
     <>
       <BasicLayout
-        image={backgroundImageUrl || '/images/500.svg'}
+        image={
+          backgroundImageUrl || '/admin/images/500.svg'
+        }
       >
         <Card>
           <MDBox
@@ -54,7 +56,7 @@ const Error500Page = () => {
             </MDTypography>
             <MDButton
               component={Link}
-              to="/"
+              to="/admin/"
               variant="gradient"
               color={sidenavColor}
               type="button"

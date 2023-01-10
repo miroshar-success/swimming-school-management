@@ -68,7 +68,9 @@ function ClassFormPage(props) {
               record={record}
               isEditing={isEditing}
               onSubmit={doSubmit}
-              onCancel={() => getHistory().push('/class')}
+              onCancel={() =>
+                getHistory().push('/admin/class')
+              }
             />
           )}
         </MDBox>

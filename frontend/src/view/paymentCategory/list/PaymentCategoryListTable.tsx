@@ -188,7 +188,7 @@ function PaymentCategoryListTable(props) {
                           size="small"
                           component={Link}
                           color={sidenavColor}
-                          to={`/payment-category/${row.id}`}
+                          to={`/admin/payment-category/${row.id}`}
                         >
                           <SearchIcon />
                         </IconButton>
@@ -202,7 +202,7 @@ function PaymentCategoryListTable(props) {
                             size="small"
                             color={sidenavColor}
                             component={Link}
-                            to={`/payment-category/${row.id}/edit`}
+                            to={`/admin/payment-category/${row.id}/edit`}
                           >
                             <EditIcon />
                           </IconButton>

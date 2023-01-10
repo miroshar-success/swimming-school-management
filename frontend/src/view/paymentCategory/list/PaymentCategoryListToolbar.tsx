@@ -101,7 +101,7 @@ function PaymentCategoryToolbar(props) {
           variant="gradient"
           color={sidenavColor}
           component={Link}
-          to="/payment-category/new"
+          to="/admin/payment-category/new"
           startIcon={<AddIcon />}
           size="small"
         >

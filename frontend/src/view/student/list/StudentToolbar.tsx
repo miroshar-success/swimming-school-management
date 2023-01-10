@@ -132,7 +132,7 @@ function StudentToolbar(props) {
           variant="contained"
           color={sidenavColor}
           component={Link}
-          to="/student/new"
+          to="/admin/student/new"
           startIcon={<AddIcon />}
           size="small"
         >

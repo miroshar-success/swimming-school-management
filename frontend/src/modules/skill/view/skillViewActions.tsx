@@ -28,7 +28,7 @@ const skillViewActions = {
         type: skillViewActions.FIND_ERROR,
       });
 
-      getHistory().push('/skill');
+      getHistory().push('/admin/skill');
     }
   },
 };

@@ -213,7 +213,7 @@ function StudentTable() {
                         <IconButton
                           size="small"
                           component={Link}
-                          to={`/student/${row.id}`}
+                          to={`/admin/student/${row.id}`}
                           color={sidenavColor}
                         >
                           <SearchIcon />
@@ -227,7 +227,7 @@ function StudentTable() {
                           <IconButton
                             size="small"
                             component={Link}
-                            to={`/student/${row.id}/edit`}
+                            to={`/admin/student/${row.id}/edit`}
                             color={sidenavColor}
                           >
                             <EditIcon />

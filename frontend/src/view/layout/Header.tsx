@@ -64,7 +64,9 @@ function Header({
     transparentNavbar,
   );
   const [openMenu, setOpenMenu] = useState<any>(false);
-  const route = useLocation().pathname.split('/').slice(1);
+  const route = useLocation()
+    .pathname.split('/admin/')
+    .slice(1);
 
   useEffect(() => {
     // Setting the navbar type

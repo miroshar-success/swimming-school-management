@@ -53,9 +53,9 @@ function DocumentFormPage(props) {
           onCancel={() =>
             isEditing
               ? getHistory().push(
-                  `/document/${match.params.id}`,
+                  `/admin/document/${match.params.id}`,
                 )
-              : getHistory().push('/document')
+              : getHistory().push('/admin/document')
           }
         />
       )}

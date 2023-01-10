@@ -46,12 +46,14 @@ function InviationPage() {
 
   const doSignout = async () => {
     await dispatch(authActions.doSignout());
-    getHistory().push('/');
+    getHistory().push('/admin/');
   };
 
   return (
     <CoverLayout
-      image={backgroundImageUrl || '/images/invitation.jpg'}
+      image={
+        backgroundImageUrl || '/admin/images/invitation.jpg'
+      }
     >
       <Card>
         <GradientTitle>

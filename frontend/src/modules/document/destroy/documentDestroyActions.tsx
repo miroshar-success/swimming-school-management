@@ -32,7 +32,7 @@ const documentDestroyActions = {
 
       dispatch(listActions.doFetchCurrentFilter());
 
-      getHistory().push('/document');
+      getHistory().push('/admin/document');
     } catch (error) {
       Errors.handle(error);
 
@@ -63,7 +63,7 @@ const documentDestroyActions = {
 
       Message.success(i18n('document.destroyAll.success'));
 
-      getHistory().push('/document');
+      getHistory().push('/admin/document');
     } catch (error) {
       Errors.handle(error);
 

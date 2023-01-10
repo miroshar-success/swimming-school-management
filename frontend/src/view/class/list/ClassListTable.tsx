@@ -216,7 +216,7 @@ function ClassListTable(props) {
                           size="small"
                           component={Link}
                           color={sidenavColor}
-                          to={`/class/${row.id}`}
+                          to={`/admin/class/${row.id}`}
                         >
                           <SearchIcon />
                         </IconButton>
@@ -230,7 +230,7 @@ function ClassListTable(props) {
                             size="small"
                             color={sidenavColor}
                             component={Link}
-                            to={`/class/${row.id}/edit`}
+                            to={`/admin/class/${row.id}/edit`}
                           >
                             <EditIcon />
                           </IconButton>

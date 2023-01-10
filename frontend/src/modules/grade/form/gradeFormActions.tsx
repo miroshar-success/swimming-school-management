@@ -44,7 +44,7 @@ const gradeFormActions = {
         type: gradeFormActions.INIT_ERROR,
       });
 
-      getHistory().push('/grade');
+      getHistory().push('/admin/grade');
     }
   },
 
@@ -62,7 +62,7 @@ const gradeFormActions = {
 
       Message.success(i18n('grade.doAddSuccess'));
 
-      getHistory().push('/grade');
+      getHistory().push('/admin/grade');
     } catch (error) {
       Errors.handle(error);
 
@@ -86,7 +86,7 @@ const gradeFormActions = {
 
       Message.success(i18n('grade.doUpdateSuccess'));
 
-      getHistory().push('/grade');
+      getHistory().push('/admin/grade');
     } catch (error) {
       Errors.handle(error);
 

@@ -30,7 +30,7 @@ function DocumentListItem(props) {
         <div key={record.id}>
           <MaterialLink
             component={Link}
-            to={`/document/${record.id}`}
+            to={`/admin/document/${record.id}`}
           >
             <MDTypography
               variant="button"

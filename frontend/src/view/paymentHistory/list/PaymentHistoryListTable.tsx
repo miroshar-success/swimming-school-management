@@ -157,7 +157,7 @@ function PaymentHistoryListTable(props) {
                           <IconButton
                             size="small"
                             component={Link}
-                            to={`/payment-history/${row.id}/${payment.id}`}
+                            to={`/admin/payment-history/${row.id}/${payment.id}`}
                             color={sidenavColor}
                           >
                             <SearchIcon />

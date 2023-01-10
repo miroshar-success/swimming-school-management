@@ -44,7 +44,7 @@ const poolFormActions = {
         type: poolFormActions.INIT_ERROR,
       });
 
-      getHistory().push('/pool');
+      getHistory().push('/admin/pool');
     }
   },
 
@@ -62,7 +62,7 @@ const poolFormActions = {
 
       Message.success(i18n('pool.doAddSuccess'));
 
-      getHistory().push('/pool');
+      getHistory().push('/admin/pool');
     } catch (error) {
       Errors.handle(error);
 
@@ -86,7 +86,7 @@ const poolFormActions = {
 
       Message.success(i18n('pool.doUpdateSuccess'));
 
-      getHistory().push('/pool');
+      getHistory().push('/admin/pool');
     } catch (error) {
       Errors.handle(error);
 

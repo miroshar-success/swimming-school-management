@@ -32,7 +32,7 @@ const skillDestroyActions = {
 
       dispatch(listActions.doFetchCurrentFilter());
 
-      getHistory().push('/skill');
+      getHistory().push('/admin/skill');
     } catch (error) {
       Errors.handle(error);
 
@@ -65,7 +65,7 @@ const skillDestroyActions = {
         i18n('skill.doDestroyAllSelectedSuccess'),
       );
 
-      getHistory().push('/skill');
+      getHistory().push('/admin/skill');
     } catch (error) {
       Errors.handle(error);
 

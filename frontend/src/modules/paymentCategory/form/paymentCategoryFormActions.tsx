@@ -44,7 +44,7 @@ const paymentCategoryFormActions = {
         type: paymentCategoryFormActions.INIT_ERROR,
       });
 
-      getHistory().push('/payment-category');
+      getHistory().push('/admin/payment-category');
     }
   },
 
@@ -64,7 +64,7 @@ const paymentCategoryFormActions = {
         i18n('payment.category.doAddSuccess'),
       );
 
-      getHistory().push('/payment-category');
+      getHistory().push('/admin/payment-category');
     } catch (error) {
       Errors.handle(error);
 
@@ -90,7 +90,7 @@ const paymentCategoryFormActions = {
         i18n('payment.category.doUpdateSuccess'),
       );
 
-      getHistory().push('/payment-category');
+      getHistory().push('/admin/payment-category');
     } catch (error) {
       Errors.handle(error);
 

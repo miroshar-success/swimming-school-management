@@ -201,7 +201,7 @@ function TeacherTable() {
                         <IconButton
                           size="small"
                           component={Link}
-                          to={`/teacher/${row.id}`}
+                          to={`/admin/teacher/${row.id}`}
                           color={sidenavColor}
                         >
                           <SearchIcon />
@@ -215,7 +215,7 @@ function TeacherTable() {
                           <IconButton
                             size="small"
                             component={Link}
-                            to={`/teacher/${row.id}/edit`}
+                            to={`/admin/teacher/${row.id}/edit`}
                             color={sidenavColor}
                           >
                             <EditIcon />

@@ -32,7 +32,7 @@ const poolDestroyActions = {
 
       dispatch(listActions.doFetchCurrentFilter());
 
-      getHistory().push('/pool');
+      getHistory().push('/admin/pool');
     } catch (error) {
       Errors.handle(error);
 
@@ -65,7 +65,7 @@ const poolDestroyActions = {
         i18n('pool.doDestroyAllSelectedSuccess'),
       );
 
-      getHistory().push('/pool');
+      getHistory().push('/admin/pool');
     } catch (error) {
       Errors.handle(error);
 

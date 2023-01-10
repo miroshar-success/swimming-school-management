@@ -28,7 +28,7 @@ const classViewActions = {
         type: classViewActions.FIND_ERROR,
       });
 
-      getHistory().push('/class');
+      getHistory().push('/admin/class');
     }
   },
 };

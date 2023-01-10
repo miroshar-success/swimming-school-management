@@ -68,7 +68,9 @@ function GradeFormPage(props) {
               record={record}
               isEditing={isEditing}
               onSubmit={doSubmit}
-              onCancel={() => getHistory().push('/grade')}
+              onCancel={() =>
+                getHistory().push('/admin/grade')
+              }
             />
           )}
         </MDBox>

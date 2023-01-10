@@ -69,7 +69,7 @@ function ClassCategoryFormPage(props) {
               isEditing={isEditing}
               onSubmit={doSubmit}
               onCancel={() =>
-                getHistory().push('/class-category')
+                getHistory().push('/admin/class-category')
               }
             />
           )}

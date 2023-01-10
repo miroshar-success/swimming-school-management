@@ -30,7 +30,7 @@ const tenantDestroyActions = {
       await dispatch(authActions.doRefreshCurrentUser());
       await dispatch(listActions.doFetchCurrentFilter());
 
-      getHistory().push('/tenant');
+      getHistory().push('/admin/tenant');
     } catch (error) {
       Errors.handle(error);
 

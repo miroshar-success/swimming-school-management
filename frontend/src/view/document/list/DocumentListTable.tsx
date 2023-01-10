@@ -202,7 +202,7 @@ function DocumentListTable(props) {
                             size="small"
                             component={Link}
                             color={sidenavColor}
-                            to={`/document/${row.id}`}
+                            to={`/admin/document/${row.id}`}
                           >
                             <SearchIcon />
                           </IconButton>
@@ -216,7 +216,7 @@ function DocumentListTable(props) {
                               size="small"
                               color={sidenavColor}
                               component={Link}
-                              to={`/document/${row.id}/edit`}
+                              to={`/admin/document/${row.id}/edit`}
                             >
                               <EditIcon />
                             </IconButton>

@@ -68,7 +68,9 @@ function SkillFormPage(props) {
               record={record}
               isEditing={isEditing}
               onSubmit={doSubmit}
-              onCancel={() => getHistory().push('/skill')}
+              onCancel={() =>
+                getHistory().push('/admin/skill')
+              }
             />
           )}
         </MDBox>
