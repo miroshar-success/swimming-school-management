@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Card from '@mui/material/Card';
-
 import MDBox from 'src/mui/components/MDBox';
 
 import { i18n } from 'src/i18n';
@@ -45,21 +43,17 @@ function MaxAttendanceDay({
 
   return (
     <>
-      <Card sx={{ height: '100%' }}>
-        <MDBox height="100%">
-          {!isLoading && (
-            <ComplexStatisticsCard
-              title={title}
-              count={
-                maxAttendanceDayEnumerators.day[day.day]
-              }
-              label={`${day.number} lessons`}
-              color={color}
-              icon="leaderboard"
-            />
-          )}
-        </MDBox>
-      </Card>
+      <MDBox height="100%" mt={2}>
+        {!isLoading && (
+          <ComplexStatisticsCard
+            title={title}
+            count={maxAttendanceDayEnumerators.day[day.day]}
+            label={`${day.number} lessons`}
+            color={color}
+            icon="event"
+          />
+        )}
+      </MDBox>
     </>
   );
 }

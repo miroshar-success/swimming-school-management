@@ -1,0 +1,13 @@
+const countMaleAndFemaleEnumerators = {
+  day: [
+    'Sunday',
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thursday',
+    'Friday',
+    'Saturday',
+  ],
+};
+
+export default countMaleAndFemaleEnumerators;

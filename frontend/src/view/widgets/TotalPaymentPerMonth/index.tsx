@@ -72,40 +72,40 @@ function TotalPaymentPerMonth({
   return (
     <>
       <MDBox mb={4}>
-        <Card sx={{ height: '100%' }}>
-          {title ? (
-            <MDBox display="flex">
-              {icon.component && (
-                <MDBox
-                  width="4.2rem"
-                  height="4.2rem"
-                  bgColor={icon.color || 'info'}
-                  variant="gradient"
-                  coloredShadow={icon.color || 'info'}
-                  borderRadius="xl"
-                  display="flex"
-                  justifyContent="center"
-                  alignItems="center"
-                  color="white"
-                  mt={-2.5}
-                  ml={5}
-                >
-                  <Icon fontSize="medium">
-                    {icon.component}
-                  </Icon>
-                </MDBox>
-              )}
-              <MDBox mt={1} ml={2}>
-                {title && (
-                  <MDTypography variant="h3">
-                    {title}
-                  </MDTypography>
+        {!isLoading && (
+          <Card sx={{ height: '100%' }}>
+            {title ? (
+              <MDBox display="flex">
+                {icon.component && (
+                  <MDBox
+                    width="4.2rem"
+                    height="4.2rem"
+                    bgColor={icon.color || 'info'}
+                    variant="gradient"
+                    coloredShadow={icon.color || 'info'}
+                    borderRadius="xl"
+                    display="flex"
+                    justifyContent="center"
+                    alignItems="center"
+                    color="white"
+                    mt={-2.5}
+                    ml={5}
+                  >
+                    <Icon fontSize="medium">
+                      {icon.component}
+                    </Icon>
+                  </MDBox>
                 )}
+                <MDBox mt={1} ml={2}>
+                  {title && (
+                    <MDTypography variant="h3">
+                      {title}
+                    </MDTypography>
+                  )}
+                </MDBox>
               </MDBox>
-            </MDBox>
-          ) : null}
-          <MDBox height="100%">
-            {!isLoading && (
+            ) : null}
+            <MDBox height="100%">
               <MDBox p={2.4}>
                 <Grid container spacing={1.6}>
                   <Grid item md={3} xs={12}>
@@ -135,9 +135,9 @@ function TotalPaymentPerMonth({
                   </Grid>
                 </Grid>
               </MDBox>
-            )}
-          </MDBox>
-        </Card>
+            </MDBox>
+          </Card>
+        )}
       </MDBox>
     </>
   );

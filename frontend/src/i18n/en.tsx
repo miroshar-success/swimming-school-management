@@ -520,6 +520,43 @@ const en = {
       },
       title: 'Calendar',
     },
+    countMaleAndFemale: {
+      male: 'Male',
+      female: 'Female',
+      title: 'Gender of Students',
+    },
+    totalStudents: {
+      title: `Today's Students`,
+    },
+    totalTeachers: {
+      title: `Today's Teachers`,
+    },
+    maxAttendanceDay: {
+      title: 'Day of Highest Attendance',
+    },
+    totalPaymentPerMonth: {
+      title: 'Monthly Payments',
+    },
+    incomeToday: {
+      title: `Earning`,
+    },
+    totalPaidStudentsPerMonth: {
+      title: 'Paid Students',
+      description:
+        'This shows number of students who paid for each month',
+      date: 'just updated',
+    },
+    totalNewStudentsPerMonth: {
+      title: 'New Students',
+      description:
+        'This shows number of students who were registered for each month',
+      date: 'just updated',
+    },
+    totalStudentsByAge: {
+      title: 'Students By Ages',
+      description: `This shows number of students by each age's range`,
+      date: 'just updated',
+    },
   },
 
   attendance: {

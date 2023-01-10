@@ -1,10 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
-import Card from '@mui/material/Card';
-
 import MDBox from 'src/mui/components/MDBox';
-import ReportsLineChart from 'src/mui/shared/Charts/LineCharts/ReportsLineChart';
 
 import { i18n } from 'src/i18n';
 import actions from 'src/modules/widget/totalUsers/totalUsersActions';
@@ -46,18 +43,16 @@ function TotalTeachers({
 
   return (
     <>
-      <Card sx={{ height: '100%' }}>
-        <MDBox height="100%">
-          {!isLoading && (
-            <ComplexStatisticsCard
-              title={title}
-              count={total}
-              color={color}
-              icon="leaderboard"
-            />
-          )}
-        </MDBox>
-      </Card>
+      <MDBox height="100%" mt={2}>
+        {!isLoading && (
+          <ComplexStatisticsCard
+            title={title}
+            count={total}
+            color={color}
+            icon="person"
+          />
+        )}
+      </MDBox>
     </>
   );
 }
