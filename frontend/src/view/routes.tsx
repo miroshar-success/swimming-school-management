@@ -912,7 +912,7 @@ const simpleRoutes = [
 const frontEndRoutes = [
   {
     path: '/',
-    loader: () => import('src/view/home/homepage'),
+    loader: () => import('src/view/home/HomeViewPage'),
   },
 ].filter(Boolean);
 

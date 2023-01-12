@@ -97,7 +97,7 @@ function AttendancePage() {
                                 horizontal: 'right',
                               }}
                               badgeContent={
-                                <img src="/admin/images/unchecked.svg" />
+                                <img src="/images/unchecked.svg" />
                               }
                             >
                               <Avatar
@@ -139,7 +139,7 @@ function AttendancePage() {
                                 horizontal: 'right',
                               }}
                               badgeContent={
-                                <img src="/admin/images/checked.svg" />
+                                <img src="/images/checked.svg" />
                               }
                             >
                               <Avatar

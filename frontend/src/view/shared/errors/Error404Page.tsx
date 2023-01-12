@@ -19,9 +19,7 @@ const Error404Page = () => {
   return (
     <>
       <BasicLayout
-        image={
-          backgroundImageUrl || '/admin/images/404.svg'
-        }
+        image={backgroundImageUrl || '/images/404.svg'}
       >
         <Card>
           <MDBox

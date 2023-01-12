@@ -19,9 +19,7 @@ const Error500Page = () => {
   return (
     <>
       <BasicLayout
-        image={
-          backgroundImageUrl || '/admin/images/500.svg'
-        }
+        image={backgroundImageUrl || '/images/500.svg'}
       >
         <Card>
           <MDBox

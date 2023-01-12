@@ -58,8 +58,7 @@ function PasswordResetPage() {
   return (
     <CoverLayout
       image={
-        backgroundImageUrl ||
-        '/admin/images/forgotPassword.jpg'
+        backgroundImageUrl || '/images/forgotPassword.jpg'
       }
     >
       <Card>

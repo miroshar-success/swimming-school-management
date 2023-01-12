@@ -51,9 +51,7 @@ function InviationPage() {
 
   return (
     <CoverLayout
-      image={
-        backgroundImageUrl || '/admin/images/invitation.jpg'
-      }
+      image={backgroundImageUrl || '/images/invitation.jpg'}
     >
       <Card>
         <GradientTitle>
