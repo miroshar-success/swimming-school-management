@@ -74,7 +74,7 @@ function SimpleNavbarDropdown({
         </MDTypography>
         <MDTypography
           variant="h4"
-          fontWeight="regular"
+          fontWeight="medium"
           textTransform="capitalize"
           color={light ? 'white' : 'dark'}
           sx={{ fontWeight: '100%', ml: 1, mr: 0.25 }}

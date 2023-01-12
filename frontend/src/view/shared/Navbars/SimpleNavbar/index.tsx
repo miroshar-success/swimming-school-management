@@ -34,6 +34,7 @@ import breakpoints from 'src/mui/assets/theme/base/breakpoints';
 import muiActions from 'src/modules/mui/muiActions';
 import { selectMuiSettings } from 'src/modules/mui/muiSelectors';
 import { i18n } from 'src/i18n';
+import I18nSelect from 'src/view/layout/I18nSelect';
 
 // Declaring props types for SimpleNavbar
 interface Props {
@@ -63,6 +64,7 @@ interface Props {
       | 'light';
     label: string;
   };
+  multilingual?: boolean;
 }
 
 interface NewGrowTypes extends GrowProps {
@@ -81,6 +83,7 @@ function SimpleNavbar({
   transparent,
   light,
   action,
+  multilingual,
 }: Props): JSX.Element {
   const [dropdown, setDropdown] = useState<any>('');
   const [dropdownEl, setDropdownEl] = useState<any>('');
@@ -646,11 +649,10 @@ function SimpleNavbar({
           ? 'none'
           : `saturate(200%) blur(24px)`,
       })}
-      position="absolute"
+      position="fixed"
       left={0}
       zIndex={3}
       width="100%"
-      borderRadius="lg"
       shadow={transparent ? 'none' : 'md'}
       display="flex"
       justifyContent="center"
@@ -701,25 +703,21 @@ function SimpleNavbar({
         >
           {renderNavbarItems}
         </MDBox>
-        {action &&
-          (action.type === 'internal' ? (
-            <MDBox
-              display={{ xs: 'none', lg: 'inline-block' }}
-            >
+        <MDBox display={{ xs: 'none', lg: 'flex' }}>
+          {multilingual && <I18nSelect size="lg" />}
+          {action &&
+            (action.type === 'internal' ? (
               <MDButton
                 component={Link}
                 to={action.route}
                 variant="gradient"
                 color={action.color ? action.color : 'info'}
                 size="small"
+                sx={{ ml: 2 }}
               >
                 {action.label}
               </MDButton>
-            </MDBox>
-          ) : (
-            <MDBox
-              display={{ xs: 'none', lg: 'inline-block' }}
-            >
+            ) : (
               <MDButton
                 component="a"
                 href={action.route}
@@ -728,22 +726,29 @@ function SimpleNavbar({
                 variant="gradient"
                 color={action.color ? action.color : 'info'}
                 size="small"
-                sx={{ mt: -0.3 }}
+                sx={{ mt: -0.3, ml: 2 }}
               >
                 {action.label}
               </MDButton>
-            </MDBox>
-          ))}
+            ))}
+        </MDBox>
         <MDBox
-          display={{ xs: 'inline-block', lg: 'none' }}
-          lineHeight={0}
-          py={1.2}
-          pl={1.2}
-          color="inherit"
-          sx={{ cursor: 'pointer' }}
-          onClick={openMobileNavbar}
+          display={{ xs: 'flex', lg: 'none' }}
+          alignItems="center"
         >
-          <Icon>{mobileNavbar ? 'close' : 'menu'}</Icon>
+          {multilingual && <I18nSelect />}
+          <MDBox
+            pl={1.2}
+            color="inherit"
+            sx={{ cursor: 'pointer' }}
+            onClick={openMobileNavbar}
+            alignItems="center"
+            display="flex"
+          >
+            <Icon fontSize="medium">
+              {mobileNavbar ? 'close' : 'menu'}
+            </Icon>
+          </MDBox>
         </MDBox>
       </MDBox>
       {dropdownMenu}
@@ -765,6 +770,7 @@ SimpleNavbar.defaultProps = {
   transparent: false,
   light: false,
   action: false,
+  multilingual: true,
 };
 
 export default SimpleNavbar;

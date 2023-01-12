@@ -690,6 +690,28 @@ const en = {
     menu: 'My School',
   },
 
+  home: {
+    menu: {
+      schools: 'Schools',
+      registerSchool: 'School Register',
+      login: 'Login',
+    },
+    footer: {
+      description:
+        'Improve your operations, manage your classes, schedules, Manage monthly payments ALL IN ONE PLACE, Request your free trial for 30 days',
+      contact: {
+        title: 'Contact Information',
+        email: 'ivocoach68@gmail.com',
+      },
+      admin: 'Admin panel',
+      copyright: '© 2023 All rights reserved by IvoCoach',
+    },
+    banner: {
+      title: 'Please learn to swim',
+      button: 'View Schools',
+    },
+  },
+
   tenant: {
     name: 'tenant',
     label: 'Schools',
