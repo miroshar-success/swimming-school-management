@@ -22,13 +22,13 @@ export default function HomeViewPage(props) {
             },
             {
               name: i18n('home.menu.registerSchool'),
-              route: '/register-school',
+              route: '/admin/auth/signup',
             },
           ]}
           action={{
             type: 'internal',
             color: 'info',
-            route: '/login',
+            route: '/admin/auth/signin',
             label: i18n('home.menu.login'),
           }}
         />
@@ -55,7 +55,7 @@ export default function HomeViewPage(props) {
               color="light"
               sx={{
                 pt: 43,
-                fontSize: 70,
+                fontSize: { xs: 50, lg: 70 },
               }}
             >
               {i18n('home.banner.title')}

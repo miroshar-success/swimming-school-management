@@ -96,7 +96,9 @@ function SigninPage(): JSX.Element {
   return (
     <BasicLayout
       image={
-        backgroundImageUrl ? backgroundImageUrl : bgImage
+        backgroundImageUrl
+          ? backgroundImageUrl
+          : '/images/bg-sign-in.jpg'
       }
     >
       <Card>

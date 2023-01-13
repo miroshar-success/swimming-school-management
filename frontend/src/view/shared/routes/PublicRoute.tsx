@@ -18,7 +18,11 @@ function PublicRoute({
         );
 
         if (permissionChecker.isAuthenticated) {
-          return <Redirect to="/admin" />;
+          if (permissionChecker.isAdmin) {
+            return <Redirect to="/admin" />;
+          } else {
+            return <Redirect to="/dashboard" />;
+          }
         }
 
         return <Component {...props} />;
