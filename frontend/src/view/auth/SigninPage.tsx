@@ -96,7 +96,9 @@ function SigninPage(): JSX.Element {
   return (
     <BasicLayout
       image={
-        backgroundImageUrl ? backgroundImageUrl : bgImage
+        backgroundImageUrl
+          ? backgroundImageUrl
+          : '/images/bg-sign-in.jpg'
       }
     >
       <Card>
@@ -157,7 +159,7 @@ function SigninPage(): JSX.Element {
                     component={Link}
                     variant="button"
                     color="info"
-                    to="/auth/forgot-password"
+                    to="/admin/auth/forgot-password"
                     fontWeight="medium"
                     textGradient
                   >
@@ -180,7 +182,7 @@ function SigninPage(): JSX.Element {
                 <MDTypography variant="button" color="text">
                   <MDTypography
                     component={Link}
-                    to="/auth/signup"
+                    to="/admin/auth/signup"
                     variant="button"
                     color="info"
                     fontWeight="medium"

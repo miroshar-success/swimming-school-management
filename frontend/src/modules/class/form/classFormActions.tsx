@@ -44,7 +44,7 @@ const classFormActions = {
         type: classFormActions.INIT_ERROR,
       });
 
-      getHistory().push('/class');
+      getHistory().push('/admin/class');
     }
   },
 
@@ -62,7 +62,7 @@ const classFormActions = {
 
       Message.success(i18n('class.doAddSuccess'));
 
-      getHistory().push('/class');
+      getHistory().push('/admin/class');
     } catch (error) {
       Errors.handle(error);
 
@@ -86,7 +86,7 @@ const classFormActions = {
 
       Message.success(i18n('class.doUpdateSuccess'));
 
-      getHistory().push('/class');
+      getHistory().push('/admin/class');
     } catch (error) {
       Errors.handle(error);
 

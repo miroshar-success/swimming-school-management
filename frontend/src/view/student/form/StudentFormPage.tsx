@@ -62,9 +62,9 @@ function StudentFormPage(props) {
           onCancel={() =>
             isEditing
               ? getHistory().push(
-                  `/student/${match.params.id}`,
+                  `/admin/student/${match.params.id}`,
                 )
-              : getHistory().push('/student')
+              : getHistory().push('/admin/student')
           }
         />
       )}

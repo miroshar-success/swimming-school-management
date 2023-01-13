@@ -62,9 +62,9 @@ function TeacherFormPage(props) {
           onCancel={() =>
             isEditing
               ? getHistory().push(
-                  `/teacher/${match.params.id}`,
+                  `/admin/teacher/${match.params.id}`,
                 )
-              : getHistory().push('/teacher')
+              : getHistory().push('/admin/teacher')
           }
         />
       )}

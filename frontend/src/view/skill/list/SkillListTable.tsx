@@ -205,7 +205,7 @@ function SkillListTable(props) {
                           size="small"
                           component={Link}
                           color={sidenavColor}
-                          to={`/skill/${row.id}`}
+                          to={`/admin/skill/${row.id}`}
                         >
                           <SearchIcon />
                         </IconButton>
@@ -219,7 +219,7 @@ function SkillListTable(props) {
                             size="small"
                             color={sidenavColor}
                             component={Link}
-                            to={`/skill/${row.id}/edit`}
+                            to={`/admin/skill/${row.id}/edit`}
                           >
                             <EditIcon />
                           </IconButton>

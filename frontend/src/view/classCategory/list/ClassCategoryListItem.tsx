@@ -31,7 +31,7 @@ function ClassCategoryListItem(props) {
         <div key={record.id}>
           <MaterialLink
             component={Link}
-            to={`/class-category/${record.id}`}
+            to={`/admin/class-category/${record.id}`}
           >
             {record.name}
           </MaterialLink>

@@ -50,7 +50,7 @@ function GradeViewToolbar(props) {
       {hasPermissionToEdit && (
         <MDButton
           component={Link}
-          to={`/grade/${id}/edit`}
+          to={`/admin/grade/${id}/edit`}
           variant="gradient"
           color={sidenavColor}
           type="button"
@@ -79,7 +79,7 @@ function GradeViewToolbar(props) {
         variant="outlined"
         color={sidenavColor}
         component={Link}
-        to={'/grade'}
+        to={'/admin/grade'}
         startIcon={<ArrowBackIcon />}
         size="small"
       >

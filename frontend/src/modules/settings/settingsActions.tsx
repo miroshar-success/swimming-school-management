@@ -43,7 +43,7 @@ const settingsActions = {
         type: settingsActions.INIT_ERROR,
       });
 
-      getHistory().push('/');
+      getHistory().push('/admin');
     }
   },
 

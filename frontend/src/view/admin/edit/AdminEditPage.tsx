@@ -55,7 +55,9 @@ function AdminEditPage(props) {
             <AdminEditForm
               admin={admin}
               saveLoading={saveLoading}
-              onCancel={() => getHistory().push('/admin')}
+              onCancel={() =>
+                getHistory().push('/admin/admin')
+              }
             />
           )}
         </MDBox>

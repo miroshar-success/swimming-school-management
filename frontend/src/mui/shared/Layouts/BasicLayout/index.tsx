@@ -52,8 +52,8 @@ function BasicLayout({
           }: Theme) =>
             image &&
             `${linearGradient(
-              rgba(gradients.dark.main, 0.6),
-              rgba(gradients.dark.state, 0.6),
+              rgba(gradients.dark.main, 0.2),
+              rgba(gradients.dark.state, 0.2),
             )}, url(${image})`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',

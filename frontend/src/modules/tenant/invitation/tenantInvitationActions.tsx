@@ -44,7 +44,7 @@ const tenantInvitationActions = {
 
         if (!isSignedIn) {
           AuthInvitationToken.set(token);
-          getHistory().push('/auth/signup');
+          getHistory().push('/admin/auth/signup');
           return;
         }
 
@@ -64,7 +64,7 @@ const tenantInvitationActions = {
         });
       } catch (error) {
         if (Errors.errorCode(error) === 404) {
-          getHistory().push('/');
+          getHistory().push('/admin');
           return;
         }
 
@@ -81,7 +81,7 @@ const tenantInvitationActions = {
         dispatch({
           type: tenantInvitationActions.ACCEPT_FROM_AUTH_ERROR,
         });
-        getHistory().push('/');
+        getHistory().push('/admin');
       }
     },
 
@@ -123,7 +123,7 @@ const tenantInvitationActions = {
 
       Message.success(i18n('tenant.invitation.declined'));
 
-      getHistory().push('/tenant');
+      getHistory().push('/admin/tenant');
     } catch (error) {
       Errors.handle(error);
 

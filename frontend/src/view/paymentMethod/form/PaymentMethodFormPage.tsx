@@ -69,7 +69,7 @@ function PaymentMethodFormPage(props) {
               isEditing={isEditing}
               onSubmit={doSubmit}
               onCancel={() =>
-                getHistory().push('/payment-method')
+                getHistory().push('/admin/payment-method')
               }
             />
           )}

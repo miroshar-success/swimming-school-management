@@ -101,7 +101,7 @@ function SkillToolbar(props) {
           variant="gradient"
           color={sidenavColor}
           component={Link}
-          to="/skill/new"
+          to="/admin/skill/new"
           startIcon={<AddIcon />}
           size="small"
         >

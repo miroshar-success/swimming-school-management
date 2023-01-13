@@ -28,7 +28,7 @@ const poolViewActions = {
         type: poolViewActions.FIND_ERROR,
       });
 
-      getHistory().push('/pool');
+      getHistory().push('/admin/pool');
     }
   },
 };

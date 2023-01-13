@@ -191,7 +191,7 @@ function ClassCategoryListTable(props) {
                           size="small"
                           component={Link}
                           color={sidenavColor}
-                          to={`/class-category/${row.id}`}
+                          to={`/admin/class-category/${row.id}`}
                         >
                           <SearchIcon />
                         </IconButton>
@@ -205,7 +205,7 @@ function ClassCategoryListTable(props) {
                             size="small"
                             color={sidenavColor}
                             component={Link}
-                            to={`/class-category/${row.id}/edit`}
+                            to={`/admin/class-category/${row.id}/edit`}
                           >
                             <EditIcon />
                           </IconButton>

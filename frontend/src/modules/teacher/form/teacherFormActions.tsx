@@ -46,7 +46,7 @@ const teacherFormActions = {
         type: teacherFormActions.INIT_ERROR,
       });
 
-      getHistory().push('/teacher');
+      getHistory().push('/admin/teacher');
     }
   },
 
@@ -64,7 +64,7 @@ const teacherFormActions = {
 
       Message.success(i18n('teacher.doAddSuccess'));
 
-      getHistory().push('/teacher');
+      getHistory().push('/admin/teacher');
     } catch (error) {
       Errors.handle(error);
 
@@ -96,7 +96,7 @@ const teacherFormActions = {
 
       Message.success(i18n('teacher.doUpdateSuccess'));
 
-      getHistory().push('/teacher');
+      getHistory().push('/admin/teacher');
     } catch (error) {
       Errors.handle(error);
 

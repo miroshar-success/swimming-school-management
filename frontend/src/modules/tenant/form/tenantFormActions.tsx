@@ -47,7 +47,7 @@ const tenantFormActions = {
         type: tenantFormActions.INIT_ERROR,
       });
 
-      getHistory().push('/tenant');
+      getHistory().push('/admin/tenant');
     }
   },
 

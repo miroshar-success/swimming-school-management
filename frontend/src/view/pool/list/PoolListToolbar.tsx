@@ -101,7 +101,7 @@ function PoolToolbar(props) {
           variant="gradient"
           color={sidenavColor}
           component={Link}
-          to="/pool/new"
+          to="/admin/pool/new"
           startIcon={<AddIcon />}
           size="small"
         >

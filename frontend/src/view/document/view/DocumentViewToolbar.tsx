@@ -49,7 +49,7 @@ function DocumentViewToolbar(props) {
       {hasPermissionToEdit && (
         <MDButton
           component={Link}
-          to={`/document/${id}/edit`}
+          to={`/admin/document/${id}/edit`}
           variant="gradient"
           color={sidenavColor}
           type="button"
@@ -78,7 +78,7 @@ function DocumentViewToolbar(props) {
         variant="outlined"
         color={sidenavColor}
         component={Link}
-        to={'/document'}
+        to={'/admin/document'}
         startIcon={<ArrowBackIcon />}
         size="small"
       >

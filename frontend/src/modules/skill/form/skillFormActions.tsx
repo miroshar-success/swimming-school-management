@@ -44,7 +44,7 @@ const skillFormActions = {
         type: skillFormActions.INIT_ERROR,
       });
 
-      getHistory().push('/skill');
+      getHistory().push('/admin/skill');
     }
   },
 
@@ -62,7 +62,7 @@ const skillFormActions = {
 
       Message.success(i18n('skill.doAddSuccess'));
 
-      getHistory().push('/skill');
+      getHistory().push('/admin/skill');
     } catch (error) {
       Errors.handle(error);
 
@@ -86,7 +86,7 @@ const skillFormActions = {
 
       Message.success(i18n('skill.doUpdateSuccess'));
 
-      getHistory().push('/skill');
+      getHistory().push('/admin/skill');
     } catch (error) {
       Errors.handle(error);
 

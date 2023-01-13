@@ -50,7 +50,7 @@ function ClassCategoryViewToolbar(props) {
       {hasPermissionToEdit && (
         <MDButton
           component={Link}
-          to={`/class-category/${id}/edit`}
+          to={`/admin/class-category/${id}/edit`}
           variant="gradient"
           color={sidenavColor}
           type="button"
@@ -79,7 +79,7 @@ function ClassCategoryViewToolbar(props) {
         variant="outlined"
         color={sidenavColor}
         component={Link}
-        to={'/class-category'}
+        to={'/admin/class-category'}
         startIcon={<ArrowBackIcon />}
         size="small"
       >

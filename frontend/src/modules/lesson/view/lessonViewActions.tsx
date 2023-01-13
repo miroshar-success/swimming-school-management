@@ -28,7 +28,7 @@ const lessonViewActions = {
         type: lessonViewActions.FIND_ERROR,
       });
 
-      getHistory().push('/lesson');
+      getHistory().push('/admin/lesson');
     }
   },
 };

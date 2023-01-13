@@ -34,7 +34,7 @@ const paymentMethodDestroyActions = {
 
       dispatch(listActions.doFetchCurrentFilter());
 
-      getHistory().push('/payment-method');
+      getHistory().push('/admin/payment-method');
     } catch (error) {
       Errors.handle(error);
 
@@ -67,7 +67,7 @@ const paymentMethodDestroyActions = {
         i18n('payment.method.doDestroyAllSelectedSuccess'),
       );
 
-      getHistory().push('/payment-method');
+      getHistory().push('/admin/payment-method');
     } catch (error) {
       Errors.handle(error);
 

@@ -43,7 +43,7 @@ const SettingsFormPage = (props) => {
           {!initLoading && settings && (
             <SettingsForm
               settings={settings}
-              onCancel={() => getHistory().push('/')}
+              onCancel={() => getHistory().push('/admin')}
             />
           )}
         </MDBox>

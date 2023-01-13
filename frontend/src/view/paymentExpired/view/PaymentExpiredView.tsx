@@ -81,7 +81,10 @@ function PaymentExpiredView(props) {
                     {payment.category.name}
                   </DataTableBodyCell>
                   <DataTableBodyCell>
-                    {payment.month + 1 + '/' + payment.year}
+                    {payment.month +
+                      1 +
+                      '/admin' +
+                      payment.year}
                   </DataTableBodyCell>
                   <DataTableBodyCell>
                     {payment.cost}

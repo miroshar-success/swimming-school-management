@@ -28,7 +28,7 @@ const paymentCategoryViewActions = {
         type: paymentCategoryViewActions.FIND_ERROR,
       });
 
-      getHistory().push('/payment-category');
+      getHistory().push('/admin/payment-category');
     }
   },
 };

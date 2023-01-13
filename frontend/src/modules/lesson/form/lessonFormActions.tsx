@@ -44,7 +44,7 @@ const lessonFormActions = {
         type: lessonFormActions.INIT_ERROR,
       });
 
-      getHistory().push('/lesson');
+      getHistory().push('/admin/lesson');
     }
   },
 
@@ -62,7 +62,7 @@ const lessonFormActions = {
 
       Message.success(i18n('lesson.doAddSuccess'));
 
-      getHistory().push('/lesson');
+      getHistory().push('/admin/lesson');
     } catch (error) {
       Errors.handle(error);
 
@@ -86,7 +86,7 @@ const lessonFormActions = {
 
       Message.success(i18n('lesson.doUpdateSuccess'));
 
-      getHistory().push('/lesson');
+      getHistory().push('/admin/lesson');
     } catch (error) {
       Errors.handle(error);
 

@@ -97,7 +97,7 @@ function GradeToolbar(props) {
           variant="gradient"
           color={sidenavColor}
           component={Link}
-          to="/grade/new"
+          to="/admin/grade/new"
           startIcon={<AddIcon />}
           size="small"
         >

@@ -4,7 +4,7 @@ const permissions = Permissions.values;
 
 const privateRoutes = [
   {
-    path: '/',
+    path: '/admin',
     i18n: 'dashboard.menu',
     loader: () =>
       import('src/view/dashboard/DashboardPage'),
@@ -13,41 +13,41 @@ const privateRoutes = [
   },
 
   {
-    path: '/report',
+    path: '/admin/report',
     collapseName: 'reports',
     i18n: 'collapses.reports.menu',
-    parent: '/',
-    redirect: '/report/tasks-by-month',
+    parent: '/admin',
+    redirect: '/admin/report/tasks-by-month',
     permissionRequired: null,
     virtual: true,
   },
 
   {
-    path: '/person-name-breadcrumb',
+    path: '/admin/person-name-breadcrumb',
     collapseName: 'my-profile',
     // labelCode: '{USER_TEXT}',
     i18n: 'roles.admin.label',
-    parent: '/',
-    redirect: '/profile',
+    parent: '/admin',
+    redirect: '/admin/profile',
     permissionRequired: null,
     virtual: true,
   },
 
   {
-    path: '/profile',
+    path: '/admin/profile',
     collapseName: 'my-profile',
     i18n: 'auth.profile.title',
-    parent: '/person-name-breadcrumb',
+    parent: '/admin/person-name-breadcrumb',
     loader: () => import('src/view/auth/ProfileFormPage'),
     permissionRequired: null,
     exact: true,
   },
 
   {
-    path: '/password-change',
+    path: '/admin/password-change',
     collapseName: 'my-profile',
     i18n: 'auth.passwordChange.title',
-    parent: '/person-name-breadcrumb',
+    parent: '/admin/person-name-breadcrumb',
     loader: () =>
       import('src/view/auth/PasswordChangeFormPage'),
     permissionRequired: null,
@@ -55,10 +55,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/tenant',
+    path: '/admin/tenant',
     collapseName: 'my-profile',
     i18n: 'tenant.title',
-    parent: '/person-name-breadcrumb',
+    parent: '/admin/person-name-breadcrumb',
     loader: () =>
       import('src/view/tenant/list/TenantListPage'),
     permissionRequired: null,
@@ -66,10 +66,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/tenant/new',
+    path: '/admin/tenant/new',
     collapseName: 'my-profile',
     i18n: 'tenant.new.title',
-    parent: '/tenant',
+    parent: '/admin/tenant',
     loader: () =>
       import('src/view/tenant/form/TenantFormPage'),
     permissionRequired: null,
@@ -77,10 +77,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/tenant/:id/edit',
+    path: '/admin/tenant/:id/edit',
     collapseName: 'my-profile',
     i18n: 'tenant.edit.title',
-    parent: '/tenant',
+    parent: '/admin/tenant',
     loader: () =>
       import('src/view/tenant/form/TenantFormPage'),
     permissionRequired: null,
@@ -88,40 +88,40 @@ const privateRoutes = [
   },
 
   config.isPlanEnabled && {
-    path: '/plan',
+    path: '/admin/plan',
     i18n: 'plan.title',
     collapseName: 'my-profile',
-    parent: '/person-name-breadcrumb',
+    parent: '/admin/person-name-breadcrumb',
     loader: () => import('src/view/plan/PlanPage'),
     permissionRequired: permissions.planRead,
     exact: true,
   },
 
   {
-    path: '/admin',
+    path: '/admin/admin',
     i18n: 'user.menu',
     collapseName: 'my-profile',
-    parent: '/person-name-breadcrumb',
+    parent: '/admin/person-name-breadcrumb',
     loader: () => import('src/view/admin/list/AdminPage'),
     permissionRequired: permissions.adminRead,
     exact: true,
   },
 
   {
-    path: '/admin/new',
+    path: '/admin/admin/new',
     i18n: 'user.new.title',
     collapseName: 'my-profile',
-    parent: '/admin',
+    parent: '/admin/admin',
     loader: () => import('src/view/admin/new/AdminNewPage'),
     permissionRequired: permissions.adminCreate,
     exact: true,
   },
 
   {
-    path: '/admin/:id/edit',
+    path: '/admin/admin/:id/edit',
     i18n: 'user.edit.title',
     collapseName: 'my-profile',
-    parent: '/admin',
+    parent: '/admin/admin',
     loader: () =>
       import('src/view/admin/edit/AdminEditPage'),
     permissionRequired: permissions.adminEdit,
@@ -129,10 +129,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/admin/:id',
+    path: '/admin/admin/:id',
     i18n: 'user.view.title',
     collapseName: 'my-profile',
-    parent: '/admin',
+    parent: '/admin/admin',
     loader: () =>
       import('src/view/admin/view/AdminViewPage'),
     permissionRequired: permissions.adminRead,
@@ -140,39 +140,39 @@ const privateRoutes = [
   },
 
   {
-    path: '/settings-breadcrumb',
+    path: '/admin/settings-breadcrumb',
     collapseName: 'settings',
     i18n: 'settings.title',
-    parent: '/',
-    redirect: '/settings',
+    parent: '/admin',
+    redirect: '/admin/settings',
     permissionRequired: null,
     virtual: true,
   },
 
   {
-    path: '/audit-log',
+    path: '/admin/audit-log',
     collapseName: 'settings',
     i18n: 'auditLog.menu',
-    parent: '/settings-breadcrumb',
+    parent: '/admin/settings-breadcrumb',
     loader: () => import('src/view/auditLog/AuditLogPage'),
     permissionRequired: permissions.auditLogRead,
   },
 
   {
-    path: '/settings',
+    path: '/admin/settings',
     collapseName: 'settings',
     i18n: 'school.menu',
-    parent: '/settings-breadcrumb',
+    parent: '/admin/settings-breadcrumb',
     loader: () =>
       import('src/view/settings/SettingsFormPage'),
     permissionRequired: permissions.settingsEdit,
   },
 
   {
-    path: '/document',
+    path: '/admin/document',
     i18n: 'document.menu',
     collapseName: 'settings',
-    parent: '/settings-breadcrumb',
+    parent: '/admin/settings-breadcrumb',
     loader: () =>
       import('src/view/document/list/DocumentListPage'),
     permissionRequired: permissions.documentRead,
@@ -180,10 +180,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/document/new',
+    path: '/admin/document/new',
     i18n: 'document.new.title',
     collapseName: 'document',
-    parent: '/document',
+    parent: '/admin/document',
     loader: () =>
       import('src/view/document/form/DocumentFormPage'),
     permissionRequired: permissions.documentCreate,
@@ -191,10 +191,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/document/:id/edit',
+    path: '/admin/document/:id/edit',
     i18n: 'document.edit.title',
     collapseName: 'document',
-    parent: '/document',
+    parent: '/admin/document',
     loader: () =>
       import('src/view/document/form/DocumentFormPage'),
     permissionRequired: permissions.documentEdit,
@@ -202,30 +202,30 @@ const privateRoutes = [
   },
 
   {
-    path: '/document/:id',
+    path: '/admin/document/:id',
     i18n: 'document.view.title',
     collapseName: 'document',
-    parent: '/document',
+    parent: '/admin/document',
     loader: () =>
       import('src/view/document/view/DocumentViewPage'),
     permissionRequired: permissions.documentRead,
     exact: true,
   },
   {
-    path: '/student-breadcrumb',
+    path: '/admin/student-breadcrumb',
     collapseName: 'student',
     i18n: 'student.menu',
-    parent: '/',
-    redirect: '/student',
+    parent: '/admin',
+    redirect: '/admin/student',
     permissionRequired: null,
     virtual: true,
   },
 
   {
-    path: '/student',
+    path: '/admin/student',
     i18n: 'common.list',
     collapseName: 'student',
-    parent: '/student-breadcrumb',
+    parent: '/admin/student-breadcrumb',
     loader: () =>
       import('src/view/student/list/StudentPage'),
     permissionRequired: permissions.studentRead,
@@ -233,10 +233,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/student/new',
+    path: '/admin/student/new',
     i18n: 'student.new.title',
     collapseName: 'student',
-    parent: '/student-breadcrumb',
+    parent: '/admin/student-breadcrumb',
     loader: () =>
       import('src/view/student/form/StudentFormPage'),
     permissionRequired: permissions.studentCreate,
@@ -244,10 +244,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/student/:id/edit',
+    path: '/admin/student/:id/edit',
     i18n: 'student.edit.title',
     collapseName: 'student',
-    parent: '/student-breadcrumb',
+    parent: '/admin/student-breadcrumb',
     loader: () =>
       import('src/view/student/form/StudentFormPage'),
     permissionRequired: permissions.studentEdit,
@@ -255,10 +255,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/student/:id',
+    path: '/admin/student/:id',
     i18n: 'student.view.title',
     collapseName: 'student',
-    parent: '/student-breadcrumb',
+    parent: '/admin/student-breadcrumb',
     loader: () =>
       import('src/view/student/view/StudentViewPage'),
     permissionRequired: permissions.studentRead,
@@ -266,10 +266,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/registration',
+    path: '/admin/registration',
     i18n: 'registration.title',
     collapseName: 'student',
-    parent: '/student-breadcrumb',
+    parent: '/admin/student-breadcrumb',
     loader: () =>
       import('src/view/registration/list/RegistrationPage'),
     permissionRequired: permissions.studentRead,
@@ -277,10 +277,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/registration/:id',
+    path: '/admin/registration/:id',
     i18n: 'registration.registerLessons',
     collapseNmae: 'student',
-    parent: '/registration',
+    parent: '/admin/registration',
     loader: () =>
       import(
         'src/view/registration/form/RegistrationFormPage'
@@ -289,10 +289,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/teacher',
+    path: '/admin/teacher',
     i18n: 'teacher.menu',
     collapseName: 'teacher-page',
-    parent: '/',
+    parent: '/admin',
     loader: () =>
       import('src/view/teacher/list/TeacherPage'),
     permissionRequired: permissions.teacherRead,
@@ -300,10 +300,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/teacher/new',
+    path: '/admin/teacher/new',
     i18n: 'teacher.new.title',
     collapseName: 'teacher-page',
-    parent: '/teacher',
+    parent: '/admin/teacher',
     loader: () =>
       import('src/view/teacher/form/TeacherFormPage'),
     permissionRequired: permissions.teacherCreate,
@@ -311,10 +311,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/teacher/:id/edit',
+    path: '/admin/teacher/:id/edit',
     i18n: 'teacher.edit.title',
     collapseName: 'teacher-page',
-    parent: '/teacher',
+    parent: '/admin/teacher',
     loader: () =>
       import('src/view/teacher/form/TeacherFormPage'),
     permissionRequired: permissions.teacherEdit,
@@ -322,10 +322,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/teacher/:id',
+    path: '/admin/teacher/:id',
     i18n: 'teacher.view.title',
     collapseName: 'teacher-page',
-    parent: '/teacher',
+    parent: '/admin/teacher',
     loader: () =>
       import('src/view/teacher/view/TeacherViewPage'),
     permissionRequired: permissions.teacherRead,
@@ -333,20 +333,20 @@ const privateRoutes = [
   },
 
   {
-    path: '/payment-breadcrumb',
+    path: '/admin/payment-breadcrumb',
     i18n: 'payment.menu',
     collapse: 'payment',
-    parent: '/',
-    redirect: '/payment',
+    parent: '/admin',
+    redirect: '/admin/payment',
     permissionRequired: permissions.paymentRead,
     virtual: true,
   },
 
   {
-    path: '/payment',
+    path: '/admin/payment',
     i18n: 'common.list',
     collapse: 'payment',
-    parent: '/payment-breadcrumb',
+    parent: '/admin/payment-breadcrumb',
     loader: () =>
       import('src/view/payment/list/PaymentListPage'),
     permissionRequired: permissions.paymentRead,
@@ -354,10 +354,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/payment/:id/create',
+    path: '/admin/payment/:id/create',
     i18n: 'payment.add.title',
     collapse: 'payment',
-    parent: '/payment',
+    parent: '/admin/payment',
     loader: () =>
       import('src/view/payment/form/PaymentFormPage'),
     permissionRequired: permissions.paymentCreate,
@@ -365,10 +365,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/payment-history',
+    path: '/admin/payment-history',
     i18n: 'payment.history.title',
     collapse: 'payment',
-    parent: '/payment-breadcrumb',
+    parent: '/admin/payment-breadcrumb',
     loader: () =>
       import(
         'src/view/paymentHistory/list/PaymentHistoryListPage'
@@ -378,10 +378,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/payment-history/:userId/:paymentId',
+    path: '/admin/payment-history/:userId/:paymentId',
     i18n: 'payment.history.view.title',
     collapse: 'payment',
-    parent: '/payment-history',
+    parent: '/admin/payment-history',
     loader: () =>
       import(
         'src/view/paymentHistory/view/PaymentHistoryViewPage'
@@ -390,10 +390,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/payment-expired',
+    path: '/admin/payment-expired',
     i18n: 'payment.expired.title',
     collapse: 'payment',
-    parent: '/payment-breadcrumb',
+    parent: '/admin/payment-breadcrumb',
     loader: () =>
       import(
         'src/view/paymentExpired/list/PaymentExpiredListPage'
@@ -403,10 +403,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/payment-expired/:id',
+    path: '/admin/payment-expired/:id',
     i18n: 'payment.expired.view.title',
     collapse: 'payment',
-    parent: '/payment-expired',
+    parent: '/admin/payment-expired',
     loader: () =>
       import(
         'src/view/paymentExpired/view/PaymentExpiredViewPage'
@@ -416,10 +416,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/payment-category',
+    path: '/admin/payment-category',
     i18n: 'payment.category.title',
     collapse: 'payment',
-    parent: '/payment-breadcrumb',
+    parent: '/admin/payment-breadcrumb',
     loader: () =>
       import(
         'src/view/paymentCategory/list/PaymentCategoryListPage'
@@ -429,10 +429,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/payment-category/new',
+    path: '/admin/payment-category/new',
     i18n: 'payment.category.new.title',
     collapse: 'payment',
-    parent: '/payment-category',
+    parent: '/admin/payment-category',
     loader: () =>
       import(
         'src/view/paymentCategory/form/PaymentCategoryFormPage'
@@ -442,10 +442,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/payment-category/:id/edit',
+    path: '/admin/payment-category/:id/edit',
     i18n: 'payment.category.edit.title',
     collapse: 'payment',
-    parent: '/payment-category',
+    parent: '/admin/payment-category',
     loader: () =>
       import(
         'src/view/paymentCategory/form/PaymentCategoryFormPage'
@@ -455,10 +455,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/payment-category/:id',
+    path: '/admin/payment-category/:id',
     i18n: 'payment.category.view.title',
     collapse: 'payment',
-    parent: '/payment-category',
+    parent: '/admin/payment-category',
     loader: () =>
       import(
         'src/view/paymentCategory/view/PaymentCategoryViewPage'
@@ -468,10 +468,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/payment-method',
+    path: '/admin/payment-method',
     i18n: 'payment.method.title',
     collapse: 'payment',
-    parent: '/payment-breadcrumb',
+    parent: '/admin/payment-breadcrumb',
     loader: () =>
       import(
         'src/view/paymentMethod/list/PaymentMethodListPage'
@@ -481,10 +481,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/payment-method/new',
+    path: '/admin/payment-method/new',
     i18n: 'payment.method.new.title',
     collapse: 'payment',
-    parent: '/payment-method',
+    parent: '/admin/payment-method',
     loader: () =>
       import(
         'src/view/paymentMethod/form/PaymentMethodFormPage'
@@ -494,10 +494,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/payment-method/:id/edit',
+    path: '/admin/payment-method/:id/edit',
     i18n: 'payment.method.edit.title',
     collapse: 'payment',
-    parent: '/payment-method',
+    parent: '/admin/payment-method',
     loader: () =>
       import(
         'src/view/paymentMethod/form/PaymentMethodFormPage'
@@ -507,10 +507,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/payment-method/:id',
+    path: '/admin/payment-method/:id',
     i18n: 'payment.method.view.title',
     collapse: 'payment',
-    parent: '/payment-method',
+    parent: '/admin/payment-method',
     loader: () =>
       import(
         'src/view/paymentMethod/view/PaymentMethodViewPage'
@@ -520,20 +520,20 @@ const privateRoutes = [
   },
 
   {
-    path: '/class-breadcrumb',
+    path: '/admin/class-breadcrumb',
     i18n: 'class.menu',
     collapse: 'class',
-    parent: '/',
-    redirect: '/class',
+    parent: '/admin',
+    redirect: '/admin/class',
     permissionRequired: null,
     virtual: true,
   },
 
   {
-    path: '/class',
+    path: '/admin/class',
     i18n: 'class.title',
     collapse: 'class',
-    parent: '/class-breadcrumb',
+    parent: '/admin/class-breadcrumb',
     loader: () =>
       import('src/view/class/list/ClassListPage'),
     permissionRequired: permissions.classRead,
@@ -541,10 +541,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/class/new',
+    path: '/admin/class/new',
     i18n: 'class.new.title',
     collapse: 'class',
-    parent: '/class-breadcrumb',
+    parent: '/admin/class-breadcrumb',
     loader: () =>
       import('src/view/class/form/ClassFormPage'),
     permissionRequired: permissions.classCreate,
@@ -552,10 +552,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/class/:id/edit',
+    path: '/admin/class/:id/edit',
     i18n: 'class.edit.title',
     collapse: 'class',
-    parent: '/class-breadcrumb',
+    parent: '/admin/class-breadcrumb',
     loader: () =>
       import('src/view/class/form/ClassFormPage'),
     permissionRequired: permissions.classEdit,
@@ -563,10 +563,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/class/:id',
+    path: '/admin/class/:id',
     i18n: 'class.view.title',
     collapse: 'class',
-    parent: '/class-breadcrumb',
+    parent: '/admin/class-breadcrumb',
     loader: () =>
       import('src/view/class/view/ClassViewPage'),
     permissionRequired: permissions.classRead,
@@ -574,10 +574,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/lesson',
+    path: '/admin/lesson',
     i18n: 'lesson.title',
     collapse: 'class',
-    parent: '/class-breadcrumb',
+    parent: '/admin/class-breadcrumb',
     loader: () =>
       import('src/view/lesson/list/LessonListPage'),
     permissionRequired: permissions.classRead,
@@ -585,10 +585,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/lesson/new',
+    path: '/admin/lesson/new',
     i18n: 'lesson.new.title',
     collapse: 'class',
-    parent: '/lesson',
+    parent: '/admin/lesson',
     loader: () =>
       import('src/view/lesson/form/LessonFormPage'),
     permissionRequired: permissions.classCreate,
@@ -596,10 +596,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/lesson/:id/edit',
+    path: '/admin/lesson/:id/edit',
     i18n: 'lesson.edit.title',
     collapse: 'class',
-    parent: '/lesson',
+    parent: '/admin/lesson',
     loader: () =>
       import('src/view/lesson/form/LessonFormPage'),
     permissionRequired: permissions.classEdit,
@@ -607,10 +607,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/lesson/:id',
+    path: '/admin/lesson/:id',
     i18n: 'lesson.view.title',
     collapse: 'class',
-    parent: '/lesson',
+    parent: '/admin/lesson',
     loader: () =>
       import('src/view/lesson/view/LessonViewPage'),
     permissionRequired: permissions.classRead,
@@ -618,10 +618,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/class-category',
+    path: '/admin/class-category',
     i18n: 'classCategory.title',
     collapse: 'class',
-    parent: '/class-breadcrumb',
+    parent: '/admin/class-breadcrumb',
     loader: () =>
       import(
         'src/view/classCategory/list/ClassCategoryListPage'
@@ -631,10 +631,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/class-category/new',
+    path: '/admin/class-category/new',
     i18n: 'classCategory.new.title',
     collapse: 'class',
-    parent: '/class-category',
+    parent: '/admin/class-category',
     loader: () =>
       import(
         'src/view/classCategory/form/ClassCategoryFormPage'
@@ -644,10 +644,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/class-category/:id/edit',
+    path: '/admin/class-category/:id/edit',
     i18n: 'classCategory.edit.title',
     collapse: 'class',
-    parent: '/class-category',
+    parent: '/admin/class-category',
     loader: () =>
       import(
         'src/view/classCategory/form/ClassCategoryFormPage'
@@ -657,10 +657,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/class-category/:id',
+    path: '/admin/class-category/:id',
     i18n: 'classCategory.view.title',
     collapse: 'class',
-    parent: '/class-category',
+    parent: '/admin/class-category',
     loader: () =>
       import(
         'src/view/classCategory/view/ClassCategoryViewPage'
@@ -670,20 +670,20 @@ const privateRoutes = [
   },
 
   {
-    path: '/grade-breadcrumb',
+    path: '/admin/grade-breadcrumb',
     i18n: 'grade.menu',
     collapse: 'grade',
-    parent: '/',
-    redirect: '/grade',
+    parent: '/admin',
+    redirect: '/admin/grade',
     permissionRequired: null,
     virtual: true,
   },
 
   {
-    path: '/grade',
+    path: '/admin/grade',
     i18n: 'grade.title',
     collapse: 'grade',
-    parent: '/grade-breadcrumb',
+    parent: '/admin/grade-breadcrumb',
     loader: () =>
       import('src/view/grade/list/GradeListPage'),
     permissionRequired: permissions.gradeRead,
@@ -691,10 +691,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/grade/new',
+    path: '/admin/grade/new',
     i18n: 'grade.new.title',
     collapse: 'grade',
-    parent: '/grade',
+    parent: '/admin/grade',
     loader: () =>
       import('src/view/grade/form/GradeFormPage'),
     permissionRequired: permissions.gradeCreate,
@@ -702,10 +702,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/grade/:id/edit',
+    path: '/admin/grade/:id/edit',
     i18n: 'grade.edit.title',
     collapse: 'grade',
-    parent: '/grade',
+    parent: '/admin/grade',
     loader: () =>
       import('src/view/grade/form/GradeFormPage'),
     permissionRequired: permissions.gradeEdit,
@@ -713,10 +713,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/grade/:id',
+    path: '/admin/grade/:id',
     i18n: 'grade.view.title',
     collapse: 'grade',
-    parent: '/grade',
+    parent: '/admin/grade',
     loader: () =>
       import('src/view/grade/view/GradeViewPage'),
     permissionRequired: permissions.gradeRead,
@@ -724,10 +724,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/skill',
+    path: '/admin/skill',
     i18n: 'skill.title',
     collapse: 'grade',
-    parent: '/grade-breadcrumb',
+    parent: '/admin/grade-breadcrumb',
     loader: () =>
       import('src/view/skill/list/SkillListPage'),
     permissionRequired: permissions.skillRead,
@@ -735,10 +735,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/skill/new',
+    path: '/admin/skill/new',
     i18n: 'skill.new.title',
     collapse: 'grade',
-    parent: '/skill',
+    parent: '/admin/skill',
     loader: () =>
       import('src/view/skill/form/SkillFormPage'),
     permissionRequired: permissions.skillCreate,
@@ -746,10 +746,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/skill/:id/edit',
+    path: '/admin/skill/:id/edit',
     i18n: 'skill.edit.title',
     collapse: 'grade',
-    parent: '/skill',
+    parent: '/admin/skill',
     loader: () =>
       import('src/view/skill/form/SkillFormPage'),
     permissionRequired: permissions.skillEdit,
@@ -757,10 +757,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/skill/:id',
+    path: '/admin/skill/:id',
     i18n: 'skill.view.title',
     collapse: 'grade',
-    parent: '/skill',
+    parent: '/admin/skill',
     loader: () =>
       import('src/view/skill/view/SkillViewPage'),
     permissionRequired: permissions.skillRead,
@@ -768,10 +768,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/attendance',
+    path: '/admin/attendance',
     i18n: 'attendance.title',
     collapse: 'attendance',
-    parent: '/',
+    parent: '/admin',
     loader: () =>
       import('src/view/attendance/list/AttendanceListPage'),
     permissionRequired: permissions.attendanceRead,
@@ -779,10 +779,10 @@ const privateRoutes = [
   },
 
   {
-    path: '/attendance/:id',
+    path: '/admin/attendance/:id',
     i18n: 'attendance.view.title',
     collapse: 'attendance',
-    parent: '/attendance',
+    parent: '/admin/attendance',
     loader: () =>
       import('src/view/attendance/view/AttendanceViewPage'),
     permissionRequired: permissions.attendanceRead,
@@ -790,50 +790,50 @@ const privateRoutes = [
   },
 
   {
-    path: '/properties-breadcrumb',
+    path: '/admin/properties-breadcrumb',
     collapseName: 'properties',
     i18n: 'properties.menu',
-    parent: '/',
-    redirect: '/pool',
+    parent: '/admin',
+    redirect: '/admin/pool',
     permissionRequired: null,
     virtual: true,
   },
 
   {
-    path: '/pool',
+    path: '/admin/pool',
     collapseName: 'properties',
     i18n: 'pool.menu',
-    parent: '/properties-breadcrumb',
+    parent: '/admin/properties-breadcrumb',
     loader: () => import('src/view/pool/list/PoolListPage'),
     permissionRequired: permissions.poolRead,
     exact: true,
   },
 
   {
-    path: '/pool/new',
+    path: '/admin/pool/new',
     collapseName: 'properties',
     i18n: 'pool.new.title',
-    parent: '/pool',
+    parent: '/admin/pool',
     loader: () => import('src/view/pool/form/PoolFormPage'),
     permissionRequired: permissions.poolCreate,
     exact: true,
   },
 
   {
-    path: '/pool/:id/edit',
+    path: '/admin/pool/:id/edit',
     collapseName: 'properties',
     i18n: 'pool.edit.title',
-    parent: '/pool',
+    parent: '/admin/pool',
     loader: () => import('src/view/pool/form/PoolFormPage'),
     permissionRequired: permissions.poolEdit,
     exact: true,
   },
 
   {
-    path: '/pool/:id',
+    path: '/admin/pool/:id',
     collapseName: 'properties',
     i18n: 'pool.view.title',
-    parent: '/pool',
+    parent: '/admin/pool',
     loader: () => import('src/view/pool/view/PoolViewPage'),
     permissionRequired: permissions.poolRead,
     exact: true,
@@ -842,15 +842,15 @@ const privateRoutes = [
 
 const publicRoutes = [
   {
-    path: '/auth/signin',
+    path: '/admin/auth/signin',
     loader: () => import('src/view/auth/SigninPage'),
   },
   {
-    path: '/auth/signup',
+    path: '/admin/auth/signup',
     loader: () => import('src/view/auth/SignupPage'),
   },
   {
-    path: '/auth/forgot-password',
+    path: '/admin/auth/forgot-password',
     loader: () =>
       import('src/view/auth/ForgotPasswordPage'),
   },
@@ -858,14 +858,14 @@ const publicRoutes = [
 
 const emptyTenantRoutes = [
   {
-    path: '/auth/tenant',
+    path: '/admin/auth/tenant',
     loader: () => import('src/view/auth/TenantPage'),
   },
 ].filter(Boolean);
 
 const emptyPermissionsRoutes = [
   {
-    path: '/auth/empty-permissions',
+    path: '/admin/auth/empty-permissions',
     loader: () =>
       import('src/view/auth/EmptyPermissionsPage'),
   },
@@ -873,7 +873,7 @@ const emptyPermissionsRoutes = [
 
 const emailUnverifiedRoutes = [
   {
-    path: '/auth/email-unverified',
+    path: '/admin/auth/email-unverified',
     loader: () =>
       import('src/view/auth/EmailUnverifiedPage'),
   },
@@ -881,24 +881,24 @@ const emailUnverifiedRoutes = [
 
 const simpleRoutes = [
   {
-    path: '/auth/password-reset',
+    path: '/admin/auth/password-reset',
     loader: () => import('src/view/auth/PasswordResetPage'),
   },
   {
-    path: '/auth/invitation',
+    path: '/admin/auth/invitation',
     loader: () => import('src/view/auth/InvitationPage'),
   },
   {
-    path: '/auth/verify-email',
+    path: '/admin/auth/verify-email',
     loader: () => import('src/view/auth/VerifyEmailPage'),
   },
   {
-    path: '/403',
+    path: '/admin/403',
     loader: () =>
       import('src/view/shared/errors/Error403Page'),
   },
   {
-    path: '/500',
+    path: '/admin/500',
     loader: () =>
       import('src/view/shared/errors/Error500Page'),
   },
@@ -909,6 +909,13 @@ const simpleRoutes = [
   },
 ].filter(Boolean);
 
+const frontEndRoutes = [
+  {
+    path: '/',
+    loader: () => import('src/view/home/HomeViewPage'),
+  },
+].filter(Boolean);
+
 export default {
   privateRoutes,
   publicRoutes,
@@ -916,6 +923,7 @@ export default {
   emptyPermissionsRoutes,
   emailUnverifiedRoutes,
   simpleRoutes,
+  frontEndRoutes,
 };
 
 export function findRoute(url = null, routes = []) {
@@ -954,7 +962,7 @@ export function matchedRoutes(
 
     if (found) {
       routes.push(found);
-      if (found.parent && found.parent !== '/') {
+      if (found.parent && found.parent !== '/admin') {
         return searchRouteStack(found.parent, exactOnly);
       }
     }

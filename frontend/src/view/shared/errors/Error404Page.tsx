@@ -54,7 +54,7 @@ const Error404Page = () => {
             </MDTypography>
             <MDButton
               component={Link}
-              to="/"
+              to="/admin"
               variant="gradient"
               color={sidenavColor}
               type="button"

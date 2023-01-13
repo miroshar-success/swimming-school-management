@@ -186,7 +186,7 @@ function PoolListTable(props) {
                             size="small"
                             color={sidenavColor}
                             component={Link}
-                            to={`/pool/${row.id}/edit`}
+                            to={`/admin/pool/${row.id}/edit`}
                           >
                             <EditIcon />
                           </IconButton>

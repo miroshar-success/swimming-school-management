@@ -101,7 +101,7 @@ function PaymentMethodToolbar(props) {
           variant="gradient"
           color={sidenavColor}
           component={Link}
-          to="/payment-method/new"
+          to="/admin/payment-method/new"
           startIcon={<AddIcon />}
           size="small"
         >

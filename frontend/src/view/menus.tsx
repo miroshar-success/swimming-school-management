@@ -2,15 +2,12 @@ import Permissions from 'src/security/permissions';
 import { i18n } from 'src/i18n';
 import config from 'src/config';
 import { Icon } from '@mui/material';
-import StorefrontIcon from '@mui/icons-material/Storefront';
 
 const permissions = Permissions.values;
 
-const visibleExtraMenus = false;
-
 const menus = [
   {
-    path: '/',
+    path: '/admin',
     exact: true,
     icon: <Icon>dashboard</Icon>,
     name: i18n('dashboard.menu'),
@@ -24,13 +21,13 @@ const menus = [
     permissionRequired: permissions.studentRead,
     collapse: [
       {
-        path: '/registration',
+        path: '/admin/registration',
         name: i18n('registration.menu'),
         icon: <Icon>group_add</Icon>,
         permissionRequired: permissions.studentEdit,
       },
       {
-        path: '/student',
+        path: '/admin/student',
         name: i18n('common.list'),
         icon: <Icon>people</Icon>,
         permissionRequired: permissions.studentRead,
@@ -39,7 +36,7 @@ const menus = [
   },
 
   {
-    path: '/teacher',
+    path: '/admin/teacher',
     icon: <Icon>account_box</Icon>,
     name: i18n('teacher.menu'),
     permissionRequired: permissions.teacherRead,
@@ -54,31 +51,31 @@ const menus = [
       {
         name: i18n('common.list'),
         icon: <Icon>payment</Icon>,
-        path: '/payment',
+        path: '/admin/payment',
         permissionRequired: permissions.paymentRead,
       },
       {
         name: i18n('payment.history.menu'),
         icon: <Icon>history</Icon>,
-        path: '/payment-history',
+        path: '/admin/payment-history',
         permissionRequired: permissions.paymentRead,
       },
       {
         name: i18n('payment.expired.menu'),
         icon: <Icon>assignment_late</Icon>,
-        path: '/payment-expired',
+        path: '/admin/payment-expired',
         permissionRequired: permissions.paymentRead,
       },
       {
         name: i18n('payment.category.menu'),
         icon: <Icon>money</Icon>,
-        path: '/payment-category',
+        path: '/admin/payment-category',
         permissionRequired: permissions.paymentRead,
       },
       {
         name: i18n('payment.method.menu'),
         icon: <Icon>payments</Icon>,
-        path: '/payment-method',
+        path: '/admin/payment-method',
         permissionRequired: permissions.paymentRead,
       },
     ],
@@ -91,19 +88,19 @@ const menus = [
     permissionRequired: permissions.classRead,
     collapse: [
       {
-        path: '/class',
+        path: '/admin/class',
         name: i18n('class.menu'),
         icon: <Icon>class</Icon>,
         permissionRequired: permissions.classRead,
       },
       {
-        path: '/lesson',
+        path: '/admin/lesson',
         name: i18n('lesson.menu'),
         icon: <Icon>pool</Icon>,
         permissionRequired: permissions.classRead,
       },
       {
-        path: '/class-category',
+        path: '/admin/class-category',
         name: i18n('classCategory.menu'),
         icon: <Icon>interests</Icon>,
         permissionRequired: permissions.classRead,
@@ -112,7 +109,7 @@ const menus = [
   },
 
   {
-    path: '/attendance',
+    path: '/admin/attendance',
     icon: <Icon>how_to_reg</Icon>,
     name: i18n('attendance.menu'),
     permissionRequired: permissions.attendanceRead,
@@ -125,13 +122,13 @@ const menus = [
     permissionRequired: permissions.gradeRead,
     collapse: [
       {
-        path: '/grade',
+        path: '/admin/grade',
         name: i18n('grade.menu'),
         icon: <Icon>category</Icon>,
         permissionRequired: permissions.gradeRead,
       },
       {
-        path: '/skill',
+        path: '/admin/skill',
         name: i18n('skill.menu'),
         icon: <Icon>spoke</Icon>,
         permissionRequired: permissions.gradeRead,
@@ -146,7 +143,7 @@ const menus = [
     permissionRequired: null,
     collapse: [
       {
-        path: '/pool',
+        path: '/admin/pool',
         icon: <Icon>pool</Icon>,
         name: i18n('property.pool.menu'),
         permissionRequired: permissions.poolRead,
@@ -161,19 +158,19 @@ const menus = [
     permissionRequired: permissions.settingsEdit,
     collapse: [
       {
-        path: '/settings',
+        path: '/admin/settings',
         name: i18n('school.menu'),
         permissionRequired: permissions.settingsEdit,
         icon: <Icon>school</Icon>,
       },
       {
-        path: '/document',
+        path: '/admin/document',
         name: i18n('document.menu'),
         permissionRequired: permissions.settingsEdit,
         icon: <Icon>folder</Icon>,
       },
       {
-        path: '/audit-log',
+        path: '/admin/audit-log',
         name: i18n('auditLog.menu'),
         permissionRequired: permissions.auditLogRead,
         icon: <Icon>restore</Icon>,
@@ -185,12 +182,12 @@ const menus = [
 const profileRoutes = [
   {
     name: i18n('auth.profile.title'),
-    path: '/profile',
+    path: '/admin/profile',
     icon: <Icon>person_outline</Icon>,
   },
   {
     name: i18n('auth.passwordChange.title'),
-    path: '/password-change',
+    path: '/admin/password-change',
     icon: <Icon>lock</Icon>,
   },
 ].filter(Boolean);
@@ -198,14 +195,14 @@ const profileRoutes = [
 const tenantRoutes = [
   {
     name: i18n('tenant.title'),
-    path: '/tenant',
+    path: '/admin/tenant',
     icon: <Icon>school</Icon>,
   },
 ].filter(Boolean);
 
 const adminRoutes = [
   {
-    path: '/admin',
+    path: '/admin/admin',
     name: i18n('user.menu'),
     permissionRequired: permissions.adminRead,
     icon: <Icon>person</Icon>,
@@ -214,7 +211,7 @@ const adminRoutes = [
 
 const planRoutes = [
   config.isPlanEnabled && {
-    path: '/plan',
+    path: '/admin/plan',
     permissionRequired: permissions.planRead,
     icon: <Icon>credit_card_outlined</Icon>,
     name: i18n('plan.menu'),

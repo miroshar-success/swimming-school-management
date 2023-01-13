@@ -32,7 +32,7 @@ const gradeDestroyActions = {
 
       dispatch(listActions.doFetchCurrentFilter());
 
-      getHistory().push('/grade');
+      getHistory().push('/admin/grade');
     } catch (error) {
       Errors.handle(error);
 
@@ -65,7 +65,7 @@ const gradeDestroyActions = {
         i18n('grade.doDestroyAllSelectedSuccess'),
       );
 
-      getHistory().push('/grade');
+      getHistory().push('/admin/grade');
     } catch (error) {
       Errors.handle(error);
 

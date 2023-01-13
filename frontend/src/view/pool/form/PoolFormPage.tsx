@@ -68,7 +68,9 @@ function PoolFormPage(props) {
               record={record}
               isEditing={isEditing}
               onSubmit={doSubmit}
-              onCancel={() => getHistory().push('/pool')}
+              onCancel={() =>
+                getHistory().push('/admin/pool')
+              }
             />
           )}
         </MDBox>

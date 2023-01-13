@@ -486,7 +486,7 @@ function Menu({ ...rest }: Props): JSX.Element {
             </MDBox>
             <MDBox
               component={NavLink}
-              to="/"
+              to="/admin"
               display="flex"
               alignItems="center"
             >

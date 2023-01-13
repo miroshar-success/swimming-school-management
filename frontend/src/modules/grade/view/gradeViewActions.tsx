@@ -28,7 +28,7 @@ const gradeViewActions = {
         type: gradeViewActions.FIND_ERROR,
       });
 
-      getHistory().push('/grade');
+      getHistory().push('/admin/grade');
     }
   },
 };

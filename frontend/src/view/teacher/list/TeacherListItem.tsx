@@ -39,7 +39,7 @@ function TeacherListItem(props) {
           <MaterialLink
             display="flex"
             component={Link}
-            to={`/teacher/${record.id}`}
+            to={`/admin/teacher/${record.id}`}
             textTransform="capitalize"
             alignItems="center"
           >

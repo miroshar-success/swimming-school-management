@@ -139,7 +139,7 @@ function PaymentListTable(props) {
                             size="small"
                             color={sidenavColor}
                             component={Link}
-                            to={`/payment/${row.id}/create`}
+                            to={`/admin/payment/${row.id}/create`}
                           >
                             <EditIcon />
                           </IconButton>

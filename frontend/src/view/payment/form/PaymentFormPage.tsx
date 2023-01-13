@@ -56,7 +56,9 @@ function PaymentFormPage(props) {
               initLoading={initLoading}
               record={record}
               onSubmit={doSubmit}
-              onCancel={() => getHistory().push('/payment')}
+              onCancel={() =>
+                getHistory().push('/admin/payment')
+              }
             />
           )}
         </MDBox>

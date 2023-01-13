@@ -34,7 +34,7 @@ const classCategoryDestroyActions = {
 
       dispatch(listActions.doFetchCurrentFilter());
 
-      getHistory().push('/class-category');
+      getHistory().push('/admin/class-category');
     } catch (error) {
       Errors.handle(error);
 
@@ -67,7 +67,7 @@ const classCategoryDestroyActions = {
         i18n('classCategory.doDestroyAllSelectedSuccess'),
       );
 
-      getHistory().push('/class-category');
+      getHistory().push('/admin/class-category');
     } catch (error) {
       Errors.handle(error);
 

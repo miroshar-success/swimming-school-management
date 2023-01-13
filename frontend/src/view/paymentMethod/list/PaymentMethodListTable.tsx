@@ -188,7 +188,7 @@ function PaymentMethodListTable(props) {
                           size="small"
                           component={Link}
                           color={sidenavColor}
-                          to={`/payment-method/${row.id}`}
+                          to={`/admin/payment-method/${row.id}`}
                         >
                           <SearchIcon />
                         </IconButton>
@@ -202,7 +202,7 @@ function PaymentMethodListTable(props) {
                             size="small"
                             color={sidenavColor}
                             component={Link}
-                            to={`/payment-method/${row.id}/edit`}
+                            to={`/admin/payment-method/${row.id}/edit`}
                           >
                             <EditIcon />
                           </IconButton>

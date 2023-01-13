@@ -42,7 +42,7 @@ function DocumentViewItem(props) {
         <div key={record.id}>
           <MaterialLink
             component={Link}
-            to={`/document/${record.id}`}
+            to={`/admin/document/${record.id}`}
           >
             <ColorBadge label={record.name} />
           </MaterialLink>

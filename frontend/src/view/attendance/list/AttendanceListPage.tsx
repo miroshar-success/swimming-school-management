@@ -165,7 +165,7 @@ function AttendanceListPage(props) {
             {!loading &&
               lessons.map((lesson) => (
                 <Link
-                  to={`/attendance/${lesson.id}`}
+                  to={`/admin/attendance/${lesson.id}`}
                   key={lesson.id}
                 >
                   <MDBox

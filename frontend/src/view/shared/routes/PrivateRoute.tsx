@@ -32,7 +32,7 @@ function PrivateRoute({
           return (
             <Redirect
               to={{
-                pathname: '/auth/signin',
+                pathname: '/admin/auth/signin',
                 state: { from: location },
               }}
             />
@@ -40,7 +40,9 @@ function PrivateRoute({
         }
 
         if (!permissionChecker.isEmailVerified) {
-          return <Redirect to="/auth/email-unverified" />;
+          return (
+            <Redirect to="/admin/auth/email-unverified" />
+          );
         }
 
         if (
@@ -50,18 +52,18 @@ function PrivateRoute({
           !tenantSubdomain.isSubdomain
         ) {
           if (permissionChecker.isEmptyTenant) {
-            return <Redirect to="/auth/tenant" />;
+            return <Redirect to="/admin/auth/tenant" />;
           }
         } else {
           if (permissionChecker.isEmptyPermissions) {
             return (
-              <Redirect to="/auth/empty-permissions" />
+              <Redirect to="/admin/auth/empty-permissions" />
             );
           }
         }
 
         if (!permissionChecker.match(permissionRequired)) {
-          return <Redirect to="/403" />;
+          return <Redirect to="/admin/403" />;
         }
 
         if (!currentTenant) {

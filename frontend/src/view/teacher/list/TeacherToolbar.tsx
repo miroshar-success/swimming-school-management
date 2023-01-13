@@ -132,7 +132,7 @@ function TeacherToolbar(props) {
           variant="contained"
           color={sidenavColor}
           component={Link}
-          to="/teacher/new"
+          to="/admin/teacher/new"
           startIcon={<AddIcon />}
           size="small"
         >

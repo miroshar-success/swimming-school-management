@@ -130,7 +130,7 @@ function PaymentExpiredListTable(props) {
                         <IconButton
                           size="small"
                           component={Link}
-                          to={`/payment-expired/${row.id}`}
+                          to={`/admin/payment-expired/${row.id}`}
                           color={sidenavColor}
                         >
                           <SearchIcon />
@@ -145,7 +145,7 @@ function PaymentExpiredListTable(props) {
                     {row.fullName}
                   </DataTableBodyCell>
                   <DataTableBodyCell>
-                    {row.month + 1 + '/' + row.year}
+                    {row.month + 1 + '/admin' + row.year}
                   </DataTableBodyCell>
                   <DataTableBodyCell>
                     {row.expiredDate + ' days'}

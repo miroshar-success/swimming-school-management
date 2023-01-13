@@ -185,7 +185,7 @@ function GradeListTable(props) {
                           size="small"
                           component={Link}
                           color={sidenavColor}
-                          to={`/grade/${row.id}`}
+                          to={`/admin/grade/${row.id}`}
                         >
                           <SearchIcon />
                         </IconButton>
@@ -199,7 +199,7 @@ function GradeListTable(props) {
                             size="small"
                             color={sidenavColor}
                             component={Link}
-                            to={`/grade/${row.id}/edit`}
+                            to={`/admin/grade/${row.id}/edit`}
                           >
                             <EditIcon />
                           </IconButton>

@@ -51,7 +51,7 @@ function PaymentCategoryViewToolbar(props) {
       {hasPermissionToEdit && (
         <MDButton
           component={Link}
-          to={`/payment-category/${id}/edit`}
+          to={`/admin/payment-category/${id}/edit`}
           variant="gradient"
           color={sidenavColor}
           type="button"
@@ -80,7 +80,7 @@ function PaymentCategoryViewToolbar(props) {
         variant="outlined"
         color={sidenavColor}
         component={Link}
-        to={'/payment-category'}
+        to={'/admin/payment-category'}
         startIcon={<ArrowBackIcon />}
         size="small"
       >

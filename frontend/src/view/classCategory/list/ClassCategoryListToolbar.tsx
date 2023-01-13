@@ -101,7 +101,7 @@ function ClassCategoryToolbar(props) {
           variant="gradient"
           color={sidenavColor}
           component={Link}
-          to="/class-category/new"
+          to="/admin/class-category/new"
           startIcon={<AddIcon />}
           size="small"
         >

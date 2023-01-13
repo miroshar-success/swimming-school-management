@@ -190,7 +190,7 @@ function RegistrationTable() {
                           <IconButton
                             size="small"
                             component={Link}
-                            to={`/registration/${row.id}`}
+                            to={`/admin/registration/${row.id}`}
                             color={sidenavColor}
                           >
                             <AssignmentTurnedInIcon />
@@ -206,7 +206,7 @@ function RegistrationTable() {
                           <IconButton
                             size="small"
                             component={Link}
-                            to={`/payment/${row.id}/create`}
+                            to={`/admin/payment/${row.id}/create`}
                             color={sidenavColor}
                           >
                             <PriceCheckIcon />

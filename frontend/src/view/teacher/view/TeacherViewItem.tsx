@@ -76,7 +76,7 @@ function TeacherViewItem(props) {
         <MDBox key={record.id}>
           <MaterialLink
             component={Link}
-            to={`/teacher/${record.id}`}
+            to={`/admin/teacher/${record.id}`}
           >
             {renderTeacher(record)}
           </MaterialLink>

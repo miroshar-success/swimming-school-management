@@ -101,7 +101,7 @@ function LessonToolbar(props) {
           variant="gradient"
           color={sidenavColor}
           component={Link}
-          to="/lesson/new"
+          to="/admin/lesson/new"
           startIcon={<AddIcon />}
           size="small"
         >

@@ -69,7 +69,7 @@ function PaymentCategoryFormPage(props) {
               isEditing={isEditing}
               onSubmit={doSubmit}
               onCancel={() =>
-                getHistory().push('/payment-category')
+                getHistory().push('/admin/payment-category')
               }
             />
           )}

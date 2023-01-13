@@ -31,7 +31,7 @@ function ClassListItem(props) {
         <div key={record.id}>
           <MaterialLink
             component={Link}
-            to={`/class/${record.id}`}
+            to={`/admin/class/${record.id}`}
           >
             {record.name}
           </MaterialLink>

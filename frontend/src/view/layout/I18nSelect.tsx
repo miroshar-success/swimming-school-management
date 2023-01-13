@@ -20,12 +20,14 @@ interface Props {
   absolute?: boolean;
   light?: boolean;
   isMini?: boolean;
+  size?: 'sm' | 'lg';
 }
 
 function I18nSelect({
   absolute,
   light,
   isMini,
+  size,
 }: Props): JSX.Element {
   const [anchorEl, setAnchorEl] = useState(null);
 
@@ -56,7 +58,7 @@ function I18nSelect({
           <img
             src={getLanguage().flag}
             alt={getLanguage().label}
-            width="19.2"
+            width={size === 'sm' ? '19.2' : '24'}
           />
         }
       </MDButton>
@@ -92,6 +94,7 @@ I18nSelect.defaultProps = {
   absolute: false,
   light: false,
   isMini: false,
+  size: 'sm',
 };
 
 export default I18nSelect;

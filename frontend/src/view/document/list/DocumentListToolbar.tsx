@@ -94,7 +94,7 @@ function DocumentToolbar(props) {
           variant="gradient"
           color={sidenavColor}
           component={Link}
-          to="/document/new"
+          to="/admin/document/new"
           startIcon={<AddIcon />}
           size="small"
         >

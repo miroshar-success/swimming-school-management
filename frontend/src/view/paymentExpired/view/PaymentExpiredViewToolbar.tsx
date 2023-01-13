@@ -16,7 +16,7 @@ function PaymentExpiredViewToolbar(props) {
     <ToolbarWrapper>
       <MDButton
         component={Link}
-        to={`/payment-expired`}
+        to={`/admin/payment-expired`}
         variant="gradient"
         color={sidenavColor}
         type="button"

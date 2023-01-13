@@ -34,7 +34,7 @@ const paymentCategoryDestroyActions = {
 
       dispatch(listActions.doFetchCurrentFilter());
 
-      getHistory().push('/payment-category');
+      getHistory().push('/admin/payment-category');
     } catch (error) {
       Errors.handle(error);
 
@@ -69,7 +69,7 @@ const paymentCategoryDestroyActions = {
         ),
       );
 
-      getHistory().push('/payment-category');
+      getHistory().push('/admin/payment-category');
     } catch (error) {
       Errors.handle(error);
 

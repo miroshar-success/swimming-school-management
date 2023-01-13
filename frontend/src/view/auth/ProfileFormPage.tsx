@@ -46,7 +46,7 @@ function ProfileFormPage() {
             </MDTypography>
           </MDBox>
           <ProfileForm
-            onCancel={() => getHistory().push('/')}
+            onCancel={() => getHistory().push('/admin')}
           />
         </Card>
       </MDBox>

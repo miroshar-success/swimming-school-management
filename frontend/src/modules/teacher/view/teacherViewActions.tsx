@@ -28,7 +28,7 @@ const teacherViewActions = {
         type: teacherViewActions.FIND_ERROR,
       });
 
-      getHistory().push('/teacher');
+      getHistory().push('/admin/teacher');
     }
   },
 };

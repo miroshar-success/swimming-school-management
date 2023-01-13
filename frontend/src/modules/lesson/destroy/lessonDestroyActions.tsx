@@ -32,7 +32,7 @@ const lessonDestroyActions = {
 
       dispatch(listActions.doFetchCurrentFilter());
 
-      getHistory().push('/lesson');
+      getHistory().push('/admin/lesson');
     } catch (error) {
       Errors.handle(error);
 
@@ -65,7 +65,7 @@ const lessonDestroyActions = {
         i18n('lesson.doDestroyAllSelectedSuccess'),
       );
 
-      getHistory().push('/lesson');
+      getHistory().push('/admin/lesson');
     } catch (error) {
       Errors.handle(error);
 

@@ -28,7 +28,7 @@ const paymentMethodViewActions = {
         type: paymentMethodViewActions.FIND_ERROR,
       });
 
-      getHistory().push('/payment-method');
+      getHistory().push('/admin/payment-method');
     }
   },
 };

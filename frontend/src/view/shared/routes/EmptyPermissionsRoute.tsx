@@ -21,14 +21,14 @@ function EmptyPermissionsRoute({
           return (
             <Redirect
               to={{
-                pathname: '/auth/signin',
+                pathname: '/admin/auth/signin',
               }}
             />
           );
         }
 
         if (!permissionChecker.isEmptyPermissions) {
-          return <Redirect to="/" />;
+          return <Redirect to="/admin" />;
         }
 
         return <Component {...props} />;

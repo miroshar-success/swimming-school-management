@@ -66,7 +66,9 @@ function TenantFormPage() {
               record={record}
               isEditing={isEditing}
               onSubmit={doSubmit}
-              onCancel={() => getHistory().push('/tenant')}
+              onCancel={() =>
+                getHistory().push('/admin/tenant')
+              }
             />
           )}
         </MDBox>

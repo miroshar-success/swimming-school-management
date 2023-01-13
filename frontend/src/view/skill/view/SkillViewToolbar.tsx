@@ -50,7 +50,7 @@ function SkillViewToolbar(props) {
       {hasPermissionToEdit && (
         <MDButton
           component={Link}
-          to={`/skill/${id}/edit`}
+          to={`/admin/skill/${id}/edit`}
           variant="gradient"
           color={sidenavColor}
           type="button"
@@ -79,7 +79,7 @@ function SkillViewToolbar(props) {
         variant="outlined"
         color={sidenavColor}
         component={Link}
-        to={'/skill'}
+        to={'/admin/skill'}
         startIcon={<ArrowBackIcon />}
         size="small"
       >

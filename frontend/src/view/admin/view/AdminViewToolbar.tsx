@@ -28,7 +28,7 @@ function AdminViewToolbar(props) {
       {hasPermissionToEdit && (
         <MDButton
           component={Link}
-          to={`/admin/${id}/edit`}
+          to={`/admin/admin/${id}/edit`}
           variant="gradient"
           color={sidenavColor}
           type="button"
