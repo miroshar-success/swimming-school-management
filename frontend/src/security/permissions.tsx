@@ -119,6 +119,7 @@ class Permissions {
         allowedStorage: [
           storage.settingsBackgroundImages,
           storage.settingsLogos,
+          storage.settingsPhotographs,
         ],
       },
       studentEdit: {

@@ -3,6 +3,7 @@ import Settings from '../models/settings';
 import AuditLogRepository from './auditLogRepository';
 import FileRepository from './fileRepository';
 import { IRepositoryOptions } from './IRepositoryOptions';
+import TenantRepository from './tenantRepository';
 
 export default class SettingsRepository {
   static async find(options: IRepositoryOptions) {
@@ -16,7 +17,9 @@ export default class SettingsRepository {
             tenant: currentTenant.id,
           })
           .populate('logos')
-          .populate('backgroundImages'),
+          .populate('backgroundImages')
+          .populate('openingHours')
+          .populate('photographs'),
         options,
       ),
       options,
@@ -37,7 +40,9 @@ export default class SettingsRepository {
             tenant: currentTenant.id,
           })
           .populate('logos')
-          .populate('backgroundImages'),
+          .populate('backgroundImages')
+          .populate('openingHours')
+          .populate('photographs'),
         options,
       );
 
@@ -57,6 +62,7 @@ export default class SettingsRepository {
           )
             ? MongooseRepository.getCurrentUser(options).id
             : null,
+          name: currentTenant.name,
         },
       ],
       options,
@@ -76,6 +82,12 @@ export default class SettingsRepository {
         }),
         options,
       );
+
+    await TenantRepository.update(
+      currentTenant.id,
+      { name: data.name },
+      options,
+    );
 
     await Settings(options.database).updateOne(
       { _id: record.id },
@@ -120,6 +132,12 @@ export default class SettingsRepository {
     output.backgroundImages =
       await FileRepository.cleanupForRelationships(
         output.backgroundImages,
+        options,
+      );
+
+    output.photographs =
+      await FileRepository.cleanupForRelationships(
+        output.photographs,
         options,
       );
 

@@ -527,7 +527,7 @@ function Menu({ ...rest }: Props): JSX.Element {
                       ? tenantRoutes
                       : [],
                   )
-                  .concat([...adminRoutes, ...planRoutes]),
+                  .concat([...adminRoutes]),
               },
               { type: 'divider', key: 'divider-0' },
               ...menus,

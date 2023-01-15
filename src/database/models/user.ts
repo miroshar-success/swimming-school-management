@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import TenantUserSchema from './schemas/tenantUserSchema';
-import AttendanceSchema from './schemas/AttendanceSchema';
+import AttendanceSchema from './schemas/attendanceSchema';
 const Schema = mongoose.Schema;
 
 export default (database) => {

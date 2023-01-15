@@ -23,9 +23,16 @@ class SettingsService {
       data.logos,
       { ...options, session },
     );
+
     data.backgroundImages =
       await FileRepository.filterIdsInTenant(
         data.backgroundImages,
+        { ...options, session },
+      );
+
+    data.photographs =
+      await FileRepository.filterIdsInTenant(
+        data.photographs,
         { ...options, session },
       );
 
