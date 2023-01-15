@@ -217,12 +217,6 @@ export default class TenantService {
         session,
       });
 
-      await SettingsService.findOrCreateDefault({
-        ...this.options,
-        currentTenant: record,
-        session,
-      });
-
       await TenantUserRepository.create(
         record,
         this.options.currentUser,
@@ -232,6 +226,12 @@ export default class TenantService {
           session,
         },
       );
+
+      await SettingsService.findOrCreateDefault({
+        ...this.options,
+        currentTenant: record,
+        session,
+      });
 
       await MongooseRepository.commitTransaction(session);
 
