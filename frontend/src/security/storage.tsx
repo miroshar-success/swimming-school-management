@@ -23,6 +23,12 @@ export default class Storage {
         maxSizeInBytes: 10 * 1024 * 1024,
         publicRead: true,
       },
+      settingsPhotographs: {
+        id: 'settingsPhotographs',
+        folder: 'tenant/:tenantId/settings/photographs',
+        maxSizeInBytes: 10 * 1024 * 1024,
+        publicRead: true,
+      },
       skillIcons: {
         id: 'skillIcons',
         folder: 'tenant/:tenantId/skill/icons',
