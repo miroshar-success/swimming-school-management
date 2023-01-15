@@ -45,6 +45,47 @@ class SettingsService {
 
     return settings;
   }
+
+  static async findById(id, options) {
+    const session = MongooseRepository.createSession(
+      options.database,
+    );
+
+    try {
+      const school = await SettingsRepository.findById(
+        id,
+        options,
+      );
+
+      await MongooseRepository.commitTransaction(session);
+
+      return school;
+    } catch (error) {
+      await MongooseRepository.abortTransaction(session);
+      throw error;
+    }
+  }
+
+  static async findAndCountAll(args, options) {
+    const session = MongooseRepository.createSession(
+      options.database,
+    );
+
+    try {
+      const school =
+        await SettingsRepository.findAndCountAll(
+          args,
+          options,
+        );
+
+      await MongooseRepository.commitTransaction(session);
+
+      return school;
+    } catch (error) {
+      await MongooseRepository.abortTransaction(session);
+      throw error;
+    }
+  }
 }
 
 export default SettingsService;
