@@ -158,12 +158,6 @@ const menus = [
     permissionRequired: permissions.settingsEdit,
     collapse: [
       {
-        path: '/admin/settings',
-        name: i18n('school.menu'),
-        permissionRequired: permissions.settingsEdit,
-        icon: <Icon>school</Icon>,
-      },
-      {
         path: '/admin/document',
         name: i18n('document.menu'),
         permissionRequired: permissions.settingsEdit,
@@ -194,8 +188,9 @@ const profileRoutes = [
 
 const tenantRoutes = [
   {
-    name: i18n('tenant.title'),
     path: '/admin/tenant',
+    name: i18n('school.menu'),
+    permissionRequired: permissions.settingsEdit,
     icon: <Icon>school</Icon>,
   },
 ].filter(Boolean);
