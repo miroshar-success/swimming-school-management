@@ -47,13 +47,6 @@ const selectFilter = createSelector([selectRaw], (raw) => {
   return raw.filter;
 });
 
-const selectRawFilter = createSelector(
-  [selectRaw],
-  (raw) => {
-    return raw.rawFilter;
-  },
-);
-
 const selectLimit = createSelector([selectRaw], (raw) => {
   const pagination = raw.pagination;
   return pagination.pageSize;
@@ -91,7 +84,6 @@ const schoolsListSelectors = {
   selectOffset,
   selectPagination,
   selectHasRows,
-  selectRawFilter,
   selectSorter,
 };
 

@@ -10,8 +10,13 @@ export default function Footer(props) {
   return (
     <>
       <Card>
-        <Container>
-          <MDBox my={8}>
+        <MDBox
+          py={8}
+          sx={{
+            borderTop: `1px solid gray`,
+          }}
+        >
+          <Container>
             <Grid container spacing={1.6}>
               <Grid item md={6} xs={12}>
                 <MDBox
@@ -62,8 +67,8 @@ export default function Footer(props) {
                 </MDBox>
               </Grid>
             </Grid>
-          </MDBox>
-        </Container>
+          </Container>
+        </MDBox>
       </Card>
       <MDBox
         textAlign="center"

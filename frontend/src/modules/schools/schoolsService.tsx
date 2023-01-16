@@ -2,9 +2,7 @@ import authAxios from 'src/modules/shared/axios/authAxios';
 
 export default class SchoolsService {
   static async find(id) {
-    const response = await authAxios.get(
-      `/tenant/schools/${id}`,
-    );
+    const response = await authAxios.get(`/schools/${id}`);
 
     return response.data;
   }
@@ -17,12 +15,9 @@ export default class SchoolsService {
       offset,
     };
 
-    const response = await authAxios.get(
-      `/tenant/schools`,
-      {
-        params,
-      },
-    );
+    const response = await authAxios.get(`/schools`, {
+      params,
+    });
 
     return response.data;
   }

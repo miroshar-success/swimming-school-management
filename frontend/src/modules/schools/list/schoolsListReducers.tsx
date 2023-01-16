@@ -1,4 +1,4 @@
-import actions from 'src/modules/grade/list/gradeListActions';
+import actions from 'src/modules/schools/list/schoolsListActions';
 
 const INITIAL_PAGE_SIZE = 10;
 
@@ -7,7 +7,6 @@ const initialData = {
   count: 0,
   loading: false,
   filter: {},
-  rawFilter: {},
   pagination: {
     current: 1,
     pageSize: INITIAL_PAGE_SIZE,
@@ -46,7 +45,6 @@ export default (state = initialData, { type, payload }) => {
       loading: true,
       selectedKeys: [],
       filter: payload ? payload.filter : {},
-      rawFilter: payload ? payload.rawFilter : {},
       pagination:
         payload && payload.keepPagination
           ? state.pagination

@@ -147,6 +147,8 @@ export default class SettingsRepository {
   ) {
     let criteriaAnd: any = [];
 
+    console.log(filter);
+
     if (filter) {
       if (filter.id) {
         criteriaAnd.push({
@@ -209,51 +211,51 @@ export default class SettingsRepository {
         });
       }
 
-      if (filter.cafe) {
+      if (filter.cafe === 'true') {
         criteriaAnd.push({
           ['cafe']: true,
         });
       }
 
-      if (filter.parkingLot) {
+      if (filter.parkingLot === 'true') {
         criteriaAnd.push({
-          ['cafe']: true,
+          ['parkingLot']: true,
         });
       }
 
-      if (filter.balletParking) {
+      if (filter.balletParking === 'true') {
         criteriaAnd.push({
-          ['cafe']: true,
+          ['balletParking']: true,
         });
       }
 
-      if (filter.waitingRoom) {
+      if (filter.waitingRoom === 'true') {
         criteriaAnd.push({
-          ['cafe']: true,
+          ['waitingRoom']: true,
         });
       }
 
-      if (filter.gym) {
+      if (filter.gym === 'true') {
         criteriaAnd.push({
-          ['cafe']: true,
+          ['gym']: true,
         });
       }
 
-      if (filter.bathRoom) {
+      if (filter.bathRoom === 'true') {
         criteriaAnd.push({
-          ['cafe']: true,
+          ['bathRoom']: true,
         });
       }
 
-      if (filter.wateringCan) {
+      if (filter.wateringCan === 'true') {
         criteriaAnd.push({
-          ['cafe']: true,
+          ['wateringCan']: true,
         });
       }
 
-      if (filter.dressingRoom) {
+      if (filter.dressingRoom === 'true') {
         criteriaAnd.push({
-          ['cafe']: true,
+          ['dressingRoom']: true,
         });
       }
     }

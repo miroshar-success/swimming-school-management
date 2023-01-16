@@ -46,21 +46,16 @@ const schoolsListActions = {
   doFetchCurrentFilter:
     () => async (dispatch, getState) => {
       const filter = selectors.selectFilter(getState());
-      const rawFilter = selectors.selectRawFilter(
-        getState(),
-      );
-      dispatch(
-        schoolsListActions.doFetch(filter, rawFilter, true),
-      );
+      dispatch(schoolsListActions.doFetch(filter, true));
     },
 
   doFetch:
-    (filter?, rawFilter?, keepPagination = true) =>
+    (filter?, keepPagination = true) =>
     async (dispatch, getState) => {
       try {
         dispatch({
           type: schoolsListActions.FETCH_STARTED,
-          payload: { filter, rawFilter, keepPagination },
+          payload: { filter, keepPagination },
         });
 
         const response = await SchoolsService.list(

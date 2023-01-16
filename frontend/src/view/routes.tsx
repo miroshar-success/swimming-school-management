@@ -883,7 +883,8 @@ const frontEndRoutes = [
   },
   {
     path: '/schools',
-    loader: () => import('src/view/home/SchoolsViewPage'),
+    loader: () =>
+      import('src/view/home/schoolsView/SchoolsViewPage'),
   },
 ].filter(Boolean);
 
