@@ -7,9 +7,9 @@ import MDBox from 'src/mui/components/MDBox';
 import MDTypography from 'src/mui/components/MDTypography';
 import selectors from 'src/modules/schools/list/schoolsListSelectors';
 import Spinner from 'src/view/shared/Spinner';
-import SchoosViewItem from './SchoolsViewItem';
+import SchoosListItem from './SchoolsListItem';
 
-function SchoolsViewLayout() {
+function SchoolsListLayout() {
   const dispatch = useDispatch();
 
   const loading = useSelector(selectors.selectLoading);
@@ -74,7 +74,7 @@ function SchoolsViewLayout() {
                     component={Link}
                     to={`/schools/${row.id}`}
                   >
-                    <SchoosViewItem value={row} />
+                    <SchoosListItem value={row} />
                   </MDBox>
                 </Grid>
               </Grid>
@@ -85,4 +85,4 @@ function SchoolsViewLayout() {
   );
 }
 
-export default SchoolsViewLayout;
+export default SchoolsListLayout;

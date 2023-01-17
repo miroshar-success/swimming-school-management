@@ -6,7 +6,7 @@ import colors from 'src/mui/assets/theme/base/colors';
 import { IconButton, Avatar } from '@mui/material';
 import { i18n } from 'src/i18n';
 
-function SchoolsViewItem(props) {
+function SchoolsListItem(props) {
   const { value } = props;
 
   return (
@@ -54,8 +54,8 @@ function SchoolsViewItem(props) {
   );
 }
 
-SchoolsViewItem.propTypes = {
+SchoolsListItem.propTypes = {
   value: PropTypes.object,
 };
 
-export default SchoolsViewItem;
+export default SchoolsListItem;

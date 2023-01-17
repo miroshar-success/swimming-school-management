@@ -68,7 +68,7 @@ const emptyValues = {
   dressingRoom: false,
 };
 
-function SchoolsViewFilter(props) {
+function SchoolsListFilter(props) {
   const { sidenavColor } = selectMuiSettings();
   const filter = useSelector(selectors.selectFilter);
   const dispatch = useDispatch();
@@ -246,4 +246,4 @@ function SchoolsViewFilter(props) {
   );
 }
 
-export default SchoolsViewFilter;
+export default SchoolsListFilter;

@@ -120,7 +120,7 @@ export default class SettingsRepository {
     let record = MongooseRepository.wrapWithSessionIfExists(
       Settings(options.database)
         .findOne({
-          tenant: id,
+          _id: id,
         })
         .populate('logos')
         .populate('backgroundImages')
