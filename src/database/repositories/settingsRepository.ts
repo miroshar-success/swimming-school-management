@@ -117,28 +117,29 @@ export default class SettingsRepository {
   }
 
   static async findById(id, options) {
-    let record = MongooseRepository.wrapWithSessionIfExists(
-      Settings(options.database)
-        .findOne({
-          _id: id,
-        })
-        .populate('logos')
-        .populate('backgroundImages')
-        .populate('openingHours')
-        .populate('photographs'),
-      options,
-    );
+    let record =
+      await MongooseRepository.wrapWithSessionIfExists(
+        Settings(options.database)
+          .findOne({
+            _id: id,
+          })
+          .populate('logos')
+          .populate('backgroundImages')
+          .populate('openingHours')
+          .populate('photographs'),
+        options,
+      );
 
     if (!record) {
       throw new Error404();
     }
 
-    record = await this._fillFileDownloadUrls(
+    const school = await this._fillFileDownloadUrls(
       record,
       options,
     );
 
-    return record;
+    return school;
   }
 
   static async findAndCountAll(
@@ -323,6 +324,8 @@ export default class SettingsRepository {
         output.photographs,
         options,
       );
+
+    console.log(output);
 
     return output;
   }

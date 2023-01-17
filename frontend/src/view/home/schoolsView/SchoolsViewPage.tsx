@@ -32,27 +32,8 @@ export default function SchoolsViewPage(props) {
     <>
       <PageLayout>
         <Header />
-        <MDBox
-          display="flex"
-          justifyContent="center"
-          pt={15}
-          pb={8}
-          sx={({
-            palette: {
-              transparent: transparentColor,
-              white,
-            },
-            functions: { rgba },
-          }: any) => ({
-            backgroundColor: rgba(white.main, 0.4),
-          })}
-        >
-          <MDBox width="80%">
-            <SchoolsView
-              loading={loading}
-              record={record}
-            />
-          </MDBox>
+        <MDBox display="flex" justifyContent="center">
+          <SchoolsView loading={loading} record={record} />
         </MDBox>
         <Footer />
       </PageLayout>
