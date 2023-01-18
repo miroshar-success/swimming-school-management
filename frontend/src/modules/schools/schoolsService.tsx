@@ -21,4 +21,17 @@ export default class SchoolsService {
 
     return response.data;
   }
+
+  static async create(id, data) {
+    const body = {
+      data,
+    };
+
+    const response = await authAxios.post(
+      `/tenant/${id}/userCreate`,
+      body,
+    );
+
+    return response.data;
+  }
 }

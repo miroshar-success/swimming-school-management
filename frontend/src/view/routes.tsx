@@ -891,6 +891,13 @@ const frontEndRoutes = [
     loader: () =>
       import('src/view/home/schoolsView/SchoolsViewPage'),
   },
+  {
+    path: '/schools/:id/register',
+    loader: () =>
+      import(
+        'src/view/home/schoolsRegister/SchoolsRegisterPage'
+      ),
+  },
 ].filter(Boolean);
 
 export default {
