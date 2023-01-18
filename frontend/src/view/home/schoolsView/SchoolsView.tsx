@@ -1,8 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Grid, Avatar } from '@mui/material';
+import { Grid, Avatar, IconButton } from '@mui/material';
 import CheckIcon from '@mui/icons-material/Check';
 import CloseIcon from '@mui/icons-material/Close';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import MaterialLink from '@mui/material/Link';
 
 import { i18n } from 'src/i18n';
 
@@ -10,10 +14,11 @@ import { selectMuiSettings } from 'src/modules/mui/muiSelectors';
 import lessonEnumerators from 'src/modules/lesson/lessonEnumerators';
 
 import Spinner from 'src/view/shared/Spinner';
+import HtmlView from 'src/view/shared/HTMLView';
+
 import MDTypography from 'src/mui/components/MDTypography';
 import MDButton from 'src/mui/components/MDButton';
 import MDBox from 'src/mui/components/MDBox';
-import { grey } from '@mui/material/colors';
 
 function SchoolsView(props) {
   const { sidenavColor } = selectMuiSettings();
@@ -27,7 +32,7 @@ function SchoolsView(props) {
             display="flex"
             justifyContent="center"
             pt={15}
-            pb={8}
+            pb={6}
             sx={({
               palette: {
                 transparent: transparentColor,
@@ -41,69 +46,158 @@ function SchoolsView(props) {
             <MDBox width="80%">
               <Grid container spacing={2.4}>
                 <Grid item md={6} xs={12}>
-                  <Avatar
-                    src={record.logos[0]?.downloadUrl}
-                    alt="Logo"
-                    sx={{
-                      width: '100%',
-                    }}
-                    variant="rounded"
-                  />
+                  <MDBox margin={3.2} borderRadius="lg">
+                    <Avatar
+                      src={record.logos[0]?.downloadUrl}
+                      alt="Logo"
+                      sx={{
+                        width: '100%',
+                        height: 'auto',
+                      }}
+                      variant="rounded"
+                    />
+                  </MDBox>
                 </Grid>
                 <Grid item md={6} xs={12}>
-                  <MDTypography
-                    variant="h2"
-                    fontWeight="medium"
-                  >
-                    {record.name}
-                  </MDTypography>
-                  <MDTypography
-                    variant="h5"
-                    fontWeight="regular"
-                  >
-                    {`${record.direction}, ${record.cologne}`}
-                  </MDTypography>
-                  <MDTypography
-                    variant="h5"
-                    fontWeight="regular"
-                  >
-                    {`${record.condition} ${record.town}, ${record.zipCode}`}
-                  </MDTypography>
-                  <MDTypography
-                    variant="h5"
-                    fontWeight="regular"
-                  >
-                    {`Tel: ${record.phoneNumber}`}
-                  </MDTypography>
-                  <MDTypography
-                    variant="h5"
-                    fontWeight="regular"
-                  >
-                    {`Movil: ${record.cellPhoneNumber}`}
-                  </MDTypography>
-                  <MDBox
-                    display="flex"
-                    justifyContent="center"
-                  >
-                    <MDButton
-                      components={Link}
-                      to="/schools/:id/register"
-                      size="large"
-                      variant="gradient"
-                      color={sidenavColor}
-                      disabled={props.loading}
-                      sx={{
-                        px: 4,
-                        py: 1.5,
-                      }}
-                    >
-                      <MDTypography
-                        variant="h5"
-                        fontWeight="medium"
-                      >
-                        {i18n('common.register')}
-                      </MDTypography>
-                    </MDButton>
+                  <MDBox margin={3.2}>
+                    <Grid container spacing={1}>
+                      <Grid item xs={12}>
+                        <MDBox
+                          px={3}
+                          py={1.6}
+                          borderRadius="md"
+                          sx={({
+                            palette: {
+                              transparent: transparentColor,
+                              warning,
+                            },
+                            functions: { rgba },
+                          }: any) => ({
+                            backgroundColor: rgba(
+                              warning.main,
+                              0.2,
+                            ),
+                          })}
+                        >
+                          <MDTypography
+                            variant="h5"
+                            fontWeight="regular"
+                            color="warning"
+                          >
+                            {`${record.direction}, ${record.cologne}`}
+                          </MDTypography>
+                        </MDBox>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <MDBox
+                          px={3}
+                          py={1.6}
+                          borderRadius="md"
+                          sx={({
+                            palette: {
+                              transparent: transparentColor,
+                              primary,
+                            },
+                            functions: { rgba },
+                          }: any) => ({
+                            backgroundColor: rgba(
+                              primary.main,
+                              0.2,
+                            ),
+                          })}
+                        >
+                          <MDTypography
+                            variant="h5"
+                            fontWeight="regular"
+                            color="primary"
+                          >
+                            {`${record.condition} ${record.town}, ${record.zipCode}`}
+                          </MDTypography>
+                        </MDBox>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <MDBox
+                          px={3}
+                          py={1.6}
+                          borderRadius="md"
+                          sx={({
+                            palette: {
+                              transparent: transparentColor,
+                              secondary,
+                            },
+                            functions: { rgba },
+                          }: any) => ({
+                            backgroundColor: rgba(
+                              secondary.main,
+                              0.2,
+                            ),
+                          })}
+                        >
+                          <MDTypography
+                            variant="h5"
+                            fontWeight="regular"
+                            color="secondary"
+                          >
+                            {`Tel: ${record.phoneNumber}`}
+                          </MDTypography>
+                        </MDBox>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <MDBox
+                          px={3}
+                          py={1.6}
+                          borderRadius="md"
+                          sx={({
+                            palette: {
+                              transparent: transparentColor,
+                              success,
+                            },
+                            functions: { rgba },
+                          }: any) => ({
+                            backgroundColor: rgba(
+                              success.main,
+                              0.2,
+                            ),
+                          })}
+                        >
+                          <MDTypography
+                            variant="h5"
+                            fontWeight="regular"
+                            color="success"
+                          >
+                            {`Movil: ${record.cellPhoneNumber}`}
+                          </MDTypography>
+                        </MDBox>
+                      </Grid>
+                      <Grid item xs={12}>
+                        <MDBox
+                          display="flex"
+                          justifyContent="center"
+                          mt={1}
+                        >
+                          <MDButton
+                            components={Link}
+                            to="/schools/:id/register"
+                            size="large"
+                            variant="gradient"
+                            color={sidenavColor}
+                            disabled={props.loading}
+                            sx={{
+                              px: '30%',
+                              py: 1.5,
+                            }}
+                          >
+                            <MDTypography
+                              variant="h5"
+                              fontWeight="medium"
+                              color="white"
+                            >
+                              {i18n('common.register')}
+                            </MDTypography>
+                          </MDButton>
+                        </MDBox>
+                      </Grid>
+                    </Grid>
                   </MDBox>
                 </Grid>
               </Grid>
@@ -114,11 +208,11 @@ function SchoolsView(props) {
           <MDBox
             display="flex"
             justifyContent="center"
-            py={8}
+            py={10}
             bgColor="white"
           >
             <MDBox width="80%">
-              <Grid container spacing={1.6}>
+              <Grid container spacing={3.6}>
                 {record.photographs?.map((photo) => (
                   <Grid item md={3} xs={12} key={photo.id}>
                     <Avatar
@@ -140,7 +234,8 @@ function SchoolsView(props) {
           <MDBox
             display="flex"
             justifyContent="center"
-            py={8}
+            pt={6}
+            pb={10}
             sx={({
               palette: {
                 transparent: transparentColor,
@@ -152,86 +247,120 @@ function SchoolsView(props) {
             })}
           >
             <MDBox width="80%">
-              <Grid container spacing={2.4}>
-                <Grid item md={9} xs={12}>
-                  <MDTypography
-                    variant="h5"
-                    fontWeight="medium"
-                  >
-                    {i18n('schools.subtitle.description')}
-                  </MDTypography>
-                  <MDTypography
-                    variant="h4"
-                    fontWeight="medium"
+              <Grid container spacing={3.6}>
+                <Grid item md={8} xs={12}>
+                  <MDBox
+                    p={2.5}
+                    borderRadius="md"
                     sx={{
-                      color: grey,
-                    }}
-                  >
-                    {record.description}
-                  </MDTypography>
-                </Grid>
-                <Grid item md={3} xs={12}>
-                  <MDTypography
-                    variant="h5"
-                    fontWeight="medium"
-                    sx={{
-                      borderBottom: 1,
+                      border: 1,
                       borderColor: 'grey.300',
                     }}
                   >
-                    {i18n('schools.subtitle.openingHours')}
-                  </MDTypography>
-                  {record.openingHours?.map(
-                    (day, index) => (
-                      <MDBox
-                        key={index}
-                        display="flex"
-                        pb={1}
-                      >
-                        <MDTypography
-                          variant="h6"
-                          textTransform="uppercase"
-                          fontWeight="light"
-                          sx={{ pr: 1 }}
-                        >
-                          {lessonEnumerators.day[index]}
-                        </MDTypography>
-                        <MDTypography
-                          variant="h6"
-                          fontWeight="regular"
-                          sx={{ pr: 1 }}
-                        >
-                          {day.start}
-                        </MDTypography>
-                        <MDTypography
-                          variant="h6"
-                          fontWeight="regular"
-                        >
-                          {day.end}
-                        </MDTypography>
-                      </MDBox>
-                    ),
-                  )}
+                    <MDTypography
+                      variant="h4"
+                      fontWeight="medium"
+                      sx={{
+                        pb: 2,
+                      }}
+                    >
+                      {i18n('schools.subtitle.description')}
+                    </MDTypography>
+                    <HtmlView
+                      value={`<h1>${record.description}</h1>`}
+                    />
+                  </MDBox>
+                </Grid>
+                <Grid item md={4} xs={12}>
+                  <MDBox
+                    borderRadius="lg"
+                    p={2.5}
+                    sx={{
+                      border: 1,
+                      borderColor: 'grey.300',
+                    }}
+                  >
+                    <MDTypography
+                      variant="h4"
+                      fontWeight="medium"
+                      sx={{ pb: 2 }}
+                    >
+                      {i18n(
+                        'schools.subtitle.openingHours',
+                      )}
+                    </MDTypography>
+                    <Grid container spacing={1.6}>
+                      {record.openingHours?.map(
+                        (day, index) => {
+                          if (day.start) {
+                            return (
+                              <Grid
+                                item
+                                xs={12}
+                                key={index}
+                              >
+                                <MDBox display="flex">
+                                  <CheckIcon
+                                    fontSize="medium"
+                                    color="success"
+                                  />
+                                  <MDTypography
+                                    variant="h5"
+                                    textTransform="uppercase"
+                                    fontWeight="light"
+                                    sx={{ pr: 1 }}
+                                  >
+                                    {
+                                      lessonEnumerators.day[
+                                        index
+                                      ]
+                                    }
+                                  </MDTypography>
+                                  <MDTypography
+                                    variant="h5"
+                                    fontWeight="regular"
+                                    sx={{ pr: 1 }}
+                                  >
+                                    {`${day.start} ~ ${day.end}`}
+                                  </MDTypography>
+                                </MDBox>
+                              </Grid>
+                            );
+                          } else {
+                            return <div key={index}></div>;
+                          }
+                        },
+                      )}
+                    </Grid>
+                  </MDBox>
                 </Grid>
                 <Grid item xs={12}>
-                  <MDTypography
-                    variant="h5"
-                    fontWeight="medium"
+                  <MDBox
+                    p={2.5}
+                    borderRadius="lg"
+                    sx={{
+                      border: 1,
+                      borderColor: 'grey.300',
+                    }}
                   >
-                    {i18n('schools.subtitle.service')}
-                  </MDTypography>
-                  <MDBox>
+                    <MDTypography
+                      variant="h4"
+                      fontWeight="medium"
+                      sx={{ pb: 2 }}
+                    >
+                      {i18n('schools.subtitle.service')}
+                    </MDTypography>
                     <Grid container spacing={1.6}>
                       <Grid item md={3} xs={12}>
                         <MDBox display="flex">
                           {record.cafe ? (
                             <CheckIcon
-                              fontSize="small"
+                              fontSize="medium"
                               color="success"
                             />
                           ) : (
-                            <CheckIcon
-                              fontSize="small"
+                            <CloseIcon
+                              fontSize="medium"
                               color="error"
                             />
                           )}
@@ -243,7 +372,195 @@ function SchoolsView(props) {
                           </MDTypography>
                         </MDBox>
                       </Grid>
+                      <Grid item md={3} xs={12}>
+                        <MDBox display="flex">
+                          {record.parkingLot ? (
+                            <CheckIcon
+                              fontSize="medium"
+                              color="success"
+                            />
+                          ) : (
+                            <CloseIcon
+                              fontSize="medium"
+                              color="error"
+                            />
+                          )}
+                          <MDTypography
+                            variant="h5"
+                            fontWeight="regular"
+                          >
+                            {i18n(
+                              'schools.fields.parkingLot',
+                            )}
+                          </MDTypography>
+                        </MDBox>
+                      </Grid>
+                      <Grid item md={3} xs={12}>
+                        <MDBox display="flex">
+                          {record.balletParking ? (
+                            <CheckIcon
+                              fontSize="medium"
+                              color="success"
+                            />
+                          ) : (
+                            <CloseIcon
+                              fontSize="medium"
+                              color="error"
+                            />
+                          )}
+                          <MDTypography
+                            variant="h5"
+                            fontWeight="regular"
+                          >
+                            {i18n(
+                              'schools.fields.balletParking',
+                            )}
+                          </MDTypography>
+                        </MDBox>
+                      </Grid>
+                      <Grid item md={3} xs={12}>
+                        <MDBox display="flex">
+                          {record.waitingRoom ? (
+                            <CheckIcon
+                              fontSize="medium"
+                              color="success"
+                            />
+                          ) : (
+                            <CloseIcon
+                              fontSize="medium"
+                              color="error"
+                            />
+                          )}
+                          <MDTypography
+                            variant="h5"
+                            fontWeight="regular"
+                          >
+                            {i18n(
+                              'schools.fields.waitingRoom',
+                            )}
+                          </MDTypography>
+                        </MDBox>
+                      </Grid>
+                      <Grid item md={3} xs={12}>
+                        <MDBox display="flex">
+                          {record.gym ? (
+                            <CheckIcon
+                              fontSize="medium"
+                              color="success"
+                            />
+                          ) : (
+                            <CloseIcon
+                              fontSize="medium"
+                              color="error"
+                            />
+                          )}
+                          <MDTypography
+                            variant="h5"
+                            fontWeight="regular"
+                          >
+                            {i18n('schools.fields.gym')}
+                          </MDTypography>
+                        </MDBox>
+                      </Grid>
+                      <Grid item md={3} xs={12}>
+                        <MDBox display="flex">
+                          {record.bathroom ? (
+                            <CheckIcon
+                              fontSize="medium"
+                              color="success"
+                            />
+                          ) : (
+                            <CloseIcon
+                              fontSize="medium"
+                              color="error"
+                            />
+                          )}
+                          <MDTypography
+                            variant="h5"
+                            fontWeight="regular"
+                          >
+                            {i18n(
+                              'schools.fields.bathroom',
+                            )}
+                          </MDTypography>
+                        </MDBox>
+                      </Grid>
+                      <Grid item md={3} xs={12}>
+                        <MDBox display="flex">
+                          {record.wateringCan ? (
+                            <CheckIcon
+                              fontSize="medium"
+                              color="success"
+                            />
+                          ) : (
+                            <CloseIcon
+                              fontSize="medium"
+                              color="error"
+                            />
+                          )}
+                          <MDTypography
+                            variant="h5"
+                            fontWeight="regular"
+                          >
+                            {i18n(
+                              'schools.fields.wateringCan',
+                            )}
+                          </MDTypography>
+                        </MDBox>
+                      </Grid>
+                      <Grid item md={3} xs={12}>
+                        <MDBox display="flex">
+                          {record.dressingRoom ? (
+                            <CheckIcon
+                              fontSize="medium"
+                              color="success"
+                            />
+                          ) : (
+                            <CloseIcon
+                              fontSize="medium"
+                              color="error"
+                            />
+                          )}
+                          <MDTypography
+                            variant="h5"
+                            fontWeight="regular"
+                          >
+                            {i18n(
+                              'schools.fields.dressingRoom',
+                            )}
+                          </MDTypography>
+                        </MDBox>
+                      </Grid>
                     </Grid>
+                  </MDBox>
+                </Grid>
+                <Grid item xs={12}>
+                  <MDBox
+                    p={2.5}
+                    pr={3.5}
+                    borderRadius="lg"
+                    sx={{
+                      border: 1,
+                      borderColor: 'grey.300',
+                    }}
+                    display="flex"
+                    justifyContent="end"
+                  >
+                    <MaterialLink href={record.facebook}>
+                      <IconButton>
+                        <FacebookIcon fontSize="medium" />
+                      </IconButton>
+                    </MaterialLink>
+                    <MaterialLink href={record.twitter}>
+                      <IconButton>
+                        <TwitterIcon fontSize="medium" />
+                      </IconButton>
+                    </MaterialLink>
+                    <MaterialLink href={record.instagram}>
+                      <IconButton>
+                        <InstagramIcon fontSize="medium" />
+                      </IconButton>
+                    </MaterialLink>
                   </MDBox>
                 </Grid>
               </Grid>
