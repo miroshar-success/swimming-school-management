@@ -19,6 +19,7 @@ import payment from 'src/modules/payment/paymentReducers';
 import paymentCategory from 'src/modules/paymentCategory/paymentCategoryReducers';
 import paymentMethod from 'src/modules/paymentMethod/paymentMethodReducers';
 import document from 'src/modules/document/documentReducers';
+import schools from 'src/modules/schools/schoolsReducers';
 import widget from 'src/modules/widget/widgetReducers';
 import { combineReducers } from 'redux';
 import form from 'src/modules/form/formReducers';
@@ -50,4 +51,5 @@ export default (history) =>
     lesson,
     document,
     widget,
+    schools,
   });

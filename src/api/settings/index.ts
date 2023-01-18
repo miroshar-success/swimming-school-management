@@ -7,4 +7,6 @@ export default (app) => {
     `/tenant/:tenantId/settings`,
     require('./settingsFind').default,
   );
+  app.get(`/schools`, require('./schoolsList').default);
+  app.get(`/schools/:id`, require('./schoolsFind').default);
 };
