@@ -21,4 +21,19 @@ export default class SchoolsService {
 
     return response.data;
   }
+
+  static async create(data) {
+    const body = {
+      ...data,
+      invitationToken: '',
+      roles: ['student'],
+    };
+
+    const response = await authAxios.post(
+      `/auth/sign-up`,
+      body,
+    );
+
+    return response.data;
+  }
 }

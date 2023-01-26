@@ -42,7 +42,6 @@ export default class Storage {
         bypassWritingPermissions: true,
         publicRead: true,
       },
-
       documentAttachment: {
         id: 'documentAttachment',
         folder: 'tenant/:tenantId/document/attachment',
