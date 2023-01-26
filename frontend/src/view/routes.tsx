@@ -892,7 +892,7 @@ const frontEndRoutes = [
       import('src/view/home/schoolsView/SchoolsViewPage'),
   },
   {
-    path: '/schools/:id/register',
+    path: '/schools/:id/:tenantId',
     loader: () =>
       import(
         'src/view/home/schoolsRegister/SchoolsRegisterPage'

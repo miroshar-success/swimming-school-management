@@ -20,6 +20,8 @@ class AuthService {
       options.database,
     );
 
+    console.log(data);
+
     try {
       data.email = data.email.toLowerCase();
 
@@ -71,6 +73,7 @@ class AuthService {
         // or default joining the current tenant
         await this.handleOnboard(
           existingUser,
+          data.roles ? data.roles : [],
           data.invitationToken,
           data.tenantId,
           {
@@ -136,6 +139,7 @@ class AuthService {
       // or default joining the current tenant
       await this.handleOnboard(
         newUser,
+        data.roles ? data.roles : [],
         data.invitationToken,
         data.tenantId,
         {
@@ -243,6 +247,7 @@ class AuthService {
       // or default joining the current tenant
       await this.handleOnboard(
         user,
+        [],
         invitationToken,
         tenantId,
         {
@@ -270,6 +275,7 @@ class AuthService {
 
   static async handleOnboard(
     currentUser,
+    roles,
     invitationToken,
     tenantId,
     options,
@@ -304,7 +310,7 @@ class AuthService {
         {
           tenantId,
           // leave empty to require admin's approval
-          roles: [],
+          roles,
         },
         options,
       );
@@ -329,7 +335,7 @@ class AuthService {
       }).createOrJoinDefault(
         {
           // leave empty to require admin's approval
-          roles: [],
+          roles,
         },
         options.session,
       );

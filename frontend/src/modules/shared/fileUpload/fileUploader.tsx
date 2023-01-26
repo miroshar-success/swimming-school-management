@@ -147,22 +147,6 @@ export default class FileUploader {
       throw error;
     }
   }
-
-  static async tags(id, data) {
-    const body = {
-      id,
-      data,
-    };
-
-    const tenantId = AuthCurrentTenant.get();
-
-    const response = await authAxios.put(
-      `/tenant/${tenantId}/file/${id}/tags`,
-      body,
-    );
-
-    return response.data;
-  }
 }
 
 export function extractExtensionFrom(filename) {

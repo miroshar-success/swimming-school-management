@@ -5,6 +5,8 @@ import { getHistory } from 'src/modules/store';
 import { i18n } from 'src/i18n';
 import authSelectors from 'src/modules/auth/authSelectors';
 import authActions from 'src/modules/auth/authActions';
+import { AuthToken } from 'src/modules/auth/authToken';
+import AuthService from 'src/modules/auth/authService';
 
 const prefix = 'SCHOOLS_REGISTER';
 
@@ -13,26 +15,34 @@ const schoolsRegisterActions = {
   ADD_SUCCESS: `${prefix}_ADD_SUCCESS`,
   ADD_ERROR: `${prefix}_ADD_ERROR`,
 
-  doAdd: (id, values) => async (dispatch) => {
+  doAdd: (values) => async (dispatch) => {
     try {
       dispatch({
-        type: schoolsRegisterActions.ADD_STARTED,
+        type: authActions.AUTH_START,
       });
 
-      await SchoolsService.create(id, values);
+      const token = await SchoolsService.create(values);
+
+      AuthToken.set(token, true);
+
+      const currentUser = await AuthService.fetchMe();
 
       dispatch({
-        type: schoolsRegisterActions.ADD_SUCCESS,
+        type: authActions.AUTH_SUCCESS,
+        payload: {
+          currentUser,
+        },
       });
-
-      Message.success(i18n('student.doAddSuccess'));
-
-      getHistory().push(`/student/${id}`);
     } catch (error) {
-      Errors.handle(error);
+      await AuthService.signout();
+
+      if (Errors.errorCode(error) !== 400) {
+        Errors.handle(error);
+      }
 
       dispatch({
-        type: schoolsRegisterActions.ADD_ERROR,
+        type: authActions.AUTH_ERROR,
+        payload: Errors.selectMessage(error),
       });
     }
   },

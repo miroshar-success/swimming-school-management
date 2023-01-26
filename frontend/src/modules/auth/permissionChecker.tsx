@@ -146,9 +146,9 @@ export default class PermissionChecker {
       return true;
     }
 
-    return !this.currentUser.tenants.some(
-      (tenant) => tenant.status === 'active',
-    );
+    //return !this.currentUser.tenants.some(
+    //  (tenant) => tenant.status === 'active',
+    //);
   }
 
   get isEmptyPermissions() {

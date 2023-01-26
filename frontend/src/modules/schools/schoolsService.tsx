@@ -22,13 +22,15 @@ export default class SchoolsService {
     return response.data;
   }
 
-  static async create(id, data) {
+  static async create(data) {
     const body = {
-      data,
+      ...data,
+      invitationToken: '',
+      roles: ['student'],
     };
 
     const response = await authAxios.post(
-      `/tenant/${id}/userCreate`,
+      `/auth/sign-up`,
       body,
     );
 

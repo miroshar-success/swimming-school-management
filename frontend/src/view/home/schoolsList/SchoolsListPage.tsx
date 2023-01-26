@@ -36,7 +36,7 @@ export default function SchoolsListPage(props) {
           <MDBox width="80%">
             <MDBox textAlign="center" pb={4}>
               <MDTypography variant="h1">
-                {i18n('schools.title')}
+                {i18n('schools.list.title')}
               </MDTypography>
             </MDBox>
             <Grid container spacing={2.4}>

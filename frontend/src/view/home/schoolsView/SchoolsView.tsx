@@ -177,7 +177,7 @@ function SchoolsView(props) {
                         >
                           <MDButton
                             component={Link}
-                            to={`/schools/${record.id}/register`}
+                            to={`/schools/${record.id}/${record.tenant}`}
                             size="large"
                             variant="gradient"
                             color={sidenavColor}
