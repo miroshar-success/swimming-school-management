@@ -902,7 +902,7 @@ const frontEndRoutes = [
     path: '/student',
     exact: true,
     loader: () =>
-      import('src/view/home/StudentAreaPage/index'),
+      import('src/view/home/StudentAreaPage/dashboard'),
   },
 ].filter(Boolean);
 

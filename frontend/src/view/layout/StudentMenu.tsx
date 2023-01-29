@@ -488,6 +488,7 @@ function StudentMenu({ ...rest }: Props): JSX.Element {
           miniSidenav,
           darkMode,
         }}
+        marginTop
       >
         <MDBox py={2.4}>
           <FormProvider {...form}>
