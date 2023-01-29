@@ -110,6 +110,7 @@ function ImagesFormItem(props) {
           });
           onChange && onChange(newValue);
         }}
+        hideButtons={props.hideButtons}
         max={max}
       />
 
@@ -142,6 +143,7 @@ ImagesFormItem.propTypes = {
   rerender: PropTypes.number,
   storage: PropTypes.object.isRequired,
   value: PropTypes.array,
+  hideButtons: PropTypes.bool,
 };
 
 export default ImagesFormItem;

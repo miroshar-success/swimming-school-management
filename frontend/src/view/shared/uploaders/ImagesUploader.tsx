@@ -101,32 +101,34 @@ function ImagesUploader(props) {
             objectPosition: 'center',
           }}
         />
-        <MDBox
-          display="flex"
-          justifyContent="center"
-          gap={0.8}
-          mt={0.8}
-        >
-          <MDButton
-            onClick={() => doPreviewImage(item)}
-            size="small"
-            color={sidenavColor}
-            iconOnly
+        {!props.hideButtons && (
+          <MDBox
+            display="flex"
+            justifyContent="center"
+            gap={0.8}
+            mt={0.8}
           >
-            <SearchIcon />
-          </MDButton>
-
-          {!readonly && (
             <MDButton
-              onClick={() => handleRemove(item.id)}
+              onClick={() => doPreviewImage(item)}
               size="small"
               color={sidenavColor}
               iconOnly
             >
-              <CloseIcon />
+              <SearchIcon />
             </MDButton>
-          )}
-        </MDBox>
+
+            {!readonly && (
+              <MDButton
+                onClick={() => handleRemove(item.id)}
+                size="small"
+                color={sidenavColor}
+                iconOnly
+              >
+                <CloseIcon />
+              </MDButton>
+            )}
+          </MDBox>
+        )}
       </MDBox>
     );
   };
@@ -204,6 +206,7 @@ ImagesUploader.propTypes = {
   readonly: PropTypes.bool,
   storage: PropTypes.object,
   value: PropTypes.any,
+  hideButtons: PropTypes.bool,
 };
 
 export default ImagesUploader;

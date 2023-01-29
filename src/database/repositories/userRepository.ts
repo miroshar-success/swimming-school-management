@@ -921,8 +921,6 @@ export default class UserRepository {
 
       groupByClass = Object.entries(groupByClass);
 
-      console.log(groupByClass);
-
       lessons = [];
 
       groupByClass.map((lesson) => {

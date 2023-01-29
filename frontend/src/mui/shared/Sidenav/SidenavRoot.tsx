@@ -113,6 +113,7 @@ export default styled(Drawer)(
       '& .MuiDrawer-paper': {
         boxShadow: xxl,
         border: 'none',
+        marginTop: 75,
 
         ...(miniSidenav
           ? drawerCloseStyles()

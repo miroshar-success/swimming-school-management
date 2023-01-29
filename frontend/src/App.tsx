@@ -35,6 +35,7 @@ import createCache from '@emotion/cache';
 import muiActions from 'src/modules/mui/muiActions';
 import { selectMuiSettings } from 'src/modules/mui/muiSelectors';
 import Menu from 'src/view/layout/Menu';
+import StudentMenu from 'src/view/layout/StudentMenu';
 import Configurator from 'src/mui/shared/Configurator';
 import { Icon } from '@mui/material';
 import { i18n } from 'src/i18n';
@@ -199,6 +200,7 @@ function AppWithSnackbar(props) {
         </>
       )}
       {layout === 'vr' && <Configurator />}
+      {layout === 'student' && <StudentMenu />}
       <RoutesComponent />
       <ScrollTop />
     </ConnectedRouter>

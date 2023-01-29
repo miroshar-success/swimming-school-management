@@ -39,6 +39,10 @@ function PrivateRoute({
           );
         }
 
+        if (!permissionChecker.isAdmin === true) {
+          <Redirect to="/student" />;
+        }
+
         if (!permissionChecker.isEmailVerified) {
           return (
             <Redirect to="/admin/auth/email-unverified" />
