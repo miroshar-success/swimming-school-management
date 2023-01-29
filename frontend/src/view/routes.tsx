@@ -898,6 +898,12 @@ const frontEndRoutes = [
         'src/view/home/schoolsRegister/SchoolsRegisterPage'
       ),
   },
+  {
+    path: '/student',
+    exact: true,
+    loader: () =>
+      import('src/view/home/StudentAreaPage/index'),
+  },
 ].filter(Boolean);
 
 export default {

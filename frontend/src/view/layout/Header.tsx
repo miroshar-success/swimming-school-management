@@ -215,16 +215,6 @@ function Header({
               <MDInput label="Search here" />
             </MDBox>
             <MDBox color={light ? 'white' : 'inherit'}>
-              {/* <IconButton
-                size="large"
-                disableRipple
-                sx={navbarMobileMenu}
-                onClick={handleMiniSidenav}
-              >
-                <Icon sx={iconsStyle}>
-                  {miniSidenav ? 'menu_open' : 'menu'}
-                </Icon>
-              </IconButton> */}
               <I18nSelect />
               <UserMenu />
               <IconButton
@@ -236,23 +226,6 @@ function Header({
               >
                 <Icon sx={iconsStyle}>settings</Icon>
               </IconButton>
-              {/* <IconButton
-                size="small"
-                color="inherit"
-                sx={navbarIconButton}
-                onClick={handleOpenMenu}
-                disableRipple
-              >
-                <MDBadge
-                  badgeContent={9}
-                  color="error"
-                  size="xs"
-                  circular
-                >
-                  <Icon sx={iconsStyle}>notifications</Icon>
-                </MDBadge>
-              </IconButton>
-              {renderMenu()} */}
             </MDBox>
           </MDBox>
         )}

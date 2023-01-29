@@ -148,8 +148,6 @@ export default class SettingsRepository {
   ) {
     let criteriaAnd: any = [];
 
-    console.log(filter);
-
     if (filter) {
       if (filter.id) {
         criteriaAnd.push({
@@ -324,8 +322,6 @@ export default class SettingsRepository {
         output.photographs,
         options,
       );
-
-    console.log(output);
 
     return output;
   }

@@ -13,8 +13,6 @@ export default async (req, res, next) => {
       req,
     ).totalStudents();
 
-    console.log(payload);
-
     await ApiResponseHandler.success(req, res, payload);
   } catch (error) {
     await ApiResponseHandler.error(req, res, error);

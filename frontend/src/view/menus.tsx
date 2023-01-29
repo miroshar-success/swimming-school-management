@@ -213,10 +213,39 @@ const planRoutes = [
   },
 ].filter(Boolean);
 
+const studentRoutes = [
+  {
+    path: '/student',
+    icon: <Icon>dashboard</Icon>,
+    name: i18n('student.dashboard.menu'),
+  },
+  {
+    path: '/student/class',
+    icon: <Icon>class</Icon>,
+    name: i18n('student.class.menu'),
+  },
+  {
+    path: '/student/attendance',
+    icon: <Icon>how_to_reg</Icon>,
+    name: i18n('student.attendance.menu'),
+  },
+  {
+    path: '/student/payment',
+    icon: <Icon>payment</Icon>,
+    name: i18n('student.payment.menu'),
+  },
+  {
+    path: '/student/file',
+    icon: <Icon>folder</Icon>,
+    name: i18n('student.file.menu'),
+  },
+].filter(Boolean);
+
 export {
   menus,
   profileRoutes,
   tenantRoutes,
   adminRoutes,
   planRoutes,
+  studentRoutes,
 };

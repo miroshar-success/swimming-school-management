@@ -29,16 +29,6 @@ function UserMenu({
 
   const dispatch = useDispatch();
 
-  const userText = useSelector(
-    authSelectors.selectCurrentUserNameOrEmailPrefix,
-  );
-  const userAvatar = useSelector(
-    authSelectors.selectCurrentUserAvatar,
-  );
-  const currentTenant = useSelector(
-    authSelectors.selectCurrentTenant,
-  );
-
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -122,16 +112,6 @@ function UserMenu({
             onClick={doNavigateToTenants}
             icon={<Icon>apps</Icon>}
             title={i18n('auth.tenants')}
-          />
-        )}
-        {config.apiDocumentationUrl && (
-          <NotificationItem
-            outlink
-            href={config.apiDocumentationUrl}
-            icon={<Icon>code</Icon>}
-            title={i18n('api.menu')}
-            target="_blank"
-            rel="noopener noreferrer"
           />
         )}
         <NotificationItem

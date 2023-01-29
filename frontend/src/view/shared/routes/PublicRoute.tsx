@@ -18,10 +18,10 @@ function PublicRoute({
         );
 
         if (permissionChecker.isAuthenticated) {
-          if (permissionChecker.isAdmin) {
+          if (permissionChecker.isAdmin === true) {
             return <Redirect to="/admin" />;
           } else {
-            return <Redirect to="/dashboard" />;
+            return <Redirect to="/student" />;
           }
         }
 

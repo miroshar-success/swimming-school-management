@@ -12,15 +12,6 @@ function FrontEndRoute({
     <Route
       {...rest}
       render={(props) => {
-        const permissionChecker = new PermissionChecker(
-          currentTenant,
-          currentUser,
-        );
-
-        if (permissionChecker.isAuthenticated) {
-          return <Redirect to="/dashboard" />;
-        }
-
         return <Component {...props} />;
       }}
     />

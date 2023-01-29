@@ -20,8 +20,6 @@ class AuthService {
       options.database,
     );
 
-    console.log(data);
-
     try {
       data.email = data.email.toLowerCase();
 
