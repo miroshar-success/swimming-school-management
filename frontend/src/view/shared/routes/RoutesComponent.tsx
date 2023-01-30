@@ -9,6 +9,7 @@ import CustomLoadable from 'src/view/shared/CustomLoadable';
 import ProgressBar from 'src/view/shared/ProgressBar';
 import routes from 'src/view/routes';
 import EmptyTenantRoute from 'src/view/shared/routes/EmptyTenantRoute';
+import StudentAreaRoute from 'src/view/shared/routes/StudentAreaRoute';
 import EmptyPermissionsRoute from 'src/view/shared/routes/EmptyPermissionsRoute';
 import FrontEndRoute from 'src/view/shared/routes/FrontEndRoute';
 
@@ -130,6 +131,20 @@ function RoutesComponent(props) {
             exact={Boolean(route.exact)}
           />
         ))}
+
+      {routes.studentAreaRoutes.map((route) => (
+        <StudentAreaRoute
+          key={route.path}
+          currentUser={currentUser}
+          currentTenant={currentTenant}
+          permissionRequired={route.permissionRequired}
+          path={route.path}
+          component={CustomLoadable({
+            loader: route.loader,
+          })}
+          exact={Boolean(route.exact)}
+        />
+      ))}
 
       {routes.simpleRoutes.map((route) => (
         <Route

@@ -200,7 +200,7 @@ function AppWithSnackbar(props) {
         </>
       )}
       {layout === 'vr' && <Configurator />}
-      {layout === 'student' && <StudentMenu />}
+      {layout === 'studentArea' && <StudentMenu />}
       <RoutesComponent />
       <ScrollTop />
     </ConnectedRouter>
