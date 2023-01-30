@@ -898,11 +898,54 @@ const frontEndRoutes = [
         'src/view/home/schoolsRegister/SchoolsRegisterPage'
       ),
   },
+].filter(Boolean);
+
+const studentAreaRoutes = [
   {
     path: '/student',
-    exact: true,
+    i18n: 'student.dashboard.menu',
     loader: () =>
-      import('src/view/home/StudentAreaPage/index'),
+      import('src/view/home/StudentAreaPage/dashboard'),
+    permissionRequired: null,
+    exact: true,
+  },
+  {
+    path: '/student/class',
+    i18n: 'student.class.menu',
+    parent: '/student',
+    loader: () =>
+      import('src/view/home/StudentAreaPage/classPage'),
+    permissionRequired: null,
+    exact: true,
+  },
+  {
+    path: '/student/attendance',
+    i18n: 'student.attendance.menu',
+    parent: '/student',
+    loader: () =>
+      import(
+        'src/view/home/StudentAreaPage/attendancePage'
+      ),
+    permissionRequired: null,
+    exact: true,
+  },
+  {
+    path: '/student/payment',
+    i18n: 'student.payment.menu',
+    parent: '/student',
+    loader: () =>
+      import('src/view/home/StudentAreaPage/paymentPage'),
+    permissionRequired: null,
+    exact: true,
+  },
+  {
+    path: '/student/file',
+    i18n: 'student.file.menu',
+    parent: '/student',
+    loader: () =>
+      import('src/view/home/StudentAreaPage/filePage'),
+    permissionRequired: null,
+    exact: true,
   },
 ].filter(Boolean);
 
@@ -914,6 +957,7 @@ export default {
   emailUnverifiedRoutes,
   simpleRoutes,
   frontEndRoutes,
+  studentAreaRoutes,
 };
 
 export function findRoute(url = null, routes = []) {
@@ -953,6 +997,38 @@ export function matchedRoutes(
     if (found) {
       routes.push(found);
       if (found.parent && found.parent !== '/admin') {
+        return searchRouteStack(found.parent, exactOnly);
+      }
+    }
+
+    routes.reverse();
+
+    return routes;
+  };
+
+  return searchRouteStack(url, exactOnly);
+}
+
+export function matchedStudentRoutes(
+  url = null,
+  exactOnly = false,
+) {
+  if (url === null || url === undefined) {
+    return null;
+  }
+
+  let routes = [];
+
+  const searchRouteStack = (url, exactOnly) => {
+    const found = findRoute(url, studentAreaRoutes);
+
+    if (exactOnly === true) {
+      return found;
+    }
+
+    if (found) {
+      routes.push(found);
+      if (found.parent && found.parent !== '/student') {
         return searchRouteStack(found.parent, exactOnly);
       }
     }

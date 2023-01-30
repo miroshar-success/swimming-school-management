@@ -21,9 +21,11 @@ export default styled(Drawer)(
   ({
     theme,
     ownerState,
+    marginTop,
   }: {
     theme?: Theme | any;
     ownerState: any;
+    marginTop?: boolean;
   }) => {
     const {
       palette,
@@ -113,7 +115,7 @@ export default styled(Drawer)(
       '& .MuiDrawer-paper': {
         boxShadow: xxl,
         border: 'none',
-        marginTop: 75,
+        marginTop: marginTop ? 75 : 12.8,
 
         ...(miniSidenav
           ? drawerCloseStyles()

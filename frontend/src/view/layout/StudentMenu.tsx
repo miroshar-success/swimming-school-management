@@ -38,7 +38,10 @@ import SidenavRoot from 'src/mui/shared/Sidenav/SidenavRoot';
 import muiActions from 'src/modules/mui/muiActions';
 import { selectMuiSettings } from 'src/modules/mui/muiSelectors';
 import yupFormSchemas from 'src/modules/shared/yup/yupFormSchemas';
-import { findRoute, matchedRoutes } from 'src/view/routes';
+import {
+  findRoute,
+  matchedStudentRoutes,
+} from 'src/view/routes';
 import { Avatar, CardMedia } from '@mui/material';
 import config from 'src/config';
 import { BrandLogo } from 'src/assets/resources';
@@ -78,7 +81,7 @@ function StudentMenu({ ...rest }: Props): JSX.Element {
     useState<boolean | string>(false);
   const location = useLocation();
   const { pathname } = location;
-  const currentRoutes = matchedRoutes(pathname);
+  const currentRoutes = matchedStudentRoutes(pathname);
   const currentRoute = findRoute(pathname, currentRoutes);
   const collapseName =
     (currentRoute && currentRoute.collapseName) || false;
@@ -488,6 +491,7 @@ function StudentMenu({ ...rest }: Props): JSX.Element {
           miniSidenav,
           darkMode,
         }}
+        marginTop
       >
         <MDBox py={2.4}>
           <FormProvider {...form}>

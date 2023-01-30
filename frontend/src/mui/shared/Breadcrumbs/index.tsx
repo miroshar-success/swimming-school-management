@@ -16,7 +16,10 @@ import MDTypography from 'src/mui/components/MDTypography';
 import { i18n } from 'src/i18n';
 
 import { useLocation } from 'react-router-dom';
-import { matchedRoutes } from 'src/view/routes';
+import {
+  matchedRoutes,
+  matchedStudentRoutes,
+} from 'src/view/routes';
 import { useSelector } from 'react-redux';
 
 // Declaring props types for the Breadcrumbs
@@ -25,6 +28,7 @@ interface Props {
   title: string;
   route: string | string[];
   light?: boolean;
+  isStudentArea?: boolean;
   [key: string]: any;
 }
 
@@ -33,9 +37,12 @@ function Breadcrumbs({
   title,
   route,
   light,
+  isStudentArea,
 }: Props): JSX.Element {
   const { pathname } = useLocation();
-  const routes = matchedRoutes(pathname);
+  const routes = isStudentArea
+    ? matchedStudentRoutes(pathname)
+    : matchedRoutes(pathname);
   const current = routes.pop();
   const userText = useSelector(
     authSelectors.selectCurrentUserNameOrEmailPrefix,
