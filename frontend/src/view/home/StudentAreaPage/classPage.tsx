@@ -15,7 +15,6 @@ export default function Dashboard(props) {
   const student = useSelector(
     authSelectors.selectCurrentUser,
   );
-  console.log(student);
   return (
     <>
       <Header />
